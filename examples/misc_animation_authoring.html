@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - animation authoring</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				margin: 0px;
+				background-color: #000000;
+				color: #fff;
+				font-family:Monospace;
+				font-size: 15px;
+				line-height: 30px;
+				overflow: hidden;
+			}
+			#info {
+				text-align: center;
+				position: absolute;
+				top: 0px; width: 100%;
+				padding: 15px;
+				z-index:100;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="info">
+		"W" translate | "E" rotate | "R" scale | "+" increase size | "-" decrease size<br />
+		Press "Q" to toggle world/local space, hold down "Ctrl" to snap to grid
+		</div>
+		<script src="js/libs/timeliner_gui.min.js"></script>
+		<script src="boot.js"></script>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "three.ts",
+  "version": "0.82.0",
+  "description": "TypeScript 3D library",
+  "main": "build/three.js",
+  "scripts": {
+    "clean": "for f in $(find src examples -regex '.*[^\\.d]\\.ts'); do rm -fv ${f/.ts/.js} ${f/.ts/.js.map}; done",
+    "build-glsl": "node glsl.js src/renderers/shaders",
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "rollup": "^0.36.3",
+    "rollup-plugin-typescript": "^0.8.1",
+    "systemjs": "^0.19.40",
+    "typescript": "^2.0.8"
+  }
+}

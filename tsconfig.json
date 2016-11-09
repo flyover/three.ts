@@ -1,0 +1,22 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "system",
+        "target": "es6",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitThis": false,
+        "noImplicitUseStrict": true,
+        "noUnusedLocals": false,
+        "strictNullChecks": false
+    },
+    "include": [
+        "src/**/*.ts",
+        "examples/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
