@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { ParametricBufferGeometry } from './ParametricBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { ParametricBufferGeometry } from "./ParametricBufferGeometry";
 /**
  * @author zz85 / https://github.com/zz85
  *

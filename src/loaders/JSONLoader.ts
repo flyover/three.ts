@@ -1,14 +1,14 @@
-import { Loader } from './Loader';
-import { AnimationClip } from '../animation/AnimationClip';
-import { Vector3 } from '../math/Vector3';
-import { Vector4 } from '../math/Vector4';
-import { Color } from '../math/Color';
-import { Vector2 } from '../math/Vector2';
-import { Face3 } from '../core/Face3';
-import { Geometry } from '../core/Geometry';
-import { Material } from '../materials/Material';
-import { XHRLoader } from './XHRLoader';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { Loader } from "./Loader";
+import { AnimationClip } from "../animation/AnimationClip";
+import { Vector3 } from "../math/Vector3";
+import { Vector4 } from "../math/Vector4";
+import { Color } from "../math/Color";
+import { Vector2 } from "../math/Vector2";
+import { Face3 } from "../core/Face3";
+import { Geometry } from "../core/Geometry";
+import { Material } from "../materials/Material";
+import { XHRLoader } from "./XHRLoader";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/

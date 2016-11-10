@@ -1,4 +1,4 @@
-import { CylinderBufferGeometry } from './CylinderBufferGeometry';
+import { CylinderBufferGeometry } from "./CylinderBufferGeometry";
 /*
  * @author: abelnation / http://github.com/abelnation
  */

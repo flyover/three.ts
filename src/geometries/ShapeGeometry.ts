@@ -1,10 +1,10 @@
-import { Geometry } from '../core/Geometry';
-import { Face3 } from '../core/Face3';
-import { Vector2 } from '../math/Vector2';
-import { Vector3 } from '../math/Vector3';
-import { ShapeUtils } from '../extras/ShapeUtils';
-import { ExtrudeGeometry } from './ExtrudeGeometry';
-import { Shape } from '../extras/core/Shape';
+import { Geometry } from "../core/Geometry";
+import { Face3 } from "../core/Face3";
+import { Vector2 } from "../math/Vector2";
+import { Vector3 } from "../math/Vector3";
+import { ShapeUtils } from "../extras/ShapeUtils";
+import { ExtrudeGeometry } from "./ExtrudeGeometry";
+import { Shape } from "../extras/core/Shape";
 /**
  * @author jonobr1 / http://jonobr1.com
  *

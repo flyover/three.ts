@@ -1,6 +1,6 @@
-import { Vector3 } from './Vector3';
-import { Matrix4 } from './Matrix4';
-import { _Math } from './Math';
+import { Vector3 } from "./Vector3";
+import { Matrix4 } from "./Matrix4";
+import { _Math } from "./Math";
 /**
  * @author bhouston / http://clara.io
  */

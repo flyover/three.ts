@@ -1,9 +1,9 @@
 /**
  * @author arodic / https://github.com/arodic
  */
-import * as THREE from '../../../src/Three';
-import { MeshBasicMaterial, MeshBasicMaterialParameters } from '../../../src/materials/MeshBasicMaterial';
-import { LineBasicMaterial, LineBasicMaterialParameters } from '../../../src/materials/LineBasicMaterial';
+import * as THREE from "../../../src/Three";
+import { MeshBasicMaterial, MeshBasicMaterialParameters } from "../../../src/materials/MeshBasicMaterial";
+import { LineBasicMaterial, LineBasicMaterialParameters } from "../../../src/materials/LineBasicMaterial";
 class GizmoMaterial extends MeshBasicMaterial {
   oldColor: THREE.Color;
   oldOpacity: number;

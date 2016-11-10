@@ -1,6 +1,6 @@
-import { BufferGeometry } from '../core/BufferGeometry';
-import { BufferAttribute } from '../core/BufferAttribute';
-import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from "../core/BufferGeometry";
+import { BufferAttribute } from "../core/BufferAttribute";
+import { Geometry } from "../core/Geometry";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

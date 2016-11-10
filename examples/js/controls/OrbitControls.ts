@@ -11,7 +11,7 @@
 //    Orbit - left mouse / touch: one finger move
 //    Zoom - middle mouse, or mousewheel / touch: two finger spread or squish
 //    Pan - right mouse, or arrow keys / touch: three finter swipe
-import * as THREE from '../../../src/Three';
+import * as THREE from "../../../src/Three";
 const enum STATE {
   NONE = -1,
   ROTATE = 0,

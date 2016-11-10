@@ -7,7 +7,7 @@
  * @author David Sarno / http://lighthaus.us/
  * @author tschw
  */
-import { AnimationObjectGroup } from './AnimationObjectGroup';
+import { AnimationObjectGroup } from "./AnimationObjectGroup";
 type PropertyGetter = (targetArray: any, offset: number) => void;
 type PropertySetter = (targetArray: any, offset: number) => void;
 export class PropertyBinding {

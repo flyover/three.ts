@@ -1,6 +1,6 @@
-import { Material, MaterialParameters } from './Material';
-import { BasicDepthPacking } from '../constants';
-import { Texture } from '../textures/Texture';
+import { Material, MaterialParameters } from "./Material";
+import { BasicDepthPacking } from "../constants";
+import { Texture } from "../textures/Texture";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/

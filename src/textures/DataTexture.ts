@@ -1,5 +1,5 @@
-import { Texture } from './Texture';
-import { NearestFilter } from '../constants';
+import { Texture } from "./Texture";
+import { NearestFilter } from "../constants";
 /**
  * @author alteredq / http://alteredqualia.com/
  */

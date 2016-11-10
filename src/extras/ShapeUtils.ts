@@ -1,7 +1,7 @@
 /**
  * @author zz85 / http://www.lab4games.net/zz85/blog
  */
-import { Vector2 } from '../math/Vector2';
+import { Vector2 } from "../math/Vector2";
 export class ShapeUtils {
   // calculate area of the contour polygon
   static area(contour: Vector2[]): number {

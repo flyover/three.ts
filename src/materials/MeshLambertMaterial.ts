@@ -35,10 +35,10 @@
  *  morphNormals: <bool>
  * }
  */
-import { Material, MaterialParameters } from './Material';
-import { MultiplyOperation } from '../constants';
-import { Color } from '../math/Color';
-import { Texture } from '../textures/Texture';
+import { Material, MaterialParameters } from "./Material";
+import { MultiplyOperation } from "../constants";
+import { Color } from "../math/Color";
+import { Texture } from "../textures/Texture";
 export interface MeshLambertMaterialParameters extends MaterialParameters {
   color?: Color | number | string;
   opacity?: number;

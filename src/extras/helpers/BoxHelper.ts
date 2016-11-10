@@ -1,9 +1,9 @@
-import { Box3 } from '../../math/Box3';
-import { LineSegments } from '../../objects/LineSegments';
-import { LineBasicMaterial } from '../../materials/LineBasicMaterial';
-import { BufferAttribute } from '../../core/BufferAttribute';
-import { BufferGeometry } from '../../core/BufferGeometry';
-import { Object3D } from '../../core/Object3D';
+import { Box3 } from "../../math/Box3";
+import { LineSegments } from "../../objects/LineSegments";
+import { LineBasicMaterial } from "../../materials/LineBasicMaterial";
+import { BufferAttribute } from "../../core/BufferAttribute";
+import { BufferGeometry } from "../../core/BufferGeometry";
+import { Object3D } from "../../core/Object3D";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

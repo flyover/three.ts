@@ -1,8 +1,8 @@
-import { Vector3 } from './Vector3';
-import { Matrix4 } from './Matrix4';
-import { Sphere } from './Sphere';
-import { Plane } from './Plane';
-import { Box3 } from './Box3';
+import { Vector3 } from "./Vector3";
+import { Matrix4 } from "./Matrix4";
+import { Sphere } from "./Sphere";
+import { Plane } from "./Plane";
+import { Box3 } from "./Box3";
 /**
  * @author bhouston / http://clara.io
  */

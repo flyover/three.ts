@@ -1,5 +1,5 @@
-import { XHRLoader } from './XHRLoader';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { XHRLoader } from "./XHRLoader";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

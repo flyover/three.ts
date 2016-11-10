@@ -1,6 +1,6 @@
-import { Vector3 } from './Vector3';
-import { Matrix4 } from './Matrix4';
-import { Euler } from './Euler';
+import { Vector3 } from "./Vector3";
+import { Matrix4 } from "./Matrix4";
+import { Euler } from "./Euler";
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/

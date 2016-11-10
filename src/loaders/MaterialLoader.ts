@@ -1,9 +1,9 @@
-import { Vector2 } from '../math/Vector2';
-import { XHRLoader } from './XHRLoader';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
-import { Material } from '../materials/Material';
-import * as Materials from '../materials/Materials';
-import { Texture } from '../textures/Texture';
+import { Vector2 } from "../math/Vector2";
+import { XHRLoader } from "./XHRLoader";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
+import { Material } from "../materials/Material";
+import * as Materials from "../materials/Materials";
+import { Texture } from "../textures/Texture";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

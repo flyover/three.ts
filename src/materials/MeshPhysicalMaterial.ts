@@ -1,4 +1,4 @@
-import { MeshStandardMaterial, MeshStandardMaterialParameters } from './MeshStandardMaterial';
+import { MeshStandardMaterial, MeshStandardMaterialParameters } from "./MeshStandardMaterial";
 /**
  * @author WestLangley / http://github.com/WestLangley
  *

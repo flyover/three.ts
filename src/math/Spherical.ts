@@ -1,5 +1,5 @@
-import { _Math } from './Math';
-import { Vector3 } from './Vector3';
+import { _Math } from "./Math";
+import { Vector3 } from "./Vector3";
 /**
  * @author bhouston / http://clara.io
  * @author WestLangley / http://github.com/WestLangley

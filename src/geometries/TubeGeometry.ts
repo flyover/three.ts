@@ -1,7 +1,7 @@
-import { Geometry } from '../core/Geometry';
-import { TubeBufferGeometry } from './TubeBufferGeometry';
-import { Curve } from '../extras/core/Curve';
-import { Vector3 } from '../math/Vector3';
+import { Geometry } from "../core/Geometry";
+import { TubeBufferGeometry } from "./TubeBufferGeometry";
+import { Curve } from "../extras/core/Curve";
+import { Vector3 } from "../math/Vector3";
 /**
  * @author oosmoxiecode / https://github.com/oosmoxiecode
  * @author WestLangley / https://github.com/WestLangley

@@ -1,6 +1,6 @@
-import { Vector2 } from '../math/Vector2';
-import { Geometry } from '../core/Geometry';
-import { LatheBufferGeometry } from './LatheBufferGeometry';
+import { Vector2 } from "../math/Vector2";
+import { Geometry } from "../core/Geometry";
+import { LatheBufferGeometry } from "./LatheBufferGeometry";
 /**
  * @author astrodud / http://astrodud.isgreat.org/
  * @author zz85 / https://github.com/zz85

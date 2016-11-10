@@ -1,9 +1,9 @@
 /**
  * @author tschw
  */
-import { Matrix3 } from '../../math/Matrix3';
-import { Plane } from '../../math/Plane';
-import { Camera } from '../../cameras/Camera';
+import { Matrix3 } from "../../math/Matrix3";
+import { Plane } from "../../math/Plane";
+import { Camera } from "../../cameras/Camera";
 export class WebGLClipping {
   globalState: number[] = null;
   numGlobalPlanes: number = 0;

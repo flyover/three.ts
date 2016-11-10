@@ -1,5 +1,5 @@
-import { Camera } from './Camera';
-import { _Math } from '../math/Math';
+import { Camera } from "./Camera";
+import { _Math } from "../math/Math";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author greggman / http://games.greggman.com/

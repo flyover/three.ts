@@ -1,7 +1,7 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { Audio } from './Audio';
+import { Audio } from "./Audio";
 export class AudioAnalyser {
   analyser: AnalyserNode;
   data: Uint8Array;

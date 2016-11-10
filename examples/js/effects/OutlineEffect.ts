@@ -22,7 +22,7 @@
  *  - shared material
  *  - support shader material without objectNormal in its vertexShader
  */
-import * as THREE from '../../../src/Three';
+import * as THREE from "../../../src/Three";
 export class OutlineEffect {
   renderer;
   shaderIDs;

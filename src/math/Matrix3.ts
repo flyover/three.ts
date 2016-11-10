@@ -1,5 +1,5 @@
-import { Vector3 } from './Vector3';
-import { Matrix4 } from './Matrix4';
+import { Vector3 } from "./Vector3";
+import { Matrix4 } from "./Matrix4";
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author WestLangley / http://github.com/WestLangley

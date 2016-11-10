@@ -16,8 +16,8 @@
  *  bevelSize: <float> // how far from text outline is bevel
  * }
  */
-import { ExtrudeGeometry } from './ExtrudeGeometry';
-import { Font } from '../extras/core/Font';
+import { ExtrudeGeometry } from "./ExtrudeGeometry";
+import { Font } from "../extras/core/Font";
 export class TextGeometry extends ExtrudeGeometry {
   constructor(text: string, parameters: any = {}) {
     const font = parameters.font;

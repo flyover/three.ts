@@ -1,8 +1,8 @@
-import { Matrix4 } from '../math/Matrix4';
-import { FloatType, RGBAFormat } from '../constants';
-import { DataTexture } from '../textures/DataTexture';
-import { _Math } from '../math/Math';
-import { Bone } from './Bone';
+import { Matrix4 } from "../math/Matrix4";
+import { FloatType, RGBAFormat } from "../constants";
+import { DataTexture } from "../textures/DataTexture";
+import { _Math } from "../math/Math";
+import { Bone } from "./Bone";
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/

@@ -13,7 +13,7 @@
  * @author tschw
  *
  */
-import * as THREE from '../../src/Three';
+import * as THREE from "../../src/Three";
 export class TimelinerController {
   _scene;
   _trackInfo;

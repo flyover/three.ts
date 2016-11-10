@@ -1,7 +1,7 @@
-import { Vector3 } from '../math/Vector3';
-import { Object3D } from '../core/Object3D';
-import { Raycaster, Intersect } from '../core/Raycaster';
-import { Camera } from '../cameras/Camera';
+import { Vector3 } from "../math/Vector3";
+import { Object3D } from "../core/Object3D";
+import { Raycaster, Intersect } from "../core/Raycaster";
+import { Camera } from "../cameras/Camera";
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/

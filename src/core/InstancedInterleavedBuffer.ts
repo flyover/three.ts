@@ -1,4 +1,4 @@
-import { InterleavedBuffer } from './InterleavedBuffer';
+import { InterleavedBuffer } from "./InterleavedBuffer";
 /**
  * @author benaadams / https://twitter.com/ben_a_adams
  */

@@ -1,9 +1,9 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { Vector3 } from '../math/Vector3';
-import { Audio } from './Audio';
-import { AudioListener } from './AudioListener';
+import { Vector3 } from "../math/Vector3";
+import { Audio } from "./Audio";
+import { AudioListener } from "./AudioListener";
 export class PositionalAudio extends Audio {
   panner: PannerNode;
   constructor(listener: AudioListener) {

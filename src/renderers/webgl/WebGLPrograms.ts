@@ -1,16 +1,16 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { WebGLRenderer } from '../WebGLRenderer';
-import { WebGLProgram } from './WebGLProgram';
-import { WebGLRenderTarget } from '../WebGLRenderTarget';
-import { WebGLCapabilities } from './WebGLCapabilities';
-import { BackSide, DoubleSide, FlatShading, CubeUVRefractionMapping, CubeUVReflectionMapping, GammaEncoding, LinearEncoding } from '../../constants';
-import { Object3D } from '../../core/Object3D';
-import { SkinnedMesh } from '../../objects/SkinnedMesh';
-import { Fog } from '../../scenes/Fog';
-import { FogExp2 } from '../../scenes/FogExp2';
-import { Texture } from '../../textures/Texture';
+import { WebGLRenderer } from "../WebGLRenderer";
+import { WebGLProgram } from "./WebGLProgram";
+import { WebGLRenderTarget } from "../WebGLRenderTarget";
+import { WebGLCapabilities } from "./WebGLCapabilities";
+import { BackSide, DoubleSide, FlatShading, CubeUVRefractionMapping, CubeUVReflectionMapping, GammaEncoding, LinearEncoding } from "../../constants";
+import { Object3D } from "../../core/Object3D";
+import { SkinnedMesh } from "../../objects/SkinnedMesh";
+import { Fog } from "../../scenes/Fog";
+import { FogExp2 } from "../../scenes/FogExp2";
+import { Texture } from "../../textures/Texture";
 export class WebGLPrograms {
   renderer: WebGLRenderer;
   capabilities: WebGLCapabilities;

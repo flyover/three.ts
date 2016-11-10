@@ -1,4 +1,4 @@
-import { KeyframeTrack } from '../KeyframeTrack';
+import { KeyframeTrack } from "../KeyframeTrack";
 /**
  *
  * A Track of numeric keyframe values.

@@ -1,7 +1,7 @@
-import { Line } from './Line';
-import { Geometry } from '../core/Geometry';
-import { BufferGeometry } from '../core/BufferGeometry';
-import { Material } from '../materials/Material';
+import { Line } from "./Line";
+import { Geometry } from "../core/Geometry";
+import { BufferGeometry } from "../core/BufferGeometry";
+import { Material } from "../materials/Material";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

@@ -1,6 +1,6 @@
-import * as THREE from '../src/Three';
-import * as THREE_Curves from './js/CurveExtras';
-import { OrbitControls as THREE_OrbitControls } from './js/controls/OrbitControls';
+import * as THREE from "../src/Three";
+import * as THREE_Curves from "./js/CurveExtras";
+import { OrbitControls as THREE_OrbitControls } from "./js/controls/OrbitControls";
 let container: HTMLDivElement, stats: Stats;
 let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer, splineCamera: THREE.PerspectiveCamera, cameraHelper: THREE.CameraHelper, cameraEye: THREE.Object3D;
 let controls;

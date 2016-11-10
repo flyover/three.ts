@@ -1,5 +1,5 @@
-import { Texture } from './Texture';
-import { CubeReflectionMapping } from '../constants';
+import { Texture } from "./Texture";
+import { CubeReflectionMapping } from "../constants";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

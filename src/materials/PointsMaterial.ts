@@ -1,6 +1,6 @@
-import { Material, MaterialParameters } from './Material';
-import { Color } from '../math/Color';
-import { Texture } from '../textures/Texture';
+import { Material, MaterialParameters } from "./Material";
+import { Color } from "../math/Color";
+import { Texture } from "../textures/Texture";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/

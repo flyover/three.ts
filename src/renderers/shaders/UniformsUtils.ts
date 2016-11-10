@@ -1,13 +1,13 @@
 /**
  * Uniform Utilities
  */
-import { Color } from '../../math/Color';
-import { Vector2 } from '../../math/Vector2';
-import { Vector3 } from '../../math/Vector3';
-import { Vector4 } from '../../math/Vector4';
-import { Matrix3 } from '../../math/Matrix3';
-import { Matrix4 } from '../../math/Matrix4';
-import { Texture } from '../../textures/Texture';
+import { Color } from "../../math/Color";
+import { Vector2 } from "../../math/Vector2";
+import { Vector3 } from "../../math/Vector3";
+import { Vector4 } from "../../math/Vector4";
+import { Matrix3 } from "../../math/Matrix3";
+import { Matrix4 } from "../../math/Matrix4";
+import { Texture } from "../../textures/Texture";
 export class UniformsUtils {
   static merge(uniforms: any): any {
     const merged = {};

@@ -1,7 +1,7 @@
-import { BufferGeometry } from '../core/BufferGeometry';
-import { Vector3 } from '../math/Vector3';
-import { Sphere } from '../math/Sphere';
-import { BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from "../core/BufferGeometry";
+import { Vector3 } from "../math/Vector3";
+import { Sphere } from "../math/Sphere";
+import { BufferAttribute } from "../core/BufferAttribute";
 /**
  * @author benaadams / https://twitter.com/ben_a_adams
  */

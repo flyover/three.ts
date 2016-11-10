@@ -3,12 +3,12 @@
  * @author alteredq / http://alteredqualia.com/
  * @author Marius Kintel / https://github.com/kintel
  */
-import { EventDispatcher } from '../core/EventDispatcher';
-import { Texture } from '../textures/Texture';
-import { LinearFilter } from '../constants';
-import { Vector2 } from '../math/Vector2';
-import { Vector4 } from '../math/Vector4';
-import { _Math } from '../math/Math';
+import { EventDispatcher } from "../core/EventDispatcher";
+import { Texture } from "../textures/Texture";
+import { LinearFilter } from "../constants";
+import { Vector2 } from "../math/Vector2";
+import { Vector4 } from "../math/Vector4";
+import { _Math } from "../math/Math";
 export class WebGLRenderTarget extends EventDispatcher {
   uuid: string;
   width: number;

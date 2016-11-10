@@ -1,8 +1,8 @@
-import { Mesh } from '../../objects/Mesh';
-import { MeshBasicMaterial } from '../../materials/MeshBasicMaterial';
-import { BoxGeometry } from '../../geometries/BoxGeometry';
-import { Box3 } from '../../math/Box3';
-import { Object3D } from '../../core/Object3D';
+import { Mesh } from "../../objects/Mesh";
+import { MeshBasicMaterial } from "../../materials/MeshBasicMaterial";
+import { BoxGeometry } from "../../geometries/BoxGeometry";
+import { Box3 } from "../../math/Box3";
+import { Object3D } from "../../core/Object3D";
 /**
  * @author WestLangley / http://github.com/WestLangley
  */

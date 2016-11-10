@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { CylinderBufferGeometry } from './CylinderBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { CylinderBufferGeometry } from "./CylinderBufferGeometry";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

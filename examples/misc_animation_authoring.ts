@@ -1,6 +1,6 @@
-import * as THREE from '../src/Three';
-import { TransformControls as THREE_TransformControls } from './js/controls/TransformControls';
-import { TimelinerController as THREE_TimelinerController } from './js/TimelinerController';
+import * as THREE from "../src/Three";
+import { TransformControls as THREE_TransformControls } from "./js/controls/TransformControls";
+import { TimelinerController as THREE_TimelinerController } from "./js/TimelinerController";
 let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer, control: THREE_TransformControls;
 init();
 render();

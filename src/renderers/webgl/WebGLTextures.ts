@@ -1,13 +1,13 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { LinearFilter, NearestFilter, RGBFormat, RGBAFormat, DepthFormat, DepthStencilFormat, FloatType, HalfFloatType, ClampToEdgeWrapping, NearestMipMapLinearFilter, NearestMipMapNearestFilter } from '../../constants';
-import { _Math } from '../../math/Math';
-import { Texture } from '../../textures/Texture';
-import { DepthTexture } from '../../textures/DepthTexture';
-import { DataTexture } from '../../textures/DataTexture';
-import { CompressedTexture } from '../../textures/CompressedTexture';
-import { WebGLRenderTargetCube } from '../WebGLRenderTargetCube';
+import { LinearFilter, NearestFilter, RGBFormat, RGBAFormat, DepthFormat, DepthStencilFormat, FloatType, HalfFloatType, ClampToEdgeWrapping, NearestMipMapLinearFilter, NearestMipMapNearestFilter } from "../../constants";
+import { _Math } from "../../math/Math";
+import { Texture } from "../../textures/Texture";
+import { DepthTexture } from "../../textures/DepthTexture";
+import { DataTexture } from "../../textures/DataTexture";
+import { CompressedTexture } from "../../textures/CompressedTexture";
+import { WebGLRenderTargetCube } from "../WebGLRenderTargetCube";
 export class WebGLTextures {
   _gl: any;
   _infoMemory: any;

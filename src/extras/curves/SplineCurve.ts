@@ -1,6 +1,6 @@
-import { Curve } from '../core/Curve';
-import { Vector2 } from '../../math/Vector2';
-import { CurveUtils } from '../CurveUtils';
+import { Curve } from "../core/Curve";
+import { Vector2 } from "../../math/Vector2";
+import { CurveUtils } from "../CurveUtils";
 /**************************************************************
  *  Spline curve
  **************************************************************/

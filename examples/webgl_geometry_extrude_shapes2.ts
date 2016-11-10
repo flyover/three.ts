@@ -2,7 +2,7 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
-import * as THREE from '../src/Three';
+import * as THREE from "../src/Three";
 function d3threeD(exports) {
 const DEGS_TO_RADS = Math.PI / 180, UNIT_SIZE = 100;
 const DIGIT_0 = 48, DIGIT_9 = 57, COMMA = 44, SPACE = 32, PERIOD = 46, MINUS = 45;

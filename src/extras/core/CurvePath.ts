@@ -1,10 +1,10 @@
-import { Curve } from './Curve';
-import { Vector2 } from '../../math/Vector2';
-import { Vector3 } from '../../math/Vector3';
-import { Geometry } from '../../core/Geometry';
-import { LineCurve } from '../curves/LineCurve';
-import { SplineCurve } from '../curves/SplineCurve';
-import { EllipseCurve } from '../curves/EllipseCurve';
+import { Curve } from "./Curve";
+import { Vector2 } from "../../math/Vector2";
+import { Vector3 } from "../../math/Vector3";
+import { Geometry } from "../../core/Geometry";
+import { LineCurve } from "../curves/LineCurve";
+import { SplineCurve } from "../curves/SplineCurve";
+import { EllipseCurve } from "../curves/EllipseCurve";
 /**
  * @author zz85 / http://www.lab4games.net/zz85/blog
  *

@@ -1,9 +1,9 @@
-import { AnimationUtils } from './AnimationUtils';
-import { InterpolateDiscrete, InterpolateLinear, InterpolateSmooth } from '../constants';
-import { Interpolant } from '../math/Interpolant';
-import { CubicInterpolant } from '../math/interpolants/CubicInterpolant';
-import { LinearInterpolant } from '../math/interpolants/LinearInterpolant';
-import { DiscreteInterpolant } from '../math/interpolants/DiscreteInterpolant';
+import { AnimationUtils } from "./AnimationUtils";
+import { InterpolateDiscrete, InterpolateLinear, InterpolateSmooth } from "../constants";
+import { Interpolant } from "../math/Interpolant";
+import { CubicInterpolant } from "../math/interpolants/CubicInterpolant";
+import { LinearInterpolant } from "../math/interpolants/LinearInterpolant";
+import { DiscreteInterpolant } from "../math/interpolants/DiscreteInterpolant";
 /**
  *
  * A timed sequence of keyframes for a specific property.

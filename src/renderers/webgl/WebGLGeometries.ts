@@ -1,10 +1,10 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { Geometry } from '../../core/Geometry';
-import { BufferGeometry } from '../../core/BufferGeometry';
-import { Object3D } from '../../core/Object3D';
-import { InterleavedBufferAttribute } from '../../core/InterleavedBufferAttribute';
+import { Geometry } from "../../core/Geometry";
+import { BufferGeometry } from "../../core/BufferGeometry";
+import { Object3D } from "../../core/Object3D";
+import { InterleavedBufferAttribute } from "../../core/InterleavedBufferAttribute";
 export class WebGLGeometries {
   gl: WebGLRenderingContext;
   properties: any;

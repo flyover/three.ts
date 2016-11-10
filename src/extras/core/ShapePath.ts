@@ -1,7 +1,7 @@
-import { Vector2 } from '../../math/Vector2';
-import { Path } from './Path';
-import { Shape } from './Shape';
-import { ShapeUtils } from '../ShapeUtils';
+import { Vector2 } from "../../math/Vector2";
+import { Path } from "./Path";
+import { Shape } from "./Shape";
+import { ShapeUtils } from "../ShapeUtils";
 /**
  * @author zz85 / http://www.lab4games.net/zz85/blog
  * Creates free form 2d path using series of points, lines or curves.

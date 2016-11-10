@@ -1,5 +1,5 @@
-import { InterpolateDiscrete } from '../../constants';
-import { KeyframeTrack } from '../KeyframeTrack';
+import { InterpolateDiscrete } from "../../constants";
+import { KeyframeTrack } from "../KeyframeTrack";
 /**
  *
  * A Track of Boolean keyframe values.

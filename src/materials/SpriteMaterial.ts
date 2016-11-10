@@ -1,7 +1,7 @@
-import { Material, MaterialParameters } from './Material';
-import { Vector2 } from '../math/Vector2';
-import { Color } from '../math/Color';
-import { Texture } from '../textures/Texture';
+import { Material, MaterialParameters } from "./Material";
+import { Vector2 } from "../math/Vector2";
+import { Color } from "../math/Color";
+import { Texture } from "../textures/Texture";
 /**
  * @author alteredq / http://alteredqualia.com/
  *

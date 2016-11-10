@@ -1,6 +1,6 @@
-import { getAudioContext } from '../audio/AudioContext';
-import { XHRLoader } from './XHRLoader';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { getAudioContext } from "../audio/AudioContext";
+import { XHRLoader } from "./XHRLoader";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author Reece Aaron Lecrivain / http://reecenotes.com/
  */

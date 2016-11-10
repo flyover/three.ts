@@ -3,7 +3,7 @@
  * @author mrdoob / http://mrdoob.com/
  * @author takahirox / https://github.com/takahirox/
  */
-import * as THREE from '../../../src/Three';
+import * as THREE from "../../../src/Three";
 export class TGALoader extends THREE.Loader {
   manager: THREE.LoadingManager;
   constructor(manager: THREE.LoadingManager = THREE.DefaultLoadingManager) {

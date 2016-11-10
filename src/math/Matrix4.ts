@@ -1,8 +1,8 @@
-import { _Math } from './Math';
-import { Vector3 } from './Vector3';
-import { Vector4 } from './Vector4';
-import { Euler } from './Euler';
-import { Quaternion } from './Quaternion';
+import { _Math } from "./Math";
+import { Vector3 } from "./Vector3";
+import { Vector4 } from "./Vector4";
+import { Euler } from "./Euler";
+import { Quaternion } from "./Quaternion";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author supereggbert / http://www.paulbrunt.co.uk/

@@ -1,7 +1,7 @@
-import { RGBAFormat, RGBFormat } from '../constants';
-import { ImageLoader } from './ImageLoader';
-import { Texture } from '../textures/Texture';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { RGBAFormat, RGBFormat } from "../constants";
+import { ImageLoader } from "./ImageLoader";
+import { Texture } from "../textures/Texture";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

@@ -46,8 +46,8 @@
  *     like .set for an optional property of the object
  *
  */
-import { CubeTexture } from '../../textures/CubeTexture';
-import { Texture } from '../../textures/Texture';
+import { CubeTexture } from "../../textures/CubeTexture";
+import { Texture } from "../../textures/Texture";
 const emptyTexture = new Texture();
 const emptyCubeTexture = new CubeTexture();
 // --- Base for inner nodes (including the root) ---

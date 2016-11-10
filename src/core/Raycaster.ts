@@ -1,11 +1,11 @@
-import { Vector2 } from '../math/Vector2';
-import { Vector3 } from '../math/Vector3';
-import { Ray } from '../math/Ray';
-import { Face3 } from './Face3';
-import { Object3D } from './Object3D';
-import { Camera } from '../cameras/Camera';
-import { OrthographicCamera } from '../cameras/OrthographicCamera';
-import { PerspectiveCamera } from '../cameras/PerspectiveCamera';
+import { Vector2 } from "../math/Vector2";
+import { Vector3 } from "../math/Vector3";
+import { Ray } from "../math/Ray";
+import { Face3 } from "./Face3";
+import { Object3D } from "./Object3D";
+import { Camera } from "../cameras/Camera";
+import { OrthographicCamera } from "../cameras/OrthographicCamera";
+import { PerspectiveCamera } from "../cameras/PerspectiveCamera";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author bhouston / http://clara.io/

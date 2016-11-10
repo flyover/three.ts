@@ -1,4 +1,4 @@
-import { Material, MaterialParameters } from './Material';
+import { Material, MaterialParameters } from "./Material";
 /**
  * @author mrdoob / http://mrdoob.com/
  *

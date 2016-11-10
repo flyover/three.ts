@@ -14,10 +14,10 @@ import { Vector3 } from "./math/Vector3";
 import { LineSegments } from "./objects/LineSegments";
 import { Points } from "./objects/Points";
 import { Sprite } from "./objects/Sprite";
-import { Color } from './math/Color';
-import { Texture } from './textures/Texture';
-import { CubeTexture } from './textures/CubeTexture';
-import { Camera } from './cameras/Camera';
+import { Color } from "./math/Color";
+import { Texture } from "./textures/Texture";
+import { CubeTexture } from "./textures/CubeTexture";
+import { Camera } from "./cameras/Camera";
 import { Mesh } from "./objects/Mesh";
 export { BoxGeometry as CubeGeometry };
 export class Face4 extends Face3 {

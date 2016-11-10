@@ -1,6 +1,6 @@
-import { Font } from '../extras/core/Font';
-import { XHRLoader } from './XHRLoader';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { Font } from "../extras/core/Font";
+import { XHRLoader } from "./XHRLoader";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

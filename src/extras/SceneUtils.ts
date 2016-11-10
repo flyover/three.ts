@@ -1,6 +1,6 @@
-import { Matrix4 } from '../math/Matrix4';
-import { Mesh } from '../objects/Mesh';
-import { Group } from '../objects/Group';
+import { Matrix4 } from "../math/Matrix4";
+import { Mesh } from "../objects/Mesh";
+import { Group } from "../objects/Group";
 /**
  * @author alteredq / http://alteredqualia.com/
  */

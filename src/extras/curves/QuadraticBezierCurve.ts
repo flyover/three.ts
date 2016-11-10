@@ -1,7 +1,7 @@
-import { Curve } from '../core/Curve';
-import { Vector2 } from '../../math/Vector2';
-import { CurveUtils } from '../CurveUtils';
-import { ShapeUtils } from '../ShapeUtils';
+import { Curve } from "../core/Curve";
+import { Vector2 } from "../../math/Vector2";
+import { CurveUtils } from "../CurveUtils";
+import { ShapeUtils } from "../ShapeUtils";
 /**************************************************************
  *  Quadratic Bezier curve
  **************************************************************/

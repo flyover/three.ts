@@ -1,5 +1,5 @@
-import * as THREE from '../src/Three';
-import { TransformControls as THREE_TransformControls } from './js/controls/TransformControls';
+import * as THREE from "../src/Three";
+import { TransformControls as THREE_TransformControls } from "./js/controls/TransformControls";
 let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer, control: THREE_TransformControls;
 init();
 render();

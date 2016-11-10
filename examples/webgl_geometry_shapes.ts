@@ -1,4 +1,4 @@
-import * as THREE from '../src/Three';
+import * as THREE from "../src/Three";
 let container, stats;
 let camera, scene, renderer;
 let group;

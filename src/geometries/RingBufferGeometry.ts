@@ -1,7 +1,7 @@
-import { BufferGeometry } from '../core/BufferGeometry';
-import { Vector2 } from '../math/Vector2';
-import { Vector3 } from '../math/Vector3';
-import { BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from "../core/BufferGeometry";
+import { Vector2 } from "../math/Vector2";
+import { Vector3 } from "../math/Vector3";
+import { BufferAttribute } from "../core/BufferAttribute";
 /**
  * @author Mugen87 / https://github.com/Mugen87
  */

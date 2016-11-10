@@ -1,9 +1,9 @@
-import { Object3D } from '../core/Object3D';
-import { WebGLRenderTargetCube } from '../renderers/WebGLRenderTargetCube';
-import { LinearFilter, RGBFormat } from '../constants';
-import { Vector3 } from '../math/Vector3';
-import { PerspectiveCamera } from './PerspectiveCamera';
-import { Scene } from '../scenes/Scene';
+import { Object3D } from "../core/Object3D";
+import { WebGLRenderTargetCube } from "../renderers/WebGLRenderTargetCube";
+import { LinearFilter, RGBFormat } from "../constants";
+import { Vector3 } from "../math/Vector3";
+import { PerspectiveCamera } from "./PerspectiveCamera";
+import { Scene } from "../scenes/Scene";
 /**
  * Camera for rendering cube maps
  *  - renders scene into axis-aligned cube

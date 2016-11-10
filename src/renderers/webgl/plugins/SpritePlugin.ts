@@ -1,8 +1,8 @@
-import { Texture } from '../../../textures/Texture';
-import { Vector3 } from '../../../math/Vector3';
-import { Quaternion } from '../../../math/Quaternion';
-import { Fog } from '../../../scenes/Fog';
-import { FogExp2 } from '../../../scenes/FogExp2';
+import { Texture } from "../../../textures/Texture";
+import { Vector3 } from "../../../math/Vector3";
+import { Quaternion } from "../../../math/Quaternion";
+import { Fog } from "../../../scenes/Fog";
+import { FogExp2 } from "../../../scenes/FogExp2";
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/

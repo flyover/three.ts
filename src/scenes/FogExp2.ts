@@ -1,4 +1,4 @@
-import { Color } from '../math/Color';
+import { Color } from "../math/Color";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/

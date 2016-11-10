@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { IcosahedronBufferGeometry } from './IcosahedronBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { IcosahedronBufferGeometry } from "./IcosahedronBufferGeometry";
 /**
  * @author timothypratley / https://github.com/timothypratley
  */

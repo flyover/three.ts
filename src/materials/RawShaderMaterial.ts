@@ -1,4 +1,4 @@
-import { ShaderMaterial, ShaderMaterialParameters } from './ShaderMaterial';
+import { ShaderMaterial, ShaderMaterialParameters } from "./ShaderMaterial";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

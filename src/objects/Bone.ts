@@ -1,5 +1,5 @@
-import { Object3D } from '../core/Object3D';
-import { SkinnedMesh } from './SkinnedMesh';
+import { Object3D } from "../core/Object3D";
+import { SkinnedMesh } from "./SkinnedMesh";
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/

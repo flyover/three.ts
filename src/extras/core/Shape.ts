@@ -7,10 +7,10 @@
 // STEP 3 ExtrudeGeometry takes in Shape/Shapes
 // STEP 3a - Extract points from each shape, turn to vertices
 // STEP 3b - Triangulate each shape, add faces.
-import { Path } from './Path';
-import { ExtrudeGeometry } from '../../geometries/ExtrudeGeometry';
-import { ShapeGeometry } from '../../geometries/ShapeGeometry';
-import { Vector2 } from '../../math/Vector2';
+import { Path } from "./Path";
+import { ExtrudeGeometry } from "../../geometries/ExtrudeGeometry";
+import { ShapeGeometry } from "../../geometries/ShapeGeometry";
+import { Vector2 } from "../../math/Vector2";
 export class Shape extends Path {
   holes: Path[];
   constructor(points?: Vector2[]) {

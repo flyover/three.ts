@@ -1,6 +1,6 @@
-import { AnimationClip } from '../animation/AnimationClip';
-import { XHRLoader } from './XHRLoader';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { AnimationClip } from "../animation/AnimationClip";
+import { XHRLoader } from "./XHRLoader";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author bhouston / http://clara.io/
  */

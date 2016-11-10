@@ -1,13 +1,13 @@
-import { LineSegments } from '../../objects/LineSegments';
-import { Matrix4 } from '../../math/Matrix4';
-import { VertexColors } from '../../constants';
-import { LineBasicMaterial } from '../../materials/LineBasicMaterial';
-import { Color } from '../../math/Color';
-import { Vector3 } from '../../math/Vector3';
-import { Geometry } from '../../core/Geometry';
-import { BufferGeometry } from '../../core/BufferGeometry';
-import { Object3D } from '../../core/Object3D';
-import { Bone } from '../../objects/Bone';
+import { LineSegments } from "../../objects/LineSegments";
+import { Matrix4 } from "../../math/Matrix4";
+import { VertexColors } from "../../constants";
+import { LineBasicMaterial } from "../../materials/LineBasicMaterial";
+import { Color } from "../../math/Color";
+import { Vector3 } from "../../math/Vector3";
+import { Geometry } from "../../core/Geometry";
+import { BufferGeometry } from "../../core/BufferGeometry";
+import { Object3D } from "../../core/Object3D";
+import { Bone } from "../../objects/Bone";
 /**
  * @author Sean Griffin / http://twitter.com/sgrif
  * @author Michael Guerrero / http://realitymeltdown.com

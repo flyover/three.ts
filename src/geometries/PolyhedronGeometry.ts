@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { PolyhedronBufferGeometry } from './PolyhedronBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { PolyhedronBufferGeometry } from "./PolyhedronBufferGeometry";
 /**
  * @author clockworkgeek / https://github.com/clockworkgeek
  * @author timothypratley / https://github.com/timothypratley

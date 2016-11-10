@@ -1,12 +1,12 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { BufferAttribute } from '../../core/BufferAttribute';
-import { WebGLGeometries } from './WebGLGeometries';
-import { Object3D } from '../../core/Object3D';
-import { Geometry } from '../../core/Geometry';
-import { BufferGeometry } from '../../core/BufferGeometry';
-import { InterleavedBufferAttribute } from '../../core/InterleavedBufferAttribute';
+import { BufferAttribute } from "../../core/BufferAttribute";
+import { WebGLGeometries } from "./WebGLGeometries";
+import { Object3D } from "../../core/Object3D";
+import { Geometry } from "../../core/Geometry";
+import { BufferGeometry } from "../../core/BufferGeometry";
+import { InterleavedBufferAttribute } from "../../core/InterleavedBufferAttribute";
 export class WebGLObjects {
   gl: WebGLRenderingContext;
   properties: any;

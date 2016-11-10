@@ -1,14 +1,14 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { WebGLRenderer } from '../WebGLRenderer';
-import { WebGLUniforms } from './WebGLUniforms';
-import { WebGLShader } from './WebGLShader';
-import { WebGLExtensions } from './WebGLExtensions';
-import { ShaderChunk } from '../shaders/ShaderChunk';
-import { NoToneMapping, AddOperation, MixOperation, MultiplyOperation, EquirectangularRefractionMapping, CubeRefractionMapping, SphericalReflectionMapping, EquirectangularReflectionMapping, CubeUVRefractionMapping, CubeUVReflectionMapping, CubeReflectionMapping, PCFSoftShadowMap, PCFShadowMap, CineonToneMapping, Uncharted2ToneMapping, ReinhardToneMapping, LinearToneMapping, GammaEncoding, RGBDEncoding, RGBM16Encoding, RGBM7Encoding, RGBEEncoding, sRGBEncoding, LinearEncoding } from '../../constants';
-import { ShaderMaterial } from '../../materials/ShaderMaterial';
-import { RawShaderMaterial } from '../../materials/RawShaderMaterial';
+import { WebGLRenderer } from "../WebGLRenderer";
+import { WebGLUniforms } from "./WebGLUniforms";
+import { WebGLShader } from "./WebGLShader";
+import { WebGLExtensions } from "./WebGLExtensions";
+import { ShaderChunk } from "../shaders/ShaderChunk";
+import { NoToneMapping, AddOperation, MixOperation, MultiplyOperation, EquirectangularRefractionMapping, CubeRefractionMapping, SphericalReflectionMapping, EquirectangularReflectionMapping, CubeUVRefractionMapping, CubeUVReflectionMapping, CubeReflectionMapping, PCFSoftShadowMap, PCFShadowMap, CineonToneMapping, Uncharted2ToneMapping, ReinhardToneMapping, LinearToneMapping, GammaEncoding, RGBDEncoding, RGBM16Encoding, RGBM7Encoding, RGBEEncoding, sRGBEncoding, LinearEncoding } from "../../constants";
+import { ShaderMaterial } from "../../materials/ShaderMaterial";
+import { RawShaderMaterial } from "../../materials/RawShaderMaterial";
 let programIdCount: number = 0;
 function getEncodingComponents(encoding: number): string[] {
   switch (encoding) {

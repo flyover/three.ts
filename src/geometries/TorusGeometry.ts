@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { TorusBufferGeometry } from './TorusBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { TorusBufferGeometry } from "./TorusBufferGeometry";
 /**
  * @author oosmoxiecode
  * @author mrdoob / http://mrdoob.com/

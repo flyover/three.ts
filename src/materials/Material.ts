@@ -1,11 +1,11 @@
-import { EventDispatcher } from '../core/EventDispatcher';
-import { NoColors, FrontSide, SmoothShading, LessEqualDepth, AddEquation, OneMinusSrcAlphaFactor, SrcAlphaFactor } from '../constants';
-import { BlendingMode } from '../constants';
-import { Color } from '../math/Color';
-import { _Math } from '../math/Math';
-import { Vector3 } from '../math/Vector3';
-import { Plane } from '../math/Plane';
-import { Texture } from '../textures/Texture';
+import { EventDispatcher } from "../core/EventDispatcher";
+import { NoColors, FrontSide, SmoothShading, LessEqualDepth, AddEquation, OneMinusSrcAlphaFactor, SrcAlphaFactor } from "../constants";
+import { BlendingMode } from "../constants";
+import { Color } from "../math/Color";
+import { _Math } from "../math/Math";
+import { Vector3 } from "../math/Vector3";
+import { Plane } from "../math/Plane";
+import { Texture } from "../textures/Texture";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/

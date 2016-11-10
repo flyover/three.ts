@@ -1,5 +1,5 @@
-import { Object3D } from '../../core/Object3D';
-import { Material } from '../../materials/Material';
+import { Object3D } from "../../core/Object3D";
+import { Material } from "../../materials/Material";
 /**
  * @author alteredq / http://alteredqualia.com/
  */

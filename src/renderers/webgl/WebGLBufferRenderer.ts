@@ -1,10 +1,10 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { WebGLExtensions } from './WebGLExtensions';
-import { Geometry } from '../../core/Geometry';
-import { BufferGeometry } from '../../core/BufferGeometry';
-import { InterleavedBufferAttribute } from '../../core/InterleavedBufferAttribute';
+import { WebGLExtensions } from "./WebGLExtensions";
+import { Geometry } from "../../core/Geometry";
+import { BufferGeometry } from "../../core/BufferGeometry";
+import { InterleavedBufferAttribute } from "../../core/InterleavedBufferAttribute";
 export class WebGLBufferRenderer {
   gl: WebGLRenderingContext;
   extensions: WebGLExtensions;

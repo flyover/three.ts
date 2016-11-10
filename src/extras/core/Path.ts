@@ -1,12 +1,12 @@
-//import { Shape } from './Shape';
-//import { ShapeUtils } from '../ShapeUtils';
-import { Vector2 } from '../../math/Vector2';
-import { CurvePath } from './CurvePath';
-import { EllipseCurve } from '../curves/EllipseCurve';
-import { SplineCurve } from '../curves/SplineCurve';
-import { CubicBezierCurve } from '../curves/CubicBezierCurve';
-import { QuadraticBezierCurve } from '../curves/QuadraticBezierCurve';
-import { LineCurve } from '../curves/LineCurve';
+//import { Shape } from "./Shape";
+//import { ShapeUtils } from "../ShapeUtils";
+import { Vector2 } from "../../math/Vector2";
+import { CurvePath } from "./CurvePath";
+import { EllipseCurve } from "../curves/EllipseCurve";
+import { SplineCurve } from "../curves/SplineCurve";
+import { CubicBezierCurve } from "../curves/CubicBezierCurve";
+import { QuadraticBezierCurve } from "../curves/QuadraticBezierCurve";
+import { LineCurve } from "../curves/LineCurve";
 /**
  * @author zz85 / http://www.lab4games.net/zz85/blog
  * Creates free form 2d path using series of points, lines or curves.

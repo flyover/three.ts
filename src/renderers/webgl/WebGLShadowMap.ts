@@ -2,27 +2,27 @@
  * @author alteredq / http://alteredqualia.com/
  * @author mrdoob / http://mrdoob.com/
  */
-import { FrontSide, BackSide, DoubleSide, RGBAFormat, NearestFilter, PCFShadowMap, RGBADepthPacking } from '../../constants';
+import { FrontSide, BackSide, DoubleSide, RGBAFormat, NearestFilter, PCFShadowMap, RGBADepthPacking } from "../../constants";
 import { CullFaceFront, CullFaceBack } from "../../constants";
-import { WebGLRenderTarget } from '../WebGLRenderTarget';
-import { ShaderMaterial } from '../../materials/ShaderMaterial';
-import { UniformsUtils } from '../shaders/UniformsUtils';
-import { ShaderLib } from '../shaders/ShaderLib';
-import { MeshDepthMaterial } from '../../materials/MeshDepthMaterial';
-import { Vector4 } from '../../math/Vector4';
-import { Vector3 } from '../../math/Vector3';
-import { Vector2 } from '../../math/Vector2';
-import { Matrix4 } from '../../math/Matrix4';
-import { Frustum } from '../../math/Frustum';
-import { PointLight } from '../../lights/PointLight';
-import { SpotLightShadow } from '../../lights/SpotLightShadow';
-import { MultiMaterial } from '../../materials/MultiMaterial';
-import { BufferGeometry } from '../../core/BufferGeometry';
-import { Geometry } from '../../core/Geometry';
-import { SkinnedMesh } from '../../objects/SkinnedMesh';
-import { Mesh } from '../../objects/Mesh';
-import { Line } from '../../objects/Line';
-import { Points } from '../../objects/Points';
+import { WebGLRenderTarget } from "../WebGLRenderTarget";
+import { ShaderMaterial } from "../../materials/ShaderMaterial";
+import { UniformsUtils } from "../shaders/UniformsUtils";
+import { ShaderLib } from "../shaders/ShaderLib";
+import { MeshDepthMaterial } from "../../materials/MeshDepthMaterial";
+import { Vector4 } from "../../math/Vector4";
+import { Vector3 } from "../../math/Vector3";
+import { Vector2 } from "../../math/Vector2";
+import { Matrix4 } from "../../math/Matrix4";
+import { Frustum } from "../../math/Frustum";
+import { PointLight } from "../../lights/PointLight";
+import { SpotLightShadow } from "../../lights/SpotLightShadow";
+import { MultiMaterial } from "../../materials/MultiMaterial";
+import { BufferGeometry } from "../../core/BufferGeometry";
+import { Geometry } from "../../core/Geometry";
+import { SkinnedMesh } from "../../objects/SkinnedMesh";
+import { Mesh } from "../../objects/Mesh";
+import { Line } from "../../objects/Line";
+import { Points } from "../../objects/Points";
 export class WebGLShadowMap {
   _renderer: any;
   _lights: any;

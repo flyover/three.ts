@@ -1,9 +1,9 @@
 /**
  * Uniforms library for shared webgl shaders
  */
-import { Vector4 } from '../../math/Vector4';
-import { Color } from '../../math/Color';
-import { Vector2 } from '../../math/Vector2';
+import { Vector4 } from "../../math/Vector4";
+import { Color } from "../../math/Color";
+import { Vector2 } from "../../math/Vector2";
 export const UniformsLib: any = {
   common: {
     diffuse: { value: new Color(0xeeeeee) },

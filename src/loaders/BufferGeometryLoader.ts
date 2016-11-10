@@ -1,9 +1,9 @@
-import { Sphere } from '../math/Sphere';
-import { Vector3 } from '../math/Vector3';
-import { BufferAttribute, TypedArray, TypedArrayConstructor } from '../core/BufferAttribute';
-import { BufferGeometry } from '../core/BufferGeometry';
-import { XHRLoader } from './XHRLoader';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { Sphere } from "../math/Sphere";
+import { Vector3 } from "../math/Vector3";
+import { BufferAttribute, TypedArray, TypedArrayConstructor } from "../core/BufferAttribute";
+import { BufferGeometry } from "../core/BufferGeometry";
+import { XHRLoader } from "./XHRLoader";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

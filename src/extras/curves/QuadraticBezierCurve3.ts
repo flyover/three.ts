@@ -1,6 +1,6 @@
-import { Vector3 } from '../../math/Vector3';
-import { ShapeUtils } from '../ShapeUtils';
-import { Curve } from '../core/Curve';
+import { Vector3 } from "../../math/Vector3";
+import { ShapeUtils } from "../ShapeUtils";
+import { Curve } from "../core/Curve";
 /**************************************************************
  *  Quadratic Bezier 3D curve
  **************************************************************/

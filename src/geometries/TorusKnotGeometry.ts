@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { TorusKnotBufferGeometry } from './TorusKnotBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { TorusKnotBufferGeometry } from "./TorusKnotBufferGeometry";
 /**
  * @author oosmoxiecode
  */

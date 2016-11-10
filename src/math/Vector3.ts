@@ -1,11 +1,11 @@
-import { _Math } from './Math';
-import { Vector2 } from './Vector2';
-import { Matrix3 } from './Matrix3';
-import { Matrix4 } from './Matrix4';
-import { Quaternion } from './Quaternion';
-import { Euler } from './Euler';
-import { Spherical } from './Spherical';
-import { Camera } from '../cameras/Camera';
+import { _Math } from "./Math";
+import { Vector2 } from "./Vector2";
+import { Matrix3 } from "./Matrix3";
+import { Matrix4 } from "./Matrix4";
+import { Quaternion } from "./Quaternion";
+import { Euler } from "./Euler";
+import { Spherical } from "./Spherical";
+import { Camera } from "../cameras/Camera";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author *kile / http://kile.stravaganza.org/

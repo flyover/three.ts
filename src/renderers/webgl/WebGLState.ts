@@ -1,9 +1,9 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { NotEqualDepth, GreaterDepth, GreaterEqualDepth, EqualDepth, LessEqualDepth, LessDepth, AlwaysDepth, NeverDepth, CullFaceFront, CullFaceBack, CullFaceNone } from '../../constants';
-import { BlendingMode } from '../../constants';
-import { Vector4 } from '../../math/Vector4';
+import { NotEqualDepth, GreaterDepth, GreaterEqualDepth, EqualDepth, LessEqualDepth, LessDepth, AlwaysDepth, NeverDepth, CullFaceFront, CullFaceBack, CullFaceNone } from "../../constants";
+import { BlendingMode } from "../../constants";
+import { Vector4 } from "../../math/Vector4";
 class ColorBuffer {
   state: any;
   locked: boolean = false;

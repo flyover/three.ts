@@ -1,6 +1,6 @@
-import { ImageLoader } from './ImageLoader';
-import { CubeTexture } from '../textures/CubeTexture';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { ImageLoader } from "./ImageLoader";
+import { CubeTexture } from "../textures/CubeTexture";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

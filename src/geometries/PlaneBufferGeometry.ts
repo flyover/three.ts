@@ -1,5 +1,5 @@
-import { BufferGeometry } from '../core/BufferGeometry';
-import { BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from "../core/BufferGeometry";
+import { BufferAttribute } from "../core/BufferAttribute";
 /**
  * @author mrdoob / http://mrdoob.com/
  * based on http://papervision3d.googlecode.com/svn/trunk/as3/trunk/src/org/papervision3d/objects/primitives/Plane.as

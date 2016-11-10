@@ -1,4 +1,4 @@
-import * as THREE from '../src/Three';
+import * as THREE from "../src/Three";
 if (! Detector.webgl) Detector.addGetWebGLMessage();
 let container: HTMLDivElement, stats: Stats;
 let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;

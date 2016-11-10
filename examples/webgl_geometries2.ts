@@ -1,6 +1,6 @@
-import * as THREE from '../src/Three';
-import * as THREE_Curves from './js/CurveExtras';
-import * as THREE_ParametricGeometries from './js/ParametricGeometries';
+import * as THREE from "../src/Three";
+import * as THREE_Curves from "./js/CurveExtras";
+import * as THREE_ParametricGeometries from "./js/ParametricGeometries";
 if (! Detector.webgl) Detector.addGetWebGLMessage();
 let container, stats;
 let camera, scene, renderer;

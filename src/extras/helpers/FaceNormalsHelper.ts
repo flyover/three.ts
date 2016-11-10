@@ -1,11 +1,11 @@
-import { Matrix3 } from '../../math/Matrix3';
-import { Vector3 } from '../../math/Vector3';
-import { LineSegments } from '../../objects/LineSegments';
-import { LineBasicMaterial } from '../../materials/LineBasicMaterial';
-import { Float32Attribute } from '../../core/BufferAttribute';
-import { Geometry } from '../../core/Geometry';
-import { BufferGeometry } from '../../core/BufferGeometry';
-import { Object3D } from '../../core/Object3D';
+import { Matrix3 } from "../../math/Matrix3";
+import { Vector3 } from "../../math/Vector3";
+import { LineSegments } from "../../objects/LineSegments";
+import { LineBasicMaterial } from "../../materials/LineBasicMaterial";
+import { Float32Attribute } from "../../core/BufferAttribute";
+import { Geometry } from "../../core/Geometry";
+import { BufferGeometry } from "../../core/BufferGeometry";
+import { Object3D } from "../../core/Object3D";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author WestLangley / http://github.com/WestLangley

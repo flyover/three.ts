@@ -1,6 +1,6 @@
-import { Matrix4 } from '../math/Matrix4';
-import { _Math } from '../math/Math';
-import { PerspectiveCamera } from './PerspectiveCamera';
+import { Matrix4 } from "../math/Matrix4";
+import { _Math } from "../math/Math";
+import { PerspectiveCamera } from "./PerspectiveCamera";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

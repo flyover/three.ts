@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { SphereBufferGeometry } from './SphereBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { SphereBufferGeometry } from "./SphereBufferGeometry";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

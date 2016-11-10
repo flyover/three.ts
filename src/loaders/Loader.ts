@@ -1,11 +1,11 @@
-import { FaceColors, VertexColors, DoubleSide, BackSide, MirroredRepeatWrapping, RepeatWrapping, BlendingMode } from '../constants';
-import { _Math } from '../math/Math';
-import { Vector2 } from '../math/Vector2';
-import { MaterialLoader } from './MaterialLoader';
-import { TextureLoader } from './TextureLoader';
-import { Color } from '../math/Color';
-import { Material } from '../materials/Material';
-import { Texture } from '../textures/Texture';
+import { FaceColors, VertexColors, DoubleSide, BackSide, MirroredRepeatWrapping, RepeatWrapping, BlendingMode } from "../constants";
+import { _Math } from "../math/Math";
+import { Vector2 } from "../math/Vector2";
+import { MaterialLoader } from "./MaterialLoader";
+import { TextureLoader } from "./TextureLoader";
+import { Color } from "../math/Color";
+import { Material } from "../materials/Material";
+import { Texture } from "../textures/Texture";
 /**
  * @author alteredq / http://alteredqualia.com/
  */

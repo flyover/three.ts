@@ -3,11 +3,11 @@
  * @author mrdoob / http://mrdoob.com/
  * @author mikael emtinger / http://gomo.se/
  */
-import { ShaderChunk } from './ShaderChunk';
-import { UniformsUtils } from './UniformsUtils';
-import { Vector3 } from '../../math/Vector3';
-import { UniformsLib } from './UniformsLib';
-import { Color } from '../../math/Color';
+import { ShaderChunk } from "./ShaderChunk";
+import { UniformsUtils } from "./UniformsUtils";
+import { Vector3 } from "../../math/Vector3";
+import { UniformsLib } from "./UniformsLib";
+import { Color } from "../../math/Color";
 export const ShaderLib: any = {
   basic: {
     uniforms: UniformsUtils.merge([

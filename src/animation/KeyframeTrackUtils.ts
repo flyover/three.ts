@@ -1,11 +1,11 @@
-import { KeyframeTrack } from './KeyframeTrack';
-import { StringKeyframeTrack } from './tracks/StringKeyframeTrack';
-import { BooleanKeyframeTrack } from './tracks/BooleanKeyframeTrack';
-import { QuaternionKeyframeTrack } from './tracks/QuaternionKeyframeTrack';
-import { ColorKeyframeTrack } from './tracks/ColorKeyframeTrack';
-import { VectorKeyframeTrack } from './tracks/VectorKeyframeTrack';
-import { NumberKeyframeTrack } from './tracks/NumberKeyframeTrack';
-import { AnimationUtils } from './AnimationUtils';
+import { KeyframeTrack } from "./KeyframeTrack";
+import { StringKeyframeTrack } from "./tracks/StringKeyframeTrack";
+import { BooleanKeyframeTrack } from "./tracks/BooleanKeyframeTrack";
+import { QuaternionKeyframeTrack } from "./tracks/QuaternionKeyframeTrack";
+import { ColorKeyframeTrack } from "./tracks/ColorKeyframeTrack";
+import { VectorKeyframeTrack } from "./tracks/VectorKeyframeTrack";
+import { NumberKeyframeTrack } from "./tracks/NumberKeyframeTrack";
+import { AnimationUtils } from "./AnimationUtils";
 export class KeyframeTrackUtils {
   // Static methods:
   // Serialization (in static context, because of constructor invocation

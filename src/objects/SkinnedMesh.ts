@@ -1,12 +1,12 @@
-import { Mesh } from './Mesh';
-import { Vector4 } from '../math/Vector4';
-import { Skeleton } from './Skeleton';
-import { Bone } from './Bone';
-import { Matrix4 } from '../math/Matrix4';
-import { Geometry } from '../core/Geometry';
-import { BufferGeometry } from '../core/BufferGeometry';
-import { Material } from '../materials/Material';
-import { MultiMaterial } from '../materials/MultiMaterial';
+import { Mesh } from "./Mesh";
+import { Vector4 } from "../math/Vector4";
+import { Skeleton } from "./Skeleton";
+import { Bone } from "./Bone";
+import { Matrix4 } from "../math/Matrix4";
+import { Geometry } from "../core/Geometry";
+import { BufferGeometry } from "../core/BufferGeometry";
+import { Material } from "../materials/Material";
+import { MultiMaterial } from "../materials/MultiMaterial";
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/

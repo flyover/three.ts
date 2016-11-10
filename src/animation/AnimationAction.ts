@@ -1,4 +1,4 @@
-import { WrapAroundEnding, ZeroCurvatureEnding, ZeroSlopeEnding, LoopPingPong, LoopOnce, LoopRepeat } from '../constants';
+import { WrapAroundEnding, ZeroCurvatureEnding, ZeroSlopeEnding, LoopPingPong, LoopOnce, LoopRepeat } from "../constants";
 /**
  *
  * Action provided by AnimationMixer for scheduling clip playback on specific

@@ -15,7 +15,7 @@
  *    and improve the performance by making use of Web worker.
  *  - if possible, make this class being non-MMD specific.
  */
-import * as THREE from '../../../src/Three';
+import * as THREE from "../../../src/Three";
 export class MMDPhysics {
   mesh;
   helper;

@@ -5,8 +5,8 @@
  * @author egraether / http://egraether.com/
  * @author WestLangley / http://github.com/WestLangley
  */
-import { Matrix4 } from './Matrix4';
-import { Quaternion } from './Quaternion';
+import { Matrix4 } from "./Matrix4";
+import { Quaternion } from "./Quaternion";
 export class Vector4 {
   x: number;
   y: number;

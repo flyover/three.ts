@@ -1,11 +1,11 @@
-import { Vector3 } from '../../math/Vector3';
-import { Object3D } from '../../core/Object3D';
-import { Mesh } from '../../objects/Mesh';
-import { FaceColors } from '../../constants';
-import { MeshBasicMaterial } from '../../materials/MeshBasicMaterial';
-import { SphereGeometry } from '../../geometries/SphereGeometry';
-import { Color } from '../../math/Color';
-import { HemisphereLight } from '../../lights/HemisphereLight';
+import { Vector3 } from "../../math/Vector3";
+import { Object3D } from "../../core/Object3D";
+import { Mesh } from "../../objects/Mesh";
+import { FaceColors } from "../../constants";
+import { MeshBasicMaterial } from "../../materials/MeshBasicMaterial";
+import { SphereGeometry } from "../../geometries/SphereGeometry";
+import { Color } from "../../math/Color";
+import { HemisphereLight } from "../../lights/HemisphereLight";
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author mrdoob / http://mrdoob.com/

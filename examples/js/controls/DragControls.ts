@@ -2,7 +2,7 @@
  * @author zz85 / https://github.com/zz85
  * Running this will allow you to drag three.js objects around the screen.
  */
-import * as THREE from '../../../src/Three';
+import * as THREE from "../../../src/Three";
 export class DragControls {
   _camera;
   _objects;

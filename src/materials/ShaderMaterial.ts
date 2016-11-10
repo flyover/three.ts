@@ -1,5 +1,5 @@
-import { Material, MaterialParameters } from './Material';
-import { UniformsUtils } from '../renderers/shaders/UniformsUtils';
+import { Material, MaterialParameters } from "./Material";
+import { UniformsUtils } from "../renderers/shaders/UniformsUtils";
 /**
  * @author alteredq / http://alteredqualia.com/
  *

@@ -1,6 +1,6 @@
-import { Light } from './Light';
-import { SpotLightShadow } from './SpotLightShadow';
-import { Object3D } from '../core/Object3D';
+import { Light } from "./Light";
+import { SpotLightShadow } from "./SpotLightShadow";
+import { Object3D } from "../core/Object3D";
 /**
  * @author alteredq / http://alteredqualia.com/
  */

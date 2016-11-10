@@ -1,7 +1,7 @@
-import { Mesh } from '../../objects/Mesh';
-import { MeshBasicMaterial } from '../../materials/MeshBasicMaterial';
-import { SphereBufferGeometry } from '../../geometries/SphereBufferGeometry';
-import { PointLight } from '../../lights/PointLight';
+import { Mesh } from "../../objects/Mesh";
+import { MeshBasicMaterial } from "../../materials/MeshBasicMaterial";
+import { SphereBufferGeometry } from "../../geometries/SphereBufferGeometry";
+import { PointLight } from "../../lights/PointLight";
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author mrdoob / http://mrdoob.com/

@@ -1,5 +1,5 @@
-import { Mesh } from '../../objects/Mesh';
-import { _Math } from '../../math/Math';
+import { Mesh } from "../../objects/Mesh";
+import { _Math } from "../../math/Math";
 /**
  * @author alteredq / http://alteredqualia.com/
  */

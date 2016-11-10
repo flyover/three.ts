@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { CircleBufferGeometry } from './CircleBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { CircleBufferGeometry } from "./CircleBufferGeometry";
 /**
  * @author hughes
  */

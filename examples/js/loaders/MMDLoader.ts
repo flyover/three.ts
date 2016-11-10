@@ -36,11 +36,11 @@
  *  - more precise grant skinning support.
  *  - shadow support.
  */
-import * as THREE from '../../../src/Three';
-import { TGALoader as THREE_TGALoader } from './TGALoader';
-import { CCDIKSolver as THREE_CCDIKSolver } from '../animation/CCDIKSolver';
-import { MMDPhysics as THREE_MMDPhysics } from '../animation/MMDPhysics';
-import { OutlineEffect as THREE_OutlineEffect } from '../effects/OutlineEffect';
+import * as THREE from "../../../src/Three";
+import { TGALoader as THREE_TGALoader } from "./TGALoader";
+import { CCDIKSolver as THREE_CCDIKSolver } from "../animation/CCDIKSolver";
+import { MMDPhysics as THREE_MMDPhysics } from "../animation/MMDPhysics";
+import { OutlineEffect as THREE_OutlineEffect } from "../effects/OutlineEffect";
 export class MMDLoader extends THREE.Loader {
   manager: THREE.LoadingManager;
   defaultTexturePath = './models/default/';

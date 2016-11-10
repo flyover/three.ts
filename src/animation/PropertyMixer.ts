@@ -1,4 +1,4 @@
-import { Quaternion } from '../math/Quaternion';
+import { Quaternion } from "../math/Quaternion";
 /**
  *
  * Buffered scene graph property that allows weighted accumulation.

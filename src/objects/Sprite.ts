@@ -1,8 +1,8 @@
-import { Vector3 } from '../math/Vector3';
-import { Object3D } from '../core/Object3D';
-import { Material } from '../materials/Material';
-import { SpriteMaterial } from '../materials/SpriteMaterial';
-import { Raycaster, Intersect } from '../core/Raycaster';
+import { Vector3 } from "../math/Vector3";
+import { Object3D } from "../core/Object3D";
+import { Material } from "../materials/Material";
+import { SpriteMaterial } from "../materials/SpriteMaterial";
+import { Raycaster, Intersect } from "../core/Raycaster";
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/

@@ -1,7 +1,7 @@
-import { Light } from './Light';
-import { LightShadow } from './LightShadow';
-import { _Math } from '../math/Math';
-import { PerspectiveCamera } from '../cameras/PerspectiveCamera';
+import { Light } from "./Light";
+import { LightShadow } from "./LightShadow";
+import { _Math } from "../math/Math";
+import { PerspectiveCamera } from "../cameras/PerspectiveCamera";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

@@ -1,7 +1,7 @@
-import * as THREE from '../src/Three';
-import { DragControls as THREE_DragControls } from './js/controls/DragControls';
-import { OrbitControls as THREE_OrbitControls } from './js/controls/OrbitControls';
-import { TransformControls as THREE_TransformControls } from './js/controls/TransformControls';
+import * as THREE from "../src/Three";
+import { DragControls as THREE_DragControls } from "./js/controls/DragControls";
+import { OrbitControls as THREE_OrbitControls } from "./js/controls/OrbitControls";
+import { TransformControls as THREE_TransformControls } from "./js/controls/TransformControls";
 function format(str, ...args) {
   for (let i = 1; i < arguments.length; i ++) {
     str = str.replace('{' + (i - 1) + '}', arguments[ i ]);

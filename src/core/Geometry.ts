@@ -1,19 +1,19 @@
-import { EventDispatcher } from './EventDispatcher';
-import { Face3 } from './Face3';
-import { Matrix3 } from '../math/Matrix3';
-import { Sphere } from '../math/Sphere';
-import { Box3 } from '../math/Box3';
-import { Vector3 } from '../math/Vector3';
-import { Matrix4 } from '../math/Matrix4';
-import { Vector2 } from '../math/Vector2';
-import { Vector4 } from '../math/Vector4';
-import { Color } from '../math/Color';
-import { Object3D } from './Object3D';
-import { _Math } from '../math/Math';
-import { Mesh } from '../objects/Mesh';
-import { BufferGeometry } from './BufferGeometry';
-import { Bone } from '../objects/Bone';
-import { AnimationClip } from '../animation/AnimationClip';
+import { EventDispatcher } from "./EventDispatcher";
+import { Face3 } from "./Face3";
+import { Matrix3 } from "../math/Matrix3";
+import { Sphere } from "../math/Sphere";
+import { Box3 } from "../math/Box3";
+import { Vector3 } from "../math/Vector3";
+import { Matrix4 } from "../math/Matrix4";
+import { Vector2 } from "../math/Vector2";
+import { Vector4 } from "../math/Vector4";
+import { Color } from "../math/Color";
+import { Object3D } from "./Object3D";
+import { _Math } from "../math/Math";
+import { Mesh } from "../objects/Mesh";
+import { BufferGeometry } from "./BufferGeometry";
+import { Bone } from "../objects/Bone";
+import { AnimationClip } from "../animation/AnimationClip";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author kile / http://kile.stravaganza.org/

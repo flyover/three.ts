@@ -1,5 +1,5 @@
-import { BufferGeometry } from '../core/BufferGeometry';
-import { Float32Attribute, Uint16Attribute, Uint32Attribute } from '../core/BufferAttribute';
+import { BufferGeometry } from "../core/BufferGeometry";
+import { Float32Attribute, Uint16Attribute, Uint32Attribute } from "../core/BufferAttribute";
 /**
  * @author Mugen87 / https://github.com/Mugen87
  *

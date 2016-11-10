@@ -1,5 +1,5 @@
-import * as THREE from '../src/Three';
-import { MMDLoader as THREE_MMDLoader, MMDHelper as THREE_MMDHelper } from './js/loaders/MMDLoader';
+import * as THREE from "../src/Three";
+import { MMDLoader as THREE_MMDLoader, MMDHelper as THREE_MMDHelper } from "./js/loaders/MMDLoader";
 let container, stats;
 let mesh, camera, scene, renderer;
 let helper;

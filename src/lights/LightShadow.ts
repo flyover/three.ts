@@ -1,6 +1,6 @@
-import { Matrix4 } from '../math/Matrix4';
-import { Vector2 } from '../math/Vector2';
-import { Camera } from '../cameras/Camera';
+import { Matrix4 } from "../math/Matrix4";
+import { Vector2 } from "../math/Vector2";
+import { Camera } from "../cameras/Camera";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

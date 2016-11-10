@@ -1,8 +1,8 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { WebGLExtensions } from './WebGLExtensions';
-import { WebGLRendererParameters } from '../WebGLRenderer';
+import { WebGLExtensions } from "./WebGLExtensions";
+import { WebGLRendererParameters } from "../WebGLRenderer";
 export class WebGLCapabilities {
   gl: WebGLRenderingContext;
   extensions: WebGLExtensions;

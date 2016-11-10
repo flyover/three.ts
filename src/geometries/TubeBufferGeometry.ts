@@ -1,8 +1,8 @@
-import { BufferGeometry } from '../core/BufferGeometry';
-import { Float32Attribute, Uint16Attribute, Uint32Attribute } from '../core/BufferAttribute';
-import { Vector2 } from '../math/Vector2';
-import { Vector3 } from '../math/Vector3';
-import { Curve } from '../extras/core/Curve';
+import { BufferGeometry } from "../core/BufferGeometry";
+import { Float32Attribute, Uint16Attribute, Uint32Attribute } from "../core/BufferAttribute";
+import { Vector2 } from "../math/Vector2";
+import { Vector3 } from "../math/Vector3";
+import { Curve } from "../extras/core/Curve";
 /**
  * @author Mugen87 / https://github.com/Mugen87
  *

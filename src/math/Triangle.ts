@@ -1,6 +1,6 @@
-import { Vector3 } from './Vector3';
-import { Line3 } from './Line3';
-import { Plane } from './Plane';
+import { Vector3 } from "./Vector3";
+import { Line3 } from "./Line3";
+import { Plane } from "./Plane";
 /**
  * @author bhouston / http://clara.io
  * @author mrdoob / http://mrdoob.com/

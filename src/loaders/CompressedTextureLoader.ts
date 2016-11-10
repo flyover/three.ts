@@ -1,7 +1,7 @@
-import { LinearFilter } from '../constants';
-import { XHRLoader } from './XHRLoader';
-import { CompressedTexture } from '../textures/CompressedTexture';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { LinearFilter } from "../constants";
+import { XHRLoader } from "./XHRLoader";
+import { CompressedTexture } from "../textures/CompressedTexture";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author mrdoob / http://mrdoob.com/
  *

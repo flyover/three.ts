@@ -2,9 +2,9 @@
  * @author mrdoob / http://mrdoob.com/
  * @author Reece Aaron Lecrivain / http://reecenotes.com/
  */
-import { Object3D } from '../core/Object3D';
-import { AudioListener } from './AudioListener';
-import { AudioLoader } from '../loaders/AudioLoader';
+import { Object3D } from "../core/Object3D";
+import { AudioListener } from "./AudioListener";
+import { AudioLoader } from "../loaders/AudioLoader";
 export class Audio extends Object3D {
   context: AudioContext;
   source: AudioBufferSourceNode;

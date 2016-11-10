@@ -1,4 +1,4 @@
-import { PolyhedronBufferGeometry } from './PolyhedronBufferGeometry';
+import { PolyhedronBufferGeometry } from "./PolyhedronBufferGeometry";
 /**
  * @author Mugen87 / https://github.com/Mugen87
  */

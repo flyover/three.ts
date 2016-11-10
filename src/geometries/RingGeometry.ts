@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { RingBufferGeometry } from './RingBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { RingBufferGeometry } from "./RingBufferGeometry";
 /**
  * @author Kaleb Murphy
  */

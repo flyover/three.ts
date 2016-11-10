@@ -1,4 +1,4 @@
-import { Camera } from './Camera';
+import { Camera } from "./Camera";
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author arose / http://github.com/arose

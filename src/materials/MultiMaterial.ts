@@ -1,5 +1,5 @@
-import { _Math } from '../math/Math';
-import { Material } from './Material';
+import { _Math } from "../math/Math";
+import { Material } from "./Material";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

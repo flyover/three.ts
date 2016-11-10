@@ -1,5 +1,5 @@
-import { CatmullRomCurve3 } from './CatmullRomCurve3';
-import { Vector3 } from '../../math/Vector3';
+import { CatmullRomCurve3 } from "./CatmullRomCurve3";
+import { Vector3 } from "../../math/Vector3";
 /**************************************************************
  *  Closed Spline 3D curve
  **************************************************************/

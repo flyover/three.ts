@@ -1,8 +1,8 @@
-import { Object3D } from '../core/Object3D';
-import { Color } from '../math/Color';
-import { LightShadow } from './LightShadow';
-import { OrthographicCamera } from '../cameras/OrthographicCamera';
-import { PerspectiveCamera } from '../cameras/PerspectiveCamera';
+import { Object3D } from "../core/Object3D";
+import { Color } from "../math/Color";
+import { LightShadow } from "./LightShadow";
+import { OrthographicCamera } from "../cameras/OrthographicCamera";
+import { PerspectiveCamera } from "../cameras/PerspectiveCamera";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/

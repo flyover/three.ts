@@ -1,5 +1,5 @@
-import { ShapeUtils } from '../ShapeUtils';
-import { ShapePath } from './ShapePath';
+import { ShapeUtils } from "../ShapeUtils";
+import { ShapePath } from "./ShapePath";
 /**
  * @author zz85 / http://www.lab4games.net/zz85/blog
  * @author mrdoob / http://mrdoob.com/

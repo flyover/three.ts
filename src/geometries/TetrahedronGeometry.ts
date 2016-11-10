@@ -1,5 +1,5 @@
-import { Geometry } from '../core/Geometry';
-import { TetrahedronBufferGeometry } from './TetrahedronBufferGeometry';
+import { Geometry } from "../core/Geometry";
+import { TetrahedronBufferGeometry } from "./TetrahedronBufferGeometry";
 /**
  * @author timothypratley / https://github.com/timothypratley
  */

@@ -1,4 +1,4 @@
-import { Vector3 } from './Vector3';
+import { Vector3 } from "./Vector3";
 /**
  * Spline from Tween.js, slightly optimized (and trashed)
  * http://sole.github.com/tween.js/examples/05_spline.html

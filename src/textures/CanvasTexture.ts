@@ -1,4 +1,4 @@
-import { Texture } from './Texture';
+import { Texture } from "./Texture";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

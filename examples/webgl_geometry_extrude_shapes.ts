@@ -1,5 +1,5 @@
-import * as THREE from '../src/Three';
-import { TrackballControls  as THREE_TrackballControls } from './js/controls/TrackballControls';
+import * as THREE from "../src/Three";
+import { TrackballControls  as THREE_TrackballControls } from "./js/controls/TrackballControls";
 let camera, scene, renderer, controls;
 init();
 animate();

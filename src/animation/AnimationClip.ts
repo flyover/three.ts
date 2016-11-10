@@ -1,12 +1,12 @@
-///import { KeyframeTrack } from './KeyframeTrack';
-import { KeyframeTrackUtils } from './KeyframeTrackUtils';
-import { KeyframeTrack } from './KeyframeTrack';
-import { VectorKeyframeTrack } from './tracks/VectorKeyframeTrack';
-import { QuaternionKeyframeTrack } from './tracks/QuaternionKeyframeTrack';
-import { NumberKeyframeTrack } from './tracks/NumberKeyframeTrack';
-import { AnimationUtils } from './AnimationUtils';
-import { _Math } from '../math/Math';
-import { Bone } from '../objects/Bone';
+///import { KeyframeTrack } from "./KeyframeTrack";
+import { KeyframeTrackUtils } from "./KeyframeTrackUtils";
+import { KeyframeTrack } from "./KeyframeTrack";
+import { VectorKeyframeTrack } from "./tracks/VectorKeyframeTrack";
+import { QuaternionKeyframeTrack } from "./tracks/QuaternionKeyframeTrack";
+import { NumberKeyframeTrack } from "./tracks/NumberKeyframeTrack";
+import { AnimationUtils } from "./AnimationUtils";
+import { _Math } from "../math/Math";
+import { Bone } from "../objects/Bone";
 /**
  *
  * Reusable set of Tracks that represent an animation.

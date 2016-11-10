@@ -1,9 +1,9 @@
-import { Material, MaterialParameters } from './Material';
-import { MultiplyOperation } from '../constants';
-import { Vector2 } from '../math/Vector2';
-import { Color } from '../math/Color';
-import { Texture } from '../textures/Texture';
-import { CubeTexture } from '../textures/CubeTexture';
+import { Material, MaterialParameters } from "./Material";
+import { MultiplyOperation } from "../constants";
+import { Vector2 } from "../math/Vector2";
+import { Color } from "../math/Color";
+import { Texture } from "../textures/Texture";
+import { CubeTexture } from "../textures/CubeTexture";
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/

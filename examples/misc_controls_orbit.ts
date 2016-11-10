@@ -1,5 +1,5 @@
-import * as THREE from '../src/Three';
-import { OrbitControls as THREE_OrbitControls } from './js/controls/OrbitControls';
+import * as THREE from "../src/Three";
+import { OrbitControls as THREE_OrbitControls } from "./js/controls/OrbitControls";
 if (! Detector.webgl) Detector.addGetWebGLMessage();
 let stats;
 let camera, controls, scene, renderer;

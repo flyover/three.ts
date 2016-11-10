@@ -17,7 +17,7 @@
  *  maxAngle: 1.0,
  * };
  */
-import * as THREE from '../../../src/Three';
+import * as THREE from "../../../src/Three";
 export class CCDIKSolver {
   mesh;
   constructor(mesh) {

@@ -1,10 +1,10 @@
-import { Object3D } from '../core/Object3D';
-import { Color } from '../math/Color';
-import { Texture } from '../textures/Texture';
-import { CubeTexture } from '../textures/CubeTexture';
-import { Fog } from './Fog';
-import { FogExp2 } from './FogExp2';
-import { Material } from '../materials/Material';
+import { Object3D } from "../core/Object3D";
+import { Color } from "../math/Color";
+import { Texture } from "../textures/Texture";
+import { CubeTexture } from "../textures/CubeTexture";
+import { Fog } from "./Fog";
+import { FogExp2 } from "./FogExp2";
+import { Material } from "../materials/Material";
 /**
  * @author mrdoob / http://mrdoob.com/
  */

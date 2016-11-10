@@ -4,7 +4,7 @@
  * @author Simone Manini / http://daron1337.github.io
  * @author Luca Antiga   / http://lantiga.github.io
  */
-import * as THREE from '../../../src/Three';
+import * as THREE from "../../../src/Three";
 const STATE = { NONE: - 1, ROTATE: 0, ZOOM: 1, PAN: 2, TOUCH_ROTATE: 3, TOUCH_ZOOM_PAN: 4 };
 const EPS = 0.000001;
 export class TrackballControls extends THREE.EventDispatcher {

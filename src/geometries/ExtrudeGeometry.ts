@@ -21,12 +21,12 @@
  *
  * }
  **/
-import { Geometry } from '../core/Geometry';
-import { Vector2 } from '../math/Vector2';
-import { Face3 } from '../core/Face3';
-import { Vector3 } from '../math/Vector3';
-import { ShapeUtils } from '../extras/ShapeUtils';
-import { Shape } from '../extras/core/Shape';
+import { Geometry } from "../core/Geometry";
+import { Vector2 } from "../math/Vector2";
+import { Face3 } from "../core/Face3";
+import { Vector3 } from "../math/Vector3";
+import { ShapeUtils } from "../extras/ShapeUtils";
+import { Shape } from "../extras/core/Shape";
 export class ExtrudeGeometry extends Geometry {
   constructor(shapes?: Shape | Shape[], options?: any) {
     if (typeof(shapes) === "undefined") {

@@ -1,5 +1,5 @@
-import * as THREE from '../src/Three';
-import { TGALoader as THREE_TGALoader } from './js/loaders/TGALoader';
+import * as THREE from "../src/Three";
+import { TGALoader as THREE_TGALoader } from "./js/loaders/TGALoader";
 if (! Detector.webgl) Detector.addGetWebGLMessage();
 let SCREEN_WIDTH = window.innerWidth;
 let SCREEN_HEIGHT = window.innerHeight;

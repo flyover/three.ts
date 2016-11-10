@@ -1,7 +1,7 @@
-import { BufferGeometry } from '../core/BufferGeometry';
-import { BufferAttribute } from '../core/BufferAttribute';
-import { Geometry } from '../core/Geometry';
-import { _Math } from '../math/Math';
+import { BufferGeometry } from "../core/BufferGeometry";
+import { BufferAttribute } from "../core/BufferAttribute";
+import { Geometry } from "../core/Geometry";
+import { _Math } from "../math/Math";
 /**
  * @author WestLangley / http://github.com/WestLangley
  */

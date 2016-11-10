@@ -1,8 +1,8 @@
-import { Object3D } from '../core/Object3D';
-import { BlendingMode } from '../constants';
-import { Color } from '../math/Color';
-import { Vector3 } from '../math/Vector3';
-import { Texture } from '../textures/Texture';
+import { Object3D } from "../core/Object3D";
+import { BlendingMode } from "../constants";
+import { Color } from "../math/Color";
+import { Vector3 } from "../math/Vector3";
+import { Texture } from "../textures/Texture";
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/

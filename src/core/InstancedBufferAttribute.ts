@@ -1,4 +1,4 @@
-import { BufferAttribute } from './BufferAttribute';
+import { BufferAttribute } from "./BufferAttribute";
 /**
  * @author benaadams / https://twitter.com/ben_a_adams
  */

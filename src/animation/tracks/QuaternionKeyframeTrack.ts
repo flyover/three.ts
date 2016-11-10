@@ -1,7 +1,7 @@
-import { InterpolateLinear } from '../../constants';
-import { QuaternionLinearInterpolant } from '../../math/interpolants/QuaternionLinearInterpolant';
-import { KeyframeTrack } from '../KeyframeTrack';
-import { Interpolant } from '../../math/Interpolant';
+import { InterpolateLinear } from "../../constants";
+import { QuaternionLinearInterpolant } from "../../math/interpolants/QuaternionLinearInterpolant";
+import { KeyframeTrack } from "../KeyframeTrack";
+import { Interpolant } from "../../math/Interpolant";
 /**
  *
  * A Track of quaternion keyframe values.

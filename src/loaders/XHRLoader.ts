@@ -1,5 +1,5 @@
-import { Cache } from './Cache';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { Cache } from "./Cache";
+import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 /**
  * @author mrdoob / http://mrdoob.com/
  */
