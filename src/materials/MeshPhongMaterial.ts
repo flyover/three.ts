@@ -1,5 +1,5 @@
 import { Material, MaterialParameters } from "./Material";
-import { MultiplyOperation } from "../constants";
+import { BlendingOperation } from "../constants";
 import { Vector2 } from "../math/Vector2";
 import { Color } from "../math/Color";
 import { Texture } from "../textures/Texture";
@@ -86,7 +86,7 @@ export interface MeshPhongMaterialParameters extends MaterialParameters {
   alphaMap?: Texture;
 
   envMap?: CubeTexture;
-  combine?: number; // THREE.Multiply,
+  combine?: BlendingOperation; // THREE.Multiply,
   reflectivity?: number;
   refractionRatio?: number;
 
@@ -102,7 +102,7 @@ export class MeshPhongMaterial extends Material {
   aoMap: any;
   aoMapIntensity: any;
   emissiveIntensity: any;
-  combine: any;
+  combine: BlendingOperation;
   refractionRatio: any;
   morphNormals: any;
   readonly isMeshPhongMaterial: boolean = true;
@@ -130,7 +130,7 @@ export class MeshPhongMaterial extends Material {
     this.specularMap = null;
     this.alphaMap = null;
     this.envMap = null;
-    this.combine = MultiplyOperation;
+    this.combine = BlendingOperation.Multiply;
     this.reflectivity = 1;
     this.refractionRatio = 0.98;
     this.wireframe = false;

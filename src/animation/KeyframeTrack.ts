@@ -1,5 +1,5 @@
 import { AnimationUtils } from "./AnimationUtils";
-import { InterpolateDiscrete, InterpolateLinear, InterpolateSmooth } from "../constants";
+import { InterpolateMode } from "../constants";
 import { Interpolant } from "../math/Interpolant";
 import { CubicInterpolant } from "../math/interpolants/CubicInterpolant";
 import { LinearInterpolant } from "../math/interpolants/LinearInterpolant";
@@ -31,7 +31,7 @@ export class KeyframeTrack {
   }
   TimeBufferType: ArrayConstructor | Float32ArrayConstructor | Float64ArrayConstructor = Float32Array;
   ValueBufferType: ArrayConstructor | Float32ArrayConstructor | Float64ArrayConstructor = Float32Array;
-  DefaultInterpolation: number = InterpolateLinear;
+  DefaultInterpolation: InterpolateMode = InterpolateMode.Linear;
   InterpolantFactoryMethodDiscrete(result: number[] | Float32Array | Float64Array): Interpolant {
     return new DiscreteInterpolant(
         this.times, this.values, this.getValueSize(), result);
@@ -46,16 +46,16 @@ export class KeyframeTrack {
   }
   ValueTypeName: string;
   createInterpolant: (result: number[] | Float32Array | Float64Array) => Interpolant;
-  setInterpolation(interpolation: number): void {
+  setInterpolation(interpolation: InterpolateMode): void {
     let factoryMethod: (result: number[] | Float32Array | Float64Array) => Interpolant;
     switch (interpolation) {
-      case InterpolateDiscrete:
+      case InterpolateMode.Discrete:
         factoryMethod = this.InterpolantFactoryMethodDiscrete;
         break;
-      case InterpolateLinear:
+      case InterpolateMode.Linear:
         factoryMethod = this.InterpolantFactoryMethodLinear;
         break;
-      case InterpolateSmooth:
+      case InterpolateMode.Smooth:
         factoryMethod = this.InterpolantFactoryMethodSmooth;
         break;
     }
@@ -75,14 +75,14 @@ export class KeyframeTrack {
     }
     this.createInterpolant = factoryMethod;
   }
-  getInterpolation(): number {
+  getInterpolation(): InterpolateMode {
     switch (this.createInterpolant) {
       case this.InterpolantFactoryMethodDiscrete:
-        return InterpolateDiscrete;
+        return InterpolateMode.Discrete;
       case this.InterpolantFactoryMethodLinear:
-        return InterpolateLinear;
+        return InterpolateMode.Linear;
       case this.InterpolantFactoryMethodSmooth:
-        return InterpolateSmooth;
+        return InterpolateMode.Smooth;
     }
     throw new Error();
   }
@@ -179,7 +179,7 @@ export class KeyframeTrack {
     const times = this.times;
     const values = this.values;
     const stride = this.getValueSize();
-    const smoothInterpolation = this.getInterpolation() === InterpolateSmooth;
+    const smoothInterpolation = this.getInterpolation() === InterpolateMode.Smooth;
     let writeIndex = 1;
     const lastIndex = times.length - 1;
     for (let i = 1; i < lastIndex; ++ i) {

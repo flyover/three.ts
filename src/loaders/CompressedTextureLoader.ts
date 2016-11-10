@@ -1,4 +1,4 @@
-import { LinearFilter } from "../constants";
+import { TextureFilter } from "../constants";
 import { XHRLoader } from "./XHRLoader";
 import { CompressedTexture } from "../textures/CompressedTexture";
 import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
@@ -37,7 +37,7 @@ export class CompressedTextureLoader {
         loaded += 1;
         if (loaded === 6) {
           if (texDatas.mipmapCount === 1)
-            texture.minFilter = LinearFilter;
+            texture.minFilter = TextureFilter.Linear;
           texture.format = texDatas.format;
           texture.needsUpdate = true;
           if (onLoad) onLoad(texture);
@@ -70,7 +70,7 @@ export class CompressedTextureLoader {
           texture.mipmaps = texDatas.mipmaps;
         }
         if (texDatas.mipmapCount === 1) {
-          texture.minFilter = LinearFilter;
+          texture.minFilter = TextureFilter.Linear;
         }
         texture.format = texDatas.format;
         texture.needsUpdate = true;

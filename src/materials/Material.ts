@@ -1,5 +1,5 @@
 import { EventDispatcher } from "../core/EventDispatcher";
-import { NoColors, FrontSide, SmoothShading, LessEqualDepth, AddEquation, OneMinusSrcAlphaFactor, SrcAlphaFactor } from "../constants";
+import { ColorsMode, SideMode, ShadingMode, DepthFunction, BlendingEquation, BlendingFactor } from "../constants";
 import { BlendingMode } from "../constants";
 import { Color } from "../math/Color";
 import { _Math } from "../math/Math";
@@ -13,19 +13,19 @@ import { Texture } from "../textures/Texture";
 export interface MaterialParameters {
   fog?: boolean;
   lights?: boolean;
-  blending?: number;
-  side?: number;
-  shading?: number;
-  vertexColors?: number;
+  blending?: BlendingMode;
+  side?: SideMode;
+  shading?: ShadingMode;
+  vertexColors?: ColorsMode;
   opacity?: number;
   transparent?: boolean;
-  blendSrc?: number;
-  blendDst?: number;
-  blendEquation?: number;
-  blendSrcAlpha?: number;
-  blendDstAlpha?: number;
-  blendEquationAlpha?: number;
-  depthFunc?: number;
+  blendSrc?: BlendingFactor;
+  blendDst?: BlendingFactor;
+  blendEquation?: BlendingEquation;
+  blendSrcAlpha?: BlendingFactor;
+  blendDstAlpha?: BlendingFactor;
+  blendEquationAlpha?: BlendingEquation;
+  depthFunc?: DepthFunction;
   depthTest?: boolean;
   depthWrite?: boolean;
   clipping?: boolean;
@@ -49,19 +49,19 @@ export class Material extends EventDispatcher {
   type: string = 'Material';
   fog: boolean = true;
   lights: boolean = true;
-  blending: number = BlendingMode.NormalBlending;
-  side: number = FrontSide;
-  shading: number = SmoothShading; // THREE.FlatShading, THREE.SmoothShading
-  vertexColors: number = NoColors; // THREE.NoColors, THREE.VertexColors, THREE.FaceColors
+  blending: BlendingMode = BlendingMode.Normal;
+  side: SideMode = SideMode.Front;
+  shading: ShadingMode = ShadingMode.Smooth; // THREE.ShadingMode.Flat, THREE.ShadingMode.Smooth
+  vertexColors: ColorsMode = ColorsMode.None; // THREE.ColorsMode.No, THREE.ColorsMode.Vertex, THREE.ColorsMode.Face
   _opacity: number = 1;
   transparent: boolean = false;
-  blendSrc: number = SrcAlphaFactor;
-  blendDst: number = OneMinusSrcAlphaFactor;
-  blendEquation: number = AddEquation;
-  blendSrcAlpha: number = null;
-  blendDstAlpha: number = null;
-  blendEquationAlpha: number = null;
-  depthFunc: number = LessEqualDepth;
+  blendSrc: BlendingFactor = BlendingFactor.SrcAlpha;
+  blendDst: BlendingFactor = BlendingFactor.OneMinusSrcAlpha;
+  blendEquation: BlendingEquation = BlendingEquation.Add;
+  blendSrcAlpha: BlendingFactor = null;
+  blendDstAlpha: BlendingFactor = null;
+  blendEquationAlpha: BlendingEquation = null;
+  depthFunc: DepthFunction = DepthFunction.LessEqual;
   depthTest: boolean = true;
   depthWrite: boolean = true;
   clipping: boolean = false;
@@ -212,10 +212,10 @@ export class Material extends EventDispatcher {
     }
     if (this.size !== undefined) data.size = this.size;
     if (this.sizeAttenuation !== undefined) data.sizeAttenuation = this.sizeAttenuation;
-    if (this.blending !== BlendingMode.NormalBlending) data.blending = this.blending;
-    if (this.shading !== SmoothShading) data.shading = this.shading;
-    if (this.side !== FrontSide) data.side = this.side;
-    if (this.vertexColors !== NoColors) data.vertexColors = this.vertexColors;
+    if (this.blending !== BlendingMode.Normal) data.blending = this.blending;
+    if (this.shading !== ShadingMode.Smooth) data.shading = this.shading;
+    if (this.side !== SideMode.Front) data.side = this.side;
+    if (this.vertexColors !== ColorsMode.None) data.vertexColors = this.vertexColors;
     if (this.opacity < 1) data.opacity = this.opacity;
     if (this.transparent === true) data.transparent = this.transparent;
     data.depthFunc = this.depthFunc;

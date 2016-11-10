@@ -1,4 +1,4 @@
-import { InterpolateLinear } from "../../constants";
+import { InterpolateMode } from "../../constants";
 import { QuaternionLinearInterpolant } from "../../math/interpolants/QuaternionLinearInterpolant";
 import { KeyframeTrack } from "../KeyframeTrack";
 import { Interpolant } from "../../math/Interpolant";
@@ -16,7 +16,7 @@ export class NewQuaternionKeyframeTrack extends KeyframeTrack {
   }
   ValueTypeName: string = 'quaternion';
   // ValueBufferType is inherited
-  DefaultInterpolation: number = InterpolateLinear;
+  DefaultInterpolation: InterpolateMode = InterpolateMode.Linear;
   InterpolantFactoryMethodLinear(result: number[] | Float32Array): Interpolant {
     return new QuaternionLinearInterpolant(
         this.times, this.values, this.getValueSize(), result);
@@ -31,7 +31,7 @@ OldQuaternionKeyframeTrack.prototype = Object.assign(Object.create(KeyframeTrack
   constructor: OldQuaternionKeyframeTrack,
   ValueTypeName: 'quaternion',
   // ValueBufferType is inherited
-  DefaultInterpolation: InterpolateLinear,
+  DefaultInterpolation: InterpolateMode.Linear,
   InterpolantFactoryMethodLinear: function(result: number[] | Float32Array): Interpolant {
     return new QuaternionLinearInterpolant(
         this.times, this.values, this.getValueSize(), result);

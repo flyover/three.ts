@@ -1,7 +1,7 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { NotEqualDepth, GreaterDepth, GreaterEqualDepth, EqualDepth, LessEqualDepth, LessDepth, AlwaysDepth, NeverDepth, CullFaceFront, CullFaceBack, CullFaceNone } from "../../constants";
+import { DepthFunction, CullFace } from "../../constants";
 import { BlendingMode } from "../../constants";
 import { Vector4 } from "../../math/Vector4";
 class ColorBuffer {
@@ -64,28 +64,28 @@ class DepthBuffer {
     if (this.currentDepthFunc !== depthFunc) {
       if (depthFunc) {
         switch (depthFunc) {
-          case NeverDepth:
+          case DepthFunction.Never:
             gl.depthFunc(gl.NEVER);
             break;
-          case AlwaysDepth:
+          case DepthFunction.Always:
             gl.depthFunc(gl.ALWAYS);
             break;
-          case LessDepth:
+          case DepthFunction.Less:
             gl.depthFunc(gl.LESS);
             break;
-          case LessEqualDepth:
+          case DepthFunction.LessEqual:
             gl.depthFunc(gl.LEQUAL);
             break;
-          case EqualDepth:
+          case DepthFunction.Equal:
             gl.depthFunc(gl.EQUAL);
             break;
-          case GreaterEqualDepth:
+          case DepthFunction.GreaterEqual:
             gl.depthFunc(gl.GEQUAL);
             break;
-          case GreaterDepth:
+          case DepthFunction.Greater:
             gl.depthFunc(gl.GREATER);
             break;
-          case NotEqualDepth:
+          case DepthFunction.NotEqual:
             gl.depthFunc(gl.NOTEQUAL);
             break;
           default:
@@ -261,12 +261,12 @@ export class WebGLState {
     this.clearDepth(1);
     this.clearStencil(0);
     this.enable(gl.DEPTH_TEST);
-    this.setDepthFunc(LessEqualDepth);
+    this.setDepthFunc(DepthFunction.LessEqual);
     this.setFlipSided(false);
-    this.setCullFace(CullFaceBack);
+    this.setCullFace(CullFace.Back);
     this.enable(gl.CULL_FACE);
     this.enable(gl.BLEND);
-    this.setBlending(BlendingMode.NormalBlending);
+    this.setBlending(BlendingMode.Normal);
   }
   initAttributes(): void {
     for (let i = 0, l = this.newAttributes.length; i < l; i ++) {
@@ -338,13 +338,13 @@ export class WebGLState {
   }
   setBlending(blending: number, blendEquation?: number, blendSrc?: number, blendDst?: number, blendEquationAlpha?: number, blendSrcAlpha?: number, blendDstAlpha?: number, premultipliedAlpha?: boolean): void {
     const gl = this.gl;
-    if (blending !== BlendingMode.NoBlending) {
+    if (blending !== BlendingMode.None) {
       this.enable(gl.BLEND);
     } else {
       this.disable(gl.BLEND);
     }
     if (blending !== this.currentBlending || premultipliedAlpha !== this.currentPremultipledAlpha) {
-      if (blending === BlendingMode.AdditiveBlending) {
+      if (blending === BlendingMode.Additive) {
         if (premultipliedAlpha) {
           gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_ADD);
           gl.blendFuncSeparate(gl.ONE, gl.ONE, gl.ONE, gl.ONE);
@@ -352,7 +352,7 @@ export class WebGLState {
           gl.blendEquation(gl.FUNC_ADD);
           gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
         }
-      } else if (blending === BlendingMode.SubtractiveBlending) {
+      } else if (blending === BlendingMode.Subtractive) {
         if (premultipliedAlpha) {
           gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_ADD);
           gl.blendFuncSeparate(gl.ZERO, gl.ZERO, gl.ONE_MINUS_SRC_COLOR, gl.ONE_MINUS_SRC_ALPHA);
@@ -360,7 +360,7 @@ export class WebGLState {
           gl.blendEquation(gl.FUNC_ADD);
           gl.blendFunc(gl.ZERO, gl.ONE_MINUS_SRC_COLOR);
         }
-      } else if (blending === BlendingMode.MultiplyBlending) {
+      } else if (blending === BlendingMode.Multiply) {
         if (premultipliedAlpha) {
           gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_ADD);
           gl.blendFuncSeparate(gl.ZERO, gl.SRC_COLOR, gl.ZERO, gl.SRC_ALPHA);
@@ -380,7 +380,7 @@ export class WebGLState {
       this.currentBlending = blending;
       this.currentPremultipledAlpha = premultipliedAlpha;
     }
-    if (blending === BlendingMode.CustomBlending) {
+    if (blending === BlendingMode.Custom) {
       blendEquationAlpha = blendEquationAlpha || blendEquation;
       blendSrcAlpha = blendSrcAlpha || blendSrc;
       blendDstAlpha = blendDstAlpha || blendDst;
@@ -442,14 +442,14 @@ export class WebGLState {
       this.currentFlipSided = flipSided;
     }
   }
-  setCullFace(cullFace: number): void {
+  setCullFace(cullFace: CullFace): void {
     const gl = this.gl;
-    if (cullFace !== CullFaceNone) {
+    if (cullFace !== CullFace.None) {
       gl.enable(gl.CULL_FACE);
       if (cullFace !== this.currentCullFace) {
-        if (cullFace === CullFaceBack) {
+        if (cullFace === CullFace.Back) {
           gl.cullFace(gl.BACK);
-        } else if (cullFace === CullFaceFront) {
+        } else if (cullFace === CullFace.Front) {
           gl.cullFace(gl.FRONT);
         } else {
           gl.cullFace(gl.FRONT_AND_BACK);

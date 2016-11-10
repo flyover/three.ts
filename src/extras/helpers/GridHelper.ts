@@ -1,5 +1,5 @@
 import { LineSegments } from "../../objects/LineSegments";
-import { VertexColors } from "../../constants";
+import { ColorsMode } from "../../constants";
 import { LineBasicMaterial } from "../../materials/LineBasicMaterial";
 import { Float32Attribute } from "../../core/BufferAttribute";
 import { BufferGeometry } from "../../core/BufferGeometry";
@@ -26,7 +26,7 @@ export class GridHelper extends LineSegments {
     let geometry = new BufferGeometry();
     geometry.addAttribute('position', Float32Attribute(vertices, 3));
     geometry.addAttribute('color', Float32Attribute(colors, 3));
-    let material = new LineBasicMaterial({ vertexColors: VertexColors });
+    let material = new LineBasicMaterial({ vertexColors: ColorsMode.Vertex });
     super(geometry, material);
   }
   setColors() {

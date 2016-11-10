@@ -5,7 +5,7 @@
  */
 import { EventDispatcher } from "../core/EventDispatcher";
 import { Texture } from "../textures/Texture";
-import { LinearFilter } from "../constants";
+import { TextureFilter } from "../constants";
 import { Vector2 } from "../math/Vector2";
 import { Vector4 } from "../math/Vector4";
 import { _Math } from "../math/Math";
@@ -35,7 +35,7 @@ export class WebGLRenderTarget extends EventDispatcher {
     this.scissorTest = false;
     this.viewport = new Vector4(0, 0, width, height);
     options = options || {};
-    if (options.minFilter === undefined) options.minFilter = LinearFilter;
+    if (options.minFilter === undefined) options.minFilter = TextureFilter.Linear;
     this.texture = new Texture(undefined, undefined, options.wrapS, options.wrapT, options.magFilter, options.minFilter, options.format, options.type, options.anisotropy, options.encoding);
     this.depthBuffer = options.depthBuffer !== undefined ? options.depthBuffer : true;
     this.stencilBuffer = options.stencilBuffer !== undefined ? options.stencilBuffer : true;

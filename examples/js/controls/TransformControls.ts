@@ -11,7 +11,7 @@ class GizmoMaterial extends MeshBasicMaterial {
     super();
     this.depthTest = false;
     this.depthWrite = false;
-    this.side = THREE.FrontSide;
+    this.side = THREE.SideMode.Front;
     this.transparent = true;
     this.setValues(parameters);
     this.oldColor = this.color.clone();
@@ -70,7 +70,7 @@ export class TransformGizmo extends THREE.Object3D {
     this.add(this.planes);
     //// PLANES
     const planeGeometry = new THREE.PlaneBufferGeometry(50, 50, 2, 2);
-    const planeMaterial = new THREE.MeshBasicMaterial({ visible: false, side: THREE.DoubleSide });
+    const planeMaterial = new THREE.MeshBasicMaterial({ visible: false, side: THREE.SideMode.Double });
     const planes = {
       "XY":   new THREE.Mesh(planeGeometry, planeMaterial),
       "YZ":   new THREE.Mesh(planeGeometry, planeMaterial),

@@ -5,7 +5,7 @@ import { WebGLRenderer } from "../WebGLRenderer";
 import { WebGLProgram } from "./WebGLProgram";
 import { WebGLRenderTarget } from "../WebGLRenderTarget";
 import { WebGLCapabilities } from "./WebGLCapabilities";
-import { BackSide, DoubleSide, FlatShading, CubeUVRefractionMapping, CubeUVReflectionMapping, GammaEncoding, LinearEncoding } from "../../constants";
+import { SideMode, ShadingMode, TextureMapping, TextureEncoding } from "../../constants";
 import { Object3D } from "../../core/Object3D";
 import { SkinnedMesh } from "../../objects/SkinnedMesh";
 import { Fog } from "../../scenes/Fog";
@@ -49,7 +49,7 @@ export class WebGLPrograms {
     function getTextureEncodingFromMap(map: any, gammaOverrideLinear: boolean): number {
       let encoding;
       if (! map) {
-        encoding = LinearEncoding;
+        encoding = TextureEncoding.Linear;
       } else if ((map && map instanceof Texture)) {
         encoding = map.encoding;
       } else if ((map && map instanceof WebGLRenderTarget)) {
@@ -57,8 +57,8 @@ export class WebGLPrograms {
         encoding = map.texture.encoding;
       }
       // add backwards compatibility for WebGLRenderer.gammaInput/gammaOutput parameter, should probably be removed at some point.
-      if (encoding === LinearEncoding && gammaOverrideLinear) {
-        encoding = GammaEncoding;
+      if (encoding === TextureEncoding.Linear && gammaOverrideLinear) {
+        encoding = TextureEncoding.Gamma;
       }
       return encoding;
     }
@@ -96,7 +96,7 @@ export class WebGLPrograms {
       envMap: !! material.envMap,
       envMapMode: material.envMap && material.envMap.mapping,
       envMapEncoding: getTextureEncodingFromMap(material.envMap, this.renderer.gammaInput),
-      envMapCubeUV: (!! material.envMap) && ((material.envMap.mapping === CubeUVReflectionMapping) || (material.envMap.mapping === CubeUVRefractionMapping)),
+      envMapCubeUV: (!! material.envMap) && ((material.envMap.mapping === TextureMapping.CubeUVReflection) || (material.envMap.mapping === TextureMapping.CubeUVRefraction)),
       lightMap: !! material.lightMap,
       aoMap: !! material.aoMap,
       emissiveMap: !! material.emissiveMap,
@@ -113,7 +113,7 @@ export class WebGLPrograms {
       fog: !! fog,
       useFog: material.fog,
       fogExp: (fog && fog instanceof FogExp2),
-      flatShading: material.shading === FlatShading,
+      flatShading: material.shading === ShadingMode.Flat,
       sizeAttenuation: material.sizeAttenuation,
       logarithmicDepthBuffer: capabilities.logarithmicDepthBuffer,
       skinning: material.skinning,
@@ -135,8 +135,8 @@ export class WebGLPrograms {
       physicallyCorrectLights: this.renderer.physicallyCorrectLights,
       premultipliedAlpha: material.premultipliedAlpha,
       alphaTest: material.alphaTest,
-      doubleSided: material.side === DoubleSide,
-      flipSided: material.side === BackSide,
+      doubleSided: material.side === SideMode.Double,
+      flipSided: material.side === SideMode.Back,
       depthPacking: (material.depthPacking !== undefined) ? material.depthPacking : false
     };
     return parameters;

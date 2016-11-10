@@ -36,7 +36,7 @@
  * }
  */
 import { Material, MaterialParameters } from "./Material";
-import { MultiplyOperation } from "../constants";
+import { BlendingOperation } from "../constants";
 import { Color } from "../math/Color";
 import { Texture } from "../textures/Texture";
 export interface MeshLambertMaterialParameters extends MaterialParameters {
@@ -49,7 +49,7 @@ export interface MeshLambertMaterialParameters extends MaterialParameters {
   aoMap?: any;
   aoMapIntensity?: number;
   emissiveIntensity?: number;
-  combine?: any;
+  combine?: BlendingOperation;
   refractionRatio?: number;
   morphNormals?: boolean;
   emissive?: any;
@@ -59,7 +59,7 @@ export class MeshLambertMaterial extends Material {
   aoMap: any;
   aoMapIntensity: any;
   emissiveIntensity: any;
-  combine: any;
+  combine: BlendingOperation;
   refractionRatio: any;
   morphNormals: any;
   readonly isMeshLambertMaterial: boolean = true;
@@ -78,7 +78,7 @@ export class MeshLambertMaterial extends Material {
     this.specularMap = null;
     this.alphaMap = null;
     this.envMap = null;
-    this.combine = MultiplyOperation;
+    this.combine = BlendingOperation.Multiply;
     this.reflectivity = 1;
     this.refractionRatio = 0.98;
     this.wireframe = false;

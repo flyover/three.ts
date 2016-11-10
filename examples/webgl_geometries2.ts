@@ -18,11 +18,11 @@ function init() {
   light.position.set(0, 0, 1);
   scene.add(light);
   let map = new THREE.TextureLoader().load('textures/UV_Grid_Sm.jpg');
-  map.wrapS = map.wrapT = THREE.RepeatWrapping;
+  map.wrapS = map.wrapT = THREE.TextureWrapping.Repeat;
   map.anisotropy = 16;
   materials = [
-    new THREE.MeshLambertMaterial({ map: map, side: THREE.DoubleSide }),
-    new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1, side: THREE.DoubleSide })
+    new THREE.MeshLambertMaterial({ map: map, side: THREE.SideMode.Double }),
+    new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1, side: THREE.SideMode.Double })
   ];
   let p = 2;
   let q = 3;

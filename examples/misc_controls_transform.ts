@@ -19,7 +19,7 @@ function init(): void {
   light.position.set(1, 1, 1);
   scene.add(light);
   const texture = new THREE.TextureLoader().load('textures/crate.gif', render);
-  texture.mapping = THREE.UVMapping;
+  texture.mapping = THREE.TextureMapping.UV;
   texture.anisotropy = renderer.getMaxAnisotropy();
   const geometry = new THREE.BoxGeometry(200, 200, 200);
   const material = new THREE.MeshLambertMaterial({ map: texture });

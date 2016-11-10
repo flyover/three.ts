@@ -16,9 +16,9 @@ function init() {
   light.position.set(0, 1, 0);
   scene.add(light);
   const map: THREE.Texture = new THREE.TextureLoader().load('textures/UV_Grid_Sm.jpg');
-  map.wrapS = map.wrapT = THREE.RepeatWrapping;
+  map.wrapS = map.wrapT = THREE.TextureWrapping.Repeat;
   map.anisotropy = 16;
-  const material: THREE.Material = new THREE.MeshLambertMaterial({ map: map, side: THREE.DoubleSide });
+  const material: THREE.Material = new THREE.MeshLambertMaterial({ map: map, side: THREE.SideMode.Double });
   //
   object = new THREE.Mesh(new THREE.SphereGeometry(75, 20, 10), material);
   object.position.set(-400, 0, 200);

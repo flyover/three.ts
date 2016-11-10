@@ -1,11 +1,11 @@
 import { Texture } from "./Texture";
-import { NearestFilter } from "../constants";
+import { TextureMapping, TextureWrapping, TextureEncoding, TextureType, TextureFormat, TextureFilter } from "../constants";
 /**
  * @author alteredq / http://alteredqualia.com/
  */
 export class DataTexture extends Texture {
   readonly isDataTexture: boolean = true;
-  constructor(data?: any, width?: number, height?: number, format?: number, type?: number, mapping?: number, wrapS?: number, wrapT?: number, magFilter: number = NearestFilter, minFilter: number = NearestFilter, anisotropy?: number, encoding?: number) {
+  constructor(data?: any, width?: number, height?: number, format?: TextureFormat, type?: TextureType, mapping?: TextureMapping, wrapS?: TextureWrapping, wrapT?: TextureWrapping, magFilter: TextureFilter = TextureFilter.Nearest, minFilter: TextureFilter = TextureFilter.Nearest, anisotropy?: number, encoding?: TextureEncoding) {
     super(null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding);
     this.image = { data: data, width: width, height: height };
     this.magFilter = magFilter;

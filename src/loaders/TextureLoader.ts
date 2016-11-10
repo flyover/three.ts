@@ -1,4 +1,4 @@
-import { RGBAFormat, RGBFormat } from "../constants";
+import { TextureFormat } from "../constants";
 import { ImageLoader } from "./ImageLoader";
 import { Texture } from "../textures/Texture";
 import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
@@ -22,7 +22,7 @@ export class TextureLoader {
     loader.load(url, function(image: HTMLImageElement): void {
       // JPEGs can't have an alpha channel, so memory can be saved by storing them as RGB.
       const isJPEG = url.search(/\.(jpg|jpeg)$/) > 0 || url.search(/^data\:image\/jpeg/) === 0;
-      texture.format = isJPEG ? RGBFormat : RGBAFormat;
+      texture.format = isJPEG ? TextureFormat.RGB : TextureFormat.RGBA;
       texture.image = image;
       texture.needsUpdate = true;
       if (onLoad !== undefined) {

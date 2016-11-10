@@ -1,4 +1,4 @@
-import { WrapAroundEnding, ZeroCurvatureEnding, ZeroSlopeEnding, LoopPingPong, LoopOnce, LoopRepeat } from "../constants";
+import { EndingMode, LoopMode } from "../constants";
 /**
  *
  * Action provided by AnimationMixer for scheduling clip playback on specific
@@ -20,7 +20,7 @@ export class AnimationAction {
   private _byClipCacheIndex: any;
   private _timeScaleInterpolant: any;
   private _weightInterpolant: any;
-  loop: any;
+  loop: LoopMode;
   private _loopCount: any;
   private _startTime: any;
   time: any;
@@ -43,8 +43,8 @@ export class AnimationAction {
       nTracks = tracks.length,
       interpolants = new Array(nTracks);
     let interpolantSettings = {
-        endingStart:   ZeroCurvatureEnding,
-        endingEnd:    ZeroCurvatureEnding
+        endingStart:   EndingMode.ZeroCurvature,
+        endingEnd:    EndingMode.ZeroCurvature
     };
     for (let i = 0; i !== nTracks; ++ i) {
       let interpolant = tracks[ i ].createInterpolant(null);
@@ -59,7 +59,7 @@ export class AnimationAction {
     this._byClipCacheIndex = null;    // for the memory manager
     this._timeScaleInterpolant = null;
     this._weightInterpolant = null;
-    this.loop = LoopRepeat;
+    this.loop = LoopMode.Repeat;
     this._loopCount = -1;
     // global mixer time when the action is to be started
     // it's set back to 'null' upon start of the action
@@ -293,7 +293,7 @@ export class AnimationAction {
     let duration = this._clip.duration,
       loop = this.loop,
       loopCount = this._loopCount;
-    if (loop === LoopOnce) {
+    if (loop === LoopMode.Once) {
       if (loopCount === -1) {
         // just started
         this.loopCount = 0;
@@ -313,7 +313,7 @@ export class AnimationAction {
         });
       }
     } else { // repetitive Repeat or PingPong
-      let pingPong = (loop === LoopPingPong);
+      let pingPong = (loop === LoopMode.PingPong);
       if (loopCount === -1) {
         // just started
         if (deltaTime >= 0) {
@@ -370,21 +370,21 @@ export class AnimationAction {
   private _setEndings(atStart: boolean, atEnd: boolean, pingPong: boolean) {
     let settings = this._interpolantSettings;
     if (pingPong) {
-      settings.endingStart   = ZeroSlopeEnding;
-      settings.endingEnd    = ZeroSlopeEnding;
+      settings.endingStart   = EndingMode.ZeroSlope;
+      settings.endingEnd    = EndingMode.ZeroSlope;
     } else {
-      // assuming for LoopOnce atStart == atEnd == true
+      // assuming for LoopMode.Once atStart == atEnd == true
       if (atStart) {
         settings.endingStart = this.zeroSlopeAtStart ?
-            ZeroSlopeEnding : ZeroCurvatureEnding;
+            EndingMode.ZeroSlope : EndingMode.ZeroCurvature;
       } else {
-        settings.endingStart = WrapAroundEnding;
+        settings.endingStart = EndingMode.WrapAround;
       }
       if (atEnd) {
         settings.endingEnd = this.zeroSlopeAtEnd ?
-            ZeroSlopeEnding : ZeroCurvatureEnding;
+            EndingMode.ZeroSlope : EndingMode.ZeroCurvature;
       } else {
-        settings.endingEnd    = WrapAroundEnding;
+        settings.endingEnd    = EndingMode.WrapAround;
       }
     }
   }

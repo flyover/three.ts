@@ -6,51 +6,51 @@ import { WebGLUniforms } from "./WebGLUniforms";
 import { WebGLShader } from "./WebGLShader";
 import { WebGLExtensions } from "./WebGLExtensions";
 import { ShaderChunk } from "../shaders/ShaderChunk";
-import { NoToneMapping, AddOperation, MixOperation, MultiplyOperation, EquirectangularRefractionMapping, CubeRefractionMapping, SphericalReflectionMapping, EquirectangularReflectionMapping, CubeUVRefractionMapping, CubeUVReflectionMapping, CubeReflectionMapping, PCFSoftShadowMap, PCFShadowMap, CineonToneMapping, Uncharted2ToneMapping, ReinhardToneMapping, LinearToneMapping, GammaEncoding, RGBDEncoding, RGBM16Encoding, RGBM7Encoding, RGBEEncoding, sRGBEncoding, LinearEncoding } from "../../constants";
+import { BlendingOperation, TextureMapping, ShadowMap, ToneMapping, TextureEncoding } from "../../constants";
 import { ShaderMaterial } from "../../materials/ShaderMaterial";
 import { RawShaderMaterial } from "../../materials/RawShaderMaterial";
 let programIdCount: number = 0;
 function getEncodingComponents(encoding: number): string[] {
   switch (encoding) {
-    case LinearEncoding:
+    case TextureEncoding.Linear:
       return [ 'Linear', '(value)' ];
-    case sRGBEncoding:
+    case TextureEncoding.sRGB:
       return [ 'sRGB', '(value)' ];
-    case RGBEEncoding:
+    case TextureEncoding.RGBE:
       return [ 'RGBE', '(value)' ];
-    case RGBM7Encoding:
+    case TextureEncoding.RGBM7:
       return [ 'RGBM', '(value, 7.0)' ];
-    case RGBM16Encoding:
+    case TextureEncoding.RGBM16:
       return [ 'RGBM', '(value, 16.0)' ];
-    case RGBDEncoding:
+    case TextureEncoding.RGBD:
       return [ 'RGBD', '(value, 256.0)' ];
-    case GammaEncoding:
+    case TextureEncoding.Gamma:
       return [ 'Gamma', '(value, float(GAMMA_FACTOR))' ];
     default:
       throw new Error('unsupported encoding: ' + encoding);
   }
 }
-function getTexelDecodingFunction(functionName: string, encoding: number): string {
+function getTexelDecodingFunction(functionName: string, encoding: TextureEncoding): string {
   const components = getEncodingComponents(encoding);
   return "vec4 " + functionName + "(vec4 value) { return " + components[0] + "ToLinear" + components[1] + "; }";
 }
-function getTexelEncodingFunction(functionName: string, encoding: number): string {
+function getTexelEncodingFunction(functionName: string, encoding: TextureEncoding): string {
   const components = getEncodingComponents(encoding);
   return "vec4 " + functionName + "(vec4 value) { return LinearTo" + components[0] + components[1] + "; }";
 }
-function getToneMappingFunction(functionName: string, toneMapping: number): string {
+function getToneMappingFunction(functionName: string, toneMapping: ToneMapping): string {
   let toneMappingName: string;
   switch (toneMapping) {
-    case LinearToneMapping:
+    case ToneMapping.Linear:
       toneMappingName = "Linear";
       break;
-    case ReinhardToneMapping:
+    case ToneMapping.Reinhard:
       toneMappingName = "Reinhard";
       break;
-    case Uncharted2ToneMapping:
+    case ToneMapping.Uncharted2:
       toneMappingName = "Uncharted2";
       break;
-    case CineonToneMapping:
+    case ToneMapping.Cineon:
       toneMappingName = "OptimizedCineon";
       break;
     default:
@@ -140,9 +140,9 @@ export class WebGLProgram {
     let vertexShader = material.__webglShader.vertexShader;
     let fragmentShader = material.__webglShader.fragmentShader;
     let shadowMapTypeDefine = 'SHADOWMAP_TYPE_BASIC';
-    if (parameters.shadowMapType === PCFShadowMap) {
+    if (parameters.shadowMapType === ShadowMap.PCF) {
       shadowMapTypeDefine = 'SHADOWMAP_TYPE_PCF';
-    } else if (parameters.shadowMapType === PCFSoftShadowMap) {
+    } else if (parameters.shadowMapType === ShadowMap.PCFSoft) {
       shadowMapTypeDefine = 'SHADOWMAP_TYPE_PCF_SOFT';
     }
     let envMapTypeDefine = 'ENVMAP_TYPE_CUBE';
@@ -150,36 +150,36 @@ export class WebGLProgram {
     let envMapBlendingDefine = 'ENVMAP_BLENDING_MULTIPLY';
     if (parameters.envMap) {
       switch (material.envMap.mapping) {
-        case CubeReflectionMapping:
-        case CubeRefractionMapping:
+        case TextureMapping.CubeReflection:
+        case TextureMapping.CubeRefraction:
           envMapTypeDefine = 'ENVMAP_TYPE_CUBE';
           break;
-        case CubeUVReflectionMapping:
-        case CubeUVRefractionMapping:
+        case TextureMapping.CubeUVReflection:
+        case TextureMapping.CubeUVRefraction:
           envMapTypeDefine = 'ENVMAP_TYPE_CUBE_UV';
           break;
-        case EquirectangularReflectionMapping:
-        case EquirectangularRefractionMapping:
+        case TextureMapping.EquirectangularReflection:
+        case TextureMapping.EquirectangularRefraction:
           envMapTypeDefine = 'ENVMAP_TYPE_EQUIREC';
           break;
-        case SphericalReflectionMapping:
+        case TextureMapping.SphericalReflection:
           envMapTypeDefine = 'ENVMAP_TYPE_SPHERE';
           break;
       }
       switch (material.envMap.mapping) {
-        case CubeRefractionMapping:
-        case EquirectangularRefractionMapping:
+        case TextureMapping.CubeRefraction:
+        case TextureMapping.EquirectangularRefraction:
           envMapModeDefine = 'ENVMAP_MODE_REFRACTION';
           break;
       }
       switch (material.combine) {
-        case MultiplyOperation:
+        case BlendingOperation.Multiply:
           envMapBlendingDefine = 'ENVMAP_BLENDING_MULTIPLY';
           break;
-        case MixOperation:
+        case BlendingOperation.Mix:
           envMapBlendingDefine = 'ENVMAP_BLENDING_MIX';
           break;
-        case AddOperation:
+        case BlendingOperation.Add:
           envMapBlendingDefine = 'ENVMAP_BLENDING_ADD';
           break;
       }
@@ -312,9 +312,9 @@ export class WebGLProgram {
         parameters.envMap && renderer.extensions.get('EXT_shader_texture_lod') ? '#define TEXTURE_LOD_EXT' : '',
         'uniform mat4 viewMatrix;',
         'uniform vec3 cameraPosition;',
-        (parameters.toneMapping !== NoToneMapping) ? "#define TONE_MAPPING" : '',
-        (parameters.toneMapping !== NoToneMapping) ? ShaderChunk['tonemapping_pars_fragment'] : '',  // this code is required here because it is used by the toneMapping() function defined below
-        (parameters.toneMapping !== NoToneMapping) ? getToneMappingFunction("toneMapping", parameters.toneMapping) : '',
+        (parameters.toneMapping !== ToneMapping.None) ? "#define TONE_MAPPING" : '',
+        (parameters.toneMapping !== ToneMapping.None) ? ShaderChunk['tonemapping_pars_fragment'] : '',  // this code is required here because it is used by the toneMapping() function defined below
+        (parameters.toneMapping !== ToneMapping.None) ? getToneMappingFunction("toneMapping", parameters.toneMapping) : '',
         (parameters.outputEncoding || parameters.mapEncoding || parameters.envMapEncoding || parameters.emissiveMapEncoding) ? ShaderChunk['encodings_pars_fragment'] : '', // this code is required here because it is used by the various encoding/decoding function defined below
         parameters.mapEncoding ? getTexelDecodingFunction('mapTexelToLinear', parameters.mapEncoding) : '',
         parameters.envMapEncoding ? getTexelDecodingFunction('envMapTexelToLinear', parameters.envMapEncoding) : '',

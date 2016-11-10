@@ -34,7 +34,7 @@ export class LensFlare extends Object3D {
     }
     return super.add(object);
   }
-  addFlare(texture: Texture, size: number = -1, distance: number = 0, blending: BlendingMode = BlendingMode.NormalBlending, color: Color = new Color(0xffffff), opacity: number = 1): void {
+  addFlare(texture: Texture, size: number = -1, distance: number = 0, blending: BlendingMode = BlendingMode.Normal, color: Color = new Color(0xffffff), opacity: number = 1): void {
     distance = Math.min(distance, Math.max(0, distance));
     this.lensFlares.push({
       texture: texture,  // THREE.Texture

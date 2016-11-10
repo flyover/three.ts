@@ -5,8 +5,8 @@
  * @author szimek / https://github.com/szimek/
  * @author tschw
  */
-import { REVISION, MaxEquation, MinEquation, RGB_ETC1_Format, RGBA_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format, RGB_PVRTC_2BPPV1_Format, RGB_PVRTC_4BPPV1_Format, RGBA_S3TC_DXT5_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT1_Format, RGB_S3TC_DXT1_Format, SrcAlphaSaturateFactor, OneMinusDstColorFactor, DstColorFactor, OneMinusDstAlphaFactor, DstAlphaFactor, OneMinusSrcAlphaFactor, SrcAlphaFactor, OneMinusSrcColorFactor, SrcColorFactor, OneFactor, ZeroFactor, ReverseSubtractEquation, SubtractEquation, AddEquation, DepthFormat, DepthStencilFormat, LuminanceAlphaFormat, LuminanceFormat, RGBAFormat, RGBFormat, AlphaFormat, HalfFloatType, FloatType, UnsignedIntType, IntType, UnsignedShortType, ShortType, ByteType, UnsignedInt248Type, UnsignedShort565Type, UnsignedShort5551Type, UnsignedShort4444Type, UnsignedByteType, LinearMipMapLinearFilter, LinearMipMapNearestFilter, LinearFilter, NearestMipMapLinearFilter, NearestMipMapNearestFilter, NearestFilter, MirroredRepeatWrapping, ClampToEdgeWrapping, RepeatWrapping, FrontFaceDirectionCW, BackSide, DoubleSide, TriangleFanDrawMode, TriangleStripDrawMode, TrianglesDrawMode, NoColors, FlatShading, LinearToneMapping } from "../constants";
-import { BlendingMode } from "../constants";
+import { REVISION, BlendingFactor, BlendingEquation, TextureFormat, TextureType, TextureFilter, TextureWrapping, FrontFaceDirection, SideMode, DrawMode, ColorsMode, ShadingMode, ToneMapping } from "../constants";
+import { BlendingMode, CullFace } from "../constants";
 import { Matrix4 } from "../math/Matrix4";
 import { Plane } from "../math/Plane";
 import { WebGLUniforms } from "./webgl/WebGLUniforms";
@@ -135,7 +135,7 @@ export class WebGLRenderer {
   // physical lights
   physicallyCorrectLights: boolean = false;
   // tone mapping
-  toneMapping: number = LinearToneMapping;
+  toneMapping: ToneMapping = ToneMapping.Linear;
   toneMappingExposure: number = 1.0;
   toneMappingWhitePoint: number = 1.0;
   // morphs
@@ -305,7 +305,7 @@ export class WebGLRenderer {
         uniforms: this.backgroundBoxShader.uniforms,
         vertexShader: this.backgroundBoxShader.vertexShader,
         fragmentShader: this.backgroundBoxShader.fragmentShader,
-        side: BackSide,
+        side: SideMode.Back,
         depthTest: false,
         depthWrite: false,
         fog: false
@@ -477,7 +477,7 @@ export class WebGLRenderer {
     }
     if (object.hasNormals) {
       this._gl.bindBuffer(this._gl.ARRAY_BUFFER, buffers.normal);
-      if (! (material instanceof MeshPhongMaterial) && ! (material instanceof MeshStandardMaterial) && material.shading === FlatShading) {
+      if (! (material instanceof MeshPhongMaterial) && ! (material instanceof MeshStandardMaterial) && material.shading === ShadingMode.Flat) {
         for (let i = 0, l = object.count * 3; i < l; i += 9) {
           const array = object.normalArray;
           const nx = (array[i + 0] + array[i + 3] + array[i + 6]) / 3;
@@ -504,7 +504,7 @@ export class WebGLRenderer {
       this.state.enableAttribute(attributes.uv);
       this._gl.vertexAttribPointer(attributes.uv, 2, this._gl.FLOAT, false, 0, 0);
     }
-    if (object.hasColors && material.vertexColors !== NoColors) {
+    if (object.hasColors && material.vertexColors !== ColorsMode.None) {
       this._gl.bindBuffer(this._gl.ARRAY_BUFFER, buffers.color);
       this._gl.bufferData(this._gl.ARRAY_BUFFER, object.colorArray, this._gl.DYNAMIC_DRAW);
       this.state.enableAttribute(attributes.color);
@@ -599,13 +599,13 @@ export class WebGLRenderer {
         renderer.setMode(_gl.LINES);
       } else {
         switch (object.drawMode) {
-          case TrianglesDrawMode:
+          case DrawMode.Triangles:
             renderer.setMode(_gl.TRIANGLES);
             break;
-          case TriangleStripDrawMode:
+          case DrawMode.TriangleStrip:
             renderer.setMode(_gl.TRIANGLE_STRIP);
             break;
-          case TriangleFanDrawMode:
+          case DrawMode.TriangleFan:
             renderer.setMode(_gl.TRIANGLE_FAN);
             break;
         }
@@ -822,7 +822,7 @@ export class WebGLRenderer {
       this.renderObjects(this.transparentObjects, camera, scene, overrideMaterial);
     } else {
       // opaque pass (front-to-back order)
-      this.state.setBlending(BlendingMode.NoBlending);
+      this.state.setBlending(BlendingMode.None);
       this.renderObjects(this.opaqueObjects, camera, scene);
       // transparent pass (back-to-front order)
       this.renderObjects(this.transparentObjects, camera, scene);
@@ -1068,13 +1068,13 @@ export class WebGLRenderer {
     materialProperties.uniformsList = uniformsList;
   }
   setMaterial(material: Material): void {
-    material.side === DoubleSide
+    material.side === SideMode.Double
       ? this.state.disable(this._gl.CULL_FACE)
       : this.state.enable(this._gl.CULL_FACE);
-    this.state.setFlipSided(material.side === BackSide);
+    this.state.setFlipSided(material.side === SideMode.Back);
     material.transparent === true
       ? this.state.setBlending(material.blending, material.blendEquation, material.blendSrc, material.blendDst, material.blendEquationAlpha, material.blendSrcAlpha, material.blendDstAlpha, material.premultipliedAlpha)
-      : this.state.setBlending(BlendingMode.NoBlending);
+      : this.state.setBlending(BlendingMode.None);
     this.state.setDepthFunc(material.depthFunc);
     this.state.setDepthTest(material.depthTest);
     this.state.setDepthWrite(material.depthWrite);
@@ -1514,9 +1514,9 @@ export class WebGLRenderer {
     this._lights.hash = directionalLength + ',' + pointLength + ',' + spotLength + ',' + hemiLength + ',' + this._lights.shadows.length;
   }
   // GL state setting
-  setFaceCulling(cullFace: number, frontFaceDirection: number): void {
+  setFaceCulling(cullFace: CullFace, frontFaceDirection: FrontFaceDirection): void {
     this.state.setCullFace(cullFace);
-    this.state.setFlipSided(frontFaceDirection === FrontFaceDirectionCW);
+    this.state.setFlipSided(frontFaceDirection === FrontFaceDirection.CW);
   }
   // Textures
   allocTextureUnit(): number {
@@ -1632,14 +1632,14 @@ export class WebGLRenderer {
         const texture = renderTarget.texture;
         const textureFormat = texture.format;
         const textureType = texture.type;
-        if (textureFormat !== RGBAFormat && this.paramThreeToGL(textureFormat) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_FORMAT)) {
+        if (textureFormat !== TextureFormat.RGBA && this.paramThreeToGL(textureFormat) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_FORMAT)) {
           console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in RGBA or implementation defined format.');
           return;
         }
-        if (textureType !== UnsignedByteType && this.paramThreeToGL(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) && // IE11, Edge and Chrome Mac < 52 (#9513)
-             ! (textureType === FloatType && (this.extensions.get('OES_texture_float') || this.extensions.get('WEBGL_color_buffer_float'))) && // Chrome Mac >= 52 and Firefox
-             ! (textureType === HalfFloatType && this.extensions.get('EXT_color_buffer_half_float'))) {
-          console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in UnsignedByteType or implementation defined type.');
+        if (textureType !== TextureType.UnsignedByte && this.paramThreeToGL(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) && // IE11, Edge and Chrome Mac < 52 (#9513)
+             ! (textureType === TextureType.Float && (this.extensions.get('OES_texture_float') || this.extensions.get('WEBGL_color_buffer_float'))) && // Chrome Mac >= 52 and Firefox
+             ! (textureType === TextureType.HalfFloat && this.extensions.get('EXT_color_buffer_half_float'))) {
+          console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in TextureType.UnsignedByte or implementation defined type.');
           return;
         }
         if (_gl.checkFramebufferStatus(_gl.FRAMEBUFFER) === _gl.FRAMEBUFFER_COMPLETE) {
@@ -1661,84 +1661,84 @@ export class WebGLRenderer {
   paramThreeToGL(p: number): number {
     const _gl: WebGLRenderingContext = this._gl;
     let extension;
-    if (p === RepeatWrapping) return _gl.REPEAT;
-    if (p === ClampToEdgeWrapping) return _gl.CLAMP_TO_EDGE;
-    if (p === MirroredRepeatWrapping) return _gl.MIRRORED_REPEAT;
-    if (p === NearestFilter) return _gl.NEAREST;
-    if (p === NearestMipMapNearestFilter) return _gl.NEAREST_MIPMAP_NEAREST;
-    if (p === NearestMipMapLinearFilter) return _gl.NEAREST_MIPMAP_LINEAR;
-    if (p === LinearFilter) return _gl.LINEAR;
-    if (p === LinearMipMapNearestFilter) return _gl.LINEAR_MIPMAP_NEAREST;
-    if (p === LinearMipMapLinearFilter) return _gl.LINEAR_MIPMAP_LINEAR;
-    if (p === UnsignedByteType) return _gl.UNSIGNED_BYTE;
-    if (p === UnsignedShort4444Type) return _gl.UNSIGNED_SHORT_4_4_4_4;
-    if (p === UnsignedShort5551Type) return _gl.UNSIGNED_SHORT_5_5_5_1;
-    if (p === UnsignedShort565Type) return _gl.UNSIGNED_SHORT_5_6_5;
-    if (p === ByteType) return _gl.BYTE;
-    if (p === ShortType) return _gl.SHORT;
-    if (p === UnsignedShortType) return _gl.UNSIGNED_SHORT;
-    if (p === IntType) return _gl.INT;
-    if (p === UnsignedIntType) return _gl.UNSIGNED_INT;
-    if (p === FloatType) return _gl.FLOAT;
-    if (p === HalfFloatType) {
+    if (p === TextureWrapping.Repeat) return _gl.REPEAT;
+    if (p === TextureWrapping.ClampToEdge) return _gl.CLAMP_TO_EDGE;
+    if (p === TextureWrapping.MirroredRepeat) return _gl.MIRRORED_REPEAT;
+    if (p === TextureFilter.Nearest) return _gl.NEAREST;
+    if (p === TextureFilter.NearestMipMapNearest) return _gl.NEAREST_MIPMAP_NEAREST;
+    if (p === TextureFilter.NearestMipMapLinear) return _gl.NEAREST_MIPMAP_LINEAR;
+    if (p === TextureFilter.Linear) return _gl.LINEAR;
+    if (p === TextureFilter.LinearMipMapNearest) return _gl.LINEAR_MIPMAP_NEAREST;
+    if (p === TextureFilter.LinearMipMapLinear) return _gl.LINEAR_MIPMAP_LINEAR;
+    if (p === TextureType.UnsignedByte) return _gl.UNSIGNED_BYTE;
+    if (p === TextureType.UnsignedShort4444) return _gl.UNSIGNED_SHORT_4_4_4_4;
+    if (p === TextureType.UnsignedShort5551) return _gl.UNSIGNED_SHORT_5_5_5_1;
+    if (p === TextureType.UnsignedShort565) return _gl.UNSIGNED_SHORT_5_6_5;
+    if (p === TextureType.Byte) return _gl.BYTE;
+    if (p === TextureType.Short) return _gl.SHORT;
+    if (p === TextureType.UnsignedShort) return _gl.UNSIGNED_SHORT;
+    if (p === TextureType.Int) return _gl.INT;
+    if (p === TextureType.UnsignedInt) return _gl.UNSIGNED_INT;
+    if (p === TextureType.Float) return _gl.FLOAT;
+    if (p === TextureType.HalfFloat) {
       extension = this.extensions.get('OES_texture_half_float');
       if (extension !== null) return extension.HALF_FLOAT_OES;
     }
-    if (p === AlphaFormat) return _gl.ALPHA;
-    if (p === RGBFormat) return _gl.RGB;
-    if (p === RGBAFormat) return _gl.RGBA;
-    if (p === LuminanceFormat) return _gl.LUMINANCE;
-    if (p === LuminanceAlphaFormat) return _gl.LUMINANCE_ALPHA;
-    if (p === DepthFormat) return _gl.DEPTH_COMPONENT;
-    if (p === DepthStencilFormat) return _gl.DEPTH_STENCIL;
-    if (p === AddEquation) return _gl.FUNC_ADD;
-    if (p === SubtractEquation) return _gl.FUNC_SUBTRACT;
-    if (p === ReverseSubtractEquation) return _gl.FUNC_REVERSE_SUBTRACT;
-    if (p === ZeroFactor) return _gl.ZERO;
-    if (p === OneFactor) return _gl.ONE;
-    if (p === SrcColorFactor) return _gl.SRC_COLOR;
-    if (p === OneMinusSrcColorFactor) return _gl.ONE_MINUS_SRC_COLOR;
-    if (p === SrcAlphaFactor) return _gl.SRC_ALPHA;
-    if (p === OneMinusSrcAlphaFactor) return _gl.ONE_MINUS_SRC_ALPHA;
-    if (p === DstAlphaFactor) return _gl.DST_ALPHA;
-    if (p === OneMinusDstAlphaFactor) return _gl.ONE_MINUS_DST_ALPHA;
-    if (p === DstColorFactor) return _gl.DST_COLOR;
-    if (p === OneMinusDstColorFactor) return _gl.ONE_MINUS_DST_COLOR;
-    if (p === SrcAlphaSaturateFactor) return _gl.SRC_ALPHA_SATURATE;
-    if (p === RGB_S3TC_DXT1_Format || p === RGBA_S3TC_DXT1_Format ||
-      p === RGBA_S3TC_DXT3_Format || p === RGBA_S3TC_DXT5_Format) {
+    if (p === TextureFormat.Alpha) return _gl.ALPHA;
+    if (p === TextureFormat.RGB) return _gl.RGB;
+    if (p === TextureFormat.RGBA) return _gl.RGBA;
+    if (p === TextureFormat.Luminance) return _gl.LUMINANCE;
+    if (p === TextureFormat.LuminanceAlpha) return _gl.LUMINANCE_ALPHA;
+    if (p === TextureFormat.Depth) return _gl.DEPTH_COMPONENT;
+    if (p === TextureFormat.DepthStencil) return _gl.DEPTH_STENCIL;
+    if (p === BlendingEquation.Add) return _gl.FUNC_ADD;
+    if (p === BlendingEquation.Subtract) return _gl.FUNC_SUBTRACT;
+    if (p === BlendingEquation.ReverseSubtract) return _gl.FUNC_REVERSE_SUBTRACT;
+    if (p === BlendingFactor.Zero) return _gl.ZERO;
+    if (p === BlendingFactor.One) return _gl.ONE;
+    if (p === BlendingFactor.SrcColor) return _gl.SRC_COLOR;
+    if (p === BlendingFactor.OneMinusSrcColor) return _gl.ONE_MINUS_SRC_COLOR;
+    if (p === BlendingFactor.SrcAlpha) return _gl.SRC_ALPHA;
+    if (p === BlendingFactor.OneMinusSrcAlpha) return _gl.ONE_MINUS_SRC_ALPHA;
+    if (p === BlendingFactor.DstAlpha) return _gl.DST_ALPHA;
+    if (p === BlendingFactor.OneMinusDstAlpha) return _gl.ONE_MINUS_DST_ALPHA;
+    if (p === BlendingFactor.DstColor) return _gl.DST_COLOR;
+    if (p === BlendingFactor.OneMinusDstColor) return _gl.ONE_MINUS_DST_COLOR;
+    if (p === BlendingFactor.SrcAlphaSaturate) return _gl.SRC_ALPHA_SATURATE;
+    if (p === TextureFormat.RGB_S3TC_DXT1 || p === TextureFormat.RGBA_S3TC_DXT1 ||
+      p === TextureFormat.RGBA_S3TC_DXT3 || p === TextureFormat.RGBA_S3TC_DXT5) {
       extension = this.extensions.get('WEBGL_compressed_texture_s3tc');
       if (extension !== null) {
-        if (p === RGB_S3TC_DXT1_Format) return extension.COMPRESSED_RGB_S3TC_DXT1_EXT;
-        if (p === RGBA_S3TC_DXT1_Format) return extension.COMPRESSED_RGBA_S3TC_DXT1_EXT;
-        if (p === RGBA_S3TC_DXT3_Format) return extension.COMPRESSED_RGBA_S3TC_DXT3_EXT;
-        if (p === RGBA_S3TC_DXT5_Format) return extension.COMPRESSED_RGBA_S3TC_DXT5_EXT;
+        if (p === TextureFormat.RGB_S3TC_DXT1) return extension.COMPRESSED_RGB_S3TC_DXT1_EXT;
+        if (p === TextureFormat.RGBA_S3TC_DXT1) return extension.COMPRESSED_RGBA_S3TC_DXT1_EXT;
+        if (p === TextureFormat.RGBA_S3TC_DXT3) return extension.COMPRESSED_RGBA_S3TC_DXT3_EXT;
+        if (p === TextureFormat.RGBA_S3TC_DXT5) return extension.COMPRESSED_RGBA_S3TC_DXT5_EXT;
       }
     }
-    if (p === RGB_PVRTC_4BPPV1_Format || p === RGB_PVRTC_2BPPV1_Format ||
-       p === RGBA_PVRTC_4BPPV1_Format || p === RGBA_PVRTC_2BPPV1_Format) {
+    if (p === TextureFormat.RGB_PVRTC_4BPPV1 || p === TextureFormat.RGB_PVRTC_2BPPV1 ||
+       p === TextureFormat.RGBA_PVRTC_4BPPV1 || p === TextureFormat.RGBA_PVRTC_2BPPV1) {
       extension = this.extensions.get('WEBGL_compressed_texture_pvrtc');
       if (extension !== null) {
-        if (p === RGB_PVRTC_4BPPV1_Format) return extension.COMPRESSED_RGB_PVRTC_4BPPV1_IMG;
-        if (p === RGB_PVRTC_2BPPV1_Format) return extension.COMPRESSED_RGB_PVRTC_2BPPV1_IMG;
-        if (p === RGBA_PVRTC_4BPPV1_Format) return extension.COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
-        if (p === RGBA_PVRTC_2BPPV1_Format) return extension.COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
+        if (p === TextureFormat.RGB_PVRTC_4BPPV1) return extension.COMPRESSED_RGB_PVRTC_4BPPV1_IMG;
+        if (p === TextureFormat.RGB_PVRTC_2BPPV1) return extension.COMPRESSED_RGB_PVRTC_2BPPV1_IMG;
+        if (p === TextureFormat.RGBA_PVRTC_4BPPV1) return extension.COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
+        if (p === TextureFormat.RGBA_PVRTC_2BPPV1) return extension.COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
       }
     }
-    if (p === RGB_ETC1_Format) {
+    if (p === TextureFormat.RGB_ETC1) {
       extension = this.extensions.get('WEBGL_compressed_texture_etc1');
       if (extension !== null) {
-        if (p === RGB_ETC1_Format) return extension.COMPRESSED_RGB_ETC1_WEBGL;
+        if (p === TextureFormat.RGB_ETC1) return extension.COMPRESSED_RGB_ETC1_WEBGL;
       }
     }
-    if (p === MinEquation || p === MaxEquation) {
+    if (p === BlendingEquation.Min || p === BlendingEquation.Max) {
       extension = this.extensions.get('EXT_blend_minmax');
       if (extension !== null) {
-        if (p === MinEquation) return extension.MIN_EXT;
-        if (p === MaxEquation) return extension.MAX_EXT;
+        if (p === BlendingEquation.Min) return extension.MIN_EXT;
+        if (p === BlendingEquation.Max) return extension.MAX_EXT;
       }
     }
-    if (p === UnsignedInt248Type) {
+    if (p === TextureType.UnsignedInt248) {
       extension = this.extensions.get('WEBGL_depth_texture');
       if (extension !== null) return extension.UNSIGNED_INT_24_8_WEBGL;
   }

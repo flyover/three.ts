@@ -2,7 +2,7 @@ import { Camera } from "../../cameras/Camera";
 import { Vector3 } from "../../math/Vector3";
 import { LineSegments } from "../../objects/LineSegments";
 import { Color } from "../../math/Color";
-import { FaceColors } from "../../constants";
+import { ColorsMode } from "../../constants";
 import { LineBasicMaterial } from "../../materials/LineBasicMaterial";
 import { Geometry } from "../../core/Geometry";
 /**
@@ -18,7 +18,7 @@ export class CameraHelper extends LineSegments {
   pointMap: any;
   constructor(camera: Camera) {
     let geometry = new Geometry();
-    let material = new LineBasicMaterial({ color: 0xffffff, vertexColors: FaceColors });
+    let material = new LineBasicMaterial({ color: 0xffffff, vertexColors: ColorsMode.Face });
     let pointMap = {};
     // colors
     let hexFrustum = 0xffaa00;

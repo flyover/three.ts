@@ -1,4 +1,4 @@
-import { InterpolateDiscrete } from "../../constants";
+import { InterpolateMode } from "../../constants";
 import { KeyframeTrack } from "../KeyframeTrack";
 /**
  *
@@ -15,7 +15,7 @@ export class NewStringKeyframeTrack extends KeyframeTrack {
   }
   ValueTypeName: string = 'string';
   ValueBufferType = Array;
-  DefaultInterpolation: number = InterpolateDiscrete;
+  DefaultInterpolation: InterpolateMode = InterpolateMode.Discrete;
   ///InterpolantFactoryMethodLinear = undefined; // !!TODO
   ///InterpolantFactoryMethodSmooth = undefined; // !!TODO
 }
@@ -27,7 +27,7 @@ OldStringKeyframeTrack.prototype = Object.assign(Object.create(KeyframeTrack.pro
   constructor: OldStringKeyframeTrack,
   ValueTypeName: 'string',
   ValueBufferType: Array,
-  DefaultInterpolation: InterpolateDiscrete,
+  DefaultInterpolation: InterpolateMode.Discrete,
   InterpolantFactoryMethodLinear: undefined,
   InterpolantFactoryMethodSmooth: undefined
 });

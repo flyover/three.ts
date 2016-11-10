@@ -1,11 +1,11 @@
 import { Texture } from "./Texture";
-import { CubeReflectionMapping } from "../constants";
+import { TextureMapping, TextureWrapping, TextureEncoding, TextureType, TextureFormat, TextureFilter } from "../constants";
 /**
  * @author mrdoob / http://mrdoob.com/
  */
 export class CubeTexture extends Texture {
   readonly isCubeTexture: boolean = true;
-  constructor(images: any[] = [], mapping: number = CubeReflectionMapping, wrapS?: number, wrapT?: number, magFilter?: number, minFilter?: number, format?: number, type?: number, anisotropy?: number, encoding?: number) {
+  constructor(images: any[] = [], mapping: TextureMapping = TextureMapping.CubeReflection, wrapS?: TextureWrapping, wrapT?: TextureWrapping, magFilter?: TextureFilter, minFilter?: TextureFilter, format?: TextureFormat, type?: TextureType, anisotropy?: number, encoding?: TextureEncoding) {
     super(images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding);
     this.flipY = false;
   }

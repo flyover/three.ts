@@ -1,6 +1,5 @@
 import { EventDispatcher } from "../core/EventDispatcher";
-import { UVMapping } from "../constants";
-import { MirroredRepeatWrapping, ClampToEdgeWrapping, RepeatWrapping, LinearEncoding, UnsignedByteType, RGBAFormat, LinearMipMapLinearFilter, LinearFilter } from "../constants";
+import { TextureMapping, TextureWrapping, TextureEncoding, TextureType, TextureFormat, TextureFilter } from "../constants";
 import { _Math } from "../math/Math";
 import { Vector2 } from "../math/Vector2";
 /**
@@ -15,31 +14,31 @@ export class Texture extends EventDispatcher {
   sourceFile: string = '';
   image: any;
   mipmaps: any[] = [];
-  mapping: number;
-  wrapS: number;
-  wrapT: number;
-  magFilter: number;
-  minFilter: number;
+  mapping: TextureMapping;
+  wrapS: TextureWrapping;
+  wrapT: TextureWrapping;
+  magFilter: TextureFilter;
+  minFilter: TextureFilter;
   anisotropy: number;
-  format: number;
-  type: number;
+  format: TextureFormat;
+  type: TextureType;
   offset: Vector2 = new Vector2(0, 0);
   repeat: Vector2 = new Vector2(1, 1);
   generateMipmaps: boolean = true;
   premultiplyAlpha: boolean = false;
   flipY: boolean = true;
   unpackAlignment: number = 4; // valid values: 1, 2, 4, 8 (see http://www.khronos.org/opengles/sdk/docs/man/xhtml/glPixelStorei.xml)
-  // Values of encoding !== THREE.LinearEncoding only supported on map, envMap and emissiveMap.
+  // Values of encoding !== THREE.TextureEncoding.Linear only supported on map, envMap and emissiveMap.
   //
   // Also changing the encoding after already used by a Material will not automatically make the Material
   // update.  You need to explicitly call Material.needsUpdate to trigger it to recompile.
-  encoding: number;
+  encoding: TextureEncoding;
   version: number = 0;
   onUpdate: (texture: Texture) => void = null;
   readonly isTexture: boolean = true;
   static DEFAULT_IMAGE: any = undefined;
-  static DEFAULT_MAPPING: number = UVMapping;
-  constructor(image: any = Texture.DEFAULT_IMAGE, mapping: number = Texture.DEFAULT_MAPPING, wrapS: number = ClampToEdgeWrapping, wrapT: number = ClampToEdgeWrapping, magFilter: number = LinearFilter, minFilter: number = LinearMipMapLinearFilter, format: number = RGBAFormat, type: number = UnsignedByteType, anisotropy: number = 1, encoding: number = LinearEncoding) {
+  static DEFAULT_MAPPING: TextureMapping = TextureMapping.UV;
+  constructor(image: any = Texture.DEFAULT_IMAGE, mapping: TextureMapping = Texture.DEFAULT_MAPPING, wrapS: TextureWrapping = TextureWrapping.ClampToEdge, wrapT: TextureWrapping = TextureWrapping.ClampToEdge, magFilter: TextureFilter = TextureFilter.Linear, minFilter: TextureFilter = TextureFilter.LinearMipMapLinear, format: TextureFormat = TextureFormat.RGBA, type: TextureType = TextureType.UnsignedByte, anisotropy: number = 1, encoding: TextureEncoding = TextureEncoding.Linear) {
     super();
     this.image = image;
     this.mapping = mapping;
@@ -136,18 +135,18 @@ export class Texture extends EventDispatcher {
     this.dispatchEvent({ type: 'dispose' });
   }
   transformUv(uv: Vector2): void {
-    if (this.mapping !== UVMapping)  return;
+    if (this.mapping !== TextureMapping.UV)  return;
     uv.multiply(this.repeat);
     uv.add(this.offset);
     if (uv.x < 0 || uv.x > 1) {
       switch (this.wrapS) {
-        case RepeatWrapping:
+        case TextureWrapping.Repeat:
           uv.x = uv.x - Math.floor(uv.x);
           break;
-        case ClampToEdgeWrapping:
+        case TextureWrapping.ClampToEdge:
           uv.x = uv.x < 0 ? 0 : 1;
           break;
-        case MirroredRepeatWrapping:
+        case TextureWrapping.MirroredRepeat:
           if (Math.abs(Math.floor(uv.x) % 2) === 1) {
             uv.x = Math.ceil(uv.x) - uv.x;
           } else {
@@ -158,13 +157,13 @@ export class Texture extends EventDispatcher {
     }
     if (uv.y < 0 || uv.y > 1) {
       switch (this.wrapT) {
-        case RepeatWrapping:
+        case TextureWrapping.Repeat:
           uv.y = uv.y - Math.floor(uv.y);
           break;
-        case ClampToEdgeWrapping:
+        case TextureWrapping.ClampToEdge:
           uv.y = uv.y < 0 ? 0 : 1;
           break;
-        case MirroredRepeatWrapping:
+        case TextureWrapping.MirroredRepeat:
           if (Math.abs(Math.floor(uv.y) % 2) === 1) {
             uv.y = Math.ceil(uv.y) - uv.y;
           } else {

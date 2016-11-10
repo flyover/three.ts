@@ -1,5 +1,5 @@
 import { Material, MaterialParameters } from "./Material";
-import { MultiplyOperation } from "../constants";
+import { BlendingOperation } from "../constants";
 import { Color } from "../math/Color";
 import { Texture } from "../textures/Texture";
 import { CubeTexture } from "../textures/CubeTexture";
@@ -24,7 +24,7 @@ import { CubeTexture } from "../textures/CubeTexture";
  *  reflectivity: <float>,
  *  refractionRatio: <float>,
  *
- *  shading: THREE.SmoothShading,
+ *  shading: THREE.ShadingMode.Smooth,
  *  depthTest: <bool>,
  *  depthWrite: <bool>,
  *
@@ -48,7 +48,7 @@ export interface MeshBasicMaterialParameters extends MaterialParameters {
   alphaMap?: Texture;
 
   envMap?: CubeTexture;
-  combine?: number;
+  combine?: BlendingOperation;
   reflectivity?: number;
   refractionRatio?: number;
 
@@ -65,7 +65,7 @@ export interface MeshBasicMaterialParameters extends MaterialParameters {
 export class MeshBasicMaterial extends Material {
   aoMap: Texture;
   aoMapIntensity: number;
-  combine: number;
+  combine: BlendingOperation;
   refractionRatio: number;
   readonly isMeshBasicMaterial: boolean = true;
   constructor(parameters?: MeshBasicMaterialParameters | MaterialParameters) {
@@ -78,7 +78,7 @@ export class MeshBasicMaterial extends Material {
     this.specularMap = null;
     this.alphaMap = null;
     this.envMap = null;
-    this.combine = MultiplyOperation;
+    this.combine = BlendingOperation.Multiply;
     this.reflectivity = 1;
     this.refractionRatio = 0.98;
     this.wireframe = false;

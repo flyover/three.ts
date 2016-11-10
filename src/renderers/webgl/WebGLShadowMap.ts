@@ -2,8 +2,8 @@
  * @author alteredq / http://alteredqualia.com/
  * @author mrdoob / http://mrdoob.com/
  */
-import { FrontSide, BackSide, DoubleSide, RGBAFormat, NearestFilter, PCFShadowMap, RGBADepthPacking } from "../../constants";
-import { CullFaceFront, CullFaceBack } from "../../constants";
+import { SideMode, TextureFormat, TextureFilter, ShadowMap, DepthPacking } from "../../constants";
+import { CullFace } from "../../constants";
 import { WebGLRenderTarget } from "../WebGLRenderTarget";
 import { ShaderMaterial } from "../../materials/ShaderMaterial";
 import { UniformsUtils } from "../shaders/UniformsUtils";
@@ -50,7 +50,7 @@ export class WebGLShadowMap {
   enabled: any;
   autoUpdate: any;
   needsUpdate: any;
-  type: any;
+  type: ShadowMap;
   renderReverseSided: any;
   renderSingleSided: any;
   constructor(_renderer: any, _lights: any, _objects: any, capabilities: any) {
@@ -88,7 +88,7 @@ export class WebGLShadowMap {
     ];
     // init
     const depthMaterialTemplate = new MeshDepthMaterial();
-    depthMaterialTemplate.depthPacking = RGBADepthPacking;
+    depthMaterialTemplate.depthPacking = DepthPacking.RGBA;
     depthMaterialTemplate.clipping = true;
     const distanceShader = ShaderLib["distanceRGBA"];
     const distanceUniforms = UniformsUtils.clone(distanceShader.uniforms);
@@ -116,7 +116,7 @@ export class WebGLShadowMap {
     this.enabled = false;
     this.autoUpdate = true;
     this.needsUpdate = false;
-    this.type = PCFShadowMap;
+    this.type = ShadowMap.PCF;
     this.renderReverseSided = true;
     this.renderSingleSided = true;
   }
@@ -177,7 +177,7 @@ export class WebGLShadowMap {
         isPointLight = false;
       }
       if (shadow.map === null) {
-        const pars = { minFilter: NearestFilter, magFilter: NearestFilter, format: RGBAFormat };
+        const pars = { minFilter: TextureFilter.Nearest, magFilter: TextureFilter.Nearest, format: TextureFormat.RGBA };
         shadow.map = new WebGLRenderTarget(this._shadowMapSize.x, this._shadowMapSize.y, pars);
         shadowCamera.updateProjectionMatrix();
       }
@@ -298,12 +298,12 @@ export class WebGLShadowMap {
     result.visible = material.visible;
     result.wireframe = material.wireframe;
     let side = material.side;
-    if (this.renderSingleSided && side === DoubleSide) {
-      side = FrontSide;
+    if (this.renderSingleSided && side === SideMode.Double) {
+      side = SideMode.Front;
     }
     if (this.renderReverseSided) {
-      if (side === FrontSide) side = BackSide;
-      else if (side === BackSide) side = FrontSide;
+      if (side === SideMode.Front) side = SideMode.Back;
+      else if (side === SideMode.Back) side = SideMode.Front;
     }
     result.side = side;
     result.clipShadows = material.clipShadows;
@@ -332,11 +332,11 @@ export class WebGLShadowMap {
       this.projectObject(children[i], camera, shadowCamera);
     }
   }
-  get cullFace(): number {
-    return this.renderReverseSided ? CullFaceFront : CullFaceBack;
+  get cullFace(): CullFace {
+    return this.renderReverseSided ? CullFace.Front : CullFace.Back;
   }
-  set cullFace(cullFace: number) {
-    const value = (cullFace !== CullFaceBack);
+  set cullFace(cullFace: CullFace) {
+    const value = (cullFace !== CullFace.Back);
     console.warn("WebGLRenderer: .shadowMap.cullFace is deprecated. Set .shadowMap.renderReverseSided to " + value + ".");
     this.renderReverseSided = value;
   }

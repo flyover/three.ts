@@ -23,7 +23,7 @@ function init() {
   controls.enableZoom = false;
   // world
   let geometry = new THREE.CylinderGeometry(0, 10, 30, 4, 1);
-  let material =  new THREE.MeshPhongMaterial({ color: 0xffffff, shading: THREE.FlatShading });
+  let material =  new THREE.MeshPhongMaterial({ color: 0xffffff, shading: THREE.ShadingMode.Flat });
   for (let i = 0; i < 500; i ++) {
     let mesh = new THREE.Mesh(geometry, material);
     mesh.position.x = (Math.random() - 0.5) * 1000;

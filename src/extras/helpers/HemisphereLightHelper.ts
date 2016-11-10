@@ -1,7 +1,7 @@
 import { Vector3 } from "../../math/Vector3";
 import { Object3D } from "../../core/Object3D";
 import { Mesh } from "../../objects/Mesh";
-import { FaceColors } from "../../constants";
+import { ColorsMode } from "../../constants";
 import { MeshBasicMaterial } from "../../materials/MeshBasicMaterial";
 import { SphereGeometry } from "../../geometries/SphereGeometry";
 import { Color } from "../../math/Color";
@@ -26,7 +26,7 @@ export class HemisphereLightHelper extends Object3D {
     for (let i = 0, il = 8; i < il; i ++) {
       geometry.faces[i].color = this.colors[i < 4 ? 0 : 1];
     }
-    let material = new MeshBasicMaterial({ vertexColors: FaceColors, wireframe: true });
+    let material = new MeshBasicMaterial({ vertexColors: ColorsMode.Face, wireframe: true });
     this.lightSphere = new Mesh(geometry, material);
     this.add(this.lightSphere);
     this.update();

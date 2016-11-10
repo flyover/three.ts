@@ -13,192 +13,306 @@ export const CullFaceBack = CullFace.Back;
 export const CullFaceFront = CullFace.Front;
 export const CullFaceFrontBack = CullFace.FrontBack;
 //
-///export enum FrontFaceDirection {}
-export const FrontFaceDirectionCW = 0;
-export const FrontFaceDirectionCCW = 1;
+export enum FrontFaceDirection {
+  CW = 0,
+  CCW = 1
+}
+export const FrontFaceDirectionCW: FrontFaceDirection = FrontFaceDirection.CW;
+export const FrontFaceDirectionCCW: FrontFaceDirection = FrontFaceDirection.CCW;
 //
-///export enum ShadowMap {}
-export const BasicShadowMap = 0;
-export const PCFShadowMap = 1;
-export const PCFSoftShadowMap = 2;
+export enum ShadowMap {
+  Basic = 0,
+  PCF = 1,
+  PCFSoft = 2
+}
+export const BasicShadowMap: ShadowMap = ShadowMap.Basic;
+export const PCFShadowMap: ShadowMap = ShadowMap.PCF;
+export const PCFSoftShadowMap: ShadowMap = ShadowMap.PCFSoft;
 //
-///export enum Side {}
-export const FrontSide = 0;
-export const BackSide = 1;
-export const DoubleSide = 2;
+export enum SideMode {
+  Front = 0,
+  Back = 1,
+  Double = 2
+}
+export const FrontSide: SideMode = SideMode.Front;
+export const BackSide: SideMode = SideMode.Back;
+export const DoubleSide: SideMode = SideMode.Double;
 //
-///export enum Shading {}
-export const FlatShading = 1;
-export const SmoothShading = 2;
+export enum ShadingMode {
+  Flat = 1,
+  Smooth = 2
+}
+export const FlatShading: ShadingMode = ShadingMode.Flat;
+export const SmoothShading: ShadingMode = ShadingMode.Smooth;
 //
-///export enum Colors {}
-export const NoColors = 0;
-export const FaceColors = 1;
-export const VertexColors = 2;
+export enum ColorsMode {
+  None = 0,
+  Face = 1,
+  Vertex = 2
+}
+export const NoColors: ColorsMode = ColorsMode.None;
+export const FaceColors: ColorsMode = ColorsMode.Face;
+export const VertexColors: ColorsMode = ColorsMode.Vertex;
 //
 export enum BlendingMode {
-  NoBlending = 0,
-  NormalBlending = 1,
-  AdditiveBlending = 2,
-  SubtractiveBlending = 3,
-  MultiplyBlending = 4,
-  CustomBlending = 5
+  None = 0,
+  Normal = 1,
+  Additive = 2,
+  Subtractive = 3,
+  Multiply = 4,
+  Custom = 5
 }
-export const NoBlending: BlendingMode = BlendingMode.NoBlending;
-export const NormalBlending: BlendingMode = BlendingMode.NormalBlending;
-export const AdditiveBlending: BlendingMode = BlendingMode.AdditiveBlending;
-export const SubtractiveBlending: BlendingMode = BlendingMode.SubtractiveBlending;
-export const MultiplyBlending: BlendingMode = BlendingMode.MultiplyBlending;
-export const CustomBlending: BlendingMode = BlendingMode.CustomBlending;
+export const NoBlending: BlendingMode = BlendingMode.None;
+export const NormalBlending: BlendingMode = BlendingMode.Normal;
+export const AdditiveBlending: BlendingMode = BlendingMode.Additive;
+export const SubtractiveBlending: BlendingMode = BlendingMode.Subtractive;
+export const MultiplyBlending: BlendingMode = BlendingMode.Multiply;
+export const CustomBlending: BlendingMode = BlendingMode.Custom;
 //
-///export enum Equation {}
-export const AddEquation = 100;
-export const SubtractEquation = 101;
-export const ReverseSubtractEquation = 102;
-export const MinEquation = 103;
-export const MaxEquation = 104;
+export enum BlendingEquation {
+  Add = 100,
+  Subtract = 101,
+  ReverseSubtract = 102,
+  Min = 103,
+  Max = 104
+}
+export const AddEquation: BlendingEquation = BlendingEquation.Add;
+export const SubtractEquation: BlendingEquation = BlendingEquation.Subtract;
+export const ReverseSubtractEquation: BlendingEquation = BlendingEquation.ReverseSubtract;
+export const MinEquation: BlendingEquation = BlendingEquation.Min;
+export const MaxEquation: BlendingEquation = BlendingEquation.Max;
 //
-///export enum Factor {}
-export const ZeroFactor = 200;
-export const OneFactor = 201;
-export const SrcColorFactor = 202;
-export const OneMinusSrcColorFactor = 203;
-export const SrcAlphaFactor = 204;
-export const OneMinusSrcAlphaFactor = 205;
-export const DstAlphaFactor = 206;
-export const OneMinusDstAlphaFactor = 207;
-export const DstColorFactor = 208;
-export const OneMinusDstColorFactor = 209;
-export const SrcAlphaSaturateFactor = 210;
+export enum BlendingFactor {
+  Zero = 200,
+  One = 201,
+  SrcColor = 202,
+  OneMinusSrcColor = 203,
+  SrcAlpha = 204,
+  OneMinusSrcAlpha = 205,
+  DstAlpha = 206,
+  OneMinusDstAlpha = 207,
+  DstColor = 208,
+  OneMinusDstColor = 209,
+  SrcAlphaSaturate = 210,
+}
+export const ZeroFactor: BlendingFactor = BlendingFactor.Zero;
+export const OneFactor: BlendingFactor = BlendingFactor.One;
+export const SrcColorFactor: BlendingFactor = BlendingFactor.SrcColor;
+export const OneMinusSrcColorFactor: BlendingFactor = BlendingFactor.OneMinusSrcColor;
+export const SrcAlphaFactor: BlendingFactor = BlendingFactor.SrcAlpha;
+export const OneMinusSrcAlphaFactor: BlendingFactor = BlendingFactor.OneMinusSrcAlpha;
+export const DstAlphaFactor: BlendingFactor = BlendingFactor.DstAlpha;
+export const OneMinusDstAlphaFactor: BlendingFactor = BlendingFactor.OneMinusDstAlpha;
+export const DstColorFactor: BlendingFactor = BlendingFactor.DstColor;
+export const OneMinusDstColorFactor: BlendingFactor = BlendingFactor.OneMinusDstColor;
+export const SrcAlphaSaturateFactor: BlendingFactor = BlendingFactor.SrcAlphaSaturate;
 //
-///export enum Depth {}
-export const NeverDepth = 0;
-export const AlwaysDepth = 1;
-export const LessDepth = 2;
-export const LessEqualDepth = 3;
-export const EqualDepth = 4;
-export const GreaterEqualDepth = 5;
-export const GreaterDepth = 6;
-export const NotEqualDepth = 7;
+export enum DepthFunction {
+  Never = 0,
+  Always = 1,
+  Less = 2,
+  LessEqual = 3,
+  Equal = 4,
+  GreaterEqual = 5,
+  Greater = 6,
+  NotEqual = 7
+}
+export const NeverDepth: DepthFunction = DepthFunction.Never;
+export const AlwaysDepth: DepthFunction = DepthFunction.Always;
+export const LessDepth: DepthFunction = DepthFunction.Less;
+export const LessEqualDepth: DepthFunction = DepthFunction.LessEqual;
+export const EqualDepth: DepthFunction = DepthFunction.Equal;
+export const GreaterEqualDepth: DepthFunction = DepthFunction.GreaterEqual;
+export const GreaterDepth: DepthFunction = DepthFunction.Greater;
+export const NotEqualDepth: DepthFunction = DepthFunction.NotEqual;
 //
-///export enum Operation {}
-export const MultiplyOperation = 0;
-export const MixOperation = 1;
-export const AddOperation = 2;
+export enum BlendingOperation {
+  Multiply = 0,
+  Mix = 1,
+  Add = 2
+}
+export const MultiplyOperation: BlendingOperation = BlendingOperation.Multiply;
+export const MixOperation: BlendingOperation = BlendingOperation.Mix;
+export const AddOperation: BlendingOperation = BlendingOperation.Add;
 //
-///export enum ToneMapping {}
-export const NoToneMapping = 0;
-export const LinearToneMapping = 1;
-export const ReinhardToneMapping = 2;
-export const Uncharted2ToneMapping = 3;
-export const CineonToneMapping = 4;
+export enum ToneMapping {
+  None = 0,
+  Linear = 1,
+  Reinhard = 2,
+  Uncharted2 = 3,
+  Cineon = 4
+}
+export const NoToneMapping: ToneMapping = ToneMapping.None;
+export const LinearToneMapping: ToneMapping = ToneMapping.Linear;
+export const ReinhardToneMapping: ToneMapping = ToneMapping.Reinhard;
+export const Uncharted2ToneMapping: ToneMapping = ToneMapping.Uncharted2;
+export const CineonToneMapping: ToneMapping = ToneMapping.Cineon;
 //
 export enum TextureMapping {
-    UVMapping = 300,
-    CubeReflectionMapping = 301,
-    CubeRefractionMapping = 302,
-    EquirectangularReflectionMapping = 303,
-    EquirectangularRefractionMapping = 304,
-    SphericalReflectionMapping = 305,
-    CubeUVReflectionMapping = 306,
-    CubeUVRefractionMapping = 307
+  UV = 300,
+  CubeReflection = 301,
+  CubeRefraction = 302,
+  EquirectangularReflection = 303,
+  EquirectangularRefraction = 304,
+  SphericalReflection = 305,
+  CubeUVReflection = 306,
+  CubeUVRefraction = 307
 }
-export const UVMapping: TextureMapping = TextureMapping.UVMapping;
-export const CubeReflectionMapping: TextureMapping = TextureMapping.CubeReflectionMapping;
-export const CubeRefractionMapping: TextureMapping = TextureMapping.CubeRefractionMapping;
-export const EquirectangularReflectionMapping: TextureMapping = TextureMapping.EquirectangularReflectionMapping;
-export const EquirectangularRefractionMapping: TextureMapping = TextureMapping.EquirectangularRefractionMapping;
-export const SphericalReflectionMapping: TextureMapping = TextureMapping.SphericalReflectionMapping;
-export const CubeUVReflectionMapping: TextureMapping = TextureMapping.CubeUVReflectionMapping;
-export const CubeUVRefractionMapping: TextureMapping = TextureMapping.CubeUVRefractionMapping;
+export const UVMapping: TextureMapping = TextureMapping.UV;
+export const CubeReflectionMapping: TextureMapping = TextureMapping.CubeReflection;
+export const CubeRefractionMapping: TextureMapping = TextureMapping.CubeRefraction;
+export const EquirectangularReflectionMapping: TextureMapping = TextureMapping.EquirectangularReflection;
+export const EquirectangularRefractionMapping: TextureMapping = TextureMapping.EquirectangularRefraction;
+export const SphericalReflectionMapping: TextureMapping = TextureMapping.SphericalReflection;
+export const CubeUVReflectionMapping: TextureMapping = TextureMapping.CubeUVReflection;
+export const CubeUVRefractionMapping: TextureMapping = TextureMapping.CubeUVRefraction;
 //
 export enum TextureWrapping {
-    RepeatWrapping = 1000,
-    ClampToEdgeWrapping = 1001,
-    MirroredRepeatWrapping = 1002
+  Repeat = 1000,
+  ClampToEdge = 1001,
+  MirroredRepeat = 1002
 }
-export const RepeatWrapping: TextureWrapping = TextureWrapping.RepeatWrapping;
-export const ClampToEdgeWrapping: TextureWrapping = TextureWrapping.ClampToEdgeWrapping;
-export const MirroredRepeatWrapping: TextureWrapping = TextureWrapping.MirroredRepeatWrapping;
+export const RepeatWrapping: TextureWrapping = TextureWrapping.Repeat;
+export const ClampToEdgeWrapping: TextureWrapping = TextureWrapping.ClampToEdge;
+export const MirroredRepeatWrapping: TextureWrapping = TextureWrapping.MirroredRepeat;
 //
 export enum TextureFilter {
-    NearestFilter = 1003,
-    NearestMipMapNearestFilter = 1004,
-    NearestMipMapLinearFilter = 1005,
-    LinearFilter = 1006,
-    LinearMipMapNearestFilter = 1007,
-    LinearMipMapLinearFilter = 1008
+  Nearest = 1003,
+  NearestMipMapNearest = 1004,
+  NearestMipMapLinear = 1005,
+  Linear = 1006,
+  LinearMipMapNearest = 1007,
+  LinearMipMapLinear = 1008
 }
-export const NearestFilter: TextureFilter = TextureFilter.NearestFilter;
-export const NearestMipMapNearestFilter: TextureFilter = TextureFilter.NearestMipMapNearestFilter;
-export const NearestMipMapLinearFilter: TextureFilter = TextureFilter.NearestMipMapLinearFilter;
-export const LinearFilter: TextureFilter = TextureFilter.LinearFilter;
-export const LinearMipMapNearestFilter: TextureFilter = TextureFilter.LinearMipMapNearestFilter;
-export const LinearMipMapLinearFilter: TextureFilter = TextureFilter.LinearMipMapLinearFilter;
+export const NearestFilter: TextureFilter = TextureFilter.Nearest;
+export const NearestMipMapNearestFilter: TextureFilter = TextureFilter.NearestMipMapNearest;
+export const NearestMipMapLinearFilter: TextureFilter = TextureFilter.NearestMipMapLinear;
+export const LinearFilter: TextureFilter = TextureFilter.Linear;
+export const LinearMipMapNearestFilter: TextureFilter = TextureFilter.LinearMipMapNearest;
+export const LinearMipMapLinearFilter: TextureFilter = TextureFilter.LinearMipMapLinear;
 //
-///export enum Type {}
-export const UnsignedByteType = 1009;
-export const ByteType = 1010;
-export const ShortType = 1011;
-export const UnsignedShortType = 1012;
-export const IntType = 1013;
-export const UnsignedIntType = 1014;
-export const FloatType = 1015;
-export const HalfFloatType = 1016;
-export const UnsignedShort4444Type = 1017;
-export const UnsignedShort5551Type = 1018;
-export const UnsignedShort565Type = 1019;
-export const UnsignedInt248Type = 1020;
+export enum TextureType {
+  UnsignedByte = 1009,
+  Byte = 1010,
+  Short = 1011,
+  UnsignedShort = 1012,
+  Int = 1013,
+  UnsignedInt = 1014,
+  Float = 1015,
+  HalfFloat = 1016,
+  UnsignedShort4444 = 1017,
+  UnsignedShort5551 = 1018,
+  UnsignedShort565 = 1019,
+  UnsignedInt248 = 1020
+}
+export const UnsignedByteType: TextureType = TextureType.UnsignedByte;
+export const ByteType: TextureType = TextureType.Byte;
+export const ShortType: TextureType = TextureType.Short;
+export const UnsignedShortType: TextureType = TextureType.UnsignedShort;
+export const IntType: TextureType = TextureType.Int;
+export const UnsignedIntType: TextureType = TextureType.UnsignedInt;
+export const FloatType: TextureType = TextureType.Float;
+export const HalfFloatType: TextureType = TextureType.HalfFloat;
+export const UnsignedShort4444Type: TextureType = TextureType.UnsignedShort4444;
+export const UnsignedShort5551Type: TextureType = TextureType.UnsignedShort5551;
+export const UnsignedShort565Type: TextureType = TextureType.UnsignedShort565;
+export const UnsignedInt248Type: TextureType = TextureType.UnsignedInt248;
 //
-///export enum Format {}
-export const AlphaFormat = 1021;
-export const RGBFormat = 1022;
-export const RGBAFormat = 1023;
-export const LuminanceFormat = 1024;
-export const LuminanceAlphaFormat = 1025;
-export const RGBEFormat = RGBAFormat;
-export const DepthFormat = 1026;
-export const DepthStencilFormat = 1027;
-export const RGB_S3TC_DXT1_Format = 2001;
-export const RGBA_S3TC_DXT1_Format = 2002;
-export const RGBA_S3TC_DXT3_Format = 2003;
-export const RGBA_S3TC_DXT5_Format = 2004;
-export const RGB_PVRTC_4BPPV1_Format = 2100;
-export const RGB_PVRTC_2BPPV1_Format = 2101;
-export const RGBA_PVRTC_4BPPV1_Format = 2102;
-export const RGBA_PVRTC_2BPPV1_Format = 2103;
-export const RGB_ETC1_Format = 2151;
+export enum TextureFormat {
+  Alpha = 1021,
+  RGB = 1022,
+  RGBA = 1023,
+  Luminance = 1024,
+  LuminanceAlpha = 1025,
+  RGBE = RGBA,
+  Depth = 1026,
+  DepthStencil = 1027,
+  RGB_S3TC_DXT1 = 2001,
+  RGBA_S3TC_DXT1 = 2002,
+  RGBA_S3TC_DXT3 = 2003,
+  RGBA_S3TC_DXT5 = 2004,
+  RGB_PVRTC_4BPPV1 = 2100,
+  RGB_PVRTC_2BPPV1 = 2101,
+  RGBA_PVRTC_4BPPV1 = 2102,
+  RGBA_PVRTC_2BPPV1 = 2103,
+  RGB_ETC1 = 2151,
+}
+export const AlphaFormat: TextureFormat = TextureFormat.Alpha;
+export const RGBFormat: TextureFormat = TextureFormat.RGB;
+export const RGBAFormat: TextureFormat = TextureFormat.RGBA;
+export const LuminanceFormat: TextureFormat = TextureFormat.Luminance;
+export const LuminanceAlphaFormat: TextureFormat = TextureFormat.LuminanceAlpha;
+export const RGBEFormat: TextureFormat = TextureFormat.RGBE;
+export const DepthFormat: TextureFormat = TextureFormat.Depth;
+export const DepthStencilFormat: TextureFormat = TextureFormat.DepthStencil;
+export const RGB_S3TC_DXT1_Format: TextureFormat = TextureFormat.RGB_S3TC_DXT1;
+export const RGBA_S3TC_DXT1_Format: TextureFormat = TextureFormat.RGBA_S3TC_DXT1;
+export const RGBA_S3TC_DXT3_Format: TextureFormat = TextureFormat.RGBA_S3TC_DXT3;
+export const RGBA_S3TC_DXT5_Format: TextureFormat = TextureFormat.RGBA_S3TC_DXT5;
+export const RGB_PVRTC_4BPPV1_Format: TextureFormat = TextureFormat.RGB_PVRTC_4BPPV1;
+export const RGB_PVRTC_2BPPV1_Format: TextureFormat = TextureFormat.RGB_PVRTC_2BPPV1;
+export const RGBA_PVRTC_4BPPV1_Format: TextureFormat = TextureFormat.RGBA_PVRTC_4BPPV1;
+export const RGBA_PVRTC_2BPPV1_Format: TextureFormat = TextureFormat.RGBA_PVRTC_2BPPV1;
+export const RGB_ETC1_Format: TextureFormat = TextureFormat.RGB_ETC1;
 //
-///export enum Loop {}
-export const LoopOnce = 2200;
-export const LoopRepeat = 2201;
-export const LoopPingPong = 2202;
+export enum LoopMode {
+  Once = 2200,
+  Repeat = 2201,
+  PingPong = 2202
+}
+export const LoopOnce: LoopMode = LoopMode.Once;
+export const LoopRepeat: LoopMode = LoopMode.Repeat;
+export const LoopPingPong: LoopMode = LoopMode.PingPong;
 //
-///export enum Interpolate {}
-export const InterpolateDiscrete = 2300;
-export const InterpolateLinear = 2301;
-export const InterpolateSmooth = 2302;
+export enum InterpolateMode {
+  Discrete = 2300,
+  Linear = 2301,
+  Smooth = 2302
+}
+export const InterpolateDiscrete: InterpolateMode = InterpolateMode.Discrete;
+export const InterpolateLinear: InterpolateMode = InterpolateMode.Linear;
+export const InterpolateSmooth: InterpolateMode = InterpolateMode.Smooth;
 //
-///export enum Ending {}
-export const ZeroCurvatureEnding = 2400;
-export const ZeroSlopeEnding = 2401;
-export const WrapAroundEnding = 2402;
+export enum EndingMode {
+  ZeroCurvature = 2400,
+  ZeroSlope = 2401,
+  WrapAround = 2402
+}
+export const ZeroCurvatureEnding: EndingMode = EndingMode.ZeroCurvature;
+export const ZeroSlopeEnding: EndingMode = EndingMode.ZeroSlope;
+export const WrapAroundEnding: EndingMode = EndingMode.WrapAround;
 //
-///export enum DrawMode {}
-export const TrianglesDrawMode = 0;
-export const TriangleStripDrawMode = 1;
-export const TriangleFanDrawMode = 2;
+export enum DrawMode {
+  Triangles = 0,
+  TriangleStrip = 1,
+  TriangleFan = 2
+}
+export const TrianglesDrawMode: DrawMode = DrawMode.Triangles;
+export const TriangleStripDrawMode: DrawMode = DrawMode.TriangleStrip;
+export const TriangleFanDrawMode: DrawMode = DrawMode.TriangleFan;
 //
-///export enum Encoding {}
-export const LinearEncoding = 3000;
-export const sRGBEncoding = 3001;
-export const GammaEncoding = 3007;
-export const RGBEEncoding = 3002;
-export const LogLuvEncoding = 3003;
-export const RGBM7Encoding = 3004;
-export const RGBM16Encoding = 3005;
-export const RGBDEncoding = 3006;
+export enum TextureEncoding {
+  Linear = 3000,
+  sRGB = 3001,
+  Gamma = 3007,
+  RGBE = 3002,
+  LogLuv = 3003,
+  RGBM7 = 3004,
+  RGBM16 = 3005,
+  RGBD = 3006
+}
+export const LinearEncoding: TextureEncoding = TextureEncoding.Linear;
+export const sRGBEncoding: TextureEncoding = TextureEncoding.sRGB;
+export const GammaEncoding: TextureEncoding = TextureEncoding.Gamma;
+export const RGBEEncoding: TextureEncoding = TextureEncoding.RGBE;
+export const LogLuvEncoding: TextureEncoding = TextureEncoding.LogLuv;
+export const RGBM7Encoding: TextureEncoding = TextureEncoding.RGBM7;
+export const RGBM16Encoding: TextureEncoding = TextureEncoding.RGBM16;
+export const RGBDEncoding: TextureEncoding = TextureEncoding.RGBD;
 //
-///export enum DepthPacking {}
-export const BasicDepthPacking = 3200;
-export const RGBADepthPacking = 3201;
+export enum DepthPacking {
+  Basic = 3200,
+  RGBA = 3201
+}
+export const BasicDepthPacking: DepthPacking = DepthPacking.Basic;
+export const RGBADepthPacking: DepthPacking = DepthPacking.RGBA;

@@ -1,4 +1,4 @@
-import { LinearFilter, LinearMipMapLinearFilter, ClampToEdgeWrapping } from "../constants";
+import { TextureFilter, TextureWrapping } from "../constants";
 import { XHRLoader } from "./XHRLoader";
 import { DataTexture } from "../textures/DataTexture";
 import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
@@ -30,10 +30,10 @@ export class BinaryTextureLoader {
         texture.image.height = texData.height;
         texture.image.data = texData.data;
       }
-      texture.wrapS = undefined !== texData.wrapS ? texData.wrapS : ClampToEdgeWrapping;
-      texture.wrapT = undefined !== texData.wrapT ? texData.wrapT : ClampToEdgeWrapping;
-      texture.magFilter = undefined !== texData.magFilter ? texData.magFilter : LinearFilter;
-      texture.minFilter = undefined !== texData.minFilter ? texData.minFilter : LinearMipMapLinearFilter;
+      texture.wrapS = undefined !== texData.wrapS ? texData.wrapS : TextureWrapping.ClampToEdge;
+      texture.wrapT = undefined !== texData.wrapT ? texData.wrapT : TextureWrapping.ClampToEdge;
+      texture.magFilter = undefined !== texData.magFilter ? texData.magFilter : TextureFilter.Linear;
+      texture.minFilter = undefined !== texData.minFilter ? texData.minFilter : TextureFilter.LinearMipMapLinear;
       texture.anisotropy = undefined !== texData.anisotropy ? texData.anisotropy : 1;
       if (undefined !== texData.format) {
         texture.format = texData.format;
@@ -45,7 +45,7 @@ export class BinaryTextureLoader {
         texture.mipmaps = texData.mipmaps;
       }
       if (1 === texData.mipmapCount) {
-        texture.minFilter = LinearFilter;
+        texture.minFilter = TextureFilter.Linear;
       }
       texture.needsUpdate = true;
       if (onLoad) onLoad(texture, texData);

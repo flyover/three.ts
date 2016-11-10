@@ -20,7 +20,7 @@ function init(): void {
   light.position.set(1, 1, 1);
   scene.add(light);
   const texture = new THREE.TextureLoader().load('textures/crate.gif', render);
-  texture.mapping = THREE.UVMapping;
+  texture.mapping = THREE.TextureMapping.UV;
   texture.anisotropy = renderer.getMaxAnisotropy();
   const geometry = new THREE.BoxGeometry(200, 200, 200);
   const material = new THREE.MeshLambertMaterial({ map: texture });
@@ -73,13 +73,13 @@ function init(): void {
       type: THREE.VectorKeyframeTrack,
       propertyPath: 'MyBox.position',
       initialValue: [ 0, 0, 0 ],
-      interpolation: THREE.InterpolateSmooth
+      interpolation: THREE.InterpolateMode.Smooth
     },
     {
       type: THREE.QuaternionKeyframeTrack,
       propertyPath: 'MyBox.quaternion',
       initialValue: [ 0, 0, 0, 1 ],
-      interpolation: THREE.InterpolateLinear
+      interpolation: THREE.InterpolateMode.Linear
     }
   ];
   new Timeliner(new THREE_TimelinerController(scene, trackInfo, render));

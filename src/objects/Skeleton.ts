@@ -1,5 +1,5 @@
 import { Matrix4 } from "../math/Matrix4";
-import { FloatType, RGBAFormat } from "../constants";
+import { TextureType, TextureFormat } from "../constants";
 import { DataTexture } from "../textures/DataTexture";
 import { _Math } from "../math/Math";
 import { Bone } from "./Bone";
@@ -36,7 +36,7 @@ export class Skeleton {
       this.boneTextureWidth = size;
       this.boneTextureHeight = size;
       this.boneMatrices = new Float32Array(this.boneTextureWidth * this.boneTextureHeight * 4); // 4 floats per RGBA pixel
-      this.boneTexture = new DataTexture(this.boneMatrices, this.boneTextureWidth, this.boneTextureHeight, RGBAFormat, FloatType);
+      this.boneTexture = new DataTexture(this.boneMatrices, this.boneTextureWidth, this.boneTextureHeight, TextureFormat.RGBA, TextureType.Float);
     } else {
       this.boneMatrices = new Float32Array(16 * this.bones.length);
     }

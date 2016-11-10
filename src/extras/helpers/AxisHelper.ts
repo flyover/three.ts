@@ -1,5 +1,5 @@
 import { LineSegments } from "../../objects/LineSegments";
-import { VertexColors } from "../../constants";
+import { ColorsMode } from "../../constants";
 import { LineBasicMaterial } from "../../materials/LineBasicMaterial";
 import { BufferAttribute } from "../../core/BufferAttribute";
 import { BufferGeometry } from "../../core/BufferGeometry";
@@ -22,7 +22,7 @@ export class AxisHelper extends LineSegments {
     const geometry = new BufferGeometry();
     geometry.addAttribute('position', new BufferAttribute(vertices, 3));
     geometry.addAttribute('color', new BufferAttribute(colors, 3));
-    const material = new LineBasicMaterial({ vertexColors: VertexColors });
+    const material = new LineBasicMaterial({ vertexColors: ColorsMode.Vertex });
     super(geometry, material);
   }
 }

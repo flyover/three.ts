@@ -1,5 +1,5 @@
 import { Material, MaterialParameters } from "./Material";
-import { BasicDepthPacking } from "../constants";
+import { DepthPacking } from "../constants";
 import { Texture } from "../textures/Texture";
 /**
  * @author mrdoob / http://mrdoob.com/
@@ -38,13 +38,13 @@ export interface MeshDepthMaterialParameters extends MaterialParameters {
   wireframeLinewidth?: number;
 }
 export class MeshDepthMaterial extends Material {
-  depthPacking: any;
+  depthPacking: DepthPacking;
   clipping: boolean;
   readonly isMeshDepthMaterial: boolean = true;
   constructor(parameters?: MeshDepthMaterialParameters) {
     super();
     this.type = 'MeshDepthMaterial';
-    this.depthPacking = BasicDepthPacking;
+    this.depthPacking = DepthPacking.Basic;
     this.skinning = false;
     this.morphTargets = false;
     this.map = null;

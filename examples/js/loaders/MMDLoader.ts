@@ -1281,10 +1281,10 @@ export class MMDLoader extends THREE.Loader {
         }
         let texture = loader.load(fullPath, function(t) {
           t.flipY = false;
-          t.wrapS = THREE.RepeatWrapping;
-          t.wrapT = THREE.RepeatWrapping;
+          t.wrapS = THREE.TextureWrapping.Repeat;
+          t.wrapT = THREE.TextureWrapping.Repeat;
           if (params.sphericalReflectionMapping === true) {
-            t.mapping = THREE.SphericalReflectionMapping;
+            t.mapping = THREE.TextureMapping.SphericalReflection;
           }
           for (let i = 0; i < texture.readyCallbacks.length; i++) {
             texture.readyCallbacks[ i ](texture);
@@ -1314,10 +1314,10 @@ export class MMDLoader extends THREE.Loader {
         params.specular = color.fromArray([ m.specular[ 0 ], m.specular[ 1 ], m.specular[ 2 ] ]).clone();
         params.shininess = m.shininess;
         if (params.opacity === 1.0) {
-          params.side = THREE.FrontSide;
+          params.side = THREE.SideMode.Front;
           params.transparent = false;
         } else {
-          params.side = THREE.DoubleSide;
+          params.side = THREE.SideMode.Double;
           params.transparent = true;
         }
         if (model.metadata.format === 'pmd') {
@@ -1336,9 +1336,9 @@ export class MMDLoader extends THREE.Loader {
               if (n.indexOf('.sph') >= 0 || n.indexOf('.spa') >= 0) {
                 params.envMap = loadTexture(n, { sphericalReflectionMapping: true });
                 if (n.indexOf('.sph') >= 0) {
-                  params.envMapType = THREE.MultiplyOperation;
+                  params.envMapType = THREE.BlendingOperation.Multiply;
                 } else {
-                  params.envMapType = THREE.AddOperation;
+                  params.envMapType = THREE.BlendingOperation.Add;
                 }
               } else {
                 params.map = loadTexture(n);
@@ -1355,9 +1355,9 @@ export class MMDLoader extends THREE.Loader {
             let n = model.textures[ m.envTextureIndex ];
             params.envMap = loadTexture(n, { sphericalReflectionMapping: true });
             if (m.envFlag === 1) {
-              params.envMapType = THREE.MultiplyOperation;
+              params.envMapType = THREE.BlendingOperation.Multiply;
             } else {
-              params.envMapType = THREE.AddOperation;
+              params.envMapType = THREE.BlendingOperation.Add;
             }
           }
         }
@@ -1381,14 +1381,14 @@ export class MMDLoader extends THREE.Loader {
         m.skinning = geometry.bones.length > 0 ? true : false;
         m.morphTargets = geometry.morphTargets.length > 0 ? true : false;
         m.lights = true;
-        m.side = (model.metadata.format === 'pmx' && (p2.flag & 0x1) === 1) ? THREE.DoubleSide : p.side;
+        m.side = (model.metadata.format === 'pmx' && (p2.flag & 0x1) === 1) ? THREE.SideMode.Double : p.side;
         m.transparent = p.transparent;
         m.fog = true;
-        m.blending = THREE.BlendingMode.CustomBlending;
-        m.blendSrc = THREE.SrcAlphaFactor;
-        m.blendDst = THREE.OneMinusSrcAlphaFactor;
-        m.blendSrcAlpha = THREE.SrcAlphaFactor;
-        m.blendDstAlpha = THREE.DstAlphaFactor;
+        m.blending = THREE.BlendingMode.Custom;
+        m.blendSrc = THREE.BlendingFactor.SrcAlpha;
+        m.blendDst = THREE.BlendingFactor.OneMinusSrcAlpha;
+        m.blendSrcAlpha = THREE.BlendingFactor.SrcAlpha;
+        m.blendDstAlpha = THREE.BlendingFactor.DstAlpha;
         if (p.map !== undefined) {
           m.faceOffset = p.faceOffset;
           m.faceNum = p.faceNum;
@@ -1434,8 +1434,8 @@ export class MMDLoader extends THREE.Loader {
               /*
                * This method expects
                *   t.flipY = false
-               *   t.wrapS = THREE.RepeatWrapping
-               *   t.wrapT = THREE.RepeatWrapping
+               *   t.wrapS = THREE.TextureWrapping.Repeat
+               *   t.wrapT = THREE.TextureWrapping.Repeat
                * TODO: more precise
                */
               function getAlphaByUv (image, uv) {

@@ -1,4 +1,4 @@
-import { FaceColors, VertexColors, DoubleSide, BackSide, MirroredRepeatWrapping, RepeatWrapping, BlendingMode } from "../constants";
+import { ColorsMode, SideMode, TextureWrapping, BlendingMode } from "../constants";
 import { _Math } from "../math/Math";
 import { Vector2 } from "../math/Vector2";
 import { MaterialLoader } from "./MaterialLoader";
@@ -44,17 +44,17 @@ export class Loader {
         }
         if (repeat !== undefined) {
           texture.repeat.fromArray(repeat);
-          if (repeat[0] !== 1) texture.wrapS = RepeatWrapping;
-          if (repeat[1] !== 1) texture.wrapT = RepeatWrapping;
+          if (repeat[0] !== 1) texture.wrapS = TextureWrapping.Repeat;
+          if (repeat[1] !== 1) texture.wrapT = TextureWrapping.Repeat;
         }
         if (offset !== undefined) {
           texture.offset.fromArray(offset);
         }
         if (wrap !== undefined) {
-          if (wrap[0] === 'repeat') texture.wrapS = RepeatWrapping;
-          if (wrap[0] === 'mirror') texture.wrapS = MirroredRepeatWrapping;
-          if (wrap[1] === 'repeat') texture.wrapT = RepeatWrapping;
-          if (wrap[1] === 'mirror') texture.wrapT = MirroredRepeatWrapping;
+          if (wrap[0] === 'repeat') texture.wrapS = TextureWrapping.Repeat;
+          if (wrap[0] === 'mirror') texture.wrapS = TextureWrapping.MirroredRepeat;
+          if (wrap[1] === 'repeat') texture.wrapT = TextureWrapping.Repeat;
+          if (wrap[1] === 'mirror') texture.wrapT = TextureWrapping.MirroredRepeat;
         }
         if (anisotropy !== undefined) {
           texture.anisotropy = anisotropy;
@@ -190,10 +190,10 @@ export class Loader {
           case 'mapAlphaAnisotropy':
             break;
           case 'flipSided':
-            json.side = BackSide;
+            json.side = SideMode.Back;
             break;
           case 'doubleSided':
-            json.side = DoubleSide;
+            json.side = SideMode.Double;
             break;
           case 'transparency':
             console.warn('THREE.Loader.createMaterial: transparency has been renamed to opacity');
@@ -210,8 +210,8 @@ export class Loader {
             json[name] = value;
             break;
           case 'vertexColors':
-            if (value === true) json.vertexColors = VertexColors;
-            if (value === 'face') json.vertexColors = FaceColors;
+            if (value === true) json.vertexColors = ColorsMode.Vertex;
+            if (value === 'face') json.vertexColors = ColorsMode.Face;
             break;
           default:
             console.error('THREE.Loader.createMaterial: Unsupported', name, value);

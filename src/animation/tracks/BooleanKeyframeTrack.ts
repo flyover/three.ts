@@ -1,4 +1,4 @@
-import { InterpolateDiscrete } from "../../constants";
+import { InterpolateMode } from "../../constants";
 import { KeyframeTrack } from "../KeyframeTrack";
 /**
  *
@@ -15,7 +15,7 @@ export class NewBooleanKeyframeTrack extends KeyframeTrack {
   }
   ValueTypeName: string = 'color';
   ValueBufferType = Array;
-  DefaultInterpolation = InterpolateDiscrete;
+  DefaultInterpolation: InterpolateMode = InterpolateMode.Discrete;
   ///InterpolantFactoryMethodLinear: undefined; // !!TODO
   ///InterpolantFactoryMethodSmooth: undefined; // !!TODO
   // Note: Actually this track could have a optimized / compressed
@@ -30,7 +30,7 @@ OldBooleanKeyframeTrack.prototype = Object.assign(Object.create(KeyframeTrack.pr
   constructor: OldBooleanKeyframeTrack,
   ValueTypeName: 'bool',
   ValueBufferType: Array,
-  DefaultInterpolation: InterpolateDiscrete,
+  DefaultInterpolation: InterpolateMode.Discrete,
   InterpolantFactoryMethodLinear: undefined,
   InterpolantFactoryMethodSmooth: undefined
   // Note: Actually this track could have a optimized / compressed

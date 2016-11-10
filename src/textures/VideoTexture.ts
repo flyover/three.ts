@@ -1,9 +1,10 @@
 import { Texture } from "./Texture";
+import { TextureMapping, TextureWrapping, TextureEncoding, TextureType, TextureFormat, TextureFilter } from "../constants";
 /**
  * @author mrdoob / http://mrdoob.com/
  */
 export class VideoTexture extends Texture {
-  constructor(video: HTMLVideoElement, mapping: number, wrapS: number, wrapT: number, magFilter: number, minFilter: number, format: number, type: number, anisotropy: number) {
+  constructor(video: HTMLVideoElement, mapping: TextureMapping, wrapS: TextureWrapping, wrapT: TextureWrapping, magFilter: TextureFilter, minFilter: TextureFilter, format: TextureFormat, type: TextureType, anisotropy: number) {
     super(video, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy);
     this.generateMipmaps = false;
     const scope: VideoTexture = this;

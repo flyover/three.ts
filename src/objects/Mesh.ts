@@ -6,7 +6,7 @@ import { Matrix4 } from "../math/Matrix4";
 import { Object3D } from "../core/Object3D";
 import { Triangle } from "../math/Triangle";
 import { Face3 } from "../core/Face3";
-import { DoubleSide, BackSide, TrianglesDrawMode } from "../constants";
+import { SideMode, DrawMode } from "../constants";
 import { Geometry } from "../core/Geometry";
 import { Material } from "../materials/Material";
 import { MultiMaterial } from "../materials/MultiMaterial";
@@ -20,7 +20,7 @@ import { Raycaster, Intersect } from "../core/Raycaster";
  * @author jonobr1 / http://jonobr1.com/
  */
 export class Mesh extends Object3D {
-  drawMode: number = TrianglesDrawMode;
+  drawMode: DrawMode = DrawMode.Triangles;
   morphTargetInfluences: number[];
   morphTargetDictionary: any;
   readonly isMesh: boolean = true;
@@ -31,7 +31,7 @@ export class Mesh extends Object3D {
     this.material = material;
     this.updateMorphTargets();
   }
-  setDrawMode(value: number): void {
+  setDrawMode(value: DrawMode): void {
     this.drawMode = value;
   }
   copy(source: this): this {
@@ -77,10 +77,10 @@ export class Mesh extends Object3D {
     function checkIntersection(object: Object3D, raycaster: Raycaster, ray: Ray, pA: Vector3, pB: Vector3, pC: Vector3, point: Vector3): Intersect {
       let intersect;
       let material = object.material;
-      if (material.side === BackSide) {
+      if (material.side === SideMode.Back) {
         intersect = ray.intersectTriangle(pC, pB, pA, true, point);
       } else {
-        intersect = ray.intersectTriangle(pA, pB, pC, material.side !== DoubleSide, point);
+        intersect = ray.intersectTriangle(pA, pB, pC, material.side !== SideMode.Double, point);
       }
       if (intersect === null) return null;
       intersectionPointWorld.copy(point);

@@ -1,7 +1,7 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import { LinearFilter, NearestFilter, RGBFormat, RGBAFormat, DepthFormat, DepthStencilFormat, FloatType, HalfFloatType, ClampToEdgeWrapping, NearestMipMapLinearFilter, NearestMipMapNearestFilter } from "../../constants";
+import { TextureFormat, TextureType, TextureWrapping, TextureFilter } from "../../constants";
 import { _Math } from "../../math/Math";
 import { Texture } from "../../textures/Texture";
 import { DepthTexture } from "../../textures/DepthTexture";
@@ -61,14 +61,14 @@ export class WebGLTextures {
     return image;
   }
   private static textureNeedsPowerOfTwo(texture: Texture): boolean {
-    if (texture.wrapS !== ClampToEdgeWrapping || texture.wrapT !== ClampToEdgeWrapping) return true;
-    if (texture.minFilter !== NearestFilter && texture.minFilter !== LinearFilter) return true;
+    if (texture.wrapS !== TextureWrapping.ClampToEdge || texture.wrapT !== TextureWrapping.ClampToEdge) return true;
+    if (texture.minFilter !== TextureFilter.Nearest && texture.minFilter !== TextureFilter.Linear) return true;
     return false;
   }
   // Fallback filters for non-power-of-2 textures
   private filterFallback(f: number): GLenum {
     const _gl = this._gl;
-    if (f === NearestFilter || f === NearestMipMapNearestFilter || f === NearestMipMapLinearFilter) {
+    if (f === TextureFilter.Nearest || f === TextureFilter.NearestMipMapNearest || f === TextureFilter.NearestMipMapLinear) {
       return _gl.NEAREST;
     }
     return _gl.LINEAR;
@@ -182,7 +182,7 @@ export class WebGLTextures {
             const mipmaps = cubeImage[i].mipmaps;
             for (let j = 0, jl = mipmaps.length; j < jl; j ++) {
               mipmap = mipmaps[j];
-              if (texture.format !== RGBAFormat && texture.format !== RGBFormat) {
+              if (texture.format !== TextureFormat.RGBA && texture.format !== TextureFormat.RGB) {
                 if (this.state.getCompressedTextureFormats().indexOf(glFormat) > - 1) {
                   this.state.compressedTexImage2D(_gl.TEXTURE_CUBE_MAP_POSITIVE_X + i, j, glFormat, mipmap.width, mipmap.height, 0, mipmap.data);
                 } else {
@@ -221,19 +221,19 @@ export class WebGLTextures {
     } else {
       _gl.texParameteri(textureType, _gl.TEXTURE_WRAP_S, _gl.CLAMP_TO_EDGE);
       _gl.texParameteri(textureType, _gl.TEXTURE_WRAP_T, _gl.CLAMP_TO_EDGE);
-      if (texture.wrapS !== ClampToEdgeWrapping || texture.wrapT !== ClampToEdgeWrapping) {
-        console.warn('THREE.WebGLRenderer: Texture is not power of two. Texture.wrapS and Texture.wrapT should be set to THREE.ClampToEdgeWrapping.', texture);
+      if (texture.wrapS !== TextureWrapping.ClampToEdge || texture.wrapT !== TextureWrapping.ClampToEdge) {
+        console.warn('THREE.WebGLRenderer: Texture is not power of two. Texture.wrapS and Texture.wrapT should be set to THREE.TextureWrapping.ClampToEdge.', texture);
       }
       _gl.texParameteri(textureType, _gl.TEXTURE_MAG_FILTER, this.filterFallback(texture.magFilter));
       _gl.texParameteri(textureType, _gl.TEXTURE_MIN_FILTER, this.filterFallback(texture.minFilter));
-      if (texture.minFilter !== NearestFilter && texture.minFilter !== LinearFilter) {
-        console.warn('THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter should be set to THREE.NearestFilter or THREE.LinearFilter.', texture);
+      if (texture.minFilter !== TextureFilter.Nearest && texture.minFilter !== TextureFilter.Linear) {
+        console.warn('THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter should be set to THREE.TextureFilter.Nearest or THREE.TextureFilter.Linear.', texture);
       }
     }
     extension = this.extensions.get('EXT_texture_filter_anisotropic');
     if (extension) {
-      if (texture.type === FloatType && this.extensions.get('OES_texture_float_linear') === null) return;
-      if (texture.type === HalfFloatType && this.extensions.get('OES_texture_half_float_linear') === null) return;
+      if (texture.type === TextureType.Float && this.extensions.get('OES_texture_float_linear') === null) return;
+      if (texture.type === TextureType.HalfFloat && this.extensions.get('OES_texture_half_float_linear') === null) return;
       if (texture.anisotropy > 1 || this.properties.get(texture).__currentAnisotropy) {
         _gl.texParameterf(textureType, extension.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(texture.anisotropy, this.capabilities.getMaxAnisotropy()));
         this.properties.get(texture).__currentAnisotropy = texture.anisotropy;
@@ -266,7 +266,7 @@ export class WebGLTextures {
     if ((texture && texture instanceof DepthTexture)) {
       // populate depth texture with dummy data
       let internalFormat = _gl.DEPTH_COMPONENT;
-      if (texture.type === FloatType) {
+      if (texture.type === TextureType.Float) {
         if (!this._isWebGL2) throw new Error('Float Depth Texture only supported in WebGL2.0');
         internalFormat = _gl.DEPTH_COMPONENT32F;
       } else if (this._isWebGL2) {
@@ -275,7 +275,7 @@ export class WebGLTextures {
       }
       // Depth stencil textures need the DEPTH_STENCIL internal format
       // (https://www.khronos.org/registry/webgl/extensions/WEBGL_depth_texture/)
-      if (texture.format === DepthStencilFormat) {
+      if (texture.format === TextureFormat.DepthStencil) {
         internalFormat = _gl.DEPTH_STENCIL;
       }
       this.state.texImage2D(_gl.TEXTURE_2D, 0, internalFormat, image.width, image.height, 0, glFormat, glType, null);
@@ -295,7 +295,7 @@ export class WebGLTextures {
     } else if ((texture && texture instanceof CompressedTexture)) {
       for (let i = 0, il = mipmaps.length; i < il; i ++) {
         mipmap = mipmaps[i];
-        if (texture.format !== RGBAFormat && texture.format !== RGBFormat) {
+        if (texture.format !== TextureFormat.RGBA && texture.format !== TextureFormat.RGB) {
           if (this.state.getCompressedTextureFormats().indexOf(glFormat) > - 1) {
             this.state.compressedTexImage2D(_gl.TEXTURE_2D, i, glFormat, mipmap.width, mipmap.height, 0, mipmap.data);
           } else {
@@ -370,9 +370,9 @@ export class WebGLTextures {
     }
     this.setTexture2D(renderTarget.depthTexture, 0);
     const webglDepthTexture = this.properties.get(renderTarget.depthTexture).__webglTexture;
-    if (renderTarget.depthTexture.format === DepthFormat) {
+    if (renderTarget.depthTexture.format === TextureFormat.Depth) {
       _gl.framebufferTexture2D(_gl.FRAMEBUFFER, _gl.DEPTH_ATTACHMENT, _gl.TEXTURE_2D, webglDepthTexture, 0);
-    } else if (renderTarget.depthTexture.format === DepthStencilFormat) {
+    } else if (renderTarget.depthTexture.format === TextureFormat.DepthStencil) {
       _gl.framebufferTexture2D(_gl.FRAMEBUFFER, _gl.DEPTH_STENCIL_ATTACHMENT, _gl.TEXTURE_2D, webglDepthTexture, 0);
     } else {
       throw new Error('Unknown depthTexture format');
@@ -446,8 +446,8 @@ export class WebGLTextures {
     const _gl = this._gl;
     const texture = renderTarget.texture;
     if (texture.generateMipmaps && WebGLTextures.isPowerOfTwo(renderTarget) &&
-        texture.minFilter !== NearestFilter &&
-        texture.minFilter !== LinearFilter) {
+        texture.minFilter !== TextureFilter.Nearest &&
+        texture.minFilter !== TextureFilter.Linear) {
       const target = (renderTarget && renderTarget instanceof WebGLRenderTargetCube) ? _gl.TEXTURE_CUBE_MAP : _gl.TEXTURE_2D;
       const webglTexture = this.properties.get(texture).__webglTexture;
       this.state.bindTexture(target, webglTexture);

@@ -1,6 +1,6 @@
 import { LineSegments } from "../../objects/LineSegments";
 import { Matrix4 } from "../../math/Matrix4";
-import { VertexColors } from "../../constants";
+import { ColorsMode } from "../../constants";
 import { LineBasicMaterial } from "../../materials/LineBasicMaterial";
 import { Color } from "../../math/Color";
 import { Vector3 } from "../../math/Vector3";
@@ -30,7 +30,7 @@ export class SkeletonHelper extends LineSegments {
       }
     }
     geometry.dynamic = true;
-    const material = new LineBasicMaterial({ vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true });
+    const material = new LineBasicMaterial({ vertexColors: ColorsMode.Vertex, depthTest: false, depthWrite: false, transparent: true });
     super(geometry, material);
     this.bones = bones;
     this.root = object;
