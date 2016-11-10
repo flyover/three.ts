@@ -243,7 +243,7 @@ export class TrackballControls extends THREE.EventDispatcher {
   }
   private keyup(event) {
     if (this.enabled === false) return;
-    this._state =this. _prevState;
+    this._state = this. _prevState;
     window.addEventListener('keydown', this.keydown.bind(this), false);
   }
   private mousedown(event) {
@@ -356,13 +356,13 @@ export class TrackballControls extends THREE.EventDispatcher {
   }
   dispose() {
     this.domElement.removeEventListener('contextmenu', this.contextmenu.bind(this), false);
-    this.domElement.removeEventListener('mousedown',this. mousedown.bind(this), false);
+    this.domElement.removeEventListener('mousedown', this. mousedown.bind(this), false);
     this.domElement.removeEventListener('wheel', this.mousewheel.bind(this), false);
     this.domElement.removeEventListener('touchstart', this.touchstart.bind(this), false);
     this.domElement.removeEventListener('touchend', this.touchend.bind(this), false);
     this.domElement.removeEventListener('touchmove', this.touchmove.bind(this), false);
     document.removeEventListener('mousemove', this.mousemove.bind(this), false);
-    document.removeEventListener('mouseup',this. mouseup.bind(this), false);
+    document.removeEventListener('mouseup', this. mouseup.bind(this), false);
     window.removeEventListener('keydown', this.keydown.bind(this), false);
     window.removeEventListener('keyup', this.keyup.bind(this), false);
   };

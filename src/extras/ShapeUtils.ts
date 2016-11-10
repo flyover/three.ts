@@ -77,7 +77,7 @@ export class ShapeUtils {
       let nv: number = n;
       /*  remove nv - 2 vertices, creating 1 triangle every time */
       let count: number = 2 * nv;   /* error detection */
-      for (v = nv - 1; nv > 2;) {
+      for (v = nv - 1; nv > 2; ) {
         /* if we loop, it is probably a non-simple polygon */
         if ((count --) <= 0) {
           //** Triangulate: ERROR - probable bad polygon!

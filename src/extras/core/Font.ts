@@ -31,7 +31,7 @@ export class Font {
       let x, y, cpx, cpy, cpx0, cpy0, cpx1, cpy1, cpx2, cpy2, laste;
       if (glyph.o) {
         let outline = glyph._cachedOutline || (glyph._cachedOutline = glyph.o.split(' '));
-        for (let i = 0, l = outline.length; i < l;) {
+        for (let i = 0, l = outline.length; i < l; ) {
           let action = outline[i ++];
           switch (action) {
             case 'm': // moveTo

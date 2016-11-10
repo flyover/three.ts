@@ -179,8 +179,8 @@ function transformSVGPath(pathStr) {
         y1 = -Math.sin(xar) * (x - nx) / 2 + Math.cos(xar) * (y - ny) / 2;
         // step 2, using x2 as cx'
         let norm = Math.sqrt(
-           (rx*rx * ry*ry - rx*rx * y1*y1 - ry*ry * x1*x1) /
-           (rx*rx * y1*y1 + ry*ry * x1*x1));
+           (rx * rx * ry * ry - rx * rx * y1 * y1 - ry * ry * x1 * x1) /
+           (rx * rx * y1 * y1 + ry * ry * x1 * x1));
         if (laf === sf)
           norm = -norm;
         x2 = norm * rx * y1 / ry;
@@ -218,7 +218,7 @@ function transformSVGPath(pathStr) {
     activeCmd = pathStr[idx++];
   }
   return path;
-}
+};
 }
 let $d3g: any = {};
 d3threeD($d3g);
@@ -253,7 +253,7 @@ function addGeoObject(group, svgObject) {
     }
   }
 }
-function init3d(){
+function init3d() {
   /// Global : renderer
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setClearColor(0xb0b0b0);
@@ -316,7 +316,7 @@ function initSVGObject() {
     "L360.7261,126.3232 L362.8064,125.5221 Z"];
   obj.amounts = [ 19, 20, 21 ];
   obj.colors =  [ 0xC07000, 0xC08000, 0xC0A000 ];
-  obj.center = { x:365, y:125 };
+  obj.center = { x: 365, y: 125 };
   return obj;
 };
 /// Events from extrude shapes example
@@ -350,14 +350,14 @@ function onDocumentMouseOut(event) {
   document.removeEventListener('mouseout', onDocumentMouseOut, false);
 }
 function onDocumentTouchStart(event) {
-  if (event.touches.length == 1) {
+  if (event.touches.length === 1) {
     event.preventDefault();
     mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
     targetRotationOnMouseDown = targetRotation;
   }
 }
 function onDocumentTouchMove(event) {
-  if (event.touches.length == 1) {
+  if (event.touches.length === 1) {
     event.preventDefault();
     mouseX = event.touches[ 0 ].pageX - windowHalfX;
     targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.05;

@@ -88,7 +88,7 @@ export class TransformGizmo extends THREE.Object3D {
     //// HANDLES AND PICKERS
     function setupGizmos(gizmoMap: any, parent: THREE.Object3D): void {
       for (let name in gizmoMap) {
-        for (let i = gizmoMap[ name ].length; i --;) {
+        for (let i = gizmoMap[ name ].length; i --; ) {
           const object = gizmoMap[ name ][ i ][ 0 ];
           const position = gizmoMap[ name ][ i ][ 1 ];
           const rotation = gizmoMap[ name ][ i ][ 2 ];
