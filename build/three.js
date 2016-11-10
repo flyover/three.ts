@@ -140,199 +140,331 @@
 	var CullFaceFront = exports.CullFace.Front;
 	var CullFaceFrontBack = exports.CullFace.FrontBack;
 	//
-	///export enum FrontFaceDirection {}
-	var FrontFaceDirectionCW = 0;
-	var FrontFaceDirectionCCW = 1;
+
+	(function (FrontFaceDirection) {
+	    FrontFaceDirection[FrontFaceDirection["CW"] = 0] = "CW";
+	    FrontFaceDirection[FrontFaceDirection["CCW"] = 1] = "CCW";
+	})(exports.FrontFaceDirection || (exports.FrontFaceDirection = {}));
+	var FrontFaceDirectionCW = exports.FrontFaceDirection.CW;
+	var FrontFaceDirectionCCW = exports.FrontFaceDirection.CCW;
 	//
-	///export enum ShadowMap {}
-	var BasicShadowMap = 0;
-	var PCFShadowMap = 1;
-	var PCFSoftShadowMap = 2;
+
+	(function (ShadowMap) {
+	    ShadowMap[ShadowMap["Basic"] = 0] = "Basic";
+	    ShadowMap[ShadowMap["PCF"] = 1] = "PCF";
+	    ShadowMap[ShadowMap["PCFSoft"] = 2] = "PCFSoft";
+	})(exports.ShadowMap || (exports.ShadowMap = {}));
+	var BasicShadowMap = exports.ShadowMap.Basic;
+	var PCFShadowMap = exports.ShadowMap.PCF;
+	var PCFSoftShadowMap = exports.ShadowMap.PCFSoft;
 	//
-	///export enum Side {}
-	var FrontSide = 0;
-	var BackSide = 1;
-	var DoubleSide = 2;
+
+	(function (SideMode) {
+	    SideMode[SideMode["Front"] = 0] = "Front";
+	    SideMode[SideMode["Back"] = 1] = "Back";
+	    SideMode[SideMode["Double"] = 2] = "Double";
+	})(exports.SideMode || (exports.SideMode = {}));
+	var FrontSide = exports.SideMode.Front;
+	var BackSide = exports.SideMode.Back;
+	var DoubleSide = exports.SideMode.Double;
 	//
-	///export enum Shading {}
-	var FlatShading = 1;
-	var SmoothShading = 2;
+
+	(function (ShadingMode) {
+	    ShadingMode[ShadingMode["Flat"] = 1] = "Flat";
+	    ShadingMode[ShadingMode["Smooth"] = 2] = "Smooth";
+	})(exports.ShadingMode || (exports.ShadingMode = {}));
+	var FlatShading = exports.ShadingMode.Flat;
+	var SmoothShading = exports.ShadingMode.Smooth;
 	//
-	///export enum Colors {}
-	var NoColors = 0;
-	var FaceColors = 1;
-	var VertexColors = 2;
+
+	(function (ColorsMode) {
+	    ColorsMode[ColorsMode["None"] = 0] = "None";
+	    ColorsMode[ColorsMode["Face"] = 1] = "Face";
+	    ColorsMode[ColorsMode["Vertex"] = 2] = "Vertex";
+	})(exports.ColorsMode || (exports.ColorsMode = {}));
+	var NoColors = exports.ColorsMode.None;
+	var FaceColors = exports.ColorsMode.Face;
+	var VertexColors = exports.ColorsMode.Vertex;
 	//
 
 	(function (BlendingMode) {
-	    BlendingMode[BlendingMode["NoBlending"] = 0] = "NoBlending";
-	    BlendingMode[BlendingMode["NormalBlending"] = 1] = "NormalBlending";
-	    BlendingMode[BlendingMode["AdditiveBlending"] = 2] = "AdditiveBlending";
-	    BlendingMode[BlendingMode["SubtractiveBlending"] = 3] = "SubtractiveBlending";
-	    BlendingMode[BlendingMode["MultiplyBlending"] = 4] = "MultiplyBlending";
-	    BlendingMode[BlendingMode["CustomBlending"] = 5] = "CustomBlending";
+	    BlendingMode[BlendingMode["None"] = 0] = "None";
+	    BlendingMode[BlendingMode["Normal"] = 1] = "Normal";
+	    BlendingMode[BlendingMode["Additive"] = 2] = "Additive";
+	    BlendingMode[BlendingMode["Subtractive"] = 3] = "Subtractive";
+	    BlendingMode[BlendingMode["Multiply"] = 4] = "Multiply";
+	    BlendingMode[BlendingMode["Custom"] = 5] = "Custom";
 	})(exports.BlendingMode || (exports.BlendingMode = {}));
-	var NoBlending = exports.BlendingMode.NoBlending;
-	var NormalBlending = exports.BlendingMode.NormalBlending;
-	var AdditiveBlending = exports.BlendingMode.AdditiveBlending;
-	var SubtractiveBlending = exports.BlendingMode.SubtractiveBlending;
-	var MultiplyBlending = exports.BlendingMode.MultiplyBlending;
-	var CustomBlending = exports.BlendingMode.CustomBlending;
+	var NoBlending = exports.BlendingMode.None;
+	var NormalBlending = exports.BlendingMode.Normal;
+	var AdditiveBlending = exports.BlendingMode.Additive;
+	var SubtractiveBlending = exports.BlendingMode.Subtractive;
+	var MultiplyBlending = exports.BlendingMode.Multiply;
+	var CustomBlending = exports.BlendingMode.Custom;
 	//
-	///export enum Equation {}
-	var AddEquation = 100;
-	var SubtractEquation = 101;
-	var ReverseSubtractEquation = 102;
-	var MinEquation = 103;
-	var MaxEquation = 104;
+
+	(function (BlendingEquation) {
+	    BlendingEquation[BlendingEquation["Add"] = 100] = "Add";
+	    BlendingEquation[BlendingEquation["Subtract"] = 101] = "Subtract";
+	    BlendingEquation[BlendingEquation["ReverseSubtract"] = 102] = "ReverseSubtract";
+	    BlendingEquation[BlendingEquation["Min"] = 103] = "Min";
+	    BlendingEquation[BlendingEquation["Max"] = 104] = "Max";
+	})(exports.BlendingEquation || (exports.BlendingEquation = {}));
+	var AddEquation = exports.BlendingEquation.Add;
+	var SubtractEquation = exports.BlendingEquation.Subtract;
+	var ReverseSubtractEquation = exports.BlendingEquation.ReverseSubtract;
+	var MinEquation = exports.BlendingEquation.Min;
+	var MaxEquation = exports.BlendingEquation.Max;
 	//
-	///export enum Factor {}
-	var ZeroFactor = 200;
-	var OneFactor = 201;
-	var SrcColorFactor = 202;
-	var OneMinusSrcColorFactor = 203;
-	var SrcAlphaFactor = 204;
-	var OneMinusSrcAlphaFactor = 205;
-	var DstAlphaFactor = 206;
-	var OneMinusDstAlphaFactor = 207;
-	var DstColorFactor = 208;
-	var OneMinusDstColorFactor = 209;
-	var SrcAlphaSaturateFactor = 210;
+
+	(function (BlendingFactor) {
+	    BlendingFactor[BlendingFactor["Zero"] = 200] = "Zero";
+	    BlendingFactor[BlendingFactor["One"] = 201] = "One";
+	    BlendingFactor[BlendingFactor["SrcColor"] = 202] = "SrcColor";
+	    BlendingFactor[BlendingFactor["OneMinusSrcColor"] = 203] = "OneMinusSrcColor";
+	    BlendingFactor[BlendingFactor["SrcAlpha"] = 204] = "SrcAlpha";
+	    BlendingFactor[BlendingFactor["OneMinusSrcAlpha"] = 205] = "OneMinusSrcAlpha";
+	    BlendingFactor[BlendingFactor["DstAlpha"] = 206] = "DstAlpha";
+	    BlendingFactor[BlendingFactor["OneMinusDstAlpha"] = 207] = "OneMinusDstAlpha";
+	    BlendingFactor[BlendingFactor["DstColor"] = 208] = "DstColor";
+	    BlendingFactor[BlendingFactor["OneMinusDstColor"] = 209] = "OneMinusDstColor";
+	    BlendingFactor[BlendingFactor["SrcAlphaSaturate"] = 210] = "SrcAlphaSaturate";
+	})(exports.BlendingFactor || (exports.BlendingFactor = {}));
+	var ZeroFactor = exports.BlendingFactor.Zero;
+	var OneFactor = exports.BlendingFactor.One;
+	var SrcColorFactor = exports.BlendingFactor.SrcColor;
+	var OneMinusSrcColorFactor = exports.BlendingFactor.OneMinusSrcColor;
+	var SrcAlphaFactor = exports.BlendingFactor.SrcAlpha;
+	var OneMinusSrcAlphaFactor = exports.BlendingFactor.OneMinusSrcAlpha;
+	var DstAlphaFactor = exports.BlendingFactor.DstAlpha;
+	var OneMinusDstAlphaFactor = exports.BlendingFactor.OneMinusDstAlpha;
+	var DstColorFactor = exports.BlendingFactor.DstColor;
+	var OneMinusDstColorFactor = exports.BlendingFactor.OneMinusDstColor;
+	var SrcAlphaSaturateFactor = exports.BlendingFactor.SrcAlphaSaturate;
 	//
-	///export enum Depth {}
-	var NeverDepth = 0;
-	var AlwaysDepth = 1;
-	var LessDepth = 2;
-	var LessEqualDepth = 3;
-	var EqualDepth = 4;
-	var GreaterEqualDepth = 5;
-	var GreaterDepth = 6;
-	var NotEqualDepth = 7;
+
+	(function (DepthFunction) {
+	    DepthFunction[DepthFunction["Never"] = 0] = "Never";
+	    DepthFunction[DepthFunction["Always"] = 1] = "Always";
+	    DepthFunction[DepthFunction["Less"] = 2] = "Less";
+	    DepthFunction[DepthFunction["LessEqual"] = 3] = "LessEqual";
+	    DepthFunction[DepthFunction["Equal"] = 4] = "Equal";
+	    DepthFunction[DepthFunction["GreaterEqual"] = 5] = "GreaterEqual";
+	    DepthFunction[DepthFunction["Greater"] = 6] = "Greater";
+	    DepthFunction[DepthFunction["NotEqual"] = 7] = "NotEqual";
+	})(exports.DepthFunction || (exports.DepthFunction = {}));
+	var NeverDepth = exports.DepthFunction.Never;
+	var AlwaysDepth = exports.DepthFunction.Always;
+	var LessDepth = exports.DepthFunction.Less;
+	var LessEqualDepth = exports.DepthFunction.LessEqual;
+	var EqualDepth = exports.DepthFunction.Equal;
+	var GreaterEqualDepth = exports.DepthFunction.GreaterEqual;
+	var GreaterDepth = exports.DepthFunction.Greater;
+	var NotEqualDepth = exports.DepthFunction.NotEqual;
 	//
-	///export enum Operation {}
-	var MultiplyOperation = 0;
-	var MixOperation = 1;
-	var AddOperation = 2;
+
+	(function (BlendingOperation) {
+	    BlendingOperation[BlendingOperation["Multiply"] = 0] = "Multiply";
+	    BlendingOperation[BlendingOperation["Mix"] = 1] = "Mix";
+	    BlendingOperation[BlendingOperation["Add"] = 2] = "Add";
+	})(exports.BlendingOperation || (exports.BlendingOperation = {}));
+	var MultiplyOperation = exports.BlendingOperation.Multiply;
+	var MixOperation = exports.BlendingOperation.Mix;
+	var AddOperation = exports.BlendingOperation.Add;
 	//
-	///export enum ToneMapping {}
-	var NoToneMapping = 0;
-	var LinearToneMapping = 1;
-	var ReinhardToneMapping = 2;
-	var Uncharted2ToneMapping = 3;
-	var CineonToneMapping = 4;
+
+	(function (ToneMapping) {
+	    ToneMapping[ToneMapping["None"] = 0] = "None";
+	    ToneMapping[ToneMapping["Linear"] = 1] = "Linear";
+	    ToneMapping[ToneMapping["Reinhard"] = 2] = "Reinhard";
+	    ToneMapping[ToneMapping["Uncharted2"] = 3] = "Uncharted2";
+	    ToneMapping[ToneMapping["Cineon"] = 4] = "Cineon";
+	})(exports.ToneMapping || (exports.ToneMapping = {}));
+	var NoToneMapping = exports.ToneMapping.None;
+	var LinearToneMapping = exports.ToneMapping.Linear;
+	var ReinhardToneMapping = exports.ToneMapping.Reinhard;
+	var Uncharted2ToneMapping = exports.ToneMapping.Uncharted2;
+	var CineonToneMapping = exports.ToneMapping.Cineon;
 	//
 
 	(function (TextureMapping) {
-	    TextureMapping[TextureMapping["UVMapping"] = 300] = "UVMapping";
-	    TextureMapping[TextureMapping["CubeReflectionMapping"] = 301] = "CubeReflectionMapping";
-	    TextureMapping[TextureMapping["CubeRefractionMapping"] = 302] = "CubeRefractionMapping";
-	    TextureMapping[TextureMapping["EquirectangularReflectionMapping"] = 303] = "EquirectangularReflectionMapping";
-	    TextureMapping[TextureMapping["EquirectangularRefractionMapping"] = 304] = "EquirectangularRefractionMapping";
-	    TextureMapping[TextureMapping["SphericalReflectionMapping"] = 305] = "SphericalReflectionMapping";
-	    TextureMapping[TextureMapping["CubeUVReflectionMapping"] = 306] = "CubeUVReflectionMapping";
-	    TextureMapping[TextureMapping["CubeUVRefractionMapping"] = 307] = "CubeUVRefractionMapping";
+	    TextureMapping[TextureMapping["UV"] = 300] = "UV";
+	    TextureMapping[TextureMapping["CubeReflection"] = 301] = "CubeReflection";
+	    TextureMapping[TextureMapping["CubeRefraction"] = 302] = "CubeRefraction";
+	    TextureMapping[TextureMapping["EquirectangularReflection"] = 303] = "EquirectangularReflection";
+	    TextureMapping[TextureMapping["EquirectangularRefraction"] = 304] = "EquirectangularRefraction";
+	    TextureMapping[TextureMapping["SphericalReflection"] = 305] = "SphericalReflection";
+	    TextureMapping[TextureMapping["CubeUVReflection"] = 306] = "CubeUVReflection";
+	    TextureMapping[TextureMapping["CubeUVRefraction"] = 307] = "CubeUVRefraction";
 	})(exports.TextureMapping || (exports.TextureMapping = {}));
-	var UVMapping = exports.TextureMapping.UVMapping;
-	var CubeReflectionMapping = exports.TextureMapping.CubeReflectionMapping;
-	var CubeRefractionMapping = exports.TextureMapping.CubeRefractionMapping;
-	var EquirectangularReflectionMapping = exports.TextureMapping.EquirectangularReflectionMapping;
-	var EquirectangularRefractionMapping = exports.TextureMapping.EquirectangularRefractionMapping;
-	var SphericalReflectionMapping = exports.TextureMapping.SphericalReflectionMapping;
-	var CubeUVReflectionMapping = exports.TextureMapping.CubeUVReflectionMapping;
-	var CubeUVRefractionMapping = exports.TextureMapping.CubeUVRefractionMapping;
+	var UVMapping = exports.TextureMapping.UV;
+	var CubeReflectionMapping = exports.TextureMapping.CubeReflection;
+	var CubeRefractionMapping = exports.TextureMapping.CubeRefraction;
+	var EquirectangularReflectionMapping = exports.TextureMapping.EquirectangularReflection;
+	var EquirectangularRefractionMapping = exports.TextureMapping.EquirectangularRefraction;
+	var SphericalReflectionMapping = exports.TextureMapping.SphericalReflection;
+	var CubeUVReflectionMapping = exports.TextureMapping.CubeUVReflection;
+	var CubeUVRefractionMapping = exports.TextureMapping.CubeUVRefraction;
 	//
 
 	(function (TextureWrapping) {
-	    TextureWrapping[TextureWrapping["RepeatWrapping"] = 1000] = "RepeatWrapping";
-	    TextureWrapping[TextureWrapping["ClampToEdgeWrapping"] = 1001] = "ClampToEdgeWrapping";
-	    TextureWrapping[TextureWrapping["MirroredRepeatWrapping"] = 1002] = "MirroredRepeatWrapping";
+	    TextureWrapping[TextureWrapping["Repeat"] = 1000] = "Repeat";
+	    TextureWrapping[TextureWrapping["ClampToEdge"] = 1001] = "ClampToEdge";
+	    TextureWrapping[TextureWrapping["MirroredRepeat"] = 1002] = "MirroredRepeat";
 	})(exports.TextureWrapping || (exports.TextureWrapping = {}));
-	var RepeatWrapping = exports.TextureWrapping.RepeatWrapping;
-	var ClampToEdgeWrapping = exports.TextureWrapping.ClampToEdgeWrapping;
-	var MirroredRepeatWrapping = exports.TextureWrapping.MirroredRepeatWrapping;
+	var RepeatWrapping = exports.TextureWrapping.Repeat;
+	var ClampToEdgeWrapping = exports.TextureWrapping.ClampToEdge;
+	var MirroredRepeatWrapping = exports.TextureWrapping.MirroredRepeat;
 	//
 
 	(function (TextureFilter) {
-	    TextureFilter[TextureFilter["NearestFilter"] = 1003] = "NearestFilter";
-	    TextureFilter[TextureFilter["NearestMipMapNearestFilter"] = 1004] = "NearestMipMapNearestFilter";
-	    TextureFilter[TextureFilter["NearestMipMapLinearFilter"] = 1005] = "NearestMipMapLinearFilter";
-	    TextureFilter[TextureFilter["LinearFilter"] = 1006] = "LinearFilter";
-	    TextureFilter[TextureFilter["LinearMipMapNearestFilter"] = 1007] = "LinearMipMapNearestFilter";
-	    TextureFilter[TextureFilter["LinearMipMapLinearFilter"] = 1008] = "LinearMipMapLinearFilter";
+	    TextureFilter[TextureFilter["Nearest"] = 1003] = "Nearest";
+	    TextureFilter[TextureFilter["NearestMipMapNearest"] = 1004] = "NearestMipMapNearest";
+	    TextureFilter[TextureFilter["NearestMipMapLinear"] = 1005] = "NearestMipMapLinear";
+	    TextureFilter[TextureFilter["Linear"] = 1006] = "Linear";
+	    TextureFilter[TextureFilter["LinearMipMapNearest"] = 1007] = "LinearMipMapNearest";
+	    TextureFilter[TextureFilter["LinearMipMapLinear"] = 1008] = "LinearMipMapLinear";
 	})(exports.TextureFilter || (exports.TextureFilter = {}));
-	var NearestFilter = exports.TextureFilter.NearestFilter;
-	var NearestMipMapNearestFilter = exports.TextureFilter.NearestMipMapNearestFilter;
-	var NearestMipMapLinearFilter = exports.TextureFilter.NearestMipMapLinearFilter;
-	var LinearFilter = exports.TextureFilter.LinearFilter;
-	var LinearMipMapNearestFilter = exports.TextureFilter.LinearMipMapNearestFilter;
-	var LinearMipMapLinearFilter = exports.TextureFilter.LinearMipMapLinearFilter;
+	var NearestFilter = exports.TextureFilter.Nearest;
+	var NearestMipMapNearestFilter = exports.TextureFilter.NearestMipMapNearest;
+	var NearestMipMapLinearFilter = exports.TextureFilter.NearestMipMapLinear;
+	var LinearFilter = exports.TextureFilter.Linear;
+	var LinearMipMapNearestFilter = exports.TextureFilter.LinearMipMapNearest;
+	var LinearMipMapLinearFilter = exports.TextureFilter.LinearMipMapLinear;
 	//
-	///export enum Type {}
-	var UnsignedByteType = 1009;
-	var ByteType = 1010;
-	var ShortType = 1011;
-	var UnsignedShortType = 1012;
-	var IntType = 1013;
-	var UnsignedIntType = 1014;
-	var FloatType = 1015;
-	var HalfFloatType = 1016;
-	var UnsignedShort4444Type = 1017;
-	var UnsignedShort5551Type = 1018;
-	var UnsignedShort565Type = 1019;
-	var UnsignedInt248Type = 1020;
+
+	(function (TextureType) {
+	    TextureType[TextureType["UnsignedByte"] = 1009] = "UnsignedByte";
+	    TextureType[TextureType["Byte"] = 1010] = "Byte";
+	    TextureType[TextureType["Short"] = 1011] = "Short";
+	    TextureType[TextureType["UnsignedShort"] = 1012] = "UnsignedShort";
+	    TextureType[TextureType["Int"] = 1013] = "Int";
+	    TextureType[TextureType["UnsignedInt"] = 1014] = "UnsignedInt";
+	    TextureType[TextureType["Float"] = 1015] = "Float";
+	    TextureType[TextureType["HalfFloat"] = 1016] = "HalfFloat";
+	    TextureType[TextureType["UnsignedShort4444"] = 1017] = "UnsignedShort4444";
+	    TextureType[TextureType["UnsignedShort5551"] = 1018] = "UnsignedShort5551";
+	    TextureType[TextureType["UnsignedShort565"] = 1019] = "UnsignedShort565";
+	    TextureType[TextureType["UnsignedInt248"] = 1020] = "UnsignedInt248";
+	})(exports.TextureType || (exports.TextureType = {}));
+	var UnsignedByteType = exports.TextureType.UnsignedByte;
+	var ByteType = exports.TextureType.Byte;
+	var ShortType = exports.TextureType.Short;
+	var UnsignedShortType = exports.TextureType.UnsignedShort;
+	var IntType = exports.TextureType.Int;
+	var UnsignedIntType = exports.TextureType.UnsignedInt;
+	var FloatType = exports.TextureType.Float;
+	var HalfFloatType = exports.TextureType.HalfFloat;
+	var UnsignedShort4444Type = exports.TextureType.UnsignedShort4444;
+	var UnsignedShort5551Type = exports.TextureType.UnsignedShort5551;
+	var UnsignedShort565Type = exports.TextureType.UnsignedShort565;
+	var UnsignedInt248Type = exports.TextureType.UnsignedInt248;
 	//
-	///export enum Format {}
-	var AlphaFormat = 1021;
-	var RGBFormat = 1022;
-	var RGBAFormat = 1023;
-	var LuminanceFormat = 1024;
-	var LuminanceAlphaFormat = 1025;
-	var RGBEFormat = RGBAFormat;
-	var DepthFormat = 1026;
-	var DepthStencilFormat = 1027;
-	var RGB_S3TC_DXT1_Format = 2001;
-	var RGBA_S3TC_DXT1_Format = 2002;
-	var RGBA_S3TC_DXT3_Format = 2003;
-	var RGBA_S3TC_DXT5_Format = 2004;
-	var RGB_PVRTC_4BPPV1_Format = 2100;
-	var RGB_PVRTC_2BPPV1_Format = 2101;
-	var RGBA_PVRTC_4BPPV1_Format = 2102;
-	var RGBA_PVRTC_2BPPV1_Format = 2103;
-	var RGB_ETC1_Format = 2151;
+
+	(function (TextureFormat) {
+	    TextureFormat[TextureFormat["Alpha"] = 1021] = "Alpha";
+	    TextureFormat[TextureFormat["RGB"] = 1022] = "RGB";
+	    TextureFormat[TextureFormat["RGBA"] = 1023] = "RGBA";
+	    TextureFormat[TextureFormat["Luminance"] = 1024] = "Luminance";
+	    TextureFormat[TextureFormat["LuminanceAlpha"] = 1025] = "LuminanceAlpha";
+	    TextureFormat[TextureFormat["RGBE"] = 1023] = "RGBE";
+	    TextureFormat[TextureFormat["Depth"] = 1026] = "Depth";
+	    TextureFormat[TextureFormat["DepthStencil"] = 1027] = "DepthStencil";
+	    TextureFormat[TextureFormat["RGB_S3TC_DXT1"] = 2001] = "RGB_S3TC_DXT1";
+	    TextureFormat[TextureFormat["RGBA_S3TC_DXT1"] = 2002] = "RGBA_S3TC_DXT1";
+	    TextureFormat[TextureFormat["RGBA_S3TC_DXT3"] = 2003] = "RGBA_S3TC_DXT3";
+	    TextureFormat[TextureFormat["RGBA_S3TC_DXT5"] = 2004] = "RGBA_S3TC_DXT5";
+	    TextureFormat[TextureFormat["RGB_PVRTC_4BPPV1"] = 2100] = "RGB_PVRTC_4BPPV1";
+	    TextureFormat[TextureFormat["RGB_PVRTC_2BPPV1"] = 2101] = "RGB_PVRTC_2BPPV1";
+	    TextureFormat[TextureFormat["RGBA_PVRTC_4BPPV1"] = 2102] = "RGBA_PVRTC_4BPPV1";
+	    TextureFormat[TextureFormat["RGBA_PVRTC_2BPPV1"] = 2103] = "RGBA_PVRTC_2BPPV1";
+	    TextureFormat[TextureFormat["RGB_ETC1"] = 2151] = "RGB_ETC1";
+	})(exports.TextureFormat || (exports.TextureFormat = {}));
+	var AlphaFormat = exports.TextureFormat.Alpha;
+	var RGBFormat = exports.TextureFormat.RGB;
+	var RGBAFormat = exports.TextureFormat.RGBA;
+	var LuminanceFormat = exports.TextureFormat.Luminance;
+	var LuminanceAlphaFormat = exports.TextureFormat.LuminanceAlpha;
+	var RGBEFormat = exports.TextureFormat.RGBE;
+	var DepthFormat = exports.TextureFormat.Depth;
+	var DepthStencilFormat = exports.TextureFormat.DepthStencil;
+	var RGB_S3TC_DXT1_Format = exports.TextureFormat.RGB_S3TC_DXT1;
+	var RGBA_S3TC_DXT1_Format = exports.TextureFormat.RGBA_S3TC_DXT1;
+	var RGBA_S3TC_DXT3_Format = exports.TextureFormat.RGBA_S3TC_DXT3;
+	var RGBA_S3TC_DXT5_Format = exports.TextureFormat.RGBA_S3TC_DXT5;
+	var RGB_PVRTC_4BPPV1_Format = exports.TextureFormat.RGB_PVRTC_4BPPV1;
+	var RGB_PVRTC_2BPPV1_Format = exports.TextureFormat.RGB_PVRTC_2BPPV1;
+	var RGBA_PVRTC_4BPPV1_Format = exports.TextureFormat.RGBA_PVRTC_4BPPV1;
+	var RGBA_PVRTC_2BPPV1_Format = exports.TextureFormat.RGBA_PVRTC_2BPPV1;
+	var RGB_ETC1_Format = exports.TextureFormat.RGB_ETC1;
 	//
-	///export enum Loop {}
-	var LoopOnce = 2200;
-	var LoopRepeat = 2201;
-	var LoopPingPong = 2202;
+
+	(function (LoopMode) {
+	    LoopMode[LoopMode["Once"] = 2200] = "Once";
+	    LoopMode[LoopMode["Repeat"] = 2201] = "Repeat";
+	    LoopMode[LoopMode["PingPong"] = 2202] = "PingPong";
+	})(exports.LoopMode || (exports.LoopMode = {}));
+	var LoopOnce = exports.LoopMode.Once;
+	var LoopRepeat = exports.LoopMode.Repeat;
+	var LoopPingPong = exports.LoopMode.PingPong;
 	//
-	///export enum Interpolate {}
-	var InterpolateDiscrete = 2300;
-	var InterpolateLinear = 2301;
-	var InterpolateSmooth = 2302;
+
+	(function (InterpolateMode) {
+	    InterpolateMode[InterpolateMode["Discrete"] = 2300] = "Discrete";
+	    InterpolateMode[InterpolateMode["Linear"] = 2301] = "Linear";
+	    InterpolateMode[InterpolateMode["Smooth"] = 2302] = "Smooth";
+	})(exports.InterpolateMode || (exports.InterpolateMode = {}));
+	var InterpolateDiscrete = exports.InterpolateMode.Discrete;
+	var InterpolateLinear = exports.InterpolateMode.Linear;
+	var InterpolateSmooth = exports.InterpolateMode.Smooth;
 	//
-	///export enum Ending {}
-	var ZeroCurvatureEnding = 2400;
-	var ZeroSlopeEnding = 2401;
-	var WrapAroundEnding = 2402;
+
+	(function (EndingMode) {
+	    EndingMode[EndingMode["ZeroCurvature"] = 2400] = "ZeroCurvature";
+	    EndingMode[EndingMode["ZeroSlope"] = 2401] = "ZeroSlope";
+	    EndingMode[EndingMode["WrapAround"] = 2402] = "WrapAround";
+	})(exports.EndingMode || (exports.EndingMode = {}));
+	var ZeroCurvatureEnding = exports.EndingMode.ZeroCurvature;
+	var ZeroSlopeEnding = exports.EndingMode.ZeroSlope;
+	var WrapAroundEnding = exports.EndingMode.WrapAround;
 	//
-	///export enum DrawMode {}
-	var TrianglesDrawMode = 0;
-	var TriangleStripDrawMode = 1;
-	var TriangleFanDrawMode = 2;
+
+	(function (DrawMode) {
+	    DrawMode[DrawMode["Triangles"] = 0] = "Triangles";
+	    DrawMode[DrawMode["TriangleStrip"] = 1] = "TriangleStrip";
+	    DrawMode[DrawMode["TriangleFan"] = 2] = "TriangleFan";
+	})(exports.DrawMode || (exports.DrawMode = {}));
+	var TrianglesDrawMode = exports.DrawMode.Triangles;
+	var TriangleStripDrawMode = exports.DrawMode.TriangleStrip;
+	var TriangleFanDrawMode = exports.DrawMode.TriangleFan;
 	//
-	///export enum Encoding {}
-	var LinearEncoding = 3000;
-	var sRGBEncoding = 3001;
-	var GammaEncoding = 3007;
-	var RGBEEncoding = 3002;
-	var LogLuvEncoding = 3003;
-	var RGBM7Encoding = 3004;
-	var RGBM16Encoding = 3005;
-	var RGBDEncoding = 3006;
+
+	(function (TextureEncoding) {
+	    TextureEncoding[TextureEncoding["Linear"] = 3000] = "Linear";
+	    TextureEncoding[TextureEncoding["sRGB"] = 3001] = "sRGB";
+	    TextureEncoding[TextureEncoding["Gamma"] = 3007] = "Gamma";
+	    TextureEncoding[TextureEncoding["RGBE"] = 3002] = "RGBE";
+	    TextureEncoding[TextureEncoding["LogLuv"] = 3003] = "LogLuv";
+	    TextureEncoding[TextureEncoding["RGBM7"] = 3004] = "RGBM7";
+	    TextureEncoding[TextureEncoding["RGBM16"] = 3005] = "RGBM16";
+	    TextureEncoding[TextureEncoding["RGBD"] = 3006] = "RGBD";
+	})(exports.TextureEncoding || (exports.TextureEncoding = {}));
+	var LinearEncoding = exports.TextureEncoding.Linear;
+	var sRGBEncoding = exports.TextureEncoding.sRGB;
+	var GammaEncoding = exports.TextureEncoding.Gamma;
+	var RGBEEncoding = exports.TextureEncoding.RGBE;
+	var LogLuvEncoding = exports.TextureEncoding.LogLuv;
+	var RGBM7Encoding = exports.TextureEncoding.RGBM7;
+	var RGBM16Encoding = exports.TextureEncoding.RGBM16;
+	var RGBDEncoding = exports.TextureEncoding.RGBD;
 	//
-	///export enum DepthPacking {}
-	var BasicDepthPacking = 3200;
-	var RGBADepthPacking = 3201;
+
+	(function (DepthPacking) {
+	    DepthPacking[DepthPacking["Basic"] = 3200] = "Basic";
+	    DepthPacking[DepthPacking["RGBA"] = 3201] = "RGBA";
+	})(exports.DepthPacking || (exports.DepthPacking = {}));
+	var BasicDepthPacking = exports.DepthPacking.Basic;
+	var RGBADepthPacking = exports.DepthPacking.RGBA;
 
 	/**
 	 * @author alteredq / http://alteredqualia.com/
@@ -718,14 +850,14 @@
 	    function Texture(image, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding) {
 	        if (image === void 0) { image = Texture.DEFAULT_IMAGE; }
 	        if (mapping === void 0) { mapping = Texture.DEFAULT_MAPPING; }
-	        if (wrapS === void 0) { wrapS = ClampToEdgeWrapping; }
-	        if (wrapT === void 0) { wrapT = ClampToEdgeWrapping; }
-	        if (magFilter === void 0) { magFilter = LinearFilter; }
-	        if (minFilter === void 0) { minFilter = LinearMipMapLinearFilter; }
-	        if (format === void 0) { format = RGBAFormat; }
-	        if (type === void 0) { type = UnsignedByteType; }
+	        if (wrapS === void 0) { wrapS = exports.TextureWrapping.ClampToEdge; }
+	        if (wrapT === void 0) { wrapT = exports.TextureWrapping.ClampToEdge; }
+	        if (magFilter === void 0) { magFilter = exports.TextureFilter.Linear; }
+	        if (minFilter === void 0) { minFilter = exports.TextureFilter.LinearMipMapLinear; }
+	        if (format === void 0) { format = exports.TextureFormat.RGBA; }
+	        if (type === void 0) { type = exports.TextureType.UnsignedByte; }
 	        if (anisotropy === void 0) { anisotropy = 1; }
-	        if (encoding === void 0) { encoding = LinearEncoding; }
+	        if (encoding === void 0) { encoding = exports.TextureEncoding.Linear; }
 	        _super.call(this);
 	        this.id = TextureIdCount();
 	        this.uuid = _Math.generateUUID();
@@ -843,19 +975,19 @@
 	        this.dispatchEvent({ type: 'dispose' });
 	    };
 	    Texture.prototype.transformUv = function (uv) {
-	        if (this.mapping !== UVMapping)
+	        if (this.mapping !== exports.TextureMapping.UV)
 	            return;
 	        uv.multiply(this.repeat);
 	        uv.add(this.offset);
 	        if (uv.x < 0 || uv.x > 1) {
 	            switch (this.wrapS) {
-	                case RepeatWrapping:
+	                case exports.TextureWrapping.Repeat:
 	                    uv.x = uv.x - Math.floor(uv.x);
 	                    break;
-	                case ClampToEdgeWrapping:
+	                case exports.TextureWrapping.ClampToEdge:
 	                    uv.x = uv.x < 0 ? 0 : 1;
 	                    break;
-	                case MirroredRepeatWrapping:
+	                case exports.TextureWrapping.MirroredRepeat:
 	                    if (Math.abs(Math.floor(uv.x) % 2) === 1) {
 	                        uv.x = Math.ceil(uv.x) - uv.x;
 	                    }
@@ -867,13 +999,13 @@
 	        }
 	        if (uv.y < 0 || uv.y > 1) {
 	            switch (this.wrapT) {
-	                case RepeatWrapping:
+	                case exports.TextureWrapping.Repeat:
 	                    uv.y = uv.y - Math.floor(uv.y);
 	                    break;
-	                case ClampToEdgeWrapping:
+	                case exports.TextureWrapping.ClampToEdge:
 	                    uv.y = uv.y < 0 ? 0 : 1;
 	                    break;
-	                case MirroredRepeatWrapping:
+	                case exports.TextureWrapping.MirroredRepeat:
 	                    if (Math.abs(Math.floor(uv.y) % 2) === 1) {
 	                        uv.y = Math.ceil(uv.y) - uv.y;
 	                    }
@@ -888,7 +1020,7 @@
 	        }
 	    };
 	    Texture.DEFAULT_IMAGE = undefined;
-	    Texture.DEFAULT_MAPPING = UVMapping;
+	    Texture.DEFAULT_MAPPING = exports.TextureMapping.UV;
 	    return Texture;
 	}(EventDispatcher));
 	var count = 0;
@@ -1302,7 +1434,7 @@
 	        this.viewport = new Vector4(0, 0, width, height);
 	        options = options || {};
 	        if (options.minFilter === undefined)
-	            options.minFilter = LinearFilter;
+	            options.minFilter = exports.TextureFilter.Linear;
 	        this.texture = new Texture(undefined, undefined, options.wrapS, options.wrapT, options.magFilter, options.minFilter, options.format, options.type, options.anisotropy, options.encoding);
 	        this.depthBuffer = options.depthBuffer !== undefined ? options.depthBuffer : true;
 	        this.stencilBuffer = options.stencilBuffer !== undefined ? options.stencilBuffer : true;
@@ -3187,7 +3319,7 @@
 	    __extends(CubeTexture, _super);
 	    function CubeTexture(images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding) {
 	        if (images === void 0) { images = []; }
-	        if (mapping === void 0) { mapping = CubeReflectionMapping; }
+	        if (mapping === void 0) { mapping = exports.TextureMapping.CubeReflection; }
 	        _super.call(this, images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding);
 	        this.isCubeTexture = true;
 	        this.flipY = false;
@@ -8641,19 +8773,19 @@
 	        this.type = 'Material';
 	        this.fog = true;
 	        this.lights = true;
-	        this.blending = exports.BlendingMode.NormalBlending;
-	        this.side = FrontSide;
-	        this.shading = SmoothShading; // THREE.FlatShading, THREE.SmoothShading
-	        this.vertexColors = NoColors; // THREE.NoColors, THREE.VertexColors, THREE.FaceColors
+	        this.blending = exports.BlendingMode.Normal;
+	        this.side = exports.SideMode.Front;
+	        this.shading = exports.ShadingMode.Smooth; // THREE.ShadingMode.Flat, THREE.ShadingMode.Smooth
+	        this.vertexColors = exports.ColorsMode.None; // THREE.ColorsMode.No, THREE.ColorsMode.Vertex, THREE.ColorsMode.Face
 	        this._opacity = 1;
 	        this.transparent = false;
-	        this.blendSrc = SrcAlphaFactor;
-	        this.blendDst = OneMinusSrcAlphaFactor;
-	        this.blendEquation = AddEquation;
+	        this.blendSrc = exports.BlendingFactor.SrcAlpha;
+	        this.blendDst = exports.BlendingFactor.OneMinusSrcAlpha;
+	        this.blendEquation = exports.BlendingEquation.Add;
 	        this.blendSrcAlpha = null;
 	        this.blendDstAlpha = null;
 	        this.blendEquationAlpha = null;
-	        this.depthFunc = LessEqualDepth;
+	        this.depthFunc = exports.DepthFunction.LessEqual;
 	        this.depthTest = true;
 	        this.depthWrite = true;
 	        this.clipping = false;
@@ -8792,13 +8924,13 @@
 	            data.size = this.size;
 	        if (this.sizeAttenuation !== undefined)
 	            data.sizeAttenuation = this.sizeAttenuation;
-	        if (this.blending !== exports.BlendingMode.NormalBlending)
+	        if (this.blending !== exports.BlendingMode.Normal)
 	            data.blending = this.blending;
-	        if (this.shading !== SmoothShading)
+	        if (this.shading !== exports.ShadingMode.Smooth)
 	            data.shading = this.shading;
-	        if (this.side !== FrontSide)
+	        if (this.side !== exports.SideMode.Front)
 	            data.side = this.side;
-	        if (this.vertexColors !== NoColors)
+	        if (this.vertexColors !== exports.ColorsMode.None)
 	            data.vertexColors = this.vertexColors;
 	        if (this.opacity < 1)
 	            data.opacity = this.opacity;
@@ -8996,7 +9128,7 @@
 	        _super.call(this);
 	        this.isMeshDepthMaterial = true;
 	        this.type = 'MeshDepthMaterial';
-	        this.depthPacking = BasicDepthPacking;
+	        this.depthPacking = exports.DepthPacking.Basic;
 	        this.skinning = false;
 	        this.morphTargets = false;
 	        this.map = null;
@@ -10280,7 +10412,7 @@
 	        this.specularMap = null;
 	        this.alphaMap = null;
 	        this.envMap = null;
-	        this.combine = MultiplyOperation;
+	        this.combine = exports.BlendingOperation.Multiply;
 	        this.reflectivity = 1;
 	        this.refractionRatio = 0.98;
 	        this.wireframe = false;
@@ -11692,7 +11824,7 @@
 	        if (geometry === void 0) { geometry = new BufferGeometry(); }
 	        if (material === void 0) { material = new MeshBasicMaterial({ color: Math.random() * 0xffffff }); }
 	        _super.call(this);
-	        this.drawMode = TrianglesDrawMode;
+	        this.drawMode = exports.DrawMode.Triangles;
 	        this.isMesh = true;
 	        this.type = 'Mesh';
 	        this.geometry = geometry;
@@ -11745,11 +11877,11 @@
 	        function checkIntersection(object, raycaster, ray, pA, pB, pC, point) {
 	            var intersect;
 	            var material = object.material;
-	            if (material.side === BackSide) {
+	            if (material.side === exports.SideMode.Back) {
 	                intersect = ray.intersectTriangle(pC, pB, pA, true, point);
 	            }
 	            else {
-	                intersect = ray.intersectTriangle(pA, pB, pC, material.side !== DoubleSide, point);
+	                intersect = ray.intersectTriangle(pA, pB, pC, material.side !== exports.SideMode.Double, point);
 	            }
 	            if (intersect === null)
 	                return null;
@@ -13683,8 +13815,8 @@
 	var DataTexture = (function (_super) {
 	    __extends(DataTexture, _super);
 	    function DataTexture(data, width, height, format, type, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy, encoding) {
-	        if (magFilter === void 0) { magFilter = NearestFilter; }
-	        if (minFilter === void 0) { minFilter = NearestFilter; }
+	        if (magFilter === void 0) { magFilter = exports.TextureFilter.Nearest; }
+	        if (minFilter === void 0) { minFilter = exports.TextureFilter.Nearest; }
 	        _super.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding);
 	        this.isDataTexture = true;
 	        this.image = { data: data, width: width, height: height };
@@ -13746,7 +13878,7 @@
 	            this.boneTextureWidth = size;
 	            this.boneTextureHeight = size;
 	            this.boneMatrices = new Float32Array(this.boneTextureWidth * this.boneTextureHeight * 4); // 4 floats per RGBA pixel
-	            this.boneTexture = new DataTexture(this.boneMatrices, this.boneTextureWidth, this.boneTextureHeight, RGBAFormat, FloatType);
+	            this.boneTexture = new DataTexture(this.boneMatrices, this.boneTextureWidth, this.boneTextureHeight, exports.TextureFormat.RGBA, exports.TextureType.Float);
 	        }
 	        else {
 	            this.boneMatrices = new Float32Array(16 * this.bones.length);
@@ -13969,7 +14101,7 @@
 	        ];
 	        // init
 	        var depthMaterialTemplate = new MeshDepthMaterial();
-	        depthMaterialTemplate.depthPacking = RGBADepthPacking;
+	        depthMaterialTemplate.depthPacking = exports.DepthPacking.RGBA;
 	        depthMaterialTemplate.clipping = true;
 	        var distanceShader = ShaderLib["distanceRGBA"];
 	        var distanceUniforms = UniformsUtils.clone(distanceShader.uniforms);
@@ -13997,7 +14129,7 @@
 	        this.enabled = false;
 	        this.autoUpdate = true;
 	        this.needsUpdate = false;
-	        this.type = PCFShadowMap;
+	        this.type = exports.ShadowMap.PCF;
 	        this.renderReverseSided = true;
 	        this.renderSingleSided = true;
 	    }
@@ -14062,7 +14194,7 @@
 	                isPointLight = false;
 	            }
 	            if (shadow.map === null) {
-	                var pars = { minFilter: NearestFilter, magFilter: NearestFilter, format: RGBAFormat };
+	                var pars = { minFilter: exports.TextureFilter.Nearest, magFilter: exports.TextureFilter.Nearest, format: exports.TextureFormat.RGBA };
 	                shadow.map = new WebGLRenderTarget(this._shadowMapSize.x, this._shadowMapSize.y, pars);
 	                shadowCamera.updateProjectionMatrix();
 	            }
@@ -14183,14 +14315,14 @@
 	        result.visible = material.visible;
 	        result.wireframe = material.wireframe;
 	        var side = material.side;
-	        if (this.renderSingleSided && side === DoubleSide) {
-	            side = FrontSide;
+	        if (this.renderSingleSided && side === exports.SideMode.Double) {
+	            side = exports.SideMode.Front;
 	        }
 	        if (this.renderReverseSided) {
-	            if (side === FrontSide)
-	                side = BackSide;
-	            else if (side === BackSide)
-	                side = FrontSide;
+	            if (side === exports.SideMode.Front)
+	                side = exports.SideMode.Back;
+	            else if (side === exports.SideMode.Back)
+	                side = exports.SideMode.Front;
 	        }
 	        result.side = side;
 	        result.clipShadows = material.clipShadows;
@@ -14222,10 +14354,10 @@
 	    };
 	    Object.defineProperty(WebGLShadowMap.prototype, "cullFace", {
 	        get: function () {
-	            return this.renderReverseSided ? CullFaceFront : CullFaceBack;
+	            return this.renderReverseSided ? exports.CullFace.Front : exports.CullFace.Back;
 	        },
 	        set: function (cullFace) {
-	            var value = (cullFace !== CullFaceBack);
+	            var value = (cullFace !== exports.CullFace.Back);
 	            console.warn("WebGLRenderer: .shadowMap.cullFace is deprecated. Set .shadowMap.renderReverseSided to " + value + ".");
 	            this.renderReverseSided = value;
 	        },
@@ -14468,7 +14600,7 @@
 	        this.specularMap = null;
 	        this.alphaMap = null;
 	        this.envMap = null;
-	        this.combine = MultiplyOperation;
+	        this.combine = exports.BlendingOperation.Multiply;
 	        this.reflectivity = 1;
 	        this.refractionRatio = 0.98;
 	        this.wireframe = false;
@@ -14626,7 +14758,7 @@
 	        this.specularMap = null;
 	        this.alphaMap = null;
 	        this.envMap = null;
-	        this.combine = MultiplyOperation;
+	        this.combine = exports.BlendingOperation.Multiply;
 	        this.reflectivity = 1;
 	        this.refractionRatio = 0.98;
 	        this.wireframe = false;
@@ -14926,19 +15058,19 @@
 	var programIdCount = 0;
 	function getEncodingComponents(encoding) {
 	    switch (encoding) {
-	        case LinearEncoding:
+	        case exports.TextureEncoding.Linear:
 	            return ['Linear', '(value)'];
-	        case sRGBEncoding:
+	        case exports.TextureEncoding.sRGB:
 	            return ['sRGB', '(value)'];
-	        case RGBEEncoding:
+	        case exports.TextureEncoding.RGBE:
 	            return ['RGBE', '(value)'];
-	        case RGBM7Encoding:
+	        case exports.TextureEncoding.RGBM7:
 	            return ['RGBM', '(value, 7.0)'];
-	        case RGBM16Encoding:
+	        case exports.TextureEncoding.RGBM16:
 	            return ['RGBM', '(value, 16.0)'];
-	        case RGBDEncoding:
+	        case exports.TextureEncoding.RGBD:
 	            return ['RGBD', '(value, 256.0)'];
-	        case GammaEncoding:
+	        case exports.TextureEncoding.Gamma:
 	            return ['Gamma', '(value, float(GAMMA_FACTOR))'];
 	        default:
 	            throw new Error('unsupported encoding: ' + encoding);
@@ -14955,16 +15087,16 @@
 	function getToneMappingFunction(functionName, toneMapping) {
 	    var toneMappingName;
 	    switch (toneMapping) {
-	        case LinearToneMapping:
+	        case exports.ToneMapping.Linear:
 	            toneMappingName = "Linear";
 	            break;
-	        case ReinhardToneMapping:
+	        case exports.ToneMapping.Reinhard:
 	            toneMappingName = "Reinhard";
 	            break;
-	        case Uncharted2ToneMapping:
+	        case exports.ToneMapping.Uncharted2:
 	            toneMappingName = "Uncharted2";
 	            break;
-	        case CineonToneMapping:
+	        case exports.ToneMapping.Cineon:
 	            toneMappingName = "OptimizedCineon";
 	            break;
 	        default:
@@ -15044,10 +15176,10 @@
 	        var vertexShader = material.__webglShader.vertexShader;
 	        var fragmentShader = material.__webglShader.fragmentShader;
 	        var shadowMapTypeDefine = 'SHADOWMAP_TYPE_BASIC';
-	        if (parameters.shadowMapType === PCFShadowMap) {
+	        if (parameters.shadowMapType === exports.ShadowMap.PCF) {
 	            shadowMapTypeDefine = 'SHADOWMAP_TYPE_PCF';
 	        }
-	        else if (parameters.shadowMapType === PCFSoftShadowMap) {
+	        else if (parameters.shadowMapType === exports.ShadowMap.PCFSoft) {
 	            shadowMapTypeDefine = 'SHADOWMAP_TYPE_PCF_SOFT';
 	        }
 	        var envMapTypeDefine = 'ENVMAP_TYPE_CUBE';
@@ -15055,36 +15187,36 @@
 	        var envMapBlendingDefine = 'ENVMAP_BLENDING_MULTIPLY';
 	        if (parameters.envMap) {
 	            switch (material.envMap.mapping) {
-	                case CubeReflectionMapping:
-	                case CubeRefractionMapping:
+	                case exports.TextureMapping.CubeReflection:
+	                case exports.TextureMapping.CubeRefraction:
 	                    envMapTypeDefine = 'ENVMAP_TYPE_CUBE';
 	                    break;
-	                case CubeUVReflectionMapping:
-	                case CubeUVRefractionMapping:
+	                case exports.TextureMapping.CubeUVReflection:
+	                case exports.TextureMapping.CubeUVRefraction:
 	                    envMapTypeDefine = 'ENVMAP_TYPE_CUBE_UV';
 	                    break;
-	                case EquirectangularReflectionMapping:
-	                case EquirectangularRefractionMapping:
+	                case exports.TextureMapping.EquirectangularReflection:
+	                case exports.TextureMapping.EquirectangularRefraction:
 	                    envMapTypeDefine = 'ENVMAP_TYPE_EQUIREC';
 	                    break;
-	                case SphericalReflectionMapping:
+	                case exports.TextureMapping.SphericalReflection:
 	                    envMapTypeDefine = 'ENVMAP_TYPE_SPHERE';
 	                    break;
 	            }
 	            switch (material.envMap.mapping) {
-	                case CubeRefractionMapping:
-	                case EquirectangularRefractionMapping:
+	                case exports.TextureMapping.CubeRefraction:
+	                case exports.TextureMapping.EquirectangularRefraction:
 	                    envMapModeDefine = 'ENVMAP_MODE_REFRACTION';
 	                    break;
 	            }
 	            switch (material.combine) {
-	                case MultiplyOperation:
+	                case exports.BlendingOperation.Multiply:
 	                    envMapBlendingDefine = 'ENVMAP_BLENDING_MULTIPLY';
 	                    break;
-	                case MixOperation:
+	                case exports.BlendingOperation.Mix:
 	                    envMapBlendingDefine = 'ENVMAP_BLENDING_MIX';
 	                    break;
-	                case AddOperation:
+	                case exports.BlendingOperation.Add:
 	                    envMapBlendingDefine = 'ENVMAP_BLENDING_ADD';
 	                    break;
 	            }
@@ -15218,9 +15350,9 @@
 	                parameters.envMap && renderer.extensions.get('EXT_shader_texture_lod') ? '#define TEXTURE_LOD_EXT' : '',
 	                'uniform mat4 viewMatrix;',
 	                'uniform vec3 cameraPosition;',
-	                (parameters.toneMapping !== NoToneMapping) ? "#define TONE_MAPPING" : '',
-	                (parameters.toneMapping !== NoToneMapping) ? ShaderChunk['tonemapping_pars_fragment'] : '',
-	                (parameters.toneMapping !== NoToneMapping) ? getToneMappingFunction("toneMapping", parameters.toneMapping) : '',
+	                (parameters.toneMapping !== exports.ToneMapping.None) ? "#define TONE_MAPPING" : '',
+	                (parameters.toneMapping !== exports.ToneMapping.None) ? ShaderChunk['tonemapping_pars_fragment'] : '',
+	                (parameters.toneMapping !== exports.ToneMapping.None) ? getToneMappingFunction("toneMapping", parameters.toneMapping) : '',
 	                (parameters.outputEncoding || parameters.mapEncoding || parameters.envMapEncoding || parameters.emissiveMapEncoding) ? ShaderChunk['encodings_pars_fragment'] : '',
 	                parameters.mapEncoding ? getTexelDecodingFunction('mapTexelToLinear', parameters.mapEncoding) : '',
 	                parameters.envMapEncoding ? getTexelDecodingFunction('envMapTexelToLinear', parameters.envMapEncoding) : '',
@@ -15376,7 +15508,7 @@
 	        function getTextureEncodingFromMap(map, gammaOverrideLinear) {
 	            var encoding;
 	            if (!map) {
-	                encoding = LinearEncoding;
+	                encoding = exports.TextureEncoding.Linear;
 	            }
 	            else if ((map && map instanceof Texture)) {
 	                encoding = map.encoding;
@@ -15386,8 +15518,8 @@
 	                encoding = map.texture.encoding;
 	            }
 	            // add backwards compatibility for WebGLRenderer.gammaInput/gammaOutput parameter, should probably be removed at some point.
-	            if (encoding === LinearEncoding && gammaOverrideLinear) {
-	                encoding = GammaEncoding;
+	            if (encoding === exports.TextureEncoding.Linear && gammaOverrideLinear) {
+	                encoding = exports.TextureEncoding.Gamma;
 	            }
 	            return encoding;
 	        }
@@ -15425,7 +15557,7 @@
 	            envMap: !!material.envMap,
 	            envMapMode: material.envMap && material.envMap.mapping,
 	            envMapEncoding: getTextureEncodingFromMap(material.envMap, this.renderer.gammaInput),
-	            envMapCubeUV: (!!material.envMap) && ((material.envMap.mapping === CubeUVReflectionMapping) || (material.envMap.mapping === CubeUVRefractionMapping)),
+	            envMapCubeUV: (!!material.envMap) && ((material.envMap.mapping === exports.TextureMapping.CubeUVReflection) || (material.envMap.mapping === exports.TextureMapping.CubeUVRefraction)),
 	            lightMap: !!material.lightMap,
 	            aoMap: !!material.aoMap,
 	            emissiveMap: !!material.emissiveMap,
@@ -15442,7 +15574,7 @@
 	            fog: !!fog,
 	            useFog: material.fog,
 	            fogExp: (fog && fog instanceof FogExp2),
-	            flatShading: material.shading === FlatShading,
+	            flatShading: material.shading === exports.ShadingMode.Flat,
 	            sizeAttenuation: material.sizeAttenuation,
 	            logarithmicDepthBuffer: capabilities.logarithmicDepthBuffer,
 	            skinning: material.skinning,
@@ -15464,8 +15596,8 @@
 	            physicallyCorrectLights: this.renderer.physicallyCorrectLights,
 	            premultipliedAlpha: material.premultipliedAlpha,
 	            alphaTest: material.alphaTest,
-	            doubleSided: material.side === DoubleSide,
-	            flipSided: material.side === BackSide,
+	            doubleSided: material.side === exports.SideMode.Double,
+	            flipSided: material.side === exports.SideMode.Back,
 	            depthPacking: (material.depthPacking !== undefined) ? material.depthPacking : false
 	        };
 	        return parameters;
@@ -15746,14 +15878,14 @@
 	var DepthTexture = (function (_super) {
 	    __extends(DepthTexture, _super);
 	    function DepthTexture(width, height, type, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy, format) {
-	        if (type === void 0) { type = UnsignedShortType; }
-	        if (magFilter === void 0) { magFilter = NearestFilter; }
-	        if (minFilter === void 0) { minFilter = NearestFilter; }
-	        if (format === void 0) { format = DepthFormat; }
+	        if (type === void 0) { type = exports.TextureType.UnsignedShort; }
+	        if (magFilter === void 0) { magFilter = exports.TextureFilter.Nearest; }
+	        if (minFilter === void 0) { minFilter = exports.TextureFilter.Nearest; }
+	        if (format === void 0) { format = exports.TextureFormat.Depth; }
 	        _super.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy);
 	        this.isDepthTexture = true;
-	        if (format !== DepthFormat && format !== DepthStencilFormat) {
-	            throw new Error('DepthTexture format must be either THREE.DepthFormat or THREE.DepthStencilFormat');
+	        if (format !== exports.TextureFormat.Depth && format !== exports.TextureFormat.DepthStencil) {
+	            throw new Error('DepthTexture format must be either THREE.TextureFormat.Depth or THREE.TextureFormat.DepthStencil');
 	        }
 	        this.image = { width: width, height: height };
 	        this.type = type;
@@ -15829,16 +15961,16 @@
 	        return image;
 	    };
 	    WebGLTextures.textureNeedsPowerOfTwo = function (texture) {
-	        if (texture.wrapS !== ClampToEdgeWrapping || texture.wrapT !== ClampToEdgeWrapping)
+	        if (texture.wrapS !== exports.TextureWrapping.ClampToEdge || texture.wrapT !== exports.TextureWrapping.ClampToEdge)
 	            return true;
-	        if (texture.minFilter !== NearestFilter && texture.minFilter !== LinearFilter)
+	        if (texture.minFilter !== exports.TextureFilter.Nearest && texture.minFilter !== exports.TextureFilter.Linear)
 	            return true;
 	        return false;
 	    };
 	    // Fallback filters for non-power-of-2 textures
 	    WebGLTextures.prototype.filterFallback = function (f) {
 	        var _gl = this._gl;
-	        if (f === NearestFilter || f === NearestMipMapNearestFilter || f === NearestMipMapLinearFilter) {
+	        if (f === exports.TextureFilter.Nearest || f === exports.TextureFilter.NearestMipMapNearest || f === exports.TextureFilter.NearestMipMapLinear) {
 	            return _gl.NEAREST;
 	        }
 	        return _gl.LINEAR;
@@ -15960,7 +16092,7 @@
 	                        var mipmaps = cubeImage[i].mipmaps;
 	                        for (var j = 0, jl = mipmaps.length; j < jl; j++) {
 	                            mipmap = mipmaps[j];
-	                            if (texture.format !== RGBAFormat && texture.format !== RGBFormat) {
+	                            if (texture.format !== exports.TextureFormat.RGBA && texture.format !== exports.TextureFormat.RGB) {
 	                                if (this.state.getCompressedTextureFormats().indexOf(glFormat) > -1) {
 	                                    this.state.compressedTexImage2D(_gl.TEXTURE_CUBE_MAP_POSITIVE_X + i, j, glFormat, mipmap.width, mipmap.height, 0, mipmap.data);
 	                                }
@@ -16004,20 +16136,20 @@
 	        else {
 	            _gl.texParameteri(textureType, _gl.TEXTURE_WRAP_S, _gl.CLAMP_TO_EDGE);
 	            _gl.texParameteri(textureType, _gl.TEXTURE_WRAP_T, _gl.CLAMP_TO_EDGE);
-	            if (texture.wrapS !== ClampToEdgeWrapping || texture.wrapT !== ClampToEdgeWrapping) {
-	                console.warn('THREE.WebGLRenderer: Texture is not power of two. Texture.wrapS and Texture.wrapT should be set to THREE.ClampToEdgeWrapping.', texture);
+	            if (texture.wrapS !== exports.TextureWrapping.ClampToEdge || texture.wrapT !== exports.TextureWrapping.ClampToEdge) {
+	                console.warn('THREE.WebGLRenderer: Texture is not power of two. Texture.wrapS and Texture.wrapT should be set to THREE.TextureWrapping.ClampToEdge.', texture);
 	            }
 	            _gl.texParameteri(textureType, _gl.TEXTURE_MAG_FILTER, this.filterFallback(texture.magFilter));
 	            _gl.texParameteri(textureType, _gl.TEXTURE_MIN_FILTER, this.filterFallback(texture.minFilter));
-	            if (texture.minFilter !== NearestFilter && texture.minFilter !== LinearFilter) {
-	                console.warn('THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter should be set to THREE.NearestFilter or THREE.LinearFilter.', texture);
+	            if (texture.minFilter !== exports.TextureFilter.Nearest && texture.minFilter !== exports.TextureFilter.Linear) {
+	                console.warn('THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter should be set to THREE.TextureFilter.Nearest or THREE.TextureFilter.Linear.', texture);
 	            }
 	        }
 	        extension = this.extensions.get('EXT_texture_filter_anisotropic');
 	        if (extension) {
-	            if (texture.type === FloatType && this.extensions.get('OES_texture_float_linear') === null)
+	            if (texture.type === exports.TextureType.Float && this.extensions.get('OES_texture_float_linear') === null)
 	                return;
-	            if (texture.type === HalfFloatType && this.extensions.get('OES_texture_half_float_linear') === null)
+	            if (texture.type === exports.TextureType.HalfFloat && this.extensions.get('OES_texture_half_float_linear') === null)
 	                return;
 	            if (texture.anisotropy > 1 || this.properties.get(texture).__currentAnisotropy) {
 	                _gl.texParameterf(textureType, extension.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(texture.anisotropy, this.capabilities.getMaxAnisotropy()));
@@ -16049,7 +16181,7 @@
 	        if ((texture && texture instanceof DepthTexture)) {
 	            // populate depth texture with dummy data
 	            var internalFormat = _gl.DEPTH_COMPONENT;
-	            if (texture.type === FloatType) {
+	            if (texture.type === exports.TextureType.Float) {
 	                if (!this._isWebGL2)
 	                    throw new Error('Float Depth Texture only supported in WebGL2.0');
 	                internalFormat = _gl.DEPTH_COMPONENT32F;
@@ -16060,7 +16192,7 @@
 	            }
 	            // Depth stencil textures need the DEPTH_STENCIL internal format
 	            // (https://www.khronos.org/registry/webgl/extensions/WEBGL_depth_texture/)
-	            if (texture.format === DepthStencilFormat) {
+	            if (texture.format === exports.TextureFormat.DepthStencil) {
 	                internalFormat = _gl.DEPTH_STENCIL;
 	            }
 	            this.state.texImage2D(_gl.TEXTURE_2D, 0, internalFormat, image.width, image.height, 0, glFormat, glType, null);
@@ -16083,7 +16215,7 @@
 	        else if ((texture && texture instanceof CompressedTexture)) {
 	            for (var i = 0, il = mipmaps.length; i < il; i++) {
 	                mipmap = mipmaps[i];
-	                if (texture.format !== RGBAFormat && texture.format !== RGBFormat) {
+	                if (texture.format !== exports.TextureFormat.RGBA && texture.format !== exports.TextureFormat.RGB) {
 	                    if (this.state.getCompressedTextureFormats().indexOf(glFormat) > -1) {
 	                        this.state.compressedTexImage2D(_gl.TEXTURE_2D, i, glFormat, mipmap.width, mipmap.height, 0, mipmap.data);
 	                    }
@@ -16167,10 +16299,10 @@
 	        }
 	        this.setTexture2D(renderTarget.depthTexture, 0);
 	        var webglDepthTexture = this.properties.get(renderTarget.depthTexture).__webglTexture;
-	        if (renderTarget.depthTexture.format === DepthFormat) {
+	        if (renderTarget.depthTexture.format === exports.TextureFormat.Depth) {
 	            _gl.framebufferTexture2D(_gl.FRAMEBUFFER, _gl.DEPTH_ATTACHMENT, _gl.TEXTURE_2D, webglDepthTexture, 0);
 	        }
-	        else if (renderTarget.depthTexture.format === DepthStencilFormat) {
+	        else if (renderTarget.depthTexture.format === exports.TextureFormat.DepthStencil) {
 	            _gl.framebufferTexture2D(_gl.FRAMEBUFFER, _gl.DEPTH_STENCIL_ATTACHMENT, _gl.TEXTURE_2D, webglDepthTexture, 0);
 	        }
 	        else {
@@ -16252,8 +16384,8 @@
 	        var _gl = this._gl;
 	        var texture = renderTarget.texture;
 	        if (texture.generateMipmaps && WebGLTextures.isPowerOfTwo(renderTarget) &&
-	            texture.minFilter !== NearestFilter &&
-	            texture.minFilter !== LinearFilter) {
+	            texture.minFilter !== exports.TextureFilter.Nearest &&
+	            texture.minFilter !== exports.TextureFilter.Linear) {
 	            var target = (renderTarget && renderTarget instanceof WebGLRenderTargetCube) ? _gl.TEXTURE_CUBE_MAP : _gl.TEXTURE_2D;
 	            var webglTexture = this.properties.get(texture).__webglTexture;
 	            this.state.bindTexture(target, webglTexture);
@@ -16349,28 +16481,28 @@
 	        if (this.currentDepthFunc !== depthFunc) {
 	            if (depthFunc) {
 	                switch (depthFunc) {
-	                    case NeverDepth:
+	                    case exports.DepthFunction.Never:
 	                        gl.depthFunc(gl.NEVER);
 	                        break;
-	                    case AlwaysDepth:
+	                    case exports.DepthFunction.Always:
 	                        gl.depthFunc(gl.ALWAYS);
 	                        break;
-	                    case LessDepth:
+	                    case exports.DepthFunction.Less:
 	                        gl.depthFunc(gl.LESS);
 	                        break;
-	                    case LessEqualDepth:
+	                    case exports.DepthFunction.LessEqual:
 	                        gl.depthFunc(gl.LEQUAL);
 	                        break;
-	                    case EqualDepth:
+	                    case exports.DepthFunction.Equal:
 	                        gl.depthFunc(gl.EQUAL);
 	                        break;
-	                    case GreaterEqualDepth:
+	                    case exports.DepthFunction.GreaterEqual:
 	                        gl.depthFunc(gl.GEQUAL);
 	                        break;
-	                    case GreaterDepth:
+	                    case exports.DepthFunction.Greater:
 	                        gl.depthFunc(gl.GREATER);
 	                        break;
-	                    case NotEqualDepth:
+	                    case exports.DepthFunction.NotEqual:
 	                        gl.depthFunc(gl.NOTEQUAL);
 	                        break;
 	                    default:
@@ -16536,12 +16668,12 @@
 	        this.clearDepth(1);
 	        this.clearStencil(0);
 	        this.enable(gl.DEPTH_TEST);
-	        this.setDepthFunc(LessEqualDepth);
+	        this.setDepthFunc(exports.DepthFunction.LessEqual);
 	        this.setFlipSided(false);
-	        this.setCullFace(CullFaceBack);
+	        this.setCullFace(exports.CullFace.Back);
 	        this.enable(gl.CULL_FACE);
 	        this.enable(gl.BLEND);
-	        this.setBlending(exports.BlendingMode.NormalBlending);
+	        this.setBlending(exports.BlendingMode.Normal);
 	    };
 	    WebGLState.prototype.initAttributes = function () {
 	        for (var i = 0, l = this.newAttributes.length; i < l; i++) {
@@ -16613,14 +16745,14 @@
 	    };
 	    WebGLState.prototype.setBlending = function (blending, blendEquation, blendSrc, blendDst, blendEquationAlpha, blendSrcAlpha, blendDstAlpha, premultipliedAlpha) {
 	        var gl = this.gl;
-	        if (blending !== exports.BlendingMode.NoBlending) {
+	        if (blending !== exports.BlendingMode.None) {
 	            this.enable(gl.BLEND);
 	        }
 	        else {
 	            this.disable(gl.BLEND);
 	        }
 	        if (blending !== this.currentBlending || premultipliedAlpha !== this.currentPremultipledAlpha) {
-	            if (blending === exports.BlendingMode.AdditiveBlending) {
+	            if (blending === exports.BlendingMode.Additive) {
 	                if (premultipliedAlpha) {
 	                    gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_ADD);
 	                    gl.blendFuncSeparate(gl.ONE, gl.ONE, gl.ONE, gl.ONE);
@@ -16630,7 +16762,7 @@
 	                    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
 	                }
 	            }
-	            else if (blending === exports.BlendingMode.SubtractiveBlending) {
+	            else if (blending === exports.BlendingMode.Subtractive) {
 	                if (premultipliedAlpha) {
 	                    gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_ADD);
 	                    gl.blendFuncSeparate(gl.ZERO, gl.ZERO, gl.ONE_MINUS_SRC_COLOR, gl.ONE_MINUS_SRC_ALPHA);
@@ -16640,7 +16772,7 @@
 	                    gl.blendFunc(gl.ZERO, gl.ONE_MINUS_SRC_COLOR);
 	                }
 	            }
-	            else if (blending === exports.BlendingMode.MultiplyBlending) {
+	            else if (blending === exports.BlendingMode.Multiply) {
 	                if (premultipliedAlpha) {
 	                    gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_ADD);
 	                    gl.blendFuncSeparate(gl.ZERO, gl.SRC_COLOR, gl.ZERO, gl.SRC_ALPHA);
@@ -16663,7 +16795,7 @@
 	            this.currentBlending = blending;
 	            this.currentPremultipledAlpha = premultipliedAlpha;
 	        }
-	        if (blending === exports.BlendingMode.CustomBlending) {
+	        if (blending === exports.BlendingMode.Custom) {
 	            blendEquationAlpha = blendEquationAlpha || blendEquation;
 	            blendSrcAlpha = blendSrcAlpha || blendSrc;
 	            blendDstAlpha = blendDstAlpha || blendDst;
@@ -16729,13 +16861,13 @@
 	    };
 	    WebGLState.prototype.setCullFace = function (cullFace) {
 	        var gl = this.gl;
-	        if (cullFace !== CullFaceNone) {
+	        if (cullFace !== exports.CullFace.None) {
 	            gl.enable(gl.CULL_FACE);
 	            if (cullFace !== this.currentCullFace) {
-	                if (cullFace === CullFaceBack) {
+	                if (cullFace === exports.CullFace.Back) {
 	                    gl.cullFace(gl.BACK);
 	                }
-	                else if (cullFace === CullFaceFront) {
+	                else if (cullFace === exports.CullFace.Front) {
 	                    gl.cullFace(gl.FRONT);
 	                }
 	                else {
@@ -17287,7 +17419,7 @@
 	    LensFlare.prototype.addFlare = function (texture, size, distance, blending, color, opacity) {
 	        if (size === void 0) { size = -1; }
 	        if (distance === void 0) { distance = 0; }
-	        if (blending === void 0) { blending = exports.BlendingMode.NormalBlending; }
+	        if (blending === void 0) { blending = exports.BlendingMode.Normal; }
 	        if (color === void 0) { color = new Color(0xffffff); }
 	        if (opacity === void 0) { opacity = 1; }
 	        distance = Math.min(distance, Math.max(0, distance));
@@ -17517,7 +17649,7 @@
 	        // physical lights
 	        this.physicallyCorrectLights = false;
 	        // tone mapping
-	        this.toneMapping = LinearToneMapping;
+	        this.toneMapping = exports.ToneMapping.Linear;
 	        this.toneMappingExposure = 1.0;
 	        this.toneMappingWhitePoint = 1.0;
 	        // morphs
@@ -17657,7 +17789,7 @@
 	            uniforms: this.backgroundBoxShader.uniforms,
 	            vertexShader: this.backgroundBoxShader.vertexShader,
 	            fragmentShader: this.backgroundBoxShader.fragmentShader,
-	            side: BackSide,
+	            side: exports.SideMode.Back,
 	            depthTest: false,
 	            depthWrite: false,
 	            fog: false
@@ -17839,7 +17971,7 @@
 	        }
 	        if (object.hasNormals) {
 	            this._gl.bindBuffer(this._gl.ARRAY_BUFFER, buffers.normal);
-	            if (!(material instanceof MeshPhongMaterial) && !(material instanceof MeshStandardMaterial) && material.shading === FlatShading) {
+	            if (!(material instanceof MeshPhongMaterial) && !(material instanceof MeshStandardMaterial) && material.shading === exports.ShadingMode.Flat) {
 	                for (var i = 0, l = object.count * 3; i < l; i += 9) {
 	                    var array = object.normalArray;
 	                    var nx = (array[i + 0] + array[i + 3] + array[i + 6]) / 3;
@@ -17866,7 +17998,7 @@
 	            this.state.enableAttribute(attributes.uv);
 	            this._gl.vertexAttribPointer(attributes.uv, 2, this._gl.FLOAT, false, 0, 0);
 	        }
-	        if (object.hasColors && material.vertexColors !== NoColors) {
+	        if (object.hasColors && material.vertexColors !== exports.ColorsMode.None) {
 	            this._gl.bindBuffer(this._gl.ARRAY_BUFFER, buffers.color);
 	            this._gl.bufferData(this._gl.ARRAY_BUFFER, object.colorArray, this._gl.DYNAMIC_DRAW);
 	            this.state.enableAttribute(attributes.color);
@@ -17969,13 +18101,13 @@
 	            }
 	            else {
 	                switch (object.drawMode) {
-	                    case TrianglesDrawMode:
+	                    case exports.DrawMode.Triangles:
 	                        renderer.setMode(_gl.TRIANGLES);
 	                        break;
-	                    case TriangleStripDrawMode:
+	                    case exports.DrawMode.TriangleStrip:
 	                        renderer.setMode(_gl.TRIANGLE_STRIP);
 	                        break;
-	                    case TriangleFanDrawMode:
+	                    case exports.DrawMode.TriangleFan:
 	                        renderer.setMode(_gl.TRIANGLE_FAN);
 	                        break;
 	                }
@@ -18222,7 +18354,7 @@
 	        }
 	        else {
 	            // opaque pass (front-to-back order)
-	            this.state.setBlending(exports.BlendingMode.NoBlending);
+	            this.state.setBlending(exports.BlendingMode.None);
 	            this.renderObjects(this.opaqueObjects, camera, scene);
 	            // transparent pass (back-to-front order)
 	            this.renderObjects(this.transparentObjects, camera, scene);
@@ -18486,13 +18618,13 @@
 	        materialProperties.uniformsList = uniformsList;
 	    };
 	    WebGLRenderer.prototype.setMaterial = function (material) {
-	        material.side === DoubleSide
+	        material.side === exports.SideMode.Double
 	            ? this.state.disable(this._gl.CULL_FACE)
 	            : this.state.enable(this._gl.CULL_FACE);
-	        this.state.setFlipSided(material.side === BackSide);
+	        this.state.setFlipSided(material.side === exports.SideMode.Back);
 	        material.transparent === true
 	            ? this.state.setBlending(material.blending, material.blendEquation, material.blendSrc, material.blendDst, material.blendEquationAlpha, material.blendSrcAlpha, material.blendDstAlpha, material.premultipliedAlpha)
-	            : this.state.setBlending(exports.BlendingMode.NoBlending);
+	            : this.state.setBlending(exports.BlendingMode.None);
 	        this.state.setDepthFunc(material.depthFunc);
 	        this.state.setDepthTest(material.depthTest);
 	        this.state.setDepthWrite(material.depthWrite);
@@ -18953,7 +19085,7 @@
 	    // GL state setting
 	    WebGLRenderer.prototype.setFaceCulling = function (cullFace, frontFaceDirection) {
 	        this.state.setCullFace(cullFace);
-	        this.state.setFlipSided(frontFaceDirection === FrontFaceDirectionCW);
+	        this.state.setFlipSided(frontFaceDirection === exports.FrontFaceDirection.CW);
 	    };
 	    // Textures
 	    WebGLRenderer.prototype.allocTextureUnit = function () {
@@ -19072,14 +19204,14 @@
 	                var texture = renderTarget.texture;
 	                var textureFormat = texture.format;
 	                var textureType = texture.type;
-	                if (textureFormat !== RGBAFormat && this.paramThreeToGL(textureFormat) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_FORMAT)) {
+	                if (textureFormat !== exports.TextureFormat.RGBA && this.paramThreeToGL(textureFormat) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_FORMAT)) {
 	                    console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in RGBA or implementation defined format.');
 	                    return;
 	                }
-	                if (textureType !== UnsignedByteType && this.paramThreeToGL(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) &&
-	                    !(textureType === FloatType && (this.extensions.get('OES_texture_float') || this.extensions.get('WEBGL_color_buffer_float'))) &&
-	                    !(textureType === HalfFloatType && this.extensions.get('EXT_color_buffer_half_float'))) {
-	                    console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in UnsignedByteType or implementation defined type.');
+	                if (textureType !== exports.TextureType.UnsignedByte && this.paramThreeToGL(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) &&
+	                    !(textureType === exports.TextureType.Float && (this.extensions.get('OES_texture_float') || this.extensions.get('WEBGL_color_buffer_float'))) &&
+	                    !(textureType === exports.TextureType.HalfFloat && this.extensions.get('EXT_color_buffer_half_float'))) {
+	                    console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in TextureType.UnsignedByte or implementation defined type.');
 	                    return;
 	                }
 	                if (_gl.checkFramebufferStatus(_gl.FRAMEBUFFER) === _gl.FRAMEBUFFER_COMPLETE) {
@@ -19103,136 +19235,136 @@
 	    WebGLRenderer.prototype.paramThreeToGL = function (p) {
 	        var _gl = this._gl;
 	        var extension;
-	        if (p === RepeatWrapping)
+	        if (p === exports.TextureWrapping.Repeat)
 	            return _gl.REPEAT;
-	        if (p === ClampToEdgeWrapping)
+	        if (p === exports.TextureWrapping.ClampToEdge)
 	            return _gl.CLAMP_TO_EDGE;
-	        if (p === MirroredRepeatWrapping)
+	        if (p === exports.TextureWrapping.MirroredRepeat)
 	            return _gl.MIRRORED_REPEAT;
-	        if (p === NearestFilter)
+	        if (p === exports.TextureFilter.Nearest)
 	            return _gl.NEAREST;
-	        if (p === NearestMipMapNearestFilter)
+	        if (p === exports.TextureFilter.NearestMipMapNearest)
 	            return _gl.NEAREST_MIPMAP_NEAREST;
-	        if (p === NearestMipMapLinearFilter)
+	        if (p === exports.TextureFilter.NearestMipMapLinear)
 	            return _gl.NEAREST_MIPMAP_LINEAR;
-	        if (p === LinearFilter)
+	        if (p === exports.TextureFilter.Linear)
 	            return _gl.LINEAR;
-	        if (p === LinearMipMapNearestFilter)
+	        if (p === exports.TextureFilter.LinearMipMapNearest)
 	            return _gl.LINEAR_MIPMAP_NEAREST;
-	        if (p === LinearMipMapLinearFilter)
+	        if (p === exports.TextureFilter.LinearMipMapLinear)
 	            return _gl.LINEAR_MIPMAP_LINEAR;
-	        if (p === UnsignedByteType)
+	        if (p === exports.TextureType.UnsignedByte)
 	            return _gl.UNSIGNED_BYTE;
-	        if (p === UnsignedShort4444Type)
+	        if (p === exports.TextureType.UnsignedShort4444)
 	            return _gl.UNSIGNED_SHORT_4_4_4_4;
-	        if (p === UnsignedShort5551Type)
+	        if (p === exports.TextureType.UnsignedShort5551)
 	            return _gl.UNSIGNED_SHORT_5_5_5_1;
-	        if (p === UnsignedShort565Type)
+	        if (p === exports.TextureType.UnsignedShort565)
 	            return _gl.UNSIGNED_SHORT_5_6_5;
-	        if (p === ByteType)
+	        if (p === exports.TextureType.Byte)
 	            return _gl.BYTE;
-	        if (p === ShortType)
+	        if (p === exports.TextureType.Short)
 	            return _gl.SHORT;
-	        if (p === UnsignedShortType)
+	        if (p === exports.TextureType.UnsignedShort)
 	            return _gl.UNSIGNED_SHORT;
-	        if (p === IntType)
+	        if (p === exports.TextureType.Int)
 	            return _gl.INT;
-	        if (p === UnsignedIntType)
+	        if (p === exports.TextureType.UnsignedInt)
 	            return _gl.UNSIGNED_INT;
-	        if (p === FloatType)
+	        if (p === exports.TextureType.Float)
 	            return _gl.FLOAT;
-	        if (p === HalfFloatType) {
+	        if (p === exports.TextureType.HalfFloat) {
 	            extension = this.extensions.get('OES_texture_half_float');
 	            if (extension !== null)
 	                return extension.HALF_FLOAT_OES;
 	        }
-	        if (p === AlphaFormat)
+	        if (p === exports.TextureFormat.Alpha)
 	            return _gl.ALPHA;
-	        if (p === RGBFormat)
+	        if (p === exports.TextureFormat.RGB)
 	            return _gl.RGB;
-	        if (p === RGBAFormat)
+	        if (p === exports.TextureFormat.RGBA)
 	            return _gl.RGBA;
-	        if (p === LuminanceFormat)
+	        if (p === exports.TextureFormat.Luminance)
 	            return _gl.LUMINANCE;
-	        if (p === LuminanceAlphaFormat)
+	        if (p === exports.TextureFormat.LuminanceAlpha)
 	            return _gl.LUMINANCE_ALPHA;
-	        if (p === DepthFormat)
+	        if (p === exports.TextureFormat.Depth)
 	            return _gl.DEPTH_COMPONENT;
-	        if (p === DepthStencilFormat)
+	        if (p === exports.TextureFormat.DepthStencil)
 	            return _gl.DEPTH_STENCIL;
-	        if (p === AddEquation)
+	        if (p === exports.BlendingEquation.Add)
 	            return _gl.FUNC_ADD;
-	        if (p === SubtractEquation)
+	        if (p === exports.BlendingEquation.Subtract)
 	            return _gl.FUNC_SUBTRACT;
-	        if (p === ReverseSubtractEquation)
+	        if (p === exports.BlendingEquation.ReverseSubtract)
 	            return _gl.FUNC_REVERSE_SUBTRACT;
-	        if (p === ZeroFactor)
+	        if (p === exports.BlendingFactor.Zero)
 	            return _gl.ZERO;
-	        if (p === OneFactor)
+	        if (p === exports.BlendingFactor.One)
 	            return _gl.ONE;
-	        if (p === SrcColorFactor)
+	        if (p === exports.BlendingFactor.SrcColor)
 	            return _gl.SRC_COLOR;
-	        if (p === OneMinusSrcColorFactor)
+	        if (p === exports.BlendingFactor.OneMinusSrcColor)
 	            return _gl.ONE_MINUS_SRC_COLOR;
-	        if (p === SrcAlphaFactor)
+	        if (p === exports.BlendingFactor.SrcAlpha)
 	            return _gl.SRC_ALPHA;
-	        if (p === OneMinusSrcAlphaFactor)
+	        if (p === exports.BlendingFactor.OneMinusSrcAlpha)
 	            return _gl.ONE_MINUS_SRC_ALPHA;
-	        if (p === DstAlphaFactor)
+	        if (p === exports.BlendingFactor.DstAlpha)
 	            return _gl.DST_ALPHA;
-	        if (p === OneMinusDstAlphaFactor)
+	        if (p === exports.BlendingFactor.OneMinusDstAlpha)
 	            return _gl.ONE_MINUS_DST_ALPHA;
-	        if (p === DstColorFactor)
+	        if (p === exports.BlendingFactor.DstColor)
 	            return _gl.DST_COLOR;
-	        if (p === OneMinusDstColorFactor)
+	        if (p === exports.BlendingFactor.OneMinusDstColor)
 	            return _gl.ONE_MINUS_DST_COLOR;
-	        if (p === SrcAlphaSaturateFactor)
+	        if (p === exports.BlendingFactor.SrcAlphaSaturate)
 	            return _gl.SRC_ALPHA_SATURATE;
-	        if (p === RGB_S3TC_DXT1_Format || p === RGBA_S3TC_DXT1_Format ||
-	            p === RGBA_S3TC_DXT3_Format || p === RGBA_S3TC_DXT5_Format) {
+	        if (p === exports.TextureFormat.RGB_S3TC_DXT1 || p === exports.TextureFormat.RGBA_S3TC_DXT1 ||
+	            p === exports.TextureFormat.RGBA_S3TC_DXT3 || p === exports.TextureFormat.RGBA_S3TC_DXT5) {
 	            extension = this.extensions.get('WEBGL_compressed_texture_s3tc');
 	            if (extension !== null) {
-	                if (p === RGB_S3TC_DXT1_Format)
+	                if (p === exports.TextureFormat.RGB_S3TC_DXT1)
 	                    return extension.COMPRESSED_RGB_S3TC_DXT1_EXT;
-	                if (p === RGBA_S3TC_DXT1_Format)
+	                if (p === exports.TextureFormat.RGBA_S3TC_DXT1)
 	                    return extension.COMPRESSED_RGBA_S3TC_DXT1_EXT;
-	                if (p === RGBA_S3TC_DXT3_Format)
+	                if (p === exports.TextureFormat.RGBA_S3TC_DXT3)
 	                    return extension.COMPRESSED_RGBA_S3TC_DXT3_EXT;
-	                if (p === RGBA_S3TC_DXT5_Format)
+	                if (p === exports.TextureFormat.RGBA_S3TC_DXT5)
 	                    return extension.COMPRESSED_RGBA_S3TC_DXT5_EXT;
 	            }
 	        }
-	        if (p === RGB_PVRTC_4BPPV1_Format || p === RGB_PVRTC_2BPPV1_Format ||
-	            p === RGBA_PVRTC_4BPPV1_Format || p === RGBA_PVRTC_2BPPV1_Format) {
+	        if (p === exports.TextureFormat.RGB_PVRTC_4BPPV1 || p === exports.TextureFormat.RGB_PVRTC_2BPPV1 ||
+	            p === exports.TextureFormat.RGBA_PVRTC_4BPPV1 || p === exports.TextureFormat.RGBA_PVRTC_2BPPV1) {
 	            extension = this.extensions.get('WEBGL_compressed_texture_pvrtc');
 	            if (extension !== null) {
-	                if (p === RGB_PVRTC_4BPPV1_Format)
+	                if (p === exports.TextureFormat.RGB_PVRTC_4BPPV1)
 	                    return extension.COMPRESSED_RGB_PVRTC_4BPPV1_IMG;
-	                if (p === RGB_PVRTC_2BPPV1_Format)
+	                if (p === exports.TextureFormat.RGB_PVRTC_2BPPV1)
 	                    return extension.COMPRESSED_RGB_PVRTC_2BPPV1_IMG;
-	                if (p === RGBA_PVRTC_4BPPV1_Format)
+	                if (p === exports.TextureFormat.RGBA_PVRTC_4BPPV1)
 	                    return extension.COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
-	                if (p === RGBA_PVRTC_2BPPV1_Format)
+	                if (p === exports.TextureFormat.RGBA_PVRTC_2BPPV1)
 	                    return extension.COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
 	            }
 	        }
-	        if (p === RGB_ETC1_Format) {
+	        if (p === exports.TextureFormat.RGB_ETC1) {
 	            extension = this.extensions.get('WEBGL_compressed_texture_etc1');
 	            if (extension !== null) {
-	                if (p === RGB_ETC1_Format)
+	                if (p === exports.TextureFormat.RGB_ETC1)
 	                    return extension.COMPRESSED_RGB_ETC1_WEBGL;
 	            }
 	        }
-	        if (p === MinEquation || p === MaxEquation) {
+	        if (p === exports.BlendingEquation.Min || p === exports.BlendingEquation.Max) {
 	            extension = this.extensions.get('EXT_blend_minmax');
 	            if (extension !== null) {
-	                if (p === MinEquation)
+	                if (p === exports.BlendingEquation.Min)
 	                    return extension.MIN_EXT;
-	                if (p === MaxEquation)
+	                if (p === exports.BlendingEquation.Max)
 	                    return extension.MAX_EXT;
 	            }
 	        }
-	        if (p === UnsignedInt248Type) {
+	        if (p === exports.TextureType.UnsignedInt248) {
 	            extension = this.extensions.get('WEBGL_depth_texture');
 	            if (extension !== null)
 	                return extension.UNSIGNED_INT_24_8_WEBGL;
@@ -23670,7 +23802,7 @@
 	                loaded += 1;
 	                if (loaded === 6) {
 	                    if (texDatas.mipmapCount === 1)
-	                        texture.minFilter = LinearFilter;
+	                        texture.minFilter = exports.TextureFilter.Linear;
 	                    texture.format = texDatas.format;
 	                    texture.needsUpdate = true;
 	                    if (onLoad)
@@ -23706,7 +23838,7 @@
 	                    texture.mipmaps = texDatas.mipmaps;
 	                }
 	                if (texDatas.mipmapCount === 1) {
-	                    texture.minFilter = LinearFilter;
+	                    texture.minFilter = exports.TextureFilter.Linear;
 	                }
 	                texture.format = texDatas.format;
 	                texture.needsUpdate = true;
@@ -23752,10 +23884,10 @@
 	                texture.image.height = texData.height;
 	                texture.image.data = texData.data;
 	            }
-	            texture.wrapS = undefined !== texData.wrapS ? texData.wrapS : ClampToEdgeWrapping;
-	            texture.wrapT = undefined !== texData.wrapT ? texData.wrapT : ClampToEdgeWrapping;
-	            texture.magFilter = undefined !== texData.magFilter ? texData.magFilter : LinearFilter;
-	            texture.minFilter = undefined !== texData.minFilter ? texData.minFilter : LinearMipMapLinearFilter;
+	            texture.wrapS = undefined !== texData.wrapS ? texData.wrapS : exports.TextureWrapping.ClampToEdge;
+	            texture.wrapT = undefined !== texData.wrapT ? texData.wrapT : exports.TextureWrapping.ClampToEdge;
+	            texture.magFilter = undefined !== texData.magFilter ? texData.magFilter : exports.TextureFilter.Linear;
+	            texture.minFilter = undefined !== texData.minFilter ? texData.minFilter : exports.TextureFilter.LinearMipMapLinear;
 	            texture.anisotropy = undefined !== texData.anisotropy ? texData.anisotropy : 1;
 	            if (undefined !== texData.format) {
 	                texture.format = texData.format;
@@ -23767,7 +23899,7 @@
 	                texture.mipmaps = texData.mipmaps;
 	            }
 	            if (1 === texData.mipmapCount) {
-	                texture.minFilter = LinearFilter;
+	                texture.minFilter = exports.TextureFilter.Linear;
 	            }
 	            texture.needsUpdate = true;
 	            if (onLoad)
@@ -23886,7 +24018,7 @@
 	        loader.load(url, function (image) {
 	            // JPEGs can't have an alpha channel, so memory can be saved by storing them as RGB.
 	            var isJPEG = url.search(/\.(jpg|jpeg)$/) > 0 || url.search(/^data\:image\/jpeg/) === 0;
-	            texture.format = isJPEG ? RGBFormat : RGBAFormat;
+	            texture.format = isJPEG ? exports.TextureFormat.RGB : exports.TextureFormat.RGBA;
 	            texture.image = image;
 	            texture.needsUpdate = true;
 	            if (onLoad !== undefined) {
@@ -24187,8 +24319,8 @@
 	    function CubicInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
 	        _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer);
 	        this.DefaultSettings_ = {
-	            endingStart: ZeroCurvatureEnding,
-	            endingEnd: ZeroCurvatureEnding
+	            endingStart: exports.EndingMode.ZeroCurvature,
+	            endingEnd: exports.EndingMode.ZeroCurvature
 	        };
 	        this._weightPrev = -0;
 	        this._offsetPrev = -0;
@@ -24203,12 +24335,12 @@
 	        var tNext = pp[iNext];
 	        if (tPrev === undefined) {
 	            switch (this.getSettings_().endingStart) {
-	                case ZeroSlopeEnding:
+	                case exports.EndingMode.ZeroSlope:
 	                    // f'(t0) = 0
 	                    iPrev = i1;
 	                    tPrev = 2 * t0 - t1;
 	                    break;
-	                case WrapAroundEnding:
+	                case exports.EndingMode.WrapAround:
 	                    // use the other end of the curve
 	                    iPrev = pp.length - 2;
 	                    tPrev = t0 + pp[iPrev] - pp[iPrev + 1];
@@ -24221,12 +24353,12 @@
 	        }
 	        if (tNext === undefined) {
 	            switch (this.getSettings_().endingEnd) {
-	                case ZeroSlopeEnding:
+	                case exports.EndingMode.ZeroSlope:
 	                    // f'(tN) = 0
 	                    iNext = i1;
 	                    tNext = 2 * t1 - t0;
 	                    break;
-	                case WrapAroundEnding:
+	                case exports.EndingMode.WrapAround:
 	                    // use the other end of the curve
 	                    iNext = 1;
 	                    tNext = t1 + pp[1] - pp[0];
@@ -24332,7 +24464,7 @@
 	    function KeyframeTrack(name, times, values, interpolation) {
 	        this.TimeBufferType = Float32Array;
 	        this.ValueBufferType = Float32Array;
-	        this.DefaultInterpolation = InterpolateLinear;
+	        this.DefaultInterpolation = exports.InterpolateMode.Linear;
 	        if (name === undefined)
 	            throw new Error("track name is undefined");
 	        if (times === undefined || times.length === 0) {
@@ -24357,13 +24489,13 @@
 	    KeyframeTrack.prototype.setInterpolation = function (interpolation) {
 	        var factoryMethod;
 	        switch (interpolation) {
-	            case InterpolateDiscrete:
+	            case exports.InterpolateMode.Discrete:
 	                factoryMethod = this.InterpolantFactoryMethodDiscrete;
 	                break;
-	            case InterpolateLinear:
+	            case exports.InterpolateMode.Linear:
 	                factoryMethod = this.InterpolantFactoryMethodLinear;
 	                break;
-	            case InterpolateSmooth:
+	            case exports.InterpolateMode.Smooth:
 	                factoryMethod = this.InterpolantFactoryMethodSmooth;
 	                break;
 	        }
@@ -24387,11 +24519,11 @@
 	    KeyframeTrack.prototype.getInterpolation = function () {
 	        switch (this.createInterpolant) {
 	            case this.InterpolantFactoryMethodDiscrete:
-	                return InterpolateDiscrete;
+	                return exports.InterpolateMode.Discrete;
 	            case this.InterpolantFactoryMethodLinear:
-	                return InterpolateLinear;
+	                return exports.InterpolateMode.Linear;
 	            case this.InterpolantFactoryMethodSmooth:
-	                return InterpolateSmooth;
+	                return exports.InterpolateMode.Smooth;
 	        }
 	        throw new Error();
 	    };
@@ -24491,7 +24623,7 @@
 	        var times = this.times;
 	        var values = this.values;
 	        var stride = this.getValueSize();
-	        var smoothInterpolation = this.getInterpolation() === InterpolateSmooth;
+	        var smoothInterpolation = this.getInterpolation() === exports.InterpolateMode.Smooth;
 	        var writeIndex = 1;
 	        var lastIndex = times.length - 1;
 	        for (var i = 1; i < lastIndex; ++i) {
@@ -24560,7 +24692,7 @@
 	        _super.call(this, name, times, values, interpolation);
 	        this.ValueTypeName = 'string';
 	        this.ValueBufferType = Array;
-	        this.DefaultInterpolation = InterpolateDiscrete;
+	        this.DefaultInterpolation = exports.InterpolateMode.Discrete;
 	    }
 	    return NewStringKeyframeTrack;
 	}(KeyframeTrack));
@@ -24580,7 +24712,7 @@
 	        _super.call(this, name, times, values, interpolation);
 	        this.ValueTypeName = 'color';
 	        this.ValueBufferType = Array;
-	        this.DefaultInterpolation = InterpolateDiscrete;
+	        this.DefaultInterpolation = exports.InterpolateMode.Discrete;
 	    }
 	    return NewBooleanKeyframeTrack;
 	}(KeyframeTrack));
@@ -24623,7 +24755,7 @@
 	        _super.call(this, name, times, values, interpolation);
 	        this.ValueTypeName = 'quaternion';
 	        // ValueBufferType is inherited
-	        this.DefaultInterpolation = InterpolateLinear;
+	        this.DefaultInterpolation = exports.InterpolateMode.Linear;
 	    }
 	    NewQuaternionKeyframeTrack.prototype.InterpolantFactoryMethodLinear = function (result) {
 	        return new QuaternionLinearInterpolant(this.times, this.values, this.getValueSize(), result);
@@ -25204,22 +25336,22 @@
 	            if (repeat !== undefined) {
 	                texture.repeat.fromArray(repeat);
 	                if (repeat[0] !== 1)
-	                    texture.wrapS = RepeatWrapping;
+	                    texture.wrapS = exports.TextureWrapping.Repeat;
 	                if (repeat[1] !== 1)
-	                    texture.wrapT = RepeatWrapping;
+	                    texture.wrapT = exports.TextureWrapping.Repeat;
 	            }
 	            if (offset !== undefined) {
 	                texture.offset.fromArray(offset);
 	            }
 	            if (wrap !== undefined) {
 	                if (wrap[0] === 'repeat')
-	                    texture.wrapS = RepeatWrapping;
+	                    texture.wrapS = exports.TextureWrapping.Repeat;
 	                if (wrap[0] === 'mirror')
-	                    texture.wrapS = MirroredRepeatWrapping;
+	                    texture.wrapS = exports.TextureWrapping.MirroredRepeat;
 	                if (wrap[1] === 'repeat')
-	                    texture.wrapT = RepeatWrapping;
+	                    texture.wrapT = exports.TextureWrapping.Repeat;
 	                if (wrap[1] === 'mirror')
-	                    texture.wrapT = MirroredRepeatWrapping;
+	                    texture.wrapT = exports.TextureWrapping.MirroredRepeat;
 	            }
 	            if (anisotropy !== undefined) {
 	                texture.anisotropy = anisotropy;
@@ -25358,10 +25490,10 @@
 	                case 'mapAlphaAnisotropy':
 	                    break;
 	                case 'flipSided':
-	                    json.side = BackSide;
+	                    json.side = exports.SideMode.Back;
 	                    break;
 	                case 'doubleSided':
-	                    json.side = DoubleSide;
+	                    json.side = exports.SideMode.Double;
 	                    break;
 	                case 'transparency':
 	                    console.warn('THREE.Loader.createMaterial: transparency has been renamed to opacity');
@@ -25379,9 +25511,9 @@
 	                    break;
 	                case 'vertexColors':
 	                    if (value === true)
-	                        json.vertexColors = VertexColors;
+	                        json.vertexColors = exports.ColorsMode.Vertex;
 	                    if (value === 'face')
-	                        json.vertexColors = FaceColors;
+	                        json.vertexColors = exports.ColorsMode.Face;
 	                    break;
 	                default:
 	                    console.error('THREE.Loader.createMaterial: Unsupported', name, value);
@@ -26235,7 +26367,7 @@
 	        this.cameraNZ.up.set(0, -1, 0);
 	        this.cameraNZ.lookAt(new Vector3(0, 0, -1));
 	        this.add(this.cameraNZ);
-	        var options = { format: RGBFormat, magFilter: LinearFilter, minFilter: LinearFilter };
+	        var options = { format: exports.TextureFormat.RGB, magFilter: exports.TextureFilter.Linear, minFilter: exports.TextureFilter.Linear };
 	        this.renderTarget = new WebGLRenderTargetCube(cubeResolution, cubeResolution, options);
 	    }
 	    CubeCamera.prototype.updateCubeMap = function (renderer, scene) {
@@ -27283,8 +27415,8 @@
 	        this._localRoot = localRoot || null;
 	        var tracks = clip.tracks, nTracks = tracks.length, interpolants = new Array(nTracks);
 	        var interpolantSettings = {
-	            endingStart: ZeroCurvatureEnding,
-	            endingEnd: ZeroCurvatureEnding
+	            endingStart: exports.EndingMode.ZeroCurvature,
+	            endingEnd: exports.EndingMode.ZeroCurvature
 	        };
 	        for (var i = 0; i !== nTracks; ++i) {
 	            var interpolant = tracks[i].createInterpolant(null);
@@ -27299,7 +27431,7 @@
 	        this._byClipCacheIndex = null; // for the memory manager
 	        this._timeScaleInterpolant = null;
 	        this._weightInterpolant = null;
-	        this.loop = LoopRepeat;
+	        this.loop = exports.LoopMode.Repeat;
 	        this._loopCount = -1;
 	        // global mixer time when the action is to be started
 	        // it's set back to 'null' upon start of the action
@@ -27527,7 +27659,7 @@
 	        if (deltaTime === 0)
 	            return time;
 	        var duration = this._clip.duration, loop = this.loop, loopCount = this._loopCount;
-	        if (loop === LoopOnce) {
+	        if (loop === exports.LoopMode.Once) {
 	            if (loopCount === -1) {
 	                // just started
 	                this.loopCount = 0;
@@ -27553,7 +27685,7 @@
 	            }
 	        }
 	        else {
-	            var pingPong = (loop === LoopPingPong);
+	            var pingPong = (loop === exports.LoopMode.PingPong);
 	            if (loopCount === -1) {
 	                // just started
 	                if (deltaTime >= 0) {
@@ -27613,24 +27745,24 @@
 	    AnimationAction.prototype._setEndings = function (atStart, atEnd, pingPong) {
 	        var settings = this._interpolantSettings;
 	        if (pingPong) {
-	            settings.endingStart = ZeroSlopeEnding;
-	            settings.endingEnd = ZeroSlopeEnding;
+	            settings.endingStart = exports.EndingMode.ZeroSlope;
+	            settings.endingEnd = exports.EndingMode.ZeroSlope;
 	        }
 	        else {
-	            // assuming for LoopOnce atStart == atEnd == true
+	            // assuming for LoopMode.Once atStart == atEnd == true
 	            if (atStart) {
 	                settings.endingStart = this.zeroSlopeAtStart ?
-	                    ZeroSlopeEnding : ZeroCurvatureEnding;
+	                    exports.EndingMode.ZeroSlope : exports.EndingMode.ZeroCurvature;
 	            }
 	            else {
-	                settings.endingStart = WrapAroundEnding;
+	                settings.endingStart = exports.EndingMode.WrapAround;
 	            }
 	            if (atEnd) {
 	                settings.endingEnd = this.zeroSlopeAtEnd ?
-	                    ZeroSlopeEnding : ZeroCurvatureEnding;
+	                    exports.EndingMode.ZeroSlope : exports.EndingMode.ZeroCurvature;
 	            }
 	            else {
-	                settings.endingEnd = WrapAroundEnding;
+	                settings.endingEnd = exports.EndingMode.WrapAround;
 	            }
 	        }
 	    };
@@ -28677,7 +28809,7 @@
 	            }
 	        }
 	        geometry.dynamic = true;
-	        var material = new LineBasicMaterial({ vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true });
+	        var material = new LineBasicMaterial({ vertexColors: exports.ColorsMode.Vertex, depthTest: false, depthWrite: false, transparent: true });
 	        _super.call(this, geometry, material);
 	        this.bones = bones;
 	        this.root = object;
@@ -28787,7 +28919,7 @@
 	        for (var i = 0, il = 8; i < il; i++) {
 	            geometry.faces[i].color = this.colors[i < 4 ? 0 : 1];
 	        }
-	        var material = new MeshBasicMaterial({ vertexColors: FaceColors, wireframe: true });
+	        var material = new MeshBasicMaterial({ vertexColors: exports.ColorsMode.Face, wireframe: true });
 	        this.lightSphere = new Mesh(geometry, material);
 	        this.add(this.lightSphere);
 	        this.update();
@@ -28838,7 +28970,7 @@
 	        var geometry = new BufferGeometry();
 	        geometry.addAttribute('position', Float32Attribute(vertices, 3));
 	        geometry.addAttribute('color', Float32Attribute(colors, 3));
-	        var material = new LineBasicMaterial({ vertexColors: VertexColors });
+	        var material = new LineBasicMaterial({ vertexColors: exports.ColorsMode.Vertex });
 	        _super.call(this, geometry, material);
 	    }
 	    GridHelper.prototype.setColors = function () {
@@ -28984,7 +29116,7 @@
 	    __extends(CameraHelper, _super);
 	    function CameraHelper(camera) {
 	        var geometry = new Geometry();
-	        var material = new LineBasicMaterial({ color: 0xffffff, vertexColors: FaceColors });
+	        var material = new LineBasicMaterial({ color: 0xffffff, vertexColors: exports.ColorsMode.Face });
 	        var pointMap = {};
 	        // colors
 	        var hexFrustum = 0xffaa00;
@@ -29276,7 +29408,7 @@
 	        var geometry = new BufferGeometry();
 	        geometry.addAttribute('position', new BufferAttribute(vertices, 3));
 	        geometry.addAttribute('color', new BufferAttribute(colors, 3));
-	        var material = new LineBasicMaterial({ vertexColors: VertexColors });
+	        var material = new LineBasicMaterial({ vertexColors: exports.ColorsMode.Vertex });
 	        _super.call(this, geometry, material);
 	    }
 	    return AxisHelper;
