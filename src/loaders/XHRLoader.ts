@@ -6,7 +6,7 @@ import { LoadingManager, DefaultLoadingManager } from "./LoadingManager";
 export class XHRLoader {
   manager: LoadingManager;
   path: string;
-  responseType: string;
+  responseType: XMLHttpRequestResponseType;
   withCredentials: boolean;
   constructor(manager: LoadingManager = DefaultLoadingManager) {
     this.manager = manager;
@@ -116,7 +116,7 @@ export class XHRLoader {
     this.path = value;
     return this;
   }
-  setResponseType(value: string): XHRLoader {
+  setResponseType(value: XMLHttpRequestResponseType): XHRLoader {
     this.responseType = value;
     return this;
   }

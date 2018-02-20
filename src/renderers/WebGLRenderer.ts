@@ -1039,7 +1039,7 @@ export class WebGLRenderer {
     }
     const uniforms = materialProperties.__webglShader.uniforms;
     if (! (material instanceof ShaderMaterial) &&
-         ! (material instanceof RawShaderMaterial) ||
+         ! ((material as any) instanceof RawShaderMaterial) ||
            material.clipping === true) {
       materialProperties.numClippingPlanes = this._clipping.numPlanes;
       materialProperties.numIntersection = this._clipping.numIntersection;

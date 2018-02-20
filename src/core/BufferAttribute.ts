@@ -133,7 +133,7 @@ export class BufferAttribute {
     }
     return this;
   }
-  set(value: number, offset: number = 0): BufferAttribute {
+  set(value: ArrayLike<number>, offset: number = 0): BufferAttribute {
     this.array.set(value, offset);
     return this;
   }

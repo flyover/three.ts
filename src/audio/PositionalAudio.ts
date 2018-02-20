@@ -30,7 +30,7 @@ export class PositionalAudio extends Audio {
     return this.panner.distanceModel;
   }
   setDistanceModel(value: string): void {
-    this.panner.distanceModel = value;
+    this.panner.distanceModel = value as DistanceModelType;
   }
   getMaxDistance(): number {
     return this.panner.maxDistance;
