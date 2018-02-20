@@ -59,7 +59,7 @@
 	/**
 	 * https://github.com/mrdoob/eventdispatcher.js/
 	 */
-	var EventDispatcher = (function () {
+	var EventDispatcher = /** @class */ (function () {
 	    function EventDispatcher() {
 	    }
 	    EventDispatcher.prototype.addEventListener = function (type, listener) {
@@ -470,7 +470,7 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var _Math = (function () {
+	var _Math = /** @class */ (function () {
 	    function _Math() {
 	    }
 	    _Math.generateUUID = function () {
@@ -579,7 +579,7 @@
 	 * @author egraether / http://egraether.com/
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 */
-	var Vector2 = (function () {
+	var Vector2 = /** @class */ (function () {
 	    function Vector2(x, y) {
 	        if (x === void 0) { x = 0; }
 	        if (y === void 0) { y = 0; }
@@ -845,7 +845,7 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author szimek / https://github.com/szimek/
 	 */
-	var Texture = (function (_super) {
+	var Texture = /** @class */ (function (_super) {
 	    __extends(Texture, _super);
 	    function Texture(image, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding) {
 	        if (image === void 0) { image = Texture.DEFAULT_IMAGE; }
@@ -858,31 +858,32 @@
 	        if (type === void 0) { type = exports.TextureType.UnsignedByte; }
 	        if (anisotropy === void 0) { anisotropy = 1; }
 	        if (encoding === void 0) { encoding = exports.TextureEncoding.Linear; }
-	        _super.call(this);
-	        this.id = TextureIdCount();
-	        this.uuid = _Math.generateUUID();
-	        this.name = '';
-	        this.sourceFile = '';
-	        this.mipmaps = [];
-	        this.offset = new Vector2(0, 0);
-	        this.repeat = new Vector2(1, 1);
-	        this.generateMipmaps = true;
-	        this.premultiplyAlpha = false;
-	        this.flipY = true;
-	        this.unpackAlignment = 4; // valid values: 1, 2, 4, 8 (see http://www.khronos.org/opengles/sdk/docs/man/xhtml/glPixelStorei.xml)
-	        this.version = 0;
-	        this.onUpdate = null;
-	        this.isTexture = true;
-	        this.image = image;
-	        this.mapping = mapping;
-	        this.wrapS = wrapS;
-	        this.wrapT = wrapT;
-	        this.magFilter = magFilter;
-	        this.minFilter = minFilter;
-	        this.anisotropy = anisotropy;
-	        this.format = format;
-	        this.type = type;
-	        this.encoding = encoding;
+	        var _this = _super.call(this) || this;
+	        _this.id = TextureIdCount();
+	        _this.uuid = _Math.generateUUID();
+	        _this.name = '';
+	        _this.sourceFile = '';
+	        _this.mipmaps = [];
+	        _this.offset = new Vector2(0, 0);
+	        _this.repeat = new Vector2(1, 1);
+	        _this.generateMipmaps = true;
+	        _this.premultiplyAlpha = false;
+	        _this.flipY = true;
+	        _this.unpackAlignment = 4; // valid values: 1, 2, 4, 8 (see http://www.khronos.org/opengles/sdk/docs/man/xhtml/glPixelStorei.xml)
+	        _this.version = 0;
+	        _this.onUpdate = null;
+	        _this.isTexture = true;
+	        _this.image = image;
+	        _this.mapping = mapping;
+	        _this.wrapS = wrapS;
+	        _this.wrapT = wrapT;
+	        _this.magFilter = magFilter;
+	        _this.minFilter = minFilter;
+	        _this.anisotropy = anisotropy;
+	        _this.format = format;
+	        _this.type = type;
+	        _this.encoding = encoding;
+	        return _this;
 	    }
 	    Object.defineProperty(Texture.prototype, "needsUpdate", {
 	        set: function (value) {
@@ -1026,7 +1027,7 @@
 	var count = 0;
 	function TextureIdCount() { return count++; }
 
-	var Vector4 = (function () {
+	var Vector4 = /** @class */ (function () {
 	    function Vector4(x, y, z, w) {
 	        if (x === void 0) { x = 0; }
 	        if (y === void 0) { y = 0; }
@@ -1416,7 +1417,12 @@
 	    return Vector4;
 	}());
 
-	var WebGLRenderTarget = (function (_super) {
+	/**
+	 * @author szimek / https://github.com/szimek/
+	 * @author alteredq / http://alteredqualia.com/
+	 * @author Marius Kintel / https://github.com/kintel
+	 */
+	var WebGLRenderTarget = /** @class */ (function (_super) {
 	    __extends(WebGLRenderTarget, _super);
 	    /*
 	     In options, we can specify:
@@ -1424,21 +1430,22 @@
 	     * depthBuffer/stencilBuffer: Booleans to indicate if we should generate these buffers
 	    */
 	    function WebGLRenderTarget(width, height, options) {
-	        _super.call(this);
-	        this.isWebGLRenderTarget = true;
-	        this.uuid = _Math.generateUUID();
-	        this.width = width;
-	        this.height = height;
-	        this.scissor = new Vector4(0, 0, width, height);
-	        this.scissorTest = false;
-	        this.viewport = new Vector4(0, 0, width, height);
+	        var _this = _super.call(this) || this;
+	        _this.isWebGLRenderTarget = true;
+	        _this.uuid = _Math.generateUUID();
+	        _this.width = width;
+	        _this.height = height;
+	        _this.scissor = new Vector4(0, 0, width, height);
+	        _this.scissorTest = false;
+	        _this.viewport = new Vector4(0, 0, width, height);
 	        options = options || {};
 	        if (options.minFilter === undefined)
 	            options.minFilter = exports.TextureFilter.Linear;
-	        this.texture = new Texture(undefined, undefined, options.wrapS, options.wrapT, options.magFilter, options.minFilter, options.format, options.type, options.anisotropy, options.encoding);
-	        this.depthBuffer = options.depthBuffer !== undefined ? options.depthBuffer : true;
-	        this.stencilBuffer = options.stencilBuffer !== undefined ? options.stencilBuffer : true;
-	        this.depthTexture = options.depthTexture !== undefined ? options.depthTexture : null;
+	        _this.texture = new Texture(undefined, undefined, options.wrapS, options.wrapT, options.magFilter, options.minFilter, options.format, options.type, options.anisotropy, options.encoding);
+	        _this.depthBuffer = options.depthBuffer !== undefined ? options.depthBuffer : true;
+	        _this.stencilBuffer = options.stencilBuffer !== undefined ? options.stencilBuffer : true;
+	        _this.depthTexture = options.depthTexture !== undefined ? options.depthTexture : null;
+	        return _this;
 	    }
 	    WebGLRenderTarget.prototype.setSize = function (width, height) {
 	        if (this.width !== width || this.height !== height) {
@@ -1588,13 +1595,17 @@
 	    return WebGLRenderTarget;
 	}(EventDispatcher));
 
-	var WebGLRenderTargetCube = (function (_super) {
+	/**
+	 * @author alteredq / http://alteredqualia.com
+	 */
+	var WebGLRenderTargetCube = /** @class */ (function (_super) {
 	    __extends(WebGLRenderTargetCube, _super);
 	    function WebGLRenderTargetCube(width, height, options) {
-	        _super.call(this, width, height, options);
-	        this.activeCubeFace = 0; // PX 0, NX 1, PY 2, NY 3, PZ 4, NZ 5
-	        this.activeMipMapLevel = 0;
-	        this.isWebGLRenderTargetCube = true;
+	        var _this = _super.call(this, width, height, options) || this;
+	        _this.activeCubeFace = 0; // PX 0, NX 1, PY 2, NY 3, PZ 4, NZ 5
+	        _this.activeMipMapLevel = 0;
+	        _this.isWebGLRenderTargetCube = true;
+	        return _this;
 	    }
 	    return WebGLRenderTargetCube;
 	}(WebGLRenderTarget));
@@ -1605,7 +1616,7 @@
 	 * @author WestLangley / http://github.com/WestLangley
 	 * @author bhouston / http://clara.io
 	 */
-	var Quaternion = (function () {
+	var Quaternion = /** @class */ (function () {
 	    function Quaternion(x, y, z, w) {
 	        if (x === void 0) { x = 0; }
 	        if (y === void 0) { y = 0; }
@@ -1957,7 +1968,7 @@
 	 * @author egraether / http://egraether.com/
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
-	var Vector3 = (function () {
+	var Vector3 = /** @class */ (function () {
 	    function Vector3(x, y, z) {
 	        if (x === void 0) { x = 0; }
 	        if (y === void 0) { y = 0; }
@@ -2401,7 +2412,7 @@
 	 * @author WestLangley / http://github.com/WestLangley
 	 * @author bhouston / http://clara.io
 	 */
-	var Euler = (function () {
+	var Euler = /** @class */ (function () {
 	    function Euler(x, y, z, order) {
 	        if (x === void 0) { x = 0; }
 	        if (y === void 0) { y = 0; }
@@ -2624,7 +2635,7 @@
 	 * @author bhouston / http://clara.io
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
-	var Matrix4 = (function () {
+	var Matrix4 = /** @class */ (function () {
 	    function Matrix4() {
 	        this.isMatrix4 = true;
 	        this.elements = new Float32Array([
@@ -3315,14 +3326,15 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var CubeTexture = (function (_super) {
+	var CubeTexture = /** @class */ (function (_super) {
 	    __extends(CubeTexture, _super);
 	    function CubeTexture(images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding) {
 	        if (images === void 0) { images = []; }
 	        if (mapping === void 0) { mapping = exports.TextureMapping.CubeReflection; }
-	        _super.call(this, images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding);
-	        this.isCubeTexture = true;
-	        this.flipY = false;
+	        var _this = _super.call(this, images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding) || this;
+	        _this.isCubeTexture = true;
+	        _this.flipY = false;
+	        return _this;
 	    }
 	    Object.defineProperty(CubeTexture.prototype, "images", {
 	        get: function () { return this.image; },
@@ -3333,10 +3345,58 @@
 	    return CubeTexture;
 	}(Texture));
 
+	/**
+	 * @author tschw
+	 *
+	 * Uniforms of a program.
+	 * Those form a tree structure with a special top-level container for the root,
+	 * which you get by calling 'new WebGLUniforms(gl, program, renderer)'.
+	 *
+	 *
+	 * Properties of inner nodes including the top-level container:
+	 *
+	 * .seq - array of nested uniforms
+	 * .map - nested uniforms by name
+	 *
+	 *
+	 * Methods of all nodes except the top-level container:
+	 *
+	 * .setValue(gl, value, [renderer])
+	 *
+	 *     uploads a uniform value(s)
+	 *    the 'renderer' parameter is needed for sampler uniforms
+	 *
+	 *
+	 * Static methods of the top-level container (renderer factorizations):
+	 *
+	 * .upload(gl, seq, values, renderer)
+	 *
+	 *     sets uniforms in 'seq' to 'values[id].value'
+	 *
+	 * .seqWithValue(seq, values) : filteredSeq
+	 *
+	 *     filters 'seq' entries with corresponding entry in values
+	 *
+	 *
+	 * Methods of the top-level container (renderer factorizations):
+	 *
+	 * .setValue(gl, name, value)
+	 *
+	 *     sets uniform with  name 'name' to 'value'
+	 *
+	 * .set(gl, obj, prop)
+	 *
+	 *     sets uniform from object and property with same name than uniform
+	 *
+	 * .setOptional(gl, obj, prop)
+	 *
+	 *     like .set for an optional property of the object
+	 *
+	 */
 	var emptyTexture = new Texture();
 	var emptyCubeTexture = new CubeTexture();
 	// --- Base for inner nodes (including the root) ---
-	var UniformContainer = (function () {
+	var UniformContainer = /** @class */ (function () {
 	    function UniformContainer() {
 	        this.seq = [];
 	        this.map = [];
@@ -3381,7 +3441,7 @@
 	    return r;
 	}
 	// --- Uniform Classes ---
-	var SingleUniform = (function () {
+	var SingleUniform = /** @class */ (function () {
 	    function SingleUniform(id, activeInfo, addr) {
 	        this.id = id;
 	        this.addr = addr;
@@ -3463,7 +3523,7 @@
 	    };
 	    return SingleUniform;
 	}());
-	var PureArrayUniform = (function () {
+	var PureArrayUniform = /** @class */ (function () {
 	    function PureArrayUniform(id, activeInfo, addr) {
 	        this.id = id;
 	        this.addr = addr;
@@ -3537,11 +3597,12 @@
 	    };
 	    return PureArrayUniform;
 	}());
-	var StructuredUniform = (function (_super) {
+	var StructuredUniform = /** @class */ (function (_super) {
 	    __extends(StructuredUniform, _super);
 	    function StructuredUniform(id) {
-	        _super.call(this); // mix-in
-	        this.id = id;
+	        var _this = _super.call(this) || this;
+	        _this.id = id;
+	        return _this;
 	    }
 	    StructuredUniform.prototype.setValue = function (gl, value) {
 	        // Note: Don't need an extra 'renderer' parameter, since samplers
@@ -3604,16 +3665,17 @@
 	    }
 	}
 	// Root Container
-	var WebGLUniforms = (function (_super) {
+	var WebGLUniforms = /** @class */ (function (_super) {
 	    __extends(WebGLUniforms, _super);
 	    function WebGLUniforms(gl, program, renderer) {
-	        _super.call(this);
-	        this.renderer = renderer;
+	        var _this = _super.call(this) || this;
+	        _this.renderer = renderer;
 	        var n = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
 	        for (var i = 0; i !== n; ++i) {
 	            var info = gl.getActiveUniform(program, i), path = info.name, addr = gl.getUniformLocation(program, path);
-	            parseUniform(info, addr, this);
+	            parseUniform(info, addr, _this);
 	        }
+	        return _this;
 	    }
 	    WebGLUniforms.prototype.setValue = function (gl, name, value) {
 	        var u = this.map[name];
@@ -3655,7 +3717,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Color = (function () {
+	var Color = /** @class */ (function () {
 	    function Color(r, g, b) {
 	        this.r = 1;
 	        this.g = 1;
@@ -4005,7 +4067,7 @@
 	 * @author bhouston / http://clara.io
 	 * @author tschw
 	 */
-	var Matrix3 = (function () {
+	var Matrix3 = /** @class */ (function () {
 	    function Matrix3() {
 	        this.elements = new Float32Array([
 	            1, 0, 0,
@@ -4186,7 +4248,10 @@
 	    return Matrix3;
 	}());
 
-	var UniformsUtils = (function () {
+	/**
+	 * Uniform Utilities
+	 */
+	var UniformsUtils = /** @class */ (function () {
 	    function UniformsUtils() {
 	    }
 	    UniformsUtils.merge = function (uniforms) {
@@ -7808,6 +7873,9 @@
 	    shadow_vert: shadow_vert
 	};
 
+	/**
+	 * Uniforms library for shared webgl shaders
+	 */
 	var UniformsLib = {
 	    common: {
 	        diffuse: { value: new Color(0xeeeeee) },
@@ -7912,6 +7980,11 @@
 	    }
 	};
 
+	/**
+	 * @author alteredq / http://alteredqualia.com/
+	 * @author mrdoob / http://mrdoob.com/
+	 * @author mikael emtinger / http://gomo.se/
+	 */
 	var ShaderLib = {
 	    basic: {
 	        uniforms: UniformsUtils.merge([
@@ -8062,7 +8135,7 @@
 	/**
 	 * @author bhouston / http://clara.io
 	 */
-	var Box2 = (function () {
+	var Box2 = /** @class */ (function () {
 	    function Box2(min, max) {
 	        if (min === void 0) { min = new Vector2(+Infinity, +Infinity); }
 	        if (max === void 0) { max = new Vector2(-Infinity, -Infinity); }
@@ -8210,7 +8283,7 @@
 	 * @author mikael emtinger / http://gomo.se/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var LensFlarePlugin = (function () {
+	var LensFlarePlugin = /** @class */ (function () {
 	    function LensFlarePlugin(renderer, flares) {
 	        this.renderer = renderer;
 	        this.flares = flares;
@@ -8464,7 +8537,7 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var Fog = (function () {
+	var Fog = /** @class */ (function () {
 	    function Fog(color, near, far) {
 	        if (near === void 0) { near = 1; }
 	        if (far === void 0) { far = 1000; }
@@ -8492,7 +8565,7 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var FogExp2 = (function () {
+	var FogExp2 = /** @class */ (function () {
 	    function FogExp2(color, density) {
 	        if (density === void 0) { density = 0.00025; }
 	        this.name = '';
@@ -8517,7 +8590,7 @@
 	 * @author mikael emtinger / http://gomo.se/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var SpritePlugin = (function () {
+	var SpritePlugin = /** @class */ (function () {
 	    function SpritePlugin(renderer, sprites) {
 	        this.renderer = renderer;
 	        this.sprites = sprites;
@@ -8763,48 +8836,49 @@
 	    return SpritePlugin;
 	}());
 
-	var Material = (function (_super) {
+	var Material = /** @class */ (function (_super) {
 	    __extends(Material, _super);
 	    function Material() {
-	        _super.call(this);
-	        this.id = MaterialIdCount();
-	        this.uuid = _Math.generateUUID();
-	        this.name = '';
-	        this.type = 'Material';
-	        this.fog = true;
-	        this.lights = true;
-	        this.blending = exports.BlendingMode.Normal;
-	        this.side = exports.SideMode.Front;
-	        this.shading = exports.ShadingMode.Smooth; // THREE.ShadingMode.Flat, THREE.ShadingMode.Smooth
-	        this.vertexColors = exports.ColorsMode.None; // THREE.ColorsMode.No, THREE.ColorsMode.Vertex, THREE.ColorsMode.Face
-	        this._opacity = 1;
-	        this.transparent = false;
-	        this.blendSrc = exports.BlendingFactor.SrcAlpha;
-	        this.blendDst = exports.BlendingFactor.OneMinusSrcAlpha;
-	        this.blendEquation = exports.BlendingEquation.Add;
-	        this.blendSrcAlpha = null;
-	        this.blendDstAlpha = null;
-	        this.blendEquationAlpha = null;
-	        this.depthFunc = exports.DepthFunction.LessEqual;
-	        this.depthTest = true;
-	        this.depthWrite = true;
-	        this.clipping = false;
-	        this.clippingPlanes = null;
-	        this.clipIntersection = false;
-	        this.clipShadows = false;
-	        this.colorWrite = true;
-	        this.precision = null; // override the renderer's default precision for this material
-	        this.polygonOffset = false;
-	        this.polygonOffsetFactor = 0;
-	        this.polygonOffsetUnits = 0;
-	        this.alphaTest = 0;
-	        this.premultipliedAlpha = false;
-	        this.overdraw = 0; // Overdrawn pixels (typically between 0 and 1) for fixing antialiasing gaps in CanvasRenderer
-	        this.visible = true;
-	        this._needsUpdate = true;
+	        var _this = _super.call(this) || this;
+	        _this.id = MaterialIdCount();
+	        _this.uuid = _Math.generateUUID();
+	        _this.name = '';
+	        _this.type = 'Material';
+	        _this.fog = true;
+	        _this.lights = true;
+	        _this.blending = exports.BlendingMode.Normal;
+	        _this.side = exports.SideMode.Front;
+	        _this.shading = exports.ShadingMode.Smooth; // THREE.ShadingMode.Flat, THREE.ShadingMode.Smooth
+	        _this.vertexColors = exports.ColorsMode.None; // THREE.ColorsMode.No, THREE.ColorsMode.Vertex, THREE.ColorsMode.Face
+	        _this._opacity = 1;
+	        _this.transparent = false;
+	        _this.blendSrc = exports.BlendingFactor.SrcAlpha;
+	        _this.blendDst = exports.BlendingFactor.OneMinusSrcAlpha;
+	        _this.blendEquation = exports.BlendingEquation.Add;
+	        _this.blendSrcAlpha = null;
+	        _this.blendDstAlpha = null;
+	        _this.blendEquationAlpha = null;
+	        _this.depthFunc = exports.DepthFunction.LessEqual;
+	        _this.depthTest = true;
+	        _this.depthWrite = true;
+	        _this.clipping = false;
+	        _this.clippingPlanes = null;
+	        _this.clipIntersection = false;
+	        _this.clipShadows = false;
+	        _this.colorWrite = true;
+	        _this.precision = null; // override the renderer's default precision for this material
+	        _this.polygonOffset = false;
+	        _this.polygonOffsetFactor = 0;
+	        _this.polygonOffsetUnits = 0;
+	        _this.alphaTest = 0;
+	        _this.premultipliedAlpha = false;
+	        _this.overdraw = 0; // Overdrawn pixels (typically between 0 and 1) for fixing antialiasing gaps in CanvasRenderer
+	        _this.visible = true;
+	        _this._needsUpdate = true;
 	        // }
-	        this.isMaterial = true;
-	        this.isMultiMaterial = false;
+	        _this.isMaterial = true;
+	        _this.isMultiMaterial = false;
+	        return _this;
 	    }
 	    Object.defineProperty(Material.prototype, "opacity", {
 	        get: function () {
@@ -9046,27 +9120,27 @@
 	var count$1 = 0;
 	function MaterialIdCount() { return count$1++; }
 
-	var ShaderMaterial = (function (_super) {
+	var ShaderMaterial = /** @class */ (function (_super) {
 	    __extends(ShaderMaterial, _super);
 	    function ShaderMaterial(parameters) {
-	        _super.call(this);
+	        var _this = _super.call(this) || this;
 	        // }
-	        this.isShaderMaterial = true;
-	        this.type = 'ShaderMaterial';
-	        this.defines = {};
-	        this.uniforms = {};
-	        this.vertexShader = 'void main() {\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n}';
-	        this.fragmentShader = 'void main() {\n\tgl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n}';
-	        this.linewidth = 1;
-	        this.wireframe = false;
-	        this.wireframeLinewidth = 1;
-	        this.fog = false; // set to use scene fog
-	        this.lights = false; // set to use scene lights
-	        this.clipping = false; // set to use user-defined clipping planes
-	        this.skinning = false; // set to use skinning attribute streams
-	        this.morphTargets = false; // set to use morph targets
-	        this.morphNormals = false; // set to use morph normals
-	        this.extensions = {
+	        _this.isShaderMaterial = true;
+	        _this.type = 'ShaderMaterial';
+	        _this.defines = {};
+	        _this.uniforms = {};
+	        _this.vertexShader = 'void main() {\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n}';
+	        _this.fragmentShader = 'void main() {\n\tgl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n}';
+	        _this.linewidth = 1;
+	        _this.wireframe = false;
+	        _this.wireframeLinewidth = 1;
+	        _this.fog = false; // set to use scene fog
+	        _this.lights = false; // set to use scene lights
+	        _this.clipping = false; // set to use user-defined clipping planes
+	        _this.skinning = false; // set to use skinning attribute streams
+	        _this.morphTargets = false; // set to use morph targets
+	        _this.morphNormals = false; // set to use morph normals
+	        _this.extensions = {
 	            derivatives: false,
 	            fragDepth: false,
 	            drawBuffers: false,
@@ -9074,15 +9148,16 @@
 	        };
 	        // When rendered geometry doesn't include these attributes but the material does,
 	        // use these default values in WebGL. This avoids errors when buffer data is missing.
-	        this.defaultAttributeValues = {
+	        _this.defaultAttributeValues = {
 	            'color': [1, 1, 1],
 	            'uv': [0, 0],
 	            'uv2': [0, 0]
 	        };
-	        this.index0AttributeName = undefined;
+	        _this.index0AttributeName = undefined;
 	        if (parameters !== undefined) {
-	            this.setValues(parameters);
+	            _this.setValues(parameters);
 	        }
+	        return _this;
 	    }
 	    ShaderMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -9122,25 +9197,26 @@
 	    return ShaderMaterial;
 	}(Material));
 
-	var MeshDepthMaterial = (function (_super) {
+	var MeshDepthMaterial = /** @class */ (function (_super) {
 	    __extends(MeshDepthMaterial, _super);
 	    function MeshDepthMaterial(parameters) {
-	        _super.call(this);
-	        this.isMeshDepthMaterial = true;
-	        this.type = 'MeshDepthMaterial';
-	        this.depthPacking = exports.DepthPacking.Basic;
-	        this.skinning = false;
-	        this.morphTargets = false;
-	        this.map = null;
-	        this.alphaMap = null;
-	        this.displacementMap = null;
-	        this.displacementScale = 1;
-	        this.displacementBias = 0;
-	        this.wireframe = false;
-	        this.wireframeLinewidth = 1;
-	        this.fog = false;
-	        this.lights = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isMeshDepthMaterial = true;
+	        _this.type = 'MeshDepthMaterial';
+	        _this.depthPacking = exports.DepthPacking.Basic;
+	        _this.skinning = false;
+	        _this.morphTargets = false;
+	        _this.map = null;
+	        _this.alphaMap = null;
+	        _this.displacementMap = null;
+	        _this.displacementScale = 1;
+	        _this.displacementBias = 0;
+	        _this.wireframe = false;
+	        _this.wireframeLinewidth = 1;
+	        _this.fog = false;
+	        _this.lights = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    MeshDepthMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -9164,7 +9240,7 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var Face3 = (function () {
+	var Face3 = /** @class */ (function () {
 	    function Face3(a, b, c, normal, color, materialIndex) {
 	        this.a = a;
 	        this.b = b;
@@ -9199,7 +9275,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Layers = (function () {
+	var Layers = /** @class */ (function () {
 	    function Layers() {
 	        this.mask = 1;
 	    }
@@ -9228,42 +9304,42 @@
 	 * @author WestLangley / http://github.com/WestLangley
 	 * @author elephantatwork / www.elephantatwork.ch
 	 */
-	var Object3D = (function (_super) {
+	var Object3D = /** @class */ (function (_super) {
 	    __extends(Object3D, _super);
 	    function Object3D() {
-	        _super.call(this);
-	        this.id = Object3DIdCount();
-	        this.uuid = _Math.generateUUID();
-	        this.name = '';
-	        this.type = 'Object3D';
-	        this.parent = null;
-	        this.children = [];
-	        this.up = Object3D.DefaultUp.clone();
-	        this.position = new Vector3();
-	        this.rotation = new Euler();
-	        this.quaternion = new Quaternion();
-	        this.scale = new Vector3(1, 1, 1);
-	        this.modelViewMatrix = new Matrix4();
-	        this.normalMatrix = new Matrix3();
-	        this.matrix = new Matrix4();
-	        this.matrixWorld = new Matrix4();
-	        this.matrixAutoUpdate = Object3D.DefaultMatrixAutoUpdate;
-	        this.matrixWorldNeedsUpdate = false;
-	        this.layers = new Layers();
-	        this.visible = true;
-	        this.castShadow = false;
-	        this.receiveShadow = false;
-	        this.frustumCulled = true;
-	        this.renderOrder = 0;
-	        this.userData = {};
-	        this.onBeforeRender = function () { };
-	        this.onAfterRender = function () { };
-	        this.geometry = undefined;
-	        this.material = undefined;
+	        var _this = _super.call(this) || this;
+	        _this.id = Object3DIdCount();
+	        _this.uuid = _Math.generateUUID();
+	        _this.name = '';
+	        _this.type = 'Object3D';
+	        _this.parent = null;
+	        _this.children = [];
+	        _this.up = Object3D.DefaultUp.clone();
+	        _this.position = new Vector3();
+	        _this.rotation = new Euler();
+	        _this.quaternion = new Quaternion();
+	        _this.scale = new Vector3(1, 1, 1);
+	        _this.modelViewMatrix = new Matrix4();
+	        _this.normalMatrix = new Matrix3();
+	        _this.matrix = new Matrix4();
+	        _this.matrixWorld = new Matrix4();
+	        _this.matrixAutoUpdate = Object3D.DefaultMatrixAutoUpdate;
+	        _this.matrixWorldNeedsUpdate = false;
+	        _this.layers = new Layers();
+	        _this.visible = true;
+	        _this.castShadow = false;
+	        _this.receiveShadow = false;
+	        _this.frustumCulled = true;
+	        _this.renderOrder = 0;
+	        _this.userData = {};
+	        _this.onBeforeRender = function () { };
+	        _this.onAfterRender = function () { };
+	        _this.geometry = undefined;
+	        _this.material = undefined;
 	        // }
-	        this.isObject3D = true;
-	        var rotation = this.rotation;
-	        var quaternion = this.quaternion;
+	        _this.isObject3D = true;
+	        var rotation = _this.rotation;
+	        var quaternion = _this.quaternion;
 	        function onRotationChange() {
 	            quaternion.setFromEuler(rotation, false);
 	        }
@@ -9272,6 +9348,7 @@
 	        }
 	        rotation.onChange(onRotationChange);
 	        quaternion.onChange(onQuaternionChange);
+	        return _this;
 	    }
 	    Object3D.prototype.applyMatrix = function (matrix) {
 	        this.matrix.multiplyMatrices(matrix, this.matrix);
@@ -9657,7 +9734,7 @@
 	/**
 	 * @author bhouston / http://clara.io
 	 */
-	var Ray = (function () {
+	var Ray = /** @class */ (function () {
 	    function Ray(origin, direction) {
 	        if (origin === void 0) { origin = new Vector3(); }
 	        if (direction === void 0) { direction = new Vector3(); }
@@ -10004,7 +10081,7 @@
 	/**
 	 * @author bhouston / http://clara.io
 	 */
-	var Line3 = (function () {
+	var Line3 = /** @class */ (function () {
 	    function Line3(start, end) {
 	        if (start === void 0) { start = new Vector3(); }
 	        if (end === void 0) { end = new Vector3(); }
@@ -10080,7 +10157,7 @@
 	/**
 	 * @author bhouston / http://clara.io
 	 */
-	var Plane = (function () {
+	var Plane = /** @class */ (function () {
 	    function Plane(normal, constant) {
 	        if (normal === void 0) { normal = new Vector3(1, 0, 0); }
 	        if (constant === void 0) { constant = 0; }
@@ -10215,7 +10292,7 @@
 	 * @author bhouston / http://clara.io
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Triangle = (function () {
+	var Triangle = /** @class */ (function () {
 	    function Triangle(a, b, c) {
 	        if (a === void 0) { a = new Vector3(); }
 	        if (b === void 0) { b = new Vector3(); }
@@ -10357,7 +10434,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var MultiMaterial = (function () {
+	var MultiMaterial = /** @class */ (function () {
 	    function MultiMaterial(materials) {
 	        if (materials === void 0) { materials = []; }
 	        this.uuid = _Math.generateUUID();
@@ -10399,30 +10476,31 @@
 	    return MultiMaterial;
 	}());
 
-	var MeshBasicMaterial = (function (_super) {
+	var MeshBasicMaterial = /** @class */ (function (_super) {
 	    __extends(MeshBasicMaterial, _super);
 	    function MeshBasicMaterial(parameters) {
-	        _super.call(this);
-	        this.isMeshBasicMaterial = true;
-	        this.type = 'MeshBasicMaterial';
-	        this.color = new Color(0xffffff); // emissive
-	        this.map = null;
-	        this.aoMap = null;
-	        this.aoMapIntensity = 1.0;
-	        this.specularMap = null;
-	        this.alphaMap = null;
-	        this.envMap = null;
-	        this.combine = exports.BlendingOperation.Multiply;
-	        this.reflectivity = 1;
-	        this.refractionRatio = 0.98;
-	        this.wireframe = false;
-	        this.wireframeLinewidth = 1;
-	        this.wireframeLinecap = 'round';
-	        this.wireframeLinejoin = 'round';
-	        this.skinning = false;
-	        this.morphTargets = false;
-	        this.lights = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isMeshBasicMaterial = true;
+	        _this.type = 'MeshBasicMaterial';
+	        _this.color = new Color(0xffffff); // emissive
+	        _this.map = null;
+	        _this.aoMap = null;
+	        _this.aoMapIntensity = 1.0;
+	        _this.specularMap = null;
+	        _this.alphaMap = null;
+	        _this.envMap = null;
+	        _this.combine = exports.BlendingOperation.Multiply;
+	        _this.reflectivity = 1;
+	        _this.refractionRatio = 0.98;
+	        _this.wireframe = false;
+	        _this.wireframeLinewidth = 1;
+	        _this.wireframeLinecap = 'round';
+	        _this.wireframeLinejoin = 'round';
+	        _this.skinning = false;
+	        _this.morphTargets = false;
+	        _this.lights = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    MeshBasicMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -10447,7 +10525,7 @@
 	    return MeshBasicMaterial;
 	}(Material));
 
-	var BufferAttribute = (function () {
+	var BufferAttribute = /** @class */ (function () {
 	    function BufferAttribute(array, itemSize, normalized) {
 	        if (normalized === void 0) { normalized = false; }
 	        this.uuid = _Math.generateUUID();
@@ -10678,7 +10756,7 @@
 	/**
 	 * @author benaadams / https://twitter.com/ben_a_adams
 	 */
-	var InterleavedBufferAttribute = (function () {
+	var InterleavedBufferAttribute = /** @class */ (function () {
 	    function InterleavedBufferAttribute(interleavedBuffer, itemSize, offset, normalized) {
 	        this.uuid = _Math.generateUUID();
 	        this.isInterleavedBufferAttribute = true;
@@ -10756,33 +10834,34 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var DirectGeometry = (function (_super) {
+	var DirectGeometry = /** @class */ (function (_super) {
 	    __extends(DirectGeometry, _super);
 	    function DirectGeometry() {
-	        _super.call(this);
-	        this.id = GeometryIdCount();
-	        this.uuid = _Math.generateUUID();
-	        this.name = '';
-	        this.type = 'DirectGeometry';
-	        this.indices = [];
-	        this.vertices = [];
-	        this.normals = [];
-	        this.colors = [];
-	        this.uvs = [];
-	        this.uvs2 = [];
-	        this.groups = [];
-	        this.morphTargets = { position: undefined, normal: undefined };
-	        this.skinWeights = [];
-	        this.skinIndices = [];
+	        var _this = _super.call(this) || this;
+	        _this.id = GeometryIdCount();
+	        _this.uuid = _Math.generateUUID();
+	        _this.name = '';
+	        _this.type = 'DirectGeometry';
+	        _this.indices = [];
+	        _this.vertices = [];
+	        _this.normals = [];
+	        _this.colors = [];
+	        _this.uvs = [];
+	        _this.uvs2 = [];
+	        _this.groups = [];
+	        _this.morphTargets = { position: undefined, normal: undefined };
+	        _this.skinWeights = [];
+	        _this.skinIndices = [];
 	        // lineDistances: number[] = [];
-	        this.boundingBox = null;
-	        this.boundingSphere = null;
+	        _this.boundingBox = null;
+	        _this.boundingSphere = null;
 	        // update flags
-	        this.verticesNeedUpdate = false;
-	        this.normalsNeedUpdate = false;
-	        this.colorsNeedUpdate = false;
-	        this.uvsNeedUpdate = false;
-	        this.groupsNeedUpdate = false;
+	        _this.verticesNeedUpdate = false;
+	        _this.normalsNeedUpdate = false;
+	        _this.colorsNeedUpdate = false;
+	        _this.uvsNeedUpdate = false;
+	        _this.groupsNeedUpdate = false;
+	        return _this;
 	    }
 	    DirectGeometry.prototype.computeBoundingBox = function () {
 	        if (this.boundingBox === null) {
@@ -10932,18 +11011,19 @@
 	    return DirectGeometry;
 	}(EventDispatcher));
 
-	var PointsMaterial = (function (_super) {
+	var PointsMaterial = /** @class */ (function (_super) {
 	    __extends(PointsMaterial, _super);
 	    function PointsMaterial(parameters) {
-	        _super.call(this);
-	        this.isPointsMaterial = true;
-	        this.type = 'PointsMaterial';
-	        this.color = new Color(0xffffff);
-	        this.map = null;
-	        this.size = 1;
-	        this.sizeAttenuation = true;
-	        this.lights = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isPointsMaterial = true;
+	        _this.type = 'PointsMaterial';
+	        _this.color = new Color(0xffffff);
+	        _this.map = null;
+	        _this.size = 1;
+	        _this.sizeAttenuation = true;
+	        _this.lights = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    PointsMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -10959,16 +11039,17 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var Points = (function (_super) {
+	var Points = /** @class */ (function (_super) {
 	    __extends(Points, _super);
 	    function Points(geometry, material) {
 	        if (geometry === void 0) { geometry = new BufferGeometry(); }
 	        if (material === void 0) { material = new PointsMaterial({ color: Math.random() * 0xffffff }); }
-	        _super.call(this);
-	        this.isPoints = true;
-	        this.type = 'Points';
-	        this.geometry = geometry;
-	        this.material = material;
+	        var _this = _super.call(this) || this;
+	        _this.isPoints = true;
+	        _this.type = 'Points';
+	        _this.geometry = geometry;
+	        _this.material = material;
+	        return _this;
 	    }
 	    Points.prototype.raycast = function (raycaster, intersects) {
 	        var inverseMatrix = new Matrix4();
@@ -11044,18 +11125,19 @@
 	    return Points;
 	}(Object3D));
 
-	var LineBasicMaterial = (function (_super) {
+	var LineBasicMaterial = /** @class */ (function (_super) {
 	    __extends(LineBasicMaterial, _super);
 	    function LineBasicMaterial(parameters) {
-	        _super.call(this);
-	        this.isLineBasicMaterial = true;
-	        this.type = 'LineBasicMaterial';
-	        this.color = new Color(0xffffff);
-	        this.linewidth = 1;
-	        this.linecap = 'round';
-	        this.linejoin = 'round';
-	        this.lights = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isLineBasicMaterial = true;
+	        _this.type = 'LineBasicMaterial';
+	        _this.color = new Color(0xffffff);
+	        _this.linewidth = 1;
+	        _this.linecap = 'round';
+	        _this.linejoin = 'round';
+	        _this.lights = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    LineBasicMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -11071,21 +11153,23 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Line = (function (_super) {
+	var Line = /** @class */ (function (_super) {
 	    __extends(Line, _super);
 	    function Line(geometry, material, mode) {
 	        if (geometry === void 0) { geometry = new BufferGeometry(); }
 	        if (material === void 0) { material = new LineBasicMaterial({ color: Math.random() * 0xffffff }); }
-	        _super.call(this);
-	        this._step = 1;
-	        this.isLine = true;
-	        this.isLineSegments = false;
+	        var _this = _super.call(this) || this;
+	        _this._step = 1;
+	        _this.isLine = true;
+	        _this.isLineSegments = false;
 	        if (mode === 1) {
 	            console.warn('THREE.Line: parameter THREE.LinePieces no longer supported. Created THREE.LineSegments instead.');
+	            //return new LineSegments(geometry, material);
 	        }
-	        this.type = 'Line';
-	        this.geometry = geometry;
-	        this.material = material;
+	        _this.type = 'Line';
+	        _this.geometry = geometry;
+	        _this.material = material;
+	        return _this;
 	    }
 	    Line.prototype.raycast = function (raycaster, intersects) {
 	        var inverseMatrix = new Matrix4();
@@ -11197,25 +11281,26 @@
 	    return Line;
 	}(Object3D));
 
-	var BufferGeometry = (function (_super) {
+	var BufferGeometry = /** @class */ (function (_super) {
 	    __extends(BufferGeometry, _super);
 	    function BufferGeometry() {
-	        _super.call(this);
-	        this.id = GeometryIdCount();
-	        this.uuid = _Math.generateUUID();
-	        this.name = '';
-	        this.type = 'BufferGeometry';
-	        this.index = null;
-	        this.attributes = {};
-	        this.parameters = undefined;
-	        this.morphAttributes = {};
-	        this.groups = [];
-	        this.boundingBox = null;
-	        this.boundingSphere = null;
-	        this.drawRange = { start: 0, count: Infinity };
+	        var _this = _super.call(this) || this;
+	        _this.id = GeometryIdCount();
+	        _this.uuid = _Math.generateUUID();
+	        _this.name = '';
+	        _this.type = 'BufferGeometry';
+	        _this.index = null;
+	        _this.attributes = {};
+	        _this.parameters = undefined;
+	        _this.morphAttributes = {};
+	        _this.groups = [];
+	        _this.boundingBox = null;
+	        _this.boundingSphere = null;
+	        _this.drawRange = { start: 0, count: Infinity };
 	        // }
-	        this.isGeometry = false;
-	        this.isBufferGeometry = true;
+	        _this.isGeometry = false;
+	        _this.isBufferGeometry = true;
+	        return _this;
 	    }
 	    BufferGeometry.prototype.getIndex = function () {
 	        return this.index;
@@ -11818,18 +11903,19 @@
 	 * @author mikael emtinger / http://gomo.se/
 	 * @author jonobr1 / http://jonobr1.com/
 	 */
-	var Mesh = (function (_super) {
+	var Mesh = /** @class */ (function (_super) {
 	    __extends(Mesh, _super);
 	    function Mesh(geometry, material) {
 	        if (geometry === void 0) { geometry = new BufferGeometry(); }
 	        if (material === void 0) { material = new MeshBasicMaterial({ color: Math.random() * 0xffffff }); }
-	        _super.call(this);
-	        this.drawMode = exports.DrawMode.Triangles;
-	        this.isMesh = true;
-	        this.type = 'Mesh';
-	        this.geometry = geometry;
-	        this.material = material;
-	        this.updateMorphTargets();
+	        var _this = _super.call(this) || this;
+	        _this.drawMode = exports.DrawMode.Triangles;
+	        _this.isMesh = true;
+	        _this.type = 'Mesh';
+	        _this.geometry = geometry;
+	        _this.material = material;
+	        _this.updateMorphTargets();
+	        return _this;
 	    }
 	    Mesh.prototype.setDrawMode = function (value) {
 	        this.drawMode = value;
@@ -12044,37 +12130,38 @@
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 * @author bhouston / http://clara.io
 	 */
-	var Geometry = (function (_super) {
+	var Geometry = /** @class */ (function (_super) {
 	    __extends(Geometry, _super);
 	    function Geometry() {
-	        _super.call(this);
-	        this.id = GeometryIdCount();
-	        this.uuid = _Math.generateUUID();
-	        this.name = '';
-	        this.type = 'Geometry';
-	        this.vertices = [];
-	        this.colors = [];
-	        this.faces = [];
-	        this.faceVertexUvs = [[]];
-	        this.morphTargets = [];
-	        this.morphNormals = [];
-	        this.skinWeights = [];
-	        this.skinIndices = [];
-	        this.lineDistances = [];
-	        this.boundingBox = null;
-	        this.boundingSphere = null;
+	        var _this = _super.call(this) || this;
+	        _this.id = GeometryIdCount();
+	        _this.uuid = _Math.generateUUID();
+	        _this.name = '';
+	        _this.type = 'Geometry';
+	        _this.vertices = [];
+	        _this.colors = [];
+	        _this.faces = [];
+	        _this.faceVertexUvs = [[]];
+	        _this.morphTargets = [];
+	        _this.morphNormals = [];
+	        _this.skinWeights = [];
+	        _this.skinIndices = [];
+	        _this.lineDistances = [];
+	        _this.boundingBox = null;
+	        _this.boundingSphere = null;
 	        // update flags
-	        this.elementsNeedUpdate = false;
-	        this.verticesNeedUpdate = false;
-	        this.uvsNeedUpdate = false;
-	        this.normalsNeedUpdate = false;
-	        this.colorsNeedUpdate = false;
-	        this.lineDistancesNeedUpdate = false;
-	        this.groupsNeedUpdate = false;
-	        this.parameters = undefined;
+	        _this.elementsNeedUpdate = false;
+	        _this.verticesNeedUpdate = false;
+	        _this.uvsNeedUpdate = false;
+	        _this.normalsNeedUpdate = false;
+	        _this.colorsNeedUpdate = false;
+	        _this.lineDistancesNeedUpdate = false;
+	        _this.groupsNeedUpdate = false;
+	        _this.parameters = undefined;
 	        // }
-	        this.isGeometry = true;
-	        this.isBufferGeometry = false;
+	        _this.isGeometry = true;
+	        _this.isBufferGeometry = false;
+	        return _this;
 	    }
 	    Geometry.prototype.applyMatrix = function (matrix) {
 	        var normalMatrix = new Matrix3().getNormalMatrix(matrix);
@@ -12751,7 +12838,7 @@
 	 * @author bhouston / http://clara.io
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
-	var Box3 = (function () {
+	var Box3 = /** @class */ (function () {
 	    function Box3(min, max) {
 	        if (min === void 0) { min = new Vector3(+Infinity, +Infinity, +Infinity); }
 	        if (max === void 0) { max = new Vector3(-Infinity, -Infinity, -Infinity); }
@@ -13048,7 +13135,7 @@
 	 * @author bhouston / http://clara.io
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Sphere = (function () {
+	var Sphere = /** @class */ (function () {
 	    function Sphere(center, radius) {
 	        if (center === void 0) { center = new Vector3(); }
 	        if (radius === void 0) { radius = 0; }
@@ -13147,7 +13234,7 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author bhouston / http://clara.io
 	 */
-	var Frustum = (function () {
+	var Frustum = /** @class */ (function () {
 	    function Frustum(p0, p1, p2, p3, p4, p5) {
 	        if (p0 === void 0) { p0 = new Plane(); }
 	        if (p1 === void 0) { p1 = new Plane(); }
@@ -13261,15 +13348,16 @@
 	 * @author mikael emtinger / http://gomo.se/
 	 * @author WestLangley / http://github.com/WestLangley
 	*/
-	var Camera = (function (_super) {
+	var Camera = /** @class */ (function (_super) {
 	    __extends(Camera, _super);
 	    function Camera() {
-	        _super.call(this);
-	        this.matrixWorldInverse = new Matrix4();
-	        this.projectionMatrix = new Matrix4();
+	        var _this = _super.call(this) || this;
+	        _this.matrixWorldInverse = new Matrix4();
+	        _this.projectionMatrix = new Matrix4();
 	        // }
-	        this.isCamera = true;
-	        this.type = 'Camera';
+	        _this.isCamera = true;
+	        _this.type = 'Camera';
+	        return _this;
 	    }
 	    Camera.prototype.updateProjectionMatrix = function () { };
 	    Camera.prototype.getWorldDirection = function (result) {
@@ -13304,23 +13392,24 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author arose / http://github.com/arose
 	 */
-	var OrthographicCamera = (function (_super) {
+	var OrthographicCamera = /** @class */ (function (_super) {
 	    __extends(OrthographicCamera, _super);
 	    function OrthographicCamera(left, right, top, bottom, near, far) {
 	        if (near === void 0) { near = 0.1; }
 	        if (far === void 0) { far = 2000; }
-	        _super.call(this);
-	        this.zoom = 1;
-	        this.view = null;
-	        this.isOrthographicCamera = true;
-	        this.type = 'OrthographicCamera';
-	        this.left = left;
-	        this.right = right;
-	        this.top = top;
-	        this.bottom = bottom;
-	        this.near = near;
-	        this.far = far;
-	        this.updateProjectionMatrix();
+	        var _this = _super.call(this) || this;
+	        _this.zoom = 1;
+	        _this.view = null;
+	        _this.isOrthographicCamera = true;
+	        _this.type = 'OrthographicCamera';
+	        _this.left = left;
+	        _this.right = right;
+	        _this.top = top;
+	        _this.bottom = bottom;
+	        _this.near = near;
+	        _this.far = far;
+	        _this.updateProjectionMatrix();
+	        return _this;
 	    }
 	    OrthographicCamera.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -13392,26 +13481,27 @@
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 * @author tschw
 	 */
-	var PerspectiveCamera = (function (_super) {
+	var PerspectiveCamera = /** @class */ (function (_super) {
 	    __extends(PerspectiveCamera, _super);
 	    function PerspectiveCamera(fov, aspect, near, far) {
 	        if (fov === void 0) { fov = 50; }
 	        if (aspect === void 0) { aspect = 1; }
 	        if (near === void 0) { near = 0.1; }
 	        if (far === void 0) { far = 2000; }
-	        _super.call(this);
-	        this.zoom = 1;
-	        this.focus = 10;
-	        this.view = null;
-	        this.filmGauge = 35; // width of the film (default in millimeters)
-	        this.filmOffset = 0; // horizontal film offset (same unit as gauge)
-	        this.isPerspectiveCamera = true;
-	        this.type = 'PerspectiveCamera';
-	        this.fov = fov;
-	        this.near = near;
-	        this.far = far;
-	        this.aspect = aspect;
-	        this.updateProjectionMatrix();
+	        var _this = _super.call(this) || this;
+	        _this.zoom = 1;
+	        _this.focus = 10;
+	        _this.view = null;
+	        _this.filmGauge = 35; // width of the film (default in millimeters)
+	        _this.filmOffset = 0; // horizontal film offset (same unit as gauge)
+	        _this.isPerspectiveCamera = true;
+	        _this.type = 'PerspectiveCamera';
+	        _this.fov = fov;
+	        _this.near = near;
+	        _this.far = far;
+	        _this.aspect = aspect;
+	        _this.updateProjectionMatrix();
+	        return _this;
 	    }
 	    PerspectiveCamera.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -13556,16 +13646,17 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var Light = (function (_super) {
+	var Light = /** @class */ (function (_super) {
 	    __extends(Light, _super);
 	    function Light(color, intensity) {
 	        if (intensity === void 0) { intensity = 1; }
-	        _super.call(this);
-	        this.isLight = true;
-	        this.type = 'Light';
-	        this.color = new Color(color);
-	        this.intensity = intensity !== undefined ? intensity : 1;
-	        this.receiveShadow = undefined;
+	        var _this = _super.call(this) || this;
+	        _this.isLight = true;
+	        _this.type = 'Light';
+	        _this.color = new Color(color);
+	        _this.intensity = intensity !== undefined ? intensity : 1;
+	        _this.receiveShadow = undefined;
+	        return _this;
 	    }
 	    Light.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -13712,7 +13803,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var LightShadow = (function () {
+	var LightShadow = /** @class */ (function () {
 	    function LightShadow(camera) {
 	        this.bias = 0;
 	        this.radius = 1;
@@ -13749,17 +13840,18 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var PointLight = (function (_super) {
+	var PointLight = /** @class */ (function (_super) {
 	    __extends(PointLight, _super);
 	    function PointLight(color, intensity, distance, decay) {
 	        if (distance === void 0) { distance = 0; }
 	        if (decay === void 0) { decay = 1; }
-	        _super.call(this, color, intensity);
-	        this.isPointLight = true;
-	        this.type = 'PointLight';
-	        this.distance = distance;
-	        this.decay = decay; // for physically correct lights, should be 2.
-	        this.shadow = new LightShadow(new PerspectiveCamera(90, 1, 0.5, 500));
+	        var _this = _super.call(this, color, intensity) || this;
+	        _this.isPointLight = true;
+	        _this.type = 'PointLight';
+	        _this.distance = distance;
+	        _this.decay = decay; // for physically correct lights, should be 2.
+	        _this.shadow = new LightShadow(new PerspectiveCamera(90, 1, 0.5, 500));
+	        return _this;
 	    }
 	    Object.defineProperty(PointLight.prototype, "power", {
 	        get: function () {
@@ -13788,11 +13880,12 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var SpotLightShadow = (function (_super) {
+	var SpotLightShadow = /** @class */ (function (_super) {
 	    __extends(SpotLightShadow, _super);
 	    function SpotLightShadow() {
-	        _super.call(this, new PerspectiveCamera(50, 1, 0.5, 500));
-	        this.isSpotLightShadow = true;
+	        var _this = _super.call(this, new PerspectiveCamera(50, 1, 0.5, 500)) || this;
+	        _this.isSpotLightShadow = true;
+	        return _this;
 	    }
 	    SpotLightShadow.prototype.update = function (light) {
 	        var fov = _Math.RAD2DEG * 2 * light.angle;
@@ -13812,19 +13905,20 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var DataTexture = (function (_super) {
+	var DataTexture = /** @class */ (function (_super) {
 	    __extends(DataTexture, _super);
 	    function DataTexture(data, width, height, format, type, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy, encoding) {
 	        if (magFilter === void 0) { magFilter = exports.TextureFilter.Nearest; }
 	        if (minFilter === void 0) { minFilter = exports.TextureFilter.Nearest; }
-	        _super.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding);
-	        this.isDataTexture = true;
-	        this.image = { data: data, width: width, height: height };
-	        this.magFilter = magFilter;
-	        this.minFilter = minFilter;
-	        this.generateMipmaps = false;
-	        this.flipY = false;
-	        this.unpackAlignment = 1;
+	        var _this = _super.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding) || this;
+	        _this.isDataTexture = true;
+	        _this.image = { data: data, width: width, height: height };
+	        _this.magFilter = magFilter;
+	        _this.minFilter = minFilter;
+	        _this.generateMipmaps = false;
+	        _this.flipY = false;
+	        _this.unpackAlignment = 1;
+	        return _this;
 	    }
 	    return DataTexture;
 	}(Texture));
@@ -13834,13 +13928,14 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author ikerr / http://verold.com
 	 */
-	var Bone = (function (_super) {
+	var Bone = /** @class */ (function (_super) {
 	    __extends(Bone, _super);
 	    function Bone(skin) {
-	        _super.call(this);
-	        this.isBone = true;
-	        this.type = 'Bone';
-	        this.skin = skin;
+	        var _this = _super.call(this) || this;
+	        _this.isBone = true;
+	        _this.type = 'Bone';
+	        _this.skin = skin;
+	        return _this;
 	    }
 	    Bone.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -13856,7 +13951,7 @@
 	 * @author michael guerrero / http://realitymeltdown.com
 	 * @author ikerr / http://verold.com
 	 */
-	var Skeleton = (function () {
+	var Skeleton = /** @class */ (function () {
 	    function Skeleton(bones, boneInverses, useVertexTexture) {
 	        if (bones === void 0) { bones = []; }
 	        if (useVertexTexture === void 0) { useVertexTexture = true; }
@@ -13961,25 +14056,25 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author ikerr / http://verold.com
 	 */
-	var SkinnedMesh = (function (_super) {
+	var SkinnedMesh = /** @class */ (function (_super) {
 	    __extends(SkinnedMesh, _super);
 	    function SkinnedMesh(geometry, material, useVertexTexture) {
 	        if (useVertexTexture === void 0) { useVertexTexture = true; }
-	        _super.call(this, geometry, material);
-	        this.bindMode = "attached";
-	        this.bindMatrix = new Matrix4();
-	        this.bindMatrixInverse = new Matrix4();
-	        this.isSkinnedMesh = true;
-	        this.type = 'SkinnedMesh';
+	        var _this = _super.call(this, geometry, material) || this;
+	        _this.bindMode = "attached";
+	        _this.bindMatrix = new Matrix4();
+	        _this.bindMatrixInverse = new Matrix4();
+	        _this.isSkinnedMesh = true;
+	        _this.type = 'SkinnedMesh';
 	        // init bones
 	        // TODO: remove bone creation as there is no reason (other than
 	        // convenience) for THREE.SkinnedMesh to do this.
 	        var bones = [];
-	        if (this.geometry && this.geometry.bones !== undefined) {
+	        if (_this.geometry && _this.geometry.bones !== undefined) {
 	            var bone = void 0, gbone = void 0;
-	            for (var b = 0, bl = this.geometry.bones.length; b < bl; ++b) {
-	                gbone = this.geometry.bones[b];
-	                bone = new Bone(this);
+	            for (var b = 0, bl = _this.geometry.bones.length; b < bl; ++b) {
+	                gbone = _this.geometry.bones[b];
+	                bone = new Bone(_this);
 	                bones.push(bone);
 	                bone.name = gbone.name;
 	                bone.position.fromArray(gbone.pos);
@@ -13987,20 +14082,21 @@
 	                if (gbone.scl !== undefined)
 	                    bone.scale.fromArray(gbone.scl);
 	            }
-	            for (var b = 0, bl = this.geometry.bones.length; b < bl; ++b) {
-	                gbone = this.geometry.bones[b];
+	            for (var b = 0, bl = _this.geometry.bones.length; b < bl; ++b) {
+	                gbone = _this.geometry.bones[b];
 	                if (gbone.parent !== -1 && gbone.parent !== null &&
 	                    bones[gbone.parent] !== undefined) {
 	                    bones[gbone.parent].add(bones[b]);
 	                }
 	                else {
-	                    this.add(bones[b]);
+	                    _this.add(bones[b]);
 	                }
 	            }
 	        }
-	        this.normalizeSkinWeights();
-	        this.updateMatrixWorld(true);
-	        this.bind(new Skeleton(bones, undefined, useVertexTexture), this.matrixWorld);
+	        _this.normalizeSkinWeights();
+	        _this.updateMatrixWorld(true);
+	        _this.bind(new Skeleton(bones, undefined, useVertexTexture), _this.matrixWorld);
+	        return _this;
 	    }
 	    SkinnedMesh.prototype.bind = function (skeleton, bindMatrix) {
 	        this.skeleton = skeleton;
@@ -14065,7 +14161,11 @@
 	    return SkinnedMesh;
 	}(Mesh));
 
-	var WebGLShadowMap = (function () {
+	/**
+	 * @author alteredq / http://alteredqualia.com/
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var WebGLShadowMap = /** @class */ (function () {
 	    function WebGLShadowMap(_renderer, _lights, _objects, capabilities) {
 	        this._renderer = _renderer;
 	        this._lights = _lights;
@@ -14370,12 +14470,12 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var BoxBufferGeometry = (function (_super) {
+	var BoxBufferGeometry = /** @class */ (function (_super) {
 	    __extends(BoxBufferGeometry, _super);
 	    function BoxBufferGeometry(width, height, depth, widthSegments, heightSegments, depthSegments) {
-	        _super.call(this);
-	        this.type = 'BoxBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'BoxBufferGeometry';
+	        _this.parameters = {
 	            width: width,
 	            height: height,
 	            depth: depth,
@@ -14383,7 +14483,7 @@
 	            heightSegments: heightSegments,
 	            depthSegments: depthSegments
 	        };
-	        var scope = this;
+	        var scope = _this;
 	        // segments
 	        widthSegments = Math.floor(widthSegments) || 1;
 	        heightSegments = Math.floor(heightSegments) || 1;
@@ -14411,10 +14511,10 @@
 	        buildPlane('x', 'y', 'z', 1, -1, width, height, depth, widthSegments, heightSegments, 4); // pz
 	        buildPlane('x', 'y', 'z', -1, -1, width, height, -depth, widthSegments, heightSegments, 5); // nz
 	        // build geometry
-	        this.setIndex(new BufferAttribute(indices, 1));
-	        this.addAttribute('position', new BufferAttribute(vertices, 3));
-	        this.addAttribute('normal', new BufferAttribute(normals, 3));
-	        this.addAttribute('uv', new BufferAttribute(uvs, 2));
+	        _this.setIndex(new BufferAttribute(indices, 1));
+	        _this.addAttribute('position', new BufferAttribute(vertices, 3));
+	        _this.addAttribute('normal', new BufferAttribute(normals, 3));
+	        _this.addAttribute('uv', new BufferAttribute(uvs, 2));
 	        // helper functions
 	        function calculateVertexCount(w, h, d) {
 	            var vertices = 0;
@@ -14503,6 +14603,7 @@
 	            // update total number of vertices
 	            numberOfVertices += vertexCounter;
 	        }
+	        return _this;
 	    }
 	    return BoxBufferGeometry;
 	}(BufferGeometry));
@@ -14511,12 +14612,12 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * based on http://papervision3d.googlecode.com/svn/trunk/as3/trunk/src/org/papervision3d/objects/primitives/Plane.as
 	 */
-	var PlaneBufferGeometry = (function (_super) {
+	var PlaneBufferGeometry = /** @class */ (function (_super) {
 	    __extends(PlaneBufferGeometry, _super);
 	    function PlaneBufferGeometry(width, height, widthSegments, heightSegments) {
-	        _super.call(this);
-	        this.type = 'PlaneBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'PlaneBufferGeometry';
+	        _this.parameters = {
 	            width: width,
 	            height: height,
 	            widthSegments: widthSegments,
@@ -14565,52 +14666,54 @@
 	                offset += 6;
 	            }
 	        }
-	        this.setIndex(new BufferAttribute(indices, 1));
-	        this.addAttribute('position', new BufferAttribute(vertices, 3));
-	        this.addAttribute('normal', new BufferAttribute(normals, 3));
-	        this.addAttribute('uv', new BufferAttribute(uvs, 2));
+	        _this.setIndex(new BufferAttribute(indices, 1));
+	        _this.addAttribute('position', new BufferAttribute(vertices, 3));
+	        _this.addAttribute('normal', new BufferAttribute(normals, 3));
+	        _this.addAttribute('uv', new BufferAttribute(uvs, 2));
+	        return _this;
 	    }
 	    return PlaneBufferGeometry;
 	}(BufferGeometry));
 
-	var MeshPhongMaterial = (function (_super) {
+	var MeshPhongMaterial = /** @class */ (function (_super) {
 	    __extends(MeshPhongMaterial, _super);
 	    function MeshPhongMaterial(parameters) {
-	        _super.call(this);
-	        this.isMeshPhongMaterial = true;
-	        this.type = 'MeshPhongMaterial';
-	        this.color = new Color(0xffffff); // diffuse
-	        this.specular = new Color(0x111111);
-	        this.shininess = 30;
-	        this.map = null;
-	        this.lightMap = null;
-	        this.lightMapIntensity = 1.0;
-	        this.aoMap = null;
-	        this.aoMapIntensity = 1.0;
-	        this.emissive = new Color(0x000000);
-	        this.emissiveIntensity = 1.0;
-	        this.emissiveMap = null;
-	        this.bumpMap = null;
-	        this.bumpScale = 1;
-	        this.normalMap = null;
-	        this.normalScale = new Vector2(1, 1);
-	        this.displacementMap = null;
-	        this.displacementScale = 1;
-	        this.displacementBias = 0;
-	        this.specularMap = null;
-	        this.alphaMap = null;
-	        this.envMap = null;
-	        this.combine = exports.BlendingOperation.Multiply;
-	        this.reflectivity = 1;
-	        this.refractionRatio = 0.98;
-	        this.wireframe = false;
-	        this.wireframeLinewidth = 1;
-	        this.wireframeLinecap = 'round';
-	        this.wireframeLinejoin = 'round';
-	        this.skinning = false;
-	        this.morphTargets = false;
-	        this.morphNormals = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isMeshPhongMaterial = true;
+	        _this.type = 'MeshPhongMaterial';
+	        _this.color = new Color(0xffffff); // diffuse
+	        _this.specular = new Color(0x111111);
+	        _this.shininess = 30;
+	        _this.map = null;
+	        _this.lightMap = null;
+	        _this.lightMapIntensity = 1.0;
+	        _this.aoMap = null;
+	        _this.aoMapIntensity = 1.0;
+	        _this.emissive = new Color(0x000000);
+	        _this.emissiveIntensity = 1.0;
+	        _this.emissiveMap = null;
+	        _this.bumpMap = null;
+	        _this.bumpScale = 1;
+	        _this.normalMap = null;
+	        _this.normalScale = new Vector2(1, 1);
+	        _this.displacementMap = null;
+	        _this.displacementScale = 1;
+	        _this.displacementBias = 0;
+	        _this.specularMap = null;
+	        _this.alphaMap = null;
+	        _this.envMap = null;
+	        _this.combine = exports.BlendingOperation.Multiply;
+	        _this.reflectivity = 1;
+	        _this.refractionRatio = 0.98;
+	        _this.wireframe = false;
+	        _this.wireframeLinewidth = 1;
+	        _this.wireframeLinecap = 'round';
+	        _this.wireframeLinejoin = 'round';
+	        _this.skinning = false;
+	        _this.morphTargets = false;
+	        _this.morphNormals = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    MeshPhongMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -14661,45 +14764,46 @@
 	    return MeshPhongMaterial;
 	}(Material));
 
-	var MeshStandardMaterial = (function (_super) {
+	var MeshStandardMaterial = /** @class */ (function (_super) {
 	    __extends(MeshStandardMaterial, _super);
 	    function MeshStandardMaterial(parameters) {
-	        _super.call(this);
-	        this.isMeshStandardMaterial = true;
-	        this.defines = { 'STANDARD': '' };
-	        this.type = 'MeshStandardMaterial';
-	        this.color = new Color(0xffffff); // diffuse
-	        this.roughness = 0.5;
-	        this.metalness = 0.5;
-	        this.map = null;
-	        this.lightMap = null;
-	        this.lightMapIntensity = 1.0;
-	        this.aoMap = null;
-	        this.aoMapIntensity = 1.0;
-	        this.emissive = new Color(0x000000);
-	        this.emissiveIntensity = 1.0;
-	        this.emissiveMap = null;
-	        this.bumpMap = null;
-	        this.bumpScale = 1;
-	        this.normalMap = null;
-	        this.normalScale = new Vector2(1, 1);
-	        this.displacementMap = null;
-	        this.displacementScale = 1;
-	        this.displacementBias = 0;
-	        this.roughnessMap = null;
-	        this.metalnessMap = null;
-	        this.alphaMap = null;
-	        this.envMap = null;
-	        this.envMapIntensity = 1.0;
-	        this.refractionRatio = 0.98;
-	        this.wireframe = false;
-	        this.wireframeLinewidth = 1;
-	        this.wireframeLinecap = 'round';
-	        this.wireframeLinejoin = 'round';
-	        this.skinning = false;
-	        this.morphTargets = false;
-	        this.morphNormals = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isMeshStandardMaterial = true;
+	        _this.defines = { 'STANDARD': '' };
+	        _this.type = 'MeshStandardMaterial';
+	        _this.color = new Color(0xffffff); // diffuse
+	        _this.roughness = 0.5;
+	        _this.metalness = 0.5;
+	        _this.map = null;
+	        _this.lightMap = null;
+	        _this.lightMapIntensity = 1.0;
+	        _this.aoMap = null;
+	        _this.aoMapIntensity = 1.0;
+	        _this.emissive = new Color(0x000000);
+	        _this.emissiveIntensity = 1.0;
+	        _this.emissiveMap = null;
+	        _this.bumpMap = null;
+	        _this.bumpScale = 1;
+	        _this.normalMap = null;
+	        _this.normalScale = new Vector2(1, 1);
+	        _this.displacementMap = null;
+	        _this.displacementScale = 1;
+	        _this.displacementBias = 0;
+	        _this.roughnessMap = null;
+	        _this.metalnessMap = null;
+	        _this.alphaMap = null;
+	        _this.envMap = null;
+	        _this.envMapIntensity = 1.0;
+	        _this.refractionRatio = 0.98;
+	        _this.wireframe = false;
+	        _this.wireframeLinewidth = 1;
+	        _this.wireframeLinecap = 'round';
+	        _this.wireframeLinejoin = 'round';
+	        _this.skinning = false;
+	        _this.morphTargets = false;
+	        _this.morphNormals = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    MeshStandardMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -14740,35 +14844,73 @@
 	    return MeshStandardMaterial;
 	}(Material));
 
-	var MeshLambertMaterial = (function (_super) {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 * @author alteredq / http://alteredqualia.com/
+	 *
+	 * parameters = {
+	 *  color: <hex>,
+	 *  opacity: <float>,
+	 *
+	 *  map: new THREE.Texture(<Image>),
+	 *
+	 *  lightMap: new THREE.Texture(<Image>),
+	 *  lightMapIntensity: <float>
+	 *
+	 *  aoMap: new THREE.Texture(<Image>),
+	 *  aoMapIntensity: <float>
+	 *
+	 *  emissive: <hex>,
+	 *  emissiveIntensity: <float>
+	 *  emissiveMap: new THREE.Texture(<Image>),
+	 *
+	 *  specularMap: new THREE.Texture(<Image>),
+	 *
+	 *  alphaMap: new THREE.Texture(<Image>),
+	 *
+	 *  envMap: new THREE.TextureCube([posx, negx, posy, negy, posz, negz]),
+	 *  combine: THREE.Multiply,
+	 *  reflectivity: <float>,
+	 *  refractionRatio: <float>,
+	 *
+	 *  wireframe: <boolean>,
+	 *  wireframeLinewidth: <float>,
+	 *
+	 *  skinning: <bool>,
+	 *  morphTargets: <bool>,
+	 *  morphNormals: <bool>
+	 * }
+	 */
+	var MeshLambertMaterial = /** @class */ (function (_super) {
 	    __extends(MeshLambertMaterial, _super);
 	    function MeshLambertMaterial(parameters) {
-	        _super.call(this);
-	        this.isMeshLambertMaterial = true;
-	        this.type = 'MeshLambertMaterial';
-	        this.color = new Color(0xffffff); // diffuse
-	        this.map = null;
-	        this.lightMap = null;
-	        this.lightMapIntensity = 1.0;
-	        this.aoMap = null;
-	        this.aoMapIntensity = 1.0;
-	        this.emissive = new Color(0x000000);
-	        this.emissiveIntensity = 1.0;
-	        this.emissiveMap = null;
-	        this.specularMap = null;
-	        this.alphaMap = null;
-	        this.envMap = null;
-	        this.combine = exports.BlendingOperation.Multiply;
-	        this.reflectivity = 1;
-	        this.refractionRatio = 0.98;
-	        this.wireframe = false;
-	        this.wireframeLinewidth = 1;
-	        this.wireframeLinecap = 'round';
-	        this.wireframeLinejoin = 'round';
-	        this.skinning = false;
-	        this.morphTargets = false;
-	        this.morphNormals = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isMeshLambertMaterial = true;
+	        _this.type = 'MeshLambertMaterial';
+	        _this.color = new Color(0xffffff); // diffuse
+	        _this.map = null;
+	        _this.lightMap = null;
+	        _this.lightMapIntensity = 1.0;
+	        _this.aoMap = null;
+	        _this.aoMapIntensity = 1.0;
+	        _this.emissive = new Color(0x000000);
+	        _this.emissiveIntensity = 1.0;
+	        _this.emissiveMap = null;
+	        _this.specularMap = null;
+	        _this.alphaMap = null;
+	        _this.envMap = null;
+	        _this.combine = exports.BlendingOperation.Multiply;
+	        _this.reflectivity = 1;
+	        _this.refractionRatio = 0.98;
+	        _this.wireframe = false;
+	        _this.wireframeLinewidth = 1;
+	        _this.wireframeLinecap = 'round';
+	        _this.wireframeLinejoin = 'round';
+	        _this.skinning = false;
+	        _this.morphTargets = false;
+	        _this.morphNormals = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    MeshLambertMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -14799,17 +14941,18 @@
 	    return MeshLambertMaterial;
 	}(Material));
 
-	var MeshPhysicalMaterial = (function (_super) {
+	var MeshPhysicalMaterial = /** @class */ (function (_super) {
 	    __extends(MeshPhysicalMaterial, _super);
 	    function MeshPhysicalMaterial(parameters) {
-	        _super.call(this, parameters);
-	        this.isMeshPhysicalMaterial = true;
-	        this.defines = { 'PHYSICAL': '' };
-	        this.type = 'MeshPhysicalMaterial';
-	        this.reflectivity = 0.5; // maps to F0 = 0.04
-	        this.clearCoat = 0.0;
-	        this.clearCoatRoughness = 0.0;
-	        this.setValues(parameters);
+	        var _this = _super.call(this, parameters) || this;
+	        _this.isMeshPhysicalMaterial = true;
+	        _this.defines = { 'PHYSICAL': '' };
+	        _this.type = 'MeshPhysicalMaterial';
+	        _this.reflectivity = 0.5; // maps to F0 = 0.04
+	        _this.clearCoat = 0.0;
+	        _this.clearCoatRoughness = 0.0;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    MeshPhysicalMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -14823,18 +14966,19 @@
 	    return MeshPhysicalMaterial;
 	}(MeshStandardMaterial));
 
-	var MeshNormalMaterial = (function (_super) {
+	var MeshNormalMaterial = /** @class */ (function (_super) {
 	    __extends(MeshNormalMaterial, _super);
 	    function MeshNormalMaterial(parameters) {
-	        _super.call(this);
-	        this.isMeshNormalMaterial = true;
-	        this.type = 'MeshNormalMaterial';
-	        this.wireframe = false;
-	        this.wireframeLinewidth = 1;
-	        this.fog = false;
-	        this.lights = false;
-	        this.morphTargets = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isMeshNormalMaterial = true;
+	        _this.type = 'MeshNormalMaterial';
+	        _this.wireframe = false;
+	        _this.wireframeLinewidth = 1;
+	        _this.fog = false;
+	        _this.lights = false;
+	        _this.morphTargets = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    MeshNormalMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -14846,29 +14990,31 @@
 	    return MeshNormalMaterial;
 	}(Material));
 
-	var RawShaderMaterial = (function (_super) {
+	var RawShaderMaterial = /** @class */ (function (_super) {
 	    __extends(RawShaderMaterial, _super);
 	    function RawShaderMaterial(parameters) {
-	        _super.call(this, parameters);
-	        this.isRawShaderMaterial = true;
-	        this.type = 'RawShaderMaterial';
+	        var _this = _super.call(this, parameters) || this;
+	        _this.isRawShaderMaterial = true;
+	        _this.type = 'RawShaderMaterial';
+	        return _this;
 	    }
 	    return RawShaderMaterial;
 	}(ShaderMaterial));
 
-	var LineDashedMaterial = (function (_super) {
+	var LineDashedMaterial = /** @class */ (function (_super) {
 	    __extends(LineDashedMaterial, _super);
 	    function LineDashedMaterial(parameters) {
-	        _super.call(this);
-	        this.isLineDashedMaterial = true;
-	        this.type = 'LineDashedMaterial';
-	        this.color = new Color(0xffffff);
-	        this.linewidth = 1;
-	        this.scale = 1;
-	        this.dashSize = 3;
-	        this.gapSize = 1;
-	        this.lights = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isLineDashedMaterial = true;
+	        _this.type = 'LineDashedMaterial';
+	        _this.color = new Color(0xffffff);
+	        _this.linewidth = 1;
+	        _this.scale = 1;
+	        _this.dashSize = 3;
+	        _this.gapSize = 1;
+	        _this.lights = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    LineDashedMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -14886,7 +15032,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var WebGLIndexedBufferRenderer = (function () {
+	var WebGLIndexedBufferRenderer = /** @class */ (function () {
 	    function WebGLIndexedBufferRenderer(gl, extensions, infoRender) {
 	        this.gl = gl;
 	        this.extensions = extensions;
@@ -14927,7 +15073,7 @@
 	    return WebGLIndexedBufferRenderer;
 	}());
 
-	var WebGLBufferRenderer = (function () {
+	var WebGLBufferRenderer = /** @class */ (function () {
 	    function WebGLBufferRenderer(gl, extensions, infoRender) {
 	        this.gl = gl;
 	        this.extensions = extensions;
@@ -14969,7 +15115,10 @@
 	    return WebGLBufferRenderer;
 	}());
 
-	var WebGLLights = (function () {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var WebGLLights = /** @class */ (function () {
 	    function WebGLLights() {
 	        this.lights = {};
 	    }
@@ -15167,7 +15316,7 @@
 	    }
 	    return code.replace(pattern, replace);
 	}
-	var WebGLProgram = (function () {
+	var WebGLProgram = /** @class */ (function () {
 	    function WebGLProgram(renderer, code, material, parameters) {
 	        this.renderer = renderer;
 	        var gl = this.gl = renderer.context;
@@ -15472,7 +15621,7 @@
 	    return WebGLProgram;
 	}());
 
-	var WebGLPrograms = (function () {
+	var WebGLPrograms = /** @class */ (function () {
 	    function WebGLPrograms(renderer, capabilities) {
 	        this.renderer = renderer;
 	        this.capabilities = capabilities;
@@ -15664,7 +15813,10 @@
 	    return WebGLPrograms;
 	}());
 
-	var WebGLGeometries = (function () {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var WebGLGeometries = /** @class */ (function () {
 	    function WebGLGeometries(gl, properties, info) {
 	        this.geometries = {};
 	        this.gl = gl;
@@ -15750,7 +15902,10 @@
 	    return WebGLGeometries;
 	}());
 
-	var WebGLObjects = (function () {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var WebGLObjects = /** @class */ (function () {
 	    function WebGLObjects(gl, properties, info) {
 	        this.gl = gl;
 	        this.properties = properties;
@@ -15875,24 +16030,25 @@
 	 * @author Matt DesLauriers / @mattdesl
 	 * @author atix / arthursilber.de
 	 */
-	var DepthTexture = (function (_super) {
+	var DepthTexture = /** @class */ (function (_super) {
 	    __extends(DepthTexture, _super);
 	    function DepthTexture(width, height, type, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy, format) {
 	        if (type === void 0) { type = exports.TextureType.UnsignedShort; }
 	        if (magFilter === void 0) { magFilter = exports.TextureFilter.Nearest; }
 	        if (minFilter === void 0) { minFilter = exports.TextureFilter.Nearest; }
 	        if (format === void 0) { format = exports.TextureFormat.Depth; }
-	        _super.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy);
-	        this.isDepthTexture = true;
+	        var _this = _super.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) || this;
+	        _this.isDepthTexture = true;
 	        if (format !== exports.TextureFormat.Depth && format !== exports.TextureFormat.DepthStencil) {
 	            throw new Error('DepthTexture format must be either THREE.TextureFormat.Depth or THREE.TextureFormat.DepthStencil');
 	        }
-	        this.image = { width: width, height: height };
-	        this.type = type;
-	        this.magFilter = magFilter;
-	        this.minFilter = minFilter;
-	        this.flipY = false;
-	        this.generateMipmaps = false;
+	        _this.image = { width: width, height: height };
+	        _this.type = type;
+	        _this.magFilter = magFilter;
+	        _this.minFilter = minFilter;
+	        _this.flipY = false;
+	        _this.generateMipmaps = false;
+	        return _this;
 	    }
 	    return DepthTexture;
 	}(Texture));
@@ -15900,24 +16056,28 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var CompressedTexture = (function (_super) {
+	var CompressedTexture = /** @class */ (function (_super) {
 	    __extends(CompressedTexture, _super);
 	    function CompressedTexture(mipmaps, width, height, format, type, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy, encoding) {
-	        _super.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding);
-	        this.isCompressedTexture = true;
-	        this.image = { width: width, height: height };
-	        this.mipmaps = mipmaps;
+	        var _this = _super.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding) || this;
+	        _this.isCompressedTexture = true;
+	        _this.image = { width: width, height: height };
+	        _this.mipmaps = mipmaps;
 	        // no flipping for cube textures
 	        // (also flipping doesn't work for compressed textures)
-	        this.flipY = false;
+	        _this.flipY = false;
 	        // can't generate mipmaps for compressed textures
 	        // mips must be embedded in DDS files
-	        this.generateMipmaps = false;
+	        _this.generateMipmaps = false;
+	        return _this;
 	    }
 	    return CompressedTexture;
 	}(Texture));
 
-	var WebGLTextures = (function () {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var WebGLTextures = /** @class */ (function () {
 	    function WebGLTextures(_gl, extensions, state, properties, capabilities, paramThreeToGL, info) {
 	        this._gl = _gl;
 	        this.extensions = extensions;
@@ -16399,7 +16559,7 @@
 	/**
 	 * @author fordacious / fordacious.github.io
 	 */
-	var WebGLProperties = (function () {
+	var WebGLProperties = /** @class */ (function () {
 	    function WebGLProperties() {
 	        this.properties = {};
 	    }
@@ -16421,7 +16581,10 @@
 	    return WebGLProperties;
 	}());
 
-	var ColorBuffer = (function () {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var ColorBuffer = /** @class */ (function () {
 	    function ColorBuffer(state) {
 	        this.locked = false;
 	        this.color = new Vector4();
@@ -16452,7 +16615,7 @@
 	    };
 	    return ColorBuffer;
 	}());
-	var DepthBuffer = (function () {
+	var DepthBuffer = /** @class */ (function () {
 	    function DepthBuffer(state) {
 	        this.locked = false;
 	        this.currentDepthMask = null;
@@ -16533,7 +16696,7 @@
 	    };
 	    return DepthBuffer;
 	}());
-	var StencilBuffer = (function () {
+	var StencilBuffer = /** @class */ (function () {
 	    function StencilBuffer(state) {
 	        this.locked = false;
 	        this.currentStencilMask = null;
@@ -16607,7 +16770,7 @@
 	    };
 	    return StencilBuffer;
 	}());
-	var WebGLState = (function () {
+	var WebGLState = /** @class */ (function () {
 	    function WebGLState(gl, extensions, paramThreeToGL) {
 	        this.capabilities = {};
 	        this.compressedTextureFormats = null;
@@ -17006,7 +17169,7 @@
 	    return WebGLState;
 	}());
 
-	var WebGLCapabilities = (function () {
+	var WebGLCapabilities = /** @class */ (function () {
 	    function WebGLCapabilities(gl, extensions, parameters) {
 	        this.gl = gl;
 	        this.extensions = extensions;
@@ -17066,7 +17229,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var WebGLExtensions = (function () {
+	var WebGLExtensions = /** @class */ (function () {
 	    function WebGLExtensions(gl) {
 	        this.extensions = {};
 	        this.gl = gl;
@@ -17106,7 +17269,10 @@
 	    return WebGLExtensions;
 	}());
 
-	var WebGLClipping = (function () {
+	/**
+	 * @author tschw
+	 */
+	var WebGLClipping = /** @class */ (function () {
 	    function WebGLClipping() {
 	        this.globalState = null;
 	        this.numGlobalPlanes = 0;
@@ -17203,13 +17369,14 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var AmbientLight = (function (_super) {
+	var AmbientLight = /** @class */ (function (_super) {
 	    __extends(AmbientLight, _super);
 	    function AmbientLight(color, intensity) {
-	        _super.call(this, color, intensity);
-	        this.isAmbientLight = true;
-	        this.type = 'AmbientLight';
-	        this.castShadow = undefined;
+	        var _this = _super.call(this, color, intensity) || this;
+	        _this.isAmbientLight = true;
+	        _this.type = 'AmbientLight';
+	        _this.castShadow = undefined;
+	        return _this;
 	    }
 	    return AmbientLight;
 	}(Light));
@@ -17217,10 +17384,10 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var DirectionalLightShadow = (function (_super) {
+	var DirectionalLightShadow = /** @class */ (function (_super) {
 	    __extends(DirectionalLightShadow, _super);
 	    function DirectionalLightShadow(light) {
-	        _super.call(this, new OrthographicCamera(-5, 5, 5, -5, 0.5, 500));
+	        return _super.call(this, new OrthographicCamera(-5, 5, 5, -5, 0.5, 500)) || this;
 	    }
 	    return DirectionalLightShadow;
 	}(LightShadow));
@@ -17229,16 +17396,17 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var DirectionalLight = (function (_super) {
+	var DirectionalLight = /** @class */ (function (_super) {
 	    __extends(DirectionalLight, _super);
 	    function DirectionalLight(color, intensity) {
-	        _super.call(this, color, intensity);
-	        this.target = new Object3D();
-	        this.isDirectionalLight = true;
-	        this.type = 'DirectionalLight';
-	        this.position.copy(Object3D.DefaultUp);
-	        this.updateMatrix();
-	        this.shadow = new DirectionalLightShadow();
+	        var _this = _super.call(this, color, intensity) || this;
+	        _this.target = new Object3D();
+	        _this.isDirectionalLight = true;
+	        _this.type = 'DirectionalLight';
+	        _this.position.copy(Object3D.DefaultUp);
+	        _this.updateMatrix();
+	        _this.shadow = new DirectionalLightShadow();
+	        return _this;
 	    }
 	    DirectionalLight.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -17252,16 +17420,17 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var HemisphereLight = (function (_super) {
+	var HemisphereLight = /** @class */ (function (_super) {
 	    __extends(HemisphereLight, _super);
 	    function HemisphereLight(skyColor, groundColor, intensity) {
-	        _super.call(this, skyColor, intensity);
-	        this.isHemisphereLight = true;
-	        this.type = 'HemisphereLight';
-	        this.castShadow = undefined;
-	        this.position.copy(Object3D.DefaultUp);
-	        this.updateMatrix();
-	        this.groundColor = new Color(groundColor);
+	        var _this = _super.call(this, skyColor, intensity) || this;
+	        _this.isHemisphereLight = true;
+	        _this.type = 'HemisphereLight';
+	        _this.castShadow = undefined;
+	        _this.position.copy(Object3D.DefaultUp);
+	        _this.updateMatrix();
+	        _this.groundColor = new Color(groundColor);
+	        return _this;
 	    }
 	    HemisphereLight.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -17274,24 +17443,25 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var SpotLight = (function (_super) {
+	var SpotLight = /** @class */ (function (_super) {
 	    __extends(SpotLight, _super);
 	    function SpotLight(color, intensity, distance, angle, penumbra, decay) {
 	        if (distance === void 0) { distance = 0; }
 	        if (angle === void 0) { angle = Math.PI / 3; }
 	        if (penumbra === void 0) { penumbra = 0; }
 	        if (decay === void 0) { decay = 1; }
-	        _super.call(this, color, intensity);
-	        this.target = new Object3D();
-	        this.isSpotLight = true;
-	        this.type = 'SpotLight';
-	        this.position.copy(Object3D.DefaultUp);
-	        this.updateMatrix();
-	        this.distance = distance;
-	        this.angle = angle;
-	        this.penumbra = penumbra;
-	        this.decay = decay; // for physically correct lights, should be 2.
-	        this.shadow = new SpotLightShadow();
+	        var _this = _super.call(this, color, intensity) || this;
+	        _this.target = new Object3D();
+	        _this.isSpotLight = true;
+	        _this.type = 'SpotLight';
+	        _this.position.copy(Object3D.DefaultUp);
+	        _this.updateMatrix();
+	        _this.distance = distance;
+	        _this.angle = angle;
+	        _this.penumbra = penumbra;
+	        _this.decay = decay; // for physically correct lights, should be 2.
+	        _this.shadow = new SpotLightShadow();
+	        return _this;
 	    }
 	    Object.defineProperty(SpotLight.prototype, "power", {
 	        get: function () {
@@ -17320,18 +17490,19 @@
 	    return SpotLight;
 	}(Light));
 
-	var SpriteMaterial = (function (_super) {
+	var SpriteMaterial = /** @class */ (function (_super) {
 	    __extends(SpriteMaterial, _super);
 	    function SpriteMaterial(parameters) {
-	        _super.call(this);
-	        this.isSpriteMaterial = true;
-	        this.type = 'SpriteMaterial';
-	        this.color = new Color(0xffffff);
-	        this.map = null;
-	        this.rotation = 0;
-	        this.fog = false;
-	        this.lights = false;
-	        this.setValues(parameters);
+	        var _this = _super.call(this) || this;
+	        _this.isSpriteMaterial = true;
+	        _this.type = 'SpriteMaterial';
+	        _this.color = new Color(0xffffff);
+	        _this.map = null;
+	        _this.rotation = 0;
+	        _this.fog = false;
+	        _this.lights = false;
+	        _this.setValues(parameters);
+	        return _this;
 	    }
 	    SpriteMaterial.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -17348,14 +17519,15 @@
 	 * @author mikael emtinger / http://gomo.se/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var Sprite = (function (_super) {
+	var Sprite = /** @class */ (function (_super) {
 	    __extends(Sprite, _super);
 	    function Sprite(material) {
 	        if (material === void 0) { material = new SpriteMaterial(); }
-	        _super.call(this);
-	        this.isSprite = true;
-	        this.type = 'Sprite';
-	        this.material = material;
+	        var _this = _super.call(this) || this;
+	        _this.isSprite = true;
+	        _this.type = 'Sprite';
+	        _this.material = material;
+	        return _this;
 	    }
 	    Sprite.prototype.raycast = function (raycaster, intersects) {
 	        var matrixPosition = Sprite.raycast_matrixPosition;
@@ -17389,16 +17561,17 @@
 	 * @author mikael emtinger / http://gomo.se/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var LensFlare = (function (_super) {
+	var LensFlare = /** @class */ (function (_super) {
 	    __extends(LensFlare, _super);
 	    function LensFlare(texture, size, distance, blending, color) {
-	        _super.call(this);
-	        this.lensFlares = [];
-	        this.positionScreen = new Vector3();
-	        this.isLensFlare = true;
+	        var _this = _super.call(this) || this;
+	        _this.lensFlares = [];
+	        _this.positionScreen = new Vector3();
+	        _this.isLensFlare = true;
 	        if (texture !== undefined) {
-	            this.addFlare(texture, size, distance, blending, color);
+	            _this.addFlare(texture, size, distance, blending, color);
 	        }
+	        return _this;
 	    }
 	    LensFlare.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -17458,12 +17631,13 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var ImmediateRenderObject = (function (_super) {
+	var ImmediateRenderObject = /** @class */ (function (_super) {
 	    __extends(ImmediateRenderObject, _super);
 	    function ImmediateRenderObject(material) {
-	        _super.call(this);
-	        this.isImmediateRenderObject = true;
-	        this.material = material;
+	        var _this = _super.call(this) || this;
+	        _this.isImmediateRenderObject = true;
+	        _this.material = material;
+	        return _this;
 	    }
 	    ImmediateRenderObject.prototype.render = function (renderCallback) {
 	    };
@@ -17473,13 +17647,14 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var LineSegments = (function (_super) {
+	var LineSegments = /** @class */ (function (_super) {
 	    __extends(LineSegments, _super);
 	    function LineSegments(geometry, material) {
-	        _super.call(this, geometry, material);
-	        this.isLineSegments = true;
-	        this.type = 'LineSegments';
-	        this._step = 2; // Line:raycast step
+	        var _this = _super.call(this, geometry, material) || this;
+	        _this.isLineSegments = true;
+	        _this.type = 'LineSegments';
+	        _this._step = 2; // Line:raycast step
+	        return _this;
 	    }
 	    return LineSegments;
 	}(Line));
@@ -17487,13 +17662,14 @@
 	/**
 	 * @author benaadams / https://twitter.com/ben_a_adams
 	 */
-	var InstancedBufferGeometry = (function (_super) {
+	var InstancedBufferGeometry = /** @class */ (function (_super) {
 	    __extends(InstancedBufferGeometry, _super);
 	    function InstancedBufferGeometry() {
-	        _super.call(this);
-	        this.type = 'InstancedBufferGeometry';
-	        this.maxInstancedCount = undefined;
-	        this.isInstancedBufferGeometry = true;
+	        var _this = _super.call(this) || this;
+	        _this.type = 'InstancedBufferGeometry';
+	        _this.maxInstancedCount = undefined;
+	        _this.isInstancedBufferGeometry = true;
+	        return _this;
 	    }
 	    InstancedBufferGeometry.prototype.addGroup = function (start, count, materialIndex) {
 	        this.groups.push({
@@ -17527,13 +17703,14 @@
 	/**
 	 * @author benaadams / https://twitter.com/ben_a_adams
 	 */
-	var InstancedBufferAttribute = (function (_super) {
+	var InstancedBufferAttribute = /** @class */ (function (_super) {
 	    __extends(InstancedBufferAttribute, _super);
 	    function InstancedBufferAttribute(array, itemSize, meshPerAttribute) {
 	        if (meshPerAttribute === void 0) { meshPerAttribute = 1; }
-	        _super.call(this, array, itemSize);
-	        this.isInstancedBufferAttribute = true;
-	        this.meshPerAttribute = meshPerAttribute;
+	        var _this = _super.call(this, array, itemSize) || this;
+	        _this.isInstancedBufferAttribute = true;
+	        _this.meshPerAttribute = meshPerAttribute;
+	        return _this;
 	    }
 	    InstancedBufferAttribute.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -17546,7 +17723,7 @@
 	/**
 	 * @author benaadams / https://twitter.com/ben_a_adams
 	 */
-	var InterleavedBuffer = (function () {
+	var InterleavedBuffer = /** @class */ (function () {
 	    function InterleavedBuffer(array, stride) {
 	        this.uuid = _Math.generateUUID();
 	        this.isInterleavedBuffer = true;
@@ -17605,13 +17782,14 @@
 	/**
 	 * @author benaadams / https://twitter.com/ben_a_adams
 	 */
-	var InstancedInterleavedBuffer = (function (_super) {
+	var InstancedInterleavedBuffer = /** @class */ (function (_super) {
 	    __extends(InstancedInterleavedBuffer, _super);
 	    function InstancedInterleavedBuffer(array, stride, meshPerAttribute) {
 	        if (meshPerAttribute === void 0) { meshPerAttribute = 1; }
-	        _super.call(this, array, stride);
-	        this.isInstancedInterleavedBuffer = true;
-	        this.meshPerAttribute = meshPerAttribute;
+	        var _this = _super.call(this, array, stride) || this;
+	        _this.isInstancedInterleavedBuffer = true;
+	        _this.meshPerAttribute = meshPerAttribute;
+	        return _this;
 	    }
 	    InstancedInterleavedBuffer.prototype.copy = function (source) {
 	        _super.prototype.copy.call(this, source);
@@ -17621,7 +17799,14 @@
 	    return InstancedInterleavedBuffer;
 	}(InterleavedBuffer));
 
-	var WebGLRenderer = (function () {
+	/**
+	 * @author supereggbert / http://www.paulbrunt.co.uk/
+	 * @author mrdoob / http://mrdoob.com/
+	 * @author alteredq / http://alteredqualia.com/
+	 * @author szimek / https://github.com/szimek/
+	 * @author tschw
+	 */
+	var WebGLRenderer = /** @class */ (function () {
 	    function WebGLRenderer(parameters) {
 	        this.lights = [];
 	        this.opaqueObjects = [];
@@ -18499,7 +18684,7 @@
 	        }
 	    };
 	    WebGLRenderer.prototype.renderObjects = function (renderList, camera, scene, overrideMaterial) {
-	        var _loop_1 = function(i, l) {
+	        var _loop_1 = function (i, l) {
 	            var renderItem = renderList[i];
 	            var object = renderItem.object;
 	            var geometry = renderItem.geometry;
@@ -19208,8 +19393,8 @@
 	                    console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in RGBA or implementation defined format.');
 	                    return;
 	                }
-	                if (textureType !== exports.TextureType.UnsignedByte && this.paramThreeToGL(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) &&
-	                    !(textureType === exports.TextureType.Float && (this.extensions.get('OES_texture_float') || this.extensions.get('WEBGL_color_buffer_float'))) &&
+	                if (textureType !== exports.TextureType.UnsignedByte && this.paramThreeToGL(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) && // IE11, Edge and Chrome Mac < 52 (#9513)
+	                    !(textureType === exports.TextureType.Float && (this.extensions.get('OES_texture_float') || this.extensions.get('WEBGL_color_buffer_float'))) && // Chrome Mac >= 52 and Firefox
 	                    !(textureType === exports.TextureType.HalfFloat && this.extensions.get('EXT_color_buffer_half_float'))) {
 	                    console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in TextureType.UnsignedByte or implementation defined type.');
 	                    return;
@@ -19457,15 +19642,16 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Scene = (function (_super) {
+	var Scene = /** @class */ (function (_super) {
 	    __extends(Scene, _super);
 	    function Scene() {
-	        _super.call(this);
-	        this.background = null;
-	        this.fog = null;
-	        this.overrideMaterial = null;
-	        this.autoUpdate = true; // checked by the renderer
-	        this.type = 'Scene';
+	        var _this = _super.call(this) || this;
+	        _this.background = null;
+	        _this.fog = null;
+	        _this.overrideMaterial = null;
+	        _this.autoUpdate = true; // checked by the renderer
+	        _this.type = 'Scene';
+	        return _this;
 	    }
 	    Scene.prototype.copy = function (source, recursive) {
 	        _super.prototype.copy.call(this, source, recursive);
@@ -19495,12 +19681,13 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var LOD = (function (_super) {
+	var LOD = /** @class */ (function (_super) {
 	    __extends(LOD, _super);
 	    function LOD() {
-	        _super.call(this);
-	        this.type = 'LOD';
-	        this.levels = [];
+	        var _this = _super.call(this) || this;
+	        _this.type = 'LOD';
+	        _this.levels = [];
+	        return _this;
 	        //Object.defineProperties(this, {
 	        //  levels: {
 	        //    enumerable: true,
@@ -19603,11 +19790,12 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Group = (function (_super) {
+	var Group = /** @class */ (function (_super) {
 	    __extends(Group, _super);
 	    function Group() {
-	        _super.call(this);
-	        this.type = 'Group';
+	        var _this = _super.call(this) || this;
+	        _this.type = 'Group';
+	        return _this;
 	    }
 	    return Group;
 	}(Object3D));
@@ -19615,12 +19803,12 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var VideoTexture = (function (_super) {
+	var VideoTexture = /** @class */ (function (_super) {
 	    __extends(VideoTexture, _super);
 	    function VideoTexture(video, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) {
-	        _super.call(this, video, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy);
-	        this.generateMipmaps = false;
-	        var scope = this;
+	        var _this = _super.call(this, video, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) || this;
+	        _this.generateMipmaps = false;
+	        var scope = _this;
 	        function update() {
 	            requestAnimationFrame(update);
 	            if (video.readyState >= video.HAVE_CURRENT_DATA) {
@@ -19628,6 +19816,7 @@
 	            }
 	        }
 	        update();
+	        return _this;
 	    }
 	    return VideoTexture;
 	}(Texture));
@@ -19635,11 +19824,12 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var CanvasTexture = (function (_super) {
+	var CanvasTexture = /** @class */ (function (_super) {
 	    __extends(CanvasTexture, _super);
 	    function CanvasTexture(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) {
-	        _super.call(this, canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy);
-	        this.needsUpdate = true;
+	        var _this = _super.call(this, canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) || this;
+	        _this.needsUpdate = true;
+	        return _this;
 	    }
 	    return CanvasTexture;
 	}(Texture));
@@ -19647,10 +19837,10 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var WireframeGeometry = (function (_super) {
+	var WireframeGeometry = /** @class */ (function (_super) {
 	    __extends(WireframeGeometry, _super);
 	    function WireframeGeometry(geometry) {
-	        _super.call(this);
+	        var _this = _super.call(this) || this;
 	        var edge = [0, 0], hash = {};
 	        function sortFunction(a, b) {
 	            return a - b;
@@ -19687,7 +19877,7 @@
 	                    coords[index + 2] = vertex.z;
 	                }
 	            }
-	            this.addAttribute('position', new BufferAttribute(coords, 3));
+	            _this.addAttribute('position', new BufferAttribute(coords, 3));
 	        }
 	        else if (geometry && geometry instanceof BufferGeometry) {
 	            if (geometry.index !== null) {
@@ -19730,7 +19920,7 @@
 	                        coords[index + 2] = vertices.getZ(index2);
 	                    }
 	                }
-	                this.addAttribute('position', new BufferAttribute(coords, 3));
+	                _this.addAttribute('position', new BufferAttribute(coords, 3));
 	            }
 	            else {
 	                // non-indexed BufferGeometry
@@ -19751,9 +19941,10 @@
 	                        coords[index + 5] = vertices[index2 + 2];
 	                    }
 	                }
-	                this.addAttribute('position', new BufferAttribute(coords, 3));
+	                _this.addAttribute('position', new BufferAttribute(coords, 3));
 	            }
 	        }
+	        return _this;
 	    }
 	    return WireframeGeometry;
 	}(BufferGeometry));
@@ -19764,12 +19955,12 @@
 	 * Parametric Surfaces Geometry
 	 * based on the brilliant article by @prideout http://prideout.net/blog/?p=44
 	 */
-	var ParametricBufferGeometry = (function (_super) {
+	var ParametricBufferGeometry = /** @class */ (function (_super) {
 	    __extends(ParametricBufferGeometry, _super);
 	    function ParametricBufferGeometry(func, slices, stacks) {
-	        _super.call(this);
-	        this.type = 'ParametricBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'ParametricBufferGeometry';
+	        _this.parameters = {
 	            func: func,
 	            slices: slices,
 	            stacks: stacks
@@ -19804,11 +19995,12 @@
 	            }
 	        }
 	        // build geometry
-	        this.setIndex((indices.length > 65535 ? Uint32Attribute : Uint16Attribute)(indices, 1));
-	        this.addAttribute('position', Float32Attribute(vertices, 3));
-	        this.addAttribute('uv', Float32Attribute(uvs, 2));
+	        _this.setIndex((indices.length > 65535 ? Uint32Attribute : Uint16Attribute)(indices, 1));
+	        _this.addAttribute('position', Float32Attribute(vertices, 3));
+	        _this.addAttribute('uv', Float32Attribute(uvs, 2));
 	        // generate normals
-	        this.computeVertexNormals();
+	        _this.computeVertexNormals();
+	        return _this;
 	    }
 	    return ParametricBufferGeometry;
 	}(BufferGeometry));
@@ -19819,18 +20011,19 @@
 	 * Parametric Surfaces Geometry
 	 * based on the brilliant article by @prideout http://prideout.net/blog/?p=44
 	 */
-	var ParametricGeometry = (function (_super) {
+	var ParametricGeometry = /** @class */ (function (_super) {
 	    __extends(ParametricGeometry, _super);
 	    function ParametricGeometry(func, slices, stacks) {
-	        _super.call(this);
-	        this.type = 'ParametricGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'ParametricGeometry';
+	        _this.parameters = {
 	            func: func,
 	            slices: slices,
 	            stacks: stacks
 	        };
-	        this.fromBufferGeometry(new ParametricBufferGeometry(func, slices, stacks));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new ParametricBufferGeometry(func, slices, stacks));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return ParametricGeometry;
 	}(Geometry));
@@ -19838,12 +20031,12 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var PolyhedronBufferGeometry = (function (_super) {
+	var PolyhedronBufferGeometry = /** @class */ (function (_super) {
 	    __extends(PolyhedronBufferGeometry, _super);
 	    function PolyhedronBufferGeometry(vertices, indices, radius, detail) {
-	        _super.call(this);
-	        this.type = 'PolyhedronBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'PolyhedronBufferGeometry';
+	        _this.parameters = {
 	            vertices: vertices,
 	            indices: indices,
 	            radius: radius,
@@ -19861,11 +20054,11 @@
 	        // finally, create the uv data
 	        generateUVs();
 	        // build non-indexed geometry
-	        this.addAttribute('position', Float32Attribute(vertexBuffer, 3));
-	        this.addAttribute('normal', Float32Attribute(vertexBuffer.slice(), 3));
-	        this.addAttribute('uv', Float32Attribute(uvBuffer, 2));
-	        this.normalizeNormals();
-	        this.boundingSphere = new Sphere(new Vector3(), radius);
+	        _this.addAttribute('position', Float32Attribute(vertexBuffer, 3));
+	        _this.addAttribute('normal', Float32Attribute(vertexBuffer.slice(), 3));
+	        _this.addAttribute('uv', Float32Attribute(uvBuffer, 2));
+	        _this.normalizeNormals();
+	        _this.boundingSphere = new Sphere(new Vector3(), radius);
 	        // helper functions
 	        function subdivide(detail) {
 	            var a = new Vector3();
@@ -20011,6 +20204,7 @@
 	        function inclination(vector) {
 	            return Math.atan2(-vector.y, Math.sqrt((vector.x * vector.x) + (vector.z * vector.z)));
 	        }
+	        return _this;
 	    }
 	    return PolyhedronBufferGeometry;
 	}(BufferGeometry));
@@ -20018,21 +20212,23 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var TetrahedronBufferGeometry = (function (_super) {
+	var TetrahedronBufferGeometry = /** @class */ (function (_super) {
 	    __extends(TetrahedronBufferGeometry, _super);
 	    function TetrahedronBufferGeometry(radius, detail) {
+	        var _this = this;
 	        var vertices = [
 	            1, 1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1
 	        ];
 	        var indices = [
 	            2, 1, 0, 0, 3, 2, 1, 3, 0, 2, 3, 1
 	        ];
-	        _super.call(this, vertices, indices, radius, detail);
-	        this.type = 'TetrahedronBufferGeometry';
-	        this.parameters = {
+	        _this = _super.call(this, vertices, indices, radius, detail) || this;
+	        _this.type = 'TetrahedronBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            detail: detail
 	        };
+	        return _this;
 	    }
 	    return TetrahedronBufferGeometry;
 	}(PolyhedronBufferGeometry));
@@ -20040,17 +20236,18 @@
 	/**
 	 * @author timothypratley / https://github.com/timothypratley
 	 */
-	var TetrahedronGeometry = (function (_super) {
+	var TetrahedronGeometry = /** @class */ (function (_super) {
 	    __extends(TetrahedronGeometry, _super);
 	    function TetrahedronGeometry(radius, detail) {
-	        _super.call(this);
-	        this.type = 'TetrahedronGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'TetrahedronGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            detail: detail
 	        };
-	        this.fromBufferGeometry(new TetrahedronBufferGeometry(radius, detail));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new TetrahedronBufferGeometry(radius, detail));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return TetrahedronGeometry;
 	}(Geometry));
@@ -20058,21 +20255,23 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var OctahedronBufferGeometry = (function (_super) {
+	var OctahedronBufferGeometry = /** @class */ (function (_super) {
 	    __extends(OctahedronBufferGeometry, _super);
 	    function OctahedronBufferGeometry(radius, detail) {
+	        var _this = this;
 	        var vertices = [
 	            1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1
 	        ];
 	        var indices = [
 	            0, 2, 4, 0, 4, 3, 0, 3, 5, 0, 5, 2, 1, 2, 5, 1, 5, 3, 1, 3, 4, 1, 4, 2
 	        ];
-	        _super.call(this, vertices, indices, radius, detail);
-	        this.type = 'OctahedronBufferGeometry';
-	        this.parameters = {
+	        _this = _super.call(this, vertices, indices, radius, detail) || this;
+	        _this.type = 'OctahedronBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            detail: detail
 	        };
+	        return _this;
 	    }
 	    return OctahedronBufferGeometry;
 	}(PolyhedronBufferGeometry));
@@ -20080,17 +20279,18 @@
 	/**
 	 * @author timothypratley / https://github.com/timothypratley
 	 */
-	var OctahedronGeometry = (function (_super) {
+	var OctahedronGeometry = /** @class */ (function (_super) {
 	    __extends(OctahedronGeometry, _super);
 	    function OctahedronGeometry(radius, detail) {
-	        _super.call(this);
-	        this.type = 'OctahedronGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'OctahedronGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            detail: detail
 	        };
-	        this.fromBufferGeometry(new OctahedronBufferGeometry(radius, detail));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new OctahedronBufferGeometry(radius, detail));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return OctahedronGeometry;
 	}(Geometry));
@@ -20098,9 +20298,10 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var IcosahedronBufferGeometry = (function (_super) {
+	var IcosahedronBufferGeometry = /** @class */ (function (_super) {
 	    __extends(IcosahedronBufferGeometry, _super);
 	    function IcosahedronBufferGeometry(radius, detail) {
+	        var _this = this;
 	        var t = (1 + Math.sqrt(5)) / 2;
 	        var vertices = [
 	            -1, t, 0, 1, t, 0, -1, -t, 0, 1, -t, 0,
@@ -20113,12 +20314,13 @@
 	            3, 9, 4, 3, 4, 2, 3, 2, 6, 3, 6, 8, 3, 8, 9,
 	            4, 9, 5, 2, 4, 11, 6, 2, 10, 8, 6, 7, 9, 8, 1
 	        ];
-	        _super.call(this, vertices, indices, radius, detail);
-	        this.type = 'IcosahedronBufferGeometry';
-	        this.parameters = {
+	        _this = _super.call(this, vertices, indices, radius, detail) || this;
+	        _this.type = 'IcosahedronBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            detail: detail
 	        };
+	        return _this;
 	    }
 	    return IcosahedronBufferGeometry;
 	}(PolyhedronBufferGeometry));
@@ -20126,17 +20328,18 @@
 	/**
 	 * @author timothypratley / https://github.com/timothypratley
 	 */
-	var IcosahedronGeometry = (function (_super) {
+	var IcosahedronGeometry = /** @class */ (function (_super) {
 	    __extends(IcosahedronGeometry, _super);
 	    function IcosahedronGeometry(radius, detail) {
-	        _super.call(this);
-	        this.type = 'IcosahedronGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'IcosahedronGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            detail: detail
 	        };
-	        this.fromBufferGeometry(new IcosahedronBufferGeometry(radius, detail));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new IcosahedronBufferGeometry(radius, detail));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return IcosahedronGeometry;
 	}(Geometry));
@@ -20144,9 +20347,10 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var DodecahedronBufferGeometry = (function (_super) {
+	var DodecahedronBufferGeometry = /** @class */ (function (_super) {
 	    __extends(DodecahedronBufferGeometry, _super);
 	    function DodecahedronBufferGeometry(radius, detail) {
+	        var _this = this;
 	        var t = (1 + Math.sqrt(5)) / 2;
 	        var r = 1 / t;
 	        var vertices = [
@@ -20179,12 +20383,13 @@
 	            19, 5, 14, 19, 14, 4, 19, 4, 17,
 	            1, 12, 14, 1, 14, 5, 1, 5, 9
 	        ];
-	        _super.call(this, vertices, indices, radius, detail);
-	        this.type = 'DodecahedronBufferGeometry';
-	        this.parameters = {
+	        _this = _super.call(this, vertices, indices, radius, detail) || this;
+	        _this.type = 'DodecahedronBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            detail: detail
 	        };
+	        return _this;
 	    }
 	    return DodecahedronBufferGeometry;
 	}(PolyhedronBufferGeometry));
@@ -20192,17 +20397,18 @@
 	/**
 	 * @author Abe Pazos / https://hamoid.com
 	 */
-	var DodecahedronGeometry = (function (_super) {
+	var DodecahedronGeometry = /** @class */ (function (_super) {
 	    __extends(DodecahedronGeometry, _super);
 	    function DodecahedronGeometry(radius, detail) {
-	        _super.call(this);
-	        this.type = 'DodecahedronGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'DodecahedronGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            detail: detail
 	        };
-	        this.fromBufferGeometry(new DodecahedronBufferGeometry(radius, detail));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new DodecahedronBufferGeometry(radius, detail));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return DodecahedronGeometry;
 	}(Geometry));
@@ -20233,12 +20439,12 @@
 	 * Creates a tube which extrudes along a 3d spline.
 	 *
 	 */
-	var TubeBufferGeometry = (function (_super) {
+	var TubeBufferGeometry = /** @class */ (function (_super) {
 	    __extends(TubeBufferGeometry, _super);
 	    function TubeBufferGeometry(path, tubularSegments, radius, radialSegments, closed) {
-	        _super.call(this);
-	        this.type = 'TubeBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'TubeBufferGeometry';
+	        _this.parameters = {
 	            path: path,
 	            tubularSegments: tubularSegments,
 	            radius: radius,
@@ -20251,9 +20457,9 @@
 	        closed = closed || false;
 	        var frames = path.computeFrenetFrames(tubularSegments, closed);
 	        // expose internals
-	        this.tangents = frames.tangents;
-	        this.normals = frames.normals;
-	        this.binormals = frames.binormals;
+	        _this.tangents = frames.tangents;
+	        _this.normals = frames.normals;
+	        _this.binormals = frames.binormals;
 	        // helper variables
 	        var vertex = new Vector3();
 	        var normal = new Vector3();
@@ -20266,10 +20472,10 @@
 	        // create buffer data
 	        generateBufferData();
 	        // build geometry
-	        this.setIndex((indices.length > 65535 ? Uint32Attribute : Uint16Attribute)(indices, 1));
-	        this.addAttribute('position', Float32Attribute(vertices, 3));
-	        this.addAttribute('normal', Float32Attribute(normals, 3));
-	        this.addAttribute('uv', Float32Attribute(uvs, 2));
+	        _this.setIndex((indices.length > 65535 ? Uint32Attribute : Uint16Attribute)(indices, 1));
+	        _this.addAttribute('position', Float32Attribute(vertices, 3));
+	        _this.addAttribute('normal', Float32Attribute(normals, 3));
+	        _this.addAttribute('uv', Float32Attribute(uvs, 2));
 	        // functions
 	        function generateBufferData() {
 	            for (var i = 0; i < tubularSegments; i++) {
@@ -20332,6 +20538,7 @@
 	                }
 	            }
 	        }
+	        return _this;
 	    }
 	    return TubeBufferGeometry;
 	}(BufferGeometry));
@@ -20345,12 +20552,12 @@
 	 *
 	 * Creates a tube which extrudes along a 3d spline.
 	 */
-	var TubeGeometry = (function (_super) {
+	var TubeGeometry = /** @class */ (function (_super) {
 	    __extends(TubeGeometry, _super);
 	    function TubeGeometry(path, tubularSegments, radius, radialSegments, closed, taper) {
-	        _super.call(this);
-	        this.type = 'TubeGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'TubeGeometry';
+	        _this.parameters = {
 	            path: path,
 	            tubularSegments: tubularSegments,
 	            radius: radius,
@@ -20361,12 +20568,13 @@
 	            console.warn('THREE.TubeGeometry: taper has been removed.');
 	        var bufferGeometry = new TubeBufferGeometry(path, tubularSegments, radius, radialSegments, closed);
 	        // expose internals
-	        this.tangents = bufferGeometry.tangents;
-	        this.normals = bufferGeometry.normals;
-	        this.binormals = bufferGeometry.binormals;
+	        _this.tangents = bufferGeometry.tangents;
+	        _this.normals = bufferGeometry.normals;
+	        _this.binormals = bufferGeometry.binormals;
 	        // create geometry
-	        this.fromBufferGeometry(bufferGeometry);
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(bufferGeometry);
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return TubeGeometry;
 	}(Geometry));
@@ -20376,12 +20584,12 @@
 	 *
 	 * see: http://www.blackpawn.com/texts/pqtorus/
 	 */
-	var TorusKnotBufferGeometry = (function (_super) {
+	var TorusKnotBufferGeometry = /** @class */ (function (_super) {
 	    __extends(TorusKnotBufferGeometry, _super);
 	    function TorusKnotBufferGeometry(radius, tube, tubularSegments, radialSegments, p, q) {
-	        _super.call(this);
-	        this.type = 'TorusKnotBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'TorusKnotBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            tube: tube,
 	            tubularSegments: tubularSegments,
@@ -20478,10 +20686,10 @@
 	            }
 	        }
 	        // build geometry
-	        this.setIndex(indices);
-	        this.addAttribute('position', vertices);
-	        this.addAttribute('normal', normals);
-	        this.addAttribute('uv', uvs);
+	        _this.setIndex(indices);
+	        _this.addAttribute('position', vertices);
+	        _this.addAttribute('normal', normals);
+	        _this.addAttribute('uv', uvs);
 	        // this function calculates the current position on the torus curve
 	        function calculatePositionOnCurve(u, p, q, radius, position) {
 	            var cu = Math.cos(u);
@@ -20492,6 +20700,7 @@
 	            position.y = radius * (2 + cs) * su * 0.5;
 	            position.z = radius * Math.sin(quOverP) * 0.5;
 	        }
+	        return _this;
 	    }
 	    return TorusKnotBufferGeometry;
 	}(BufferGeometry));
@@ -20499,12 +20708,12 @@
 	/**
 	 * @author oosmoxiecode
 	 */
-	var TorusKnotGeometry = (function (_super) {
+	var TorusKnotGeometry = /** @class */ (function (_super) {
 	    __extends(TorusKnotGeometry, _super);
 	    function TorusKnotGeometry(radius, tube, tubularSegments, radialSegments, p, q, heightScale) {
-	        _super.call(this);
-	        this.type = 'TorusKnotGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'TorusKnotGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            tube: tube,
 	            tubularSegments: tubularSegments,
@@ -20514,8 +20723,9 @@
 	        };
 	        if (heightScale !== undefined)
 	            console.warn('THREE.TorusKnotGeometry: heightScale has been deprecated. Use .scale(x, y, z) instead.');
-	        this.fromBufferGeometry(new TorusKnotBufferGeometry(radius, tube, tubularSegments, radialSegments, p, q));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new TorusKnotBufferGeometry(radius, tube, tubularSegments, radialSegments, p, q));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return TorusKnotGeometry;
 	}(Geometry));
@@ -20523,12 +20733,12 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var TorusBufferGeometry = (function (_super) {
+	var TorusBufferGeometry = /** @class */ (function (_super) {
 	    __extends(TorusBufferGeometry, _super);
 	    function TorusBufferGeometry(radius, tube, radialSegments, tubularSegments, arc) {
-	        _super.call(this);
-	        this.type = 'TorusBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'TorusBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            tube: tube,
 	            radialSegments: radialSegments,
@@ -20605,10 +20815,11 @@
 	            }
 	        }
 	        // build geometry
-	        this.setIndex(new BufferAttribute(indices, 1));
-	        this.addAttribute('position', new BufferAttribute(vertices, 3));
-	        this.addAttribute('normal', new BufferAttribute(normals, 3));
-	        this.addAttribute('uv', new BufferAttribute(uvs, 2));
+	        _this.setIndex(new BufferAttribute(indices, 1));
+	        _this.addAttribute('position', new BufferAttribute(vertices, 3));
+	        _this.addAttribute('normal', new BufferAttribute(normals, 3));
+	        _this.addAttribute('uv', new BufferAttribute(uvs, 2));
+	        return _this;
 	    }
 	    return TorusBufferGeometry;
 	}(BufferGeometry));
@@ -20618,24 +20829,28 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * based on http://code.google.com/p/away3d/source/browse/trunk/fp10/Away3DLite/src/away3dlite/primitives/Torus.as?r=2888
 	 */
-	var TorusGeometry = (function (_super) {
+	var TorusGeometry = /** @class */ (function (_super) {
 	    __extends(TorusGeometry, _super);
 	    function TorusGeometry(radius, tube, radialSegments, tubularSegments, arc) {
-	        _super.call(this);
-	        this.type = 'TorusGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'TorusGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            tube: tube,
 	            radialSegments: radialSegments,
 	            tubularSegments: tubularSegments,
 	            arc: arc
 	        };
-	        this.fromBufferGeometry(new TorusBufferGeometry(radius, tube, radialSegments, tubularSegments, arc));
+	        _this.fromBufferGeometry(new TorusBufferGeometry(radius, tube, radialSegments, tubularSegments, arc));
+	        return _this;
 	    }
 	    return TorusGeometry;
 	}(Geometry));
 
-	var ShapeUtils = (function () {
+	/**
+	 * @author zz85 / http://www.lab4games.net/zz85/blog
+	 */
+	var ShapeUtils = /** @class */ (function () {
 	    function ShapeUtils() {
 	    }
 	    // calculate area of the contour polygon
@@ -21176,18 +21391,43 @@
 	    return ShapeUtils;
 	}());
 
-	var ExtrudeGeometry = (function (_super) {
+	/**
+	 * @author zz85 / http://www.lab4games.net/zz85/blog
+	 *
+	 * Creates extruded geometry from a path shape.
+	 *
+	 * parameters = {
+	 *
+	 *  curveSegments: <int>, // number of points on the curves
+	 *  steps: <int>, // number of points for z-side extrusions / used for subdividing segments of extrude spline too
+	 *  amount: <int>, // Depth to extrude the shape
+	 *
+	 *  bevelEnabled: <bool>, // turn on bevel
+	 *  bevelThickness: <float>, // how deep into the original shape bevel goes
+	 *  bevelSize: <float>, // how far from shape outline is bevel
+	 *  bevelSegments: <int>, // number of bevel layers
+	 *
+	 *  extrudePath: <THREE.CurvePath> // 3d spline path to extrude shape along. (creates Frames if .frames aren't defined)
+	 *  frames: <Object> // containing arrays of tangents, normals, binormals
+	 *
+	 *  uvGenerator: <Object> // object that provides UV generator functions
+	 *
+	 * }
+	 **/
+	var ExtrudeGeometry = /** @class */ (function (_super) {
 	    __extends(ExtrudeGeometry, _super);
 	    function ExtrudeGeometry(shapes, options) {
+	        var _this = this;
 	        if (typeof (shapes) === "undefined") {
 	            shapes = [];
 	            return;
 	        }
-	        _super.call(this);
-	        this.type = 'ExtrudeGeometry';
+	        _this = _super.call(this) || this;
+	        _this.type = 'ExtrudeGeometry';
 	        shapes = Array.isArray(shapes) ? shapes : [shapes];
-	        this.addShapeList(shapes, options);
-	        this.computeFaceNormals();
+	        _this.addShapeList(shapes, options);
+	        _this.computeFaceNormals();
+	        return _this;
 	        // can't really use automatic vertex normals
 	        // as then front and back sides get smoothed too
 	        // should do separate smoothing just for sides
@@ -21536,7 +21776,7 @@
 	            scope.faceVertexUvs[0].push([uvs[1], uvs[2], uvs[3]]);
 	        }
 	    };
-	    ExtrudeGeometry._WorldUVGenerator = (function () {
+	    ExtrudeGeometry._WorldUVGenerator = /** @class */ (function () {
 	        function class_1() {
 	        }
 	        class_1.prototype.generateTopUV = function (geometry, indexA, indexB, indexC) {
@@ -21579,7 +21819,40 @@
 	    return ExtrudeGeometry;
 	}(Geometry));
 
-	var Curve = (function () {
+	/**
+	 * @author zz85 / http://www.lab4games.net/zz85/blog
+	 * Extensible curve object
+	 *
+	 * Some common of Curve methods
+	 * .getPoint(t), getTangent(t)
+	 * .getPointAt(u), getTangentAt(u)
+	 * .getPoints(), .getSpacedPoints()
+	 * .getLength()
+	 * .updateArcLengths()
+	 *
+	 * This following classes subclasses THREE.Curve:
+	 *
+	 * -- 2d classes --
+	 * THREE.LineCurve
+	 * THREE.QuadraticBezierCurve
+	 * THREE.CubicBezierCurve
+	 * THREE.SplineCurve
+	 * THREE.ArcCurve
+	 * THREE.EllipseCurve
+	 *
+	 * -- 3d classes --
+	 * THREE.LineCurve3
+	 * THREE.QuadraticBezierCurve3
+	 * THREE.CubicBezierCurve3
+	 * THREE.SplineCurve3
+	 *
+	 * A series of curves can be represented as a THREE.CurvePath
+	 *
+	 **/
+	/**************************************************************
+	 *  Abstract Curve base class
+	 **************************************************************/
+	var Curve = /** @class */ (function () {
 	    function Curve() {
 	    }
 	    // Virtual base class method to overwrite and implement in subclasses
@@ -21673,6 +21946,7 @@
 	            else {
 	                high = i;
 	                break;
+	                // DONE
 	            }
 	        }
 	        i = high;
@@ -21794,17 +22068,17 @@
 	    };
 	    return Curve;
 	}());
-	var Curve2 = (function (_super) {
+	var Curve2 = /** @class */ (function (_super) {
 	    __extends(Curve2, _super);
 	    function Curve2() {
-	        _super.apply(this, arguments);
+	        return _super !== null && _super.apply(this, arguments) || this;
 	    }
 	    return Curve2;
 	}(Curve));
-	var Curve3 = (function (_super) {
+	var Curve3 = /** @class */ (function (_super) {
 	    __extends(Curve3, _super);
 	    function Curve3() {
-	        _super.apply(this, arguments);
+	        return _super !== null && _super.apply(this, arguments) || this;
 	    }
 	    return Curve3;
 	}(Curve));
@@ -21812,13 +22086,14 @@
 	/**************************************************************
 	 *  Line
 	 **************************************************************/
-	var LineCurve = (function (_super) {
+	var LineCurve = /** @class */ (function (_super) {
 	    __extends(LineCurve, _super);
 	    function LineCurve(v1, v2) {
-	        _super.call(this);
-	        this.isLineCurve = true;
-	        this.v1 = v1;
-	        this.v2 = v2;
+	        var _this = _super.call(this) || this;
+	        _this.isLineCurve = true;
+	        _this.v1 = v1;
+	        _this.v2 = v2;
+	        return _this;
 	    }
 	    LineCurve.prototype.getPoint = function (t) {
 	        if (t === 1) {
@@ -21843,7 +22118,7 @@
 	/**
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 */
-	var CurveUtils = (function () {
+	var CurveUtils = /** @class */ (function () {
 	    function CurveUtils() {
 	    }
 	    CurveUtils.tangentQuadraticBezier = function (t, p0, p1, p2) {
@@ -21878,13 +22153,14 @@
 	/**************************************************************
 	 *  Spline curve
 	 **************************************************************/
-	var SplineCurve = (function (_super) {
+	var SplineCurve = /** @class */ (function (_super) {
 	    __extends(SplineCurve, _super);
 	    function SplineCurve(points /* array of Vector2 */) {
-	        if (points === void 0) { points = []; }
-	        _super.call(this);
-	        this.isSplineCurve = true;
-	        this.points = points;
+	        if (points === void 0) { points = []; } /* array of Vector2 */
+	        var _this = _super.call(this) || this;
+	        _this.isSplineCurve = true;
+	        _this.points = points;
+	        return _this;
 	    }
 	    SplineCurve.prototype.getPoint = function (t) {
 	        var points = this.points;
@@ -21905,20 +22181,21 @@
 	/**************************************************************
 	 *  Ellipse curve
 	 **************************************************************/
-	var EllipseCurve = (function (_super) {
+	var EllipseCurve = /** @class */ (function (_super) {
 	    __extends(EllipseCurve, _super);
 	    function EllipseCurve(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation) {
 	        if (aRotation === void 0) { aRotation = 0; }
-	        _super.call(this);
-	        this.isEllipseCurve = true;
-	        this.aX = aX;
-	        this.aY = aY;
-	        this.xRadius = xRadius;
-	        this.yRadius = yRadius;
-	        this.aStartAngle = aStartAngle;
-	        this.aEndAngle = aEndAngle;
-	        this.aClockwise = aClockwise;
-	        this.aRotation = aRotation;
+	        var _this = _super.call(this) || this;
+	        _this.isEllipseCurve = true;
+	        _this.aX = aX;
+	        _this.aY = aY;
+	        _this.xRadius = xRadius;
+	        _this.yRadius = yRadius;
+	        _this.aStartAngle = aStartAngle;
+	        _this.aEndAngle = aEndAngle;
+	        _this.aClockwise = aClockwise;
+	        _this.aRotation = aRotation;
+	        return _this;
 	    }
 	    EllipseCurve.prototype.getPoint = function (t) {
 	        var twoPi = Math.PI * 2;
@@ -21971,7 +22248,7 @@
 	 *  Curved Path - a curve path is simply a array of connected
 	 *  curves, but retains the api of a curve
 	 **************************************************************/
-	var CurvePath = (function () {
+	var CurvePath = /** @class */ (function () {
 	    function CurvePath() {
 	        this.curves = [];
 	        this.autoClose = false; // Automatically closes the path
@@ -22103,14 +22380,15 @@
 	/**************************************************************
 	 *  Cubic Bezier curve
 	 **************************************************************/
-	var CubicBezierCurve = (function (_super) {
+	var CubicBezierCurve = /** @class */ (function (_super) {
 	    __extends(CubicBezierCurve, _super);
 	    function CubicBezierCurve(v0, v1, v2, v3) {
-	        _super.call(this);
-	        this.v0 = v0;
-	        this.v1 = v1;
-	        this.v2 = v2;
-	        this.v3 = v3;
+	        var _this = _super.call(this) || this;
+	        _this.v0 = v0;
+	        _this.v1 = v1;
+	        _this.v2 = v2;
+	        _this.v3 = v3;
+	        return _this;
 	    }
 	    CubicBezierCurve.prototype.getPoint = function (t) {
 	        var b3 = ShapeUtils.b3;
@@ -22126,13 +22404,14 @@
 	/**************************************************************
 	 *  Quadratic Bezier curve
 	 **************************************************************/
-	var QuadraticBezierCurve = (function (_super) {
+	var QuadraticBezierCurve = /** @class */ (function (_super) {
 	    __extends(QuadraticBezierCurve, _super);
 	    function QuadraticBezierCurve(v0, v1, v2) {
-	        _super.call(this);
-	        this.v0 = v0;
-	        this.v1 = v1;
-	        this.v2 = v2;
+	        var _this = _super.call(this) || this;
+	        _this.v0 = v0;
+	        _this.v1 = v1;
+	        _this.v2 = v2;
+	        return _this;
 	    }
 	    QuadraticBezierCurve.prototype.getPoint = function (t) {
 	        var b2 = ShapeUtils.b2;
@@ -22146,19 +22425,22 @@
 	    return QuadraticBezierCurve;
 	}(Curve));
 
+	//import { Shape } from "./Shape";
+	//import { ShapeUtils } from "../ShapeUtils";
 	/**
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 * Creates free form 2d path using series of points, lines or curves.
 	 *
 	 **/
-	var Path = (function (_super) {
+	var Path = /** @class */ (function (_super) {
 	    __extends(Path, _super);
 	    function Path(points) {
-	        _super.call(this);
-	        this.currentPoint = new Vector2();
+	        var _this = _super.call(this) || this;
+	        _this.currentPoint = new Vector2();
 	        if (points) {
-	            this.fromPoints(points);
+	            _this.fromPoints(points);
 	        }
+	        return _this;
 	    }
 	    Path.prototype.fromPoints = function (vectors) {
 	        this.moveTo(vectors[0].x, vectors[0].y);
@@ -22234,18 +22516,19 @@
 	 *
 	 * }
 	 **/
-	var ShapeGeometry = (function (_super) {
+	var ShapeGeometry = /** @class */ (function (_super) {
 	    __extends(ShapeGeometry, _super);
 	    function ShapeGeometry(shapes, options) {
-	        _super.call(this);
-	        this.type = 'ShapeGeometry';
+	        var _this = _super.call(this) || this;
+	        _this.type = 'ShapeGeometry';
 	        if (Array.isArray(shapes)) {
-	            this.addShapeList(shapes, options);
+	            _this.addShapeList(shapes, options);
 	        }
 	        else {
-	            this.addShapeList([shapes], options);
+	            _this.addShapeList([shapes], options);
 	        }
-	        this.computeFaceNormals();
+	        _this.computeFaceNormals();
+	        return _this;
 	    }
 	    /**
 	     * Add an array of shapes to THREE.ShapeGeometry.
@@ -22306,11 +22589,21 @@
 	    return ShapeGeometry;
 	}(Geometry));
 
-	var Shape = (function (_super) {
+	/**
+	 * @author zz85 / http://www.lab4games.net/zz85/blog
+	 * Defines a 2d shape plane using paths.
+	 **/
+	// STEP 1 Create a path.
+	// STEP 2 Turn path into shape.
+	// STEP 3 ExtrudeGeometry takes in Shape/Shapes
+	// STEP 3a - Extract points from each shape, turn to vertices
+	// STEP 3b - Triangulate each shape, add faces.
+	var Shape = /** @class */ (function (_super) {
 	    __extends(Shape, _super);
 	    function Shape(points) {
-	        _super.call(this, points);
-	        this.holes = [];
+	        var _this = _super.call(this, points) || this;
+	        _this.holes = [];
+	        return _this;
 	    }
 	    Shape.prototype.getPointsHoles = function (divisions) {
 	        var holesPts = [];
@@ -22346,7 +22639,7 @@
 	 *
 	 **/
 	// minimal class for proxing functions to Path. Replaces old "extractSubpaths()"
-	var ShapePath = (function () {
+	var ShapePath = /** @class */ (function () {
 	    function ShapePath() {
 	        this.subPaths = [];
 	        this.currentPath = null;
@@ -22416,6 +22709,7 @@
 	                    if (inPt.y === edgeLowPt.y) {
 	                        if (inPt.x === edgeLowPt.x)
 	                            return true; // inPt is on contour ?
+	                        // continue;        // no intersection or edgeLowPt => doesn't count !!!
 	                    }
 	                    else {
 	                        var perpEdge = edgeDy * (inPt.x - edgeLowPt.x) - edgeDx * (inPt.y - edgeLowPt.y);
@@ -22434,6 +22728,7 @@
 	                    if (((edgeHighPt.x <= inPt.x) && (inPt.x <= edgeLowPt.x)) ||
 	                        ((edgeLowPt.x <= inPt.x) && (inPt.x <= edgeHighPt.x)))
 	                        return true; // inPt: Point on contour !
+	                    // continue;
 	                }
 	            }
 	            return inside;
@@ -22475,9 +22770,11 @@
 	                if (holesFirst)
 	                    mainIdx++;
 	                newShapeHoles[mainIdx] = [];
+	                //console.log('cw', i);
 	            }
 	            else {
 	                newShapeHoles[mainIdx].push({ h: tmpPath, p: tmpPoints[0] });
+	                //console.log('ccw', i);
 	            }
 	        }
 	        // only Holes? -> probably all Shapes with wrong orientation
@@ -22538,7 +22835,7 @@
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Font = (function () {
+	var Font = /** @class */ (function () {
 	    function Font(data) {
 	        this.isFont = true;
 	        this.data = data;
@@ -22568,17 +22865,17 @@
 	                for (var i = 0, l = outline.length; i < l;) {
 	                    var action = outline[i++];
 	                    switch (action) {
-	                        case 'm':
+	                        case 'm':// moveTo
 	                            x = outline[i++] * scale + offset;
 	                            y = outline[i++] * scale;
 	                            path.moveTo(x, y);
 	                            break;
-	                        case 'l':
+	                        case 'l':// lineTo
 	                            x = outline[i++] * scale + offset;
 	                            y = outline[i++] * scale;
 	                            path.lineTo(x, y);
 	                            break;
-	                        case 'q':
+	                        case 'q':// quadraticCurveTo
 	                            cpx = outline[i++] * scale + offset;
 	                            cpy = outline[i++] * scale;
 	                            cpx1 = outline[i++] * scale + offset;
@@ -22595,7 +22892,7 @@
 	                                }
 	                            }
 	                            break;
-	                        case 'b':
+	                        case 'b':// bezierCurveTo
 	                            cpx = outline[i++] * scale + offset;
 	                            cpy = outline[i++] * scale;
 	                            cpx1 = outline[i++] * scale + offset;
@@ -22635,13 +22932,33 @@
 	    return Font;
 	}());
 
-	var TextGeometry = (function (_super) {
+	/**
+	 * @author zz85 / http://www.lab4games.net/zz85/blog
+	 * @author alteredq / http://alteredqualia.com/
+	 *
+	 * Text = 3D Text
+	 *
+	 * parameters = {
+	 *  font: <THREE.Font>, // font
+	 *
+	 *  size: <float>, // size of the text
+	 *  height: <float>, // thickness to extrude text
+	 *  curveSegments: <int>, // number of points on the curves
+	 *
+	 *  bevelEnabled: <bool>, // turn on bevel
+	 *  bevelThickness: <float>, // how deep into text bevel goes
+	 *  bevelSize: <float> // how far from text outline is bevel
+	 * }
+	 */
+	var TextGeometry = /** @class */ (function (_super) {
 	    __extends(TextGeometry, _super);
 	    function TextGeometry(text, parameters) {
 	        if (parameters === void 0) { parameters = {}; }
+	        var _this = this;
 	        var font = parameters.font;
 	        if ((font && font instanceof Font) === false) {
 	            console.error('THREE.TextGeometry: font parameter is not an instance of THREE.Font.');
+	            /// !!!TODO: return new Geometry();
 	        }
 	        var shapes = font.generateShapes(text, parameters.size, parameters.curveSegments);
 	        // translate parameters to ExtrudeGeometry API
@@ -22653,8 +22970,9 @@
 	            parameters.bevelSize = 8;
 	        if (parameters.bevelEnabled === undefined)
 	            parameters.bevelEnabled = false;
-	        _super.call(this, shapes, parameters);
-	        this.type = 'TextGeometry';
+	        _this = _super.call(this, shapes, parameters) || this;
+	        _this.type = 'TextGeometry';
+	        return _this;
 	    }
 	    return TextGeometry;
 	}(ExtrudeGeometry));
@@ -22663,12 +22981,12 @@
 	 * @author benaadams / https://twitter.com/ben_a_adams
 	 * based on THREE.SphereGeometry
 	 */
-	var SphereBufferGeometry = (function (_super) {
+	var SphereBufferGeometry = /** @class */ (function (_super) {
 	    __extends(SphereBufferGeometry, _super);
 	    function SphereBufferGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength) {
-	        _super.call(this);
-	        this.type = 'SphereBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'SphereBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            widthSegments: widthSegments,
 	            heightSegments: heightSegments,
@@ -22721,11 +23039,12 @@
 	                    indices.push(v2, v3, v4);
 	            }
 	        }
-	        this.setIndex((positions.count > 65535 ? Uint32Attribute : Uint16Attribute)(indices, 1));
-	        this.addAttribute('position', positions);
-	        this.addAttribute('normal', normals);
-	        this.addAttribute('uv', uvs);
-	        this.boundingSphere = new Sphere(new Vector3(), radius);
+	        _this.setIndex((positions.count > 65535 ? Uint32Attribute : Uint16Attribute)(indices, 1));
+	        _this.addAttribute('position', positions);
+	        _this.addAttribute('normal', normals);
+	        _this.addAttribute('uv', uvs);
+	        _this.boundingSphere = new Sphere(new Vector3(), radius);
+	        return _this;
 	    }
 	    return SphereBufferGeometry;
 	}(BufferGeometry));
@@ -22733,12 +23052,12 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var SphereGeometry = (function (_super) {
+	var SphereGeometry = /** @class */ (function (_super) {
 	    __extends(SphereGeometry, _super);
 	    function SphereGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength) {
-	        _super.call(this);
-	        this.type = 'SphereGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'SphereGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            widthSegments: widthSegments,
 	            heightSegments: heightSegments,
@@ -22747,7 +23066,8 @@
 	            thetaStart: thetaStart,
 	            thetaLength: thetaLength
 	        };
-	        this.fromBufferGeometry(new SphereBufferGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength));
+	        _this.fromBufferGeometry(new SphereBufferGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength));
+	        return _this;
 	    }
 	    return SphereGeometry;
 	}(Geometry));
@@ -22755,12 +23075,12 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var RingBufferGeometry = (function (_super) {
+	var RingBufferGeometry = /** @class */ (function (_super) {
 	    __extends(RingBufferGeometry, _super);
 	    function RingBufferGeometry(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength) {
-	        _super.call(this);
-	        this.type = 'RingBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'RingBufferGeometry';
+	        _this.parameters = {
 	            innerRadius: innerRadius,
 	            outerRadius: outerRadius,
 	            thetaSegments: thetaSegments,
@@ -22836,10 +23156,11 @@
 	            }
 	        }
 	        // build geometry
-	        this.setIndex(indices);
-	        this.addAttribute('position', vertices);
-	        this.addAttribute('normal', normals);
-	        this.addAttribute('uv', uvs);
+	        _this.setIndex(indices);
+	        _this.addAttribute('position', vertices);
+	        _this.addAttribute('normal', normals);
+	        _this.addAttribute('uv', uvs);
+	        return _this;
 	    }
 	    return RingBufferGeometry;
 	}(BufferGeometry));
@@ -22847,12 +23168,12 @@
 	/**
 	 * @author Kaleb Murphy
 	 */
-	var RingGeometry = (function (_super) {
+	var RingGeometry = /** @class */ (function (_super) {
 	    __extends(RingGeometry, _super);
 	    function RingGeometry(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength) {
-	        _super.call(this);
-	        this.type = 'RingGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'RingGeometry';
+	        _this.parameters = {
 	            innerRadius: innerRadius,
 	            outerRadius: outerRadius,
 	            thetaSegments: thetaSegments,
@@ -22860,7 +23181,8 @@
 	            thetaStart: thetaStart,
 	            thetaLength: thetaLength
 	        };
-	        this.fromBufferGeometry(new RingBufferGeometry(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength));
+	        _this.fromBufferGeometry(new RingBufferGeometry(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength));
+	        return _this;
 	    }
 	    return RingGeometry;
 	}(Geometry));
@@ -22869,18 +23191,19 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * based on http://papervision3d.googlecode.com/svn/trunk/as3/trunk/src/org/papervision3d/objects/primitives/Plane.as
 	 */
-	var PlaneGeometry = (function (_super) {
+	var PlaneGeometry = /** @class */ (function (_super) {
 	    __extends(PlaneGeometry, _super);
 	    function PlaneGeometry(width, height, widthSegments, heightSegments) {
-	        _super.call(this);
-	        this.type = 'PlaneGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'PlaneGeometry';
+	        _this.parameters = {
 	            width: width,
 	            height: height,
 	            widthSegments: widthSegments,
 	            heightSegments: heightSegments
 	        };
-	        this.fromBufferGeometry(new PlaneBufferGeometry(width, height, widthSegments, heightSegments));
+	        _this.fromBufferGeometry(new PlaneBufferGeometry(width, height, widthSegments, heightSegments));
+	        return _this;
 	    }
 	    return PlaneGeometry;
 	}(Geometry));
@@ -22894,12 +23217,12 @@
 	// phiStart - the starting radian
 	// phiLength - the radian (0 to 2PI) range of the lathed section
 	//    2PI is a closed lathe, less than 2PI is a portion.
-	var LatheBufferGeometry = (function (_super) {
+	var LatheBufferGeometry = /** @class */ (function (_super) {
 	    __extends(LatheBufferGeometry, _super);
 	    function LatheBufferGeometry(points, segments, phiStart, phiLength) {
-	        _super.call(this);
-	        this.type = 'LatheBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'LatheBufferGeometry';
+	        _this.parameters = {
 	            points: points,
 	            segments: segments,
 	            phiStart: phiStart,
@@ -22967,15 +23290,15 @@
 	            }
 	        }
 	        // build geometry
-	        this.setIndex(indices);
-	        this.addAttribute('position', vertices);
-	        this.addAttribute('uv', uvs);
+	        _this.setIndex(indices);
+	        _this.addAttribute('position', vertices);
+	        _this.addAttribute('uv', uvs);
 	        // generate normals
-	        this.computeVertexNormals();
+	        _this.computeVertexNormals();
 	        // if the geometry is closed, we need to average the normals along the seam.
 	        // because the corresponding vertices are identical (but still have different UVs).
 	        if (phiLength === Math.PI * 2) {
-	            var normals = this.attributes.normal.array;
+	            var normals = _this.attributes.normal.array;
 	            var n1 = new Vector3();
 	            var n2 = new Vector3();
 	            var n = new Vector3();
@@ -22998,6 +23321,7 @@
 	                normals[j + 2] = normals[base + j + 2] = n.z;
 	            } // next row
 	        }
+	        return _this;
 	    }
 	    return LatheBufferGeometry;
 	}(BufferGeometry));
@@ -23013,19 +23337,20 @@
 	// phiStart - the starting radian
 	// phiLength - the radian (0 to 2PI) range of the lathed section
 	//    2PI is a closed lathe, less than 2PI is a portion.
-	var LatheGeometry = (function (_super) {
+	var LatheGeometry = /** @class */ (function (_super) {
 	    __extends(LatheGeometry, _super);
 	    function LatheGeometry(points, segments, phiStart, phiLength) {
-	        _super.call(this);
-	        this.type = 'LatheGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'LatheGeometry';
+	        _this.parameters = {
 	            points: points,
 	            segments: segments,
 	            phiStart: phiStart,
 	            phiLength: phiLength
 	        };
-	        this.fromBufferGeometry(new LatheBufferGeometry(points, segments, phiStart, phiLength));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new LatheBufferGeometry(points, segments, phiStart, phiLength));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return LatheGeometry;
 	}(Geometry));
@@ -23033,11 +23358,11 @@
 	/**
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
-	var EdgesGeometry = (function (_super) {
+	var EdgesGeometry = /** @class */ (function (_super) {
 	    __extends(EdgesGeometry, _super);
 	    function EdgesGeometry(geometry, thresholdAngle) {
 	        if (thresholdAngle === void 0) { thresholdAngle = 1; }
-	        _super.call(this);
+	        var _this = _super.call(this) || this;
 	        var thresholdDot = Math.cos(_Math.DEG2RAD * thresholdAngle);
 	        var edge = [0, 0], hash = {};
 	        function sortFunction(a, b) {
@@ -23085,7 +23410,8 @@
 	                coords.push(vertex2.z);
 	            }
 	        }
-	        this.addAttribute('position', new BufferAttribute(new Float32Array(coords), 3));
+	        _this.addAttribute('position', new BufferAttribute(new Float32Array(coords), 3));
+	        return _this;
 	    }
 	    return EdgesGeometry;
 	}(BufferGeometry));
@@ -23093,12 +23419,12 @@
 	/**
 	 * @author Mugen87 / https://github.com/Mugen87
 	 */
-	var CylinderBufferGeometry = (function (_super) {
+	var CylinderBufferGeometry = /** @class */ (function (_super) {
 	    __extends(CylinderBufferGeometry, _super);
 	    function CylinderBufferGeometry(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength) {
-	        _super.call(this);
-	        this.type = 'CylinderBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'CylinderBufferGeometry';
+	        _this.parameters = {
 	            radiusTop: radiusTop,
 	            radiusBottom: radiusBottom,
 	            height: height,
@@ -23108,7 +23434,7 @@
 	            thetaStart: thetaStart,
 	            thetaLength: thetaLength
 	        };
-	        var scope = this;
+	        var scope = _this;
 	        radiusTop = radiusTop !== undefined ? radiusTop : 20;
 	        radiusBottom = radiusBottom !== undefined ? radiusBottom : 20;
 	        height = height !== undefined ? height : 100;
@@ -23145,10 +23471,10 @@
 	                generateCap(false);
 	        }
 	        // build geometry
-	        this.setIndex(indices);
-	        this.addAttribute('position', vertices);
-	        this.addAttribute('normal', normals);
-	        this.addAttribute('uv', uvs);
+	        _this.setIndex(indices);
+	        _this.addAttribute('position', vertices);
+	        _this.addAttribute('normal', normals);
+	        _this.addAttribute('uv', uvs);
 	        // helper functions
 	        function calculateVertexCount() {
 	            var count = (radialSegments + 1) * (heightSegments + 1);
@@ -23305,6 +23631,7 @@
 	            // calculate new start value for groups
 	            groupStart += groupCount;
 	        }
+	        return _this;
 	    }
 	    return CylinderBufferGeometry;
 	}(BufferGeometry));
@@ -23312,12 +23639,12 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var CylinderGeometry = (function (_super) {
+	var CylinderGeometry = /** @class */ (function (_super) {
 	    __extends(CylinderGeometry, _super);
 	    function CylinderGeometry(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength) {
-	        _super.call(this);
-	        this.type = 'CylinderGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'CylinderGeometry';
+	        _this.parameters = {
 	            radiusTop: radiusTop,
 	            radiusBottom: radiusBottom,
 	            height: height,
@@ -23327,8 +23654,9 @@
 	            thetaStart: thetaStart,
 	            thetaLength: thetaLength
 	        };
-	        this.fromBufferGeometry(new CylinderBufferGeometry(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new CylinderBufferGeometry(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return CylinderGeometry;
 	}(Geometry));
@@ -23336,12 +23664,12 @@
 	/**
 	 * @author abelnation / http://github.com/abelnation
 	 */
-	var ConeGeometry = (function (_super) {
+	var ConeGeometry = /** @class */ (function (_super) {
 	    __extends(ConeGeometry, _super);
 	    function ConeGeometry(radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength) {
-	        _super.call(this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength);
-	        this.type = 'ConeGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength) || this;
+	        _this.type = 'ConeGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            height: height,
 	            radialSegments: radialSegments,
@@ -23350,6 +23678,7 @@
 	            thetaStart: thetaStart,
 	            thetaLength: thetaLength
 	        };
+	        return _this;
 	    }
 	    return ConeGeometry;
 	}(CylinderGeometry));
@@ -23357,12 +23686,12 @@
 	/*
 	 * @author: abelnation / http://github.com/abelnation
 	 */
-	var ConeBufferGeometry = (function (_super) {
+	var ConeBufferGeometry = /** @class */ (function (_super) {
 	    __extends(ConeBufferGeometry, _super);
 	    function ConeBufferGeometry(radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength) {
-	        _super.call(this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength);
-	        this.type = 'ConeBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength) || this;
+	        _this.type = 'ConeBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            height: height,
 	            radialSegments: radialSegments,
@@ -23371,6 +23700,7 @@
 	            thetaStart: thetaStart,
 	            thetaLength: thetaLength
 	        };
+	        return _this;
 	    }
 	    return ConeBufferGeometry;
 	}(CylinderBufferGeometry));
@@ -23378,12 +23708,12 @@
 	/**
 	 * @author benaadams / https://twitter.com/ben_a_adams
 	 */
-	var CircleBufferGeometry = (function (_super) {
+	var CircleBufferGeometry = /** @class */ (function (_super) {
 	    __extends(CircleBufferGeometry, _super);
 	    function CircleBufferGeometry(radius, segments, thetaStart, thetaLength) {
-	        _super.call(this);
-	        this.type = 'CircleBufferGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'CircleBufferGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            segments: segments,
 	            thetaStart: thetaStart,
@@ -23413,11 +23743,12 @@
 	        for (var i = 1; i <= segments; i++) {
 	            indices.push(i, i + 1, 0);
 	        }
-	        this.setIndex(new BufferAttribute(new Uint16Array(indices), 1));
-	        this.addAttribute('position', new BufferAttribute(positions, 3));
-	        this.addAttribute('normal', new BufferAttribute(normals, 3));
-	        this.addAttribute('uv', new BufferAttribute(uvs, 2));
-	        this.boundingSphere = new Sphere(new Vector3(), radius);
+	        _this.setIndex(new BufferAttribute(new Uint16Array(indices), 1));
+	        _this.addAttribute('position', new BufferAttribute(positions, 3));
+	        _this.addAttribute('normal', new BufferAttribute(normals, 3));
+	        _this.addAttribute('uv', new BufferAttribute(uvs, 2));
+	        _this.boundingSphere = new Sphere(new Vector3(), radius);
+	        return _this;
 	    }
 	    return CircleBufferGeometry;
 	}(BufferGeometry));
@@ -23425,18 +23756,19 @@
 	/**
 	 * @author hughes
 	 */
-	var CircleGeometry = (function (_super) {
+	var CircleGeometry = /** @class */ (function (_super) {
 	    __extends(CircleGeometry, _super);
 	    function CircleGeometry(radius, segments, thetaStart, thetaLength) {
-	        _super.call(this);
-	        this.type = 'CircleGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'CircleGeometry';
+	        _this.parameters = {
 	            radius: radius,
 	            segments: segments,
 	            thetaStart: thetaStart,
 	            thetaLength: thetaLength
 	        };
-	        this.fromBufferGeometry(new CircleBufferGeometry(radius, segments, thetaStart, thetaLength));
+	        _this.fromBufferGeometry(new CircleBufferGeometry(radius, segments, thetaStart, thetaLength));
+	        return _this;
 	    }
 	    return CircleGeometry;
 	}(Geometry));
@@ -23445,12 +23777,12 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * based on http://papervision3d.googlecode.com/svn/trunk/as3/trunk/src/org/papervision3d/objects/primitives/Cube.as
 	 */
-	var BoxGeometry = (function (_super) {
+	var BoxGeometry = /** @class */ (function (_super) {
 	    __extends(BoxGeometry, _super);
 	    function BoxGeometry(width, height, depth, widthSegments, heightSegments, depthSegments) {
-	        _super.call(this);
-	        this.type = 'BoxGeometry';
-	        this.parameters = {
+	        var _this = _super.call(this) || this;
+	        _this.type = 'BoxGeometry';
+	        _this.parameters = {
 	            width: width,
 	            height: height,
 	            depth: depth,
@@ -23458,8 +23790,9 @@
 	            heightSegments: heightSegments,
 	            depthSegments: depthSegments
 	        };
-	        this.fromBufferGeometry(new BoxBufferGeometry(width, height, depth, widthSegments, heightSegments, depthSegments));
-	        this.mergeVertices();
+	        _this.fromBufferGeometry(new BoxBufferGeometry(width, height, depth, widthSegments, heightSegments, depthSegments));
+	        _this.mergeVertices();
+	        return _this;
 	    }
 	    return BoxGeometry;
 	}(Geometry));
@@ -23508,10 +23841,10 @@
 		BoxGeometry: BoxGeometry
 	});
 
-	var ShadowMaterial = (function (_super) {
+	var ShadowMaterial = /** @class */ (function (_super) {
 	    __extends(ShadowMaterial, _super);
 	    function ShadowMaterial() {
-	        _super.call(this, {
+	        var _this = _super.call(this, {
 	            uniforms: UniformsUtils.merge([
 	                UniformsLib["lights"],
 	                {
@@ -23520,10 +23853,11 @@
 	            ]),
 	            vertexShader: ShaderChunk['shadow_vert'],
 	            fragmentShader: ShaderChunk['shadow_frag']
-	        });
-	        this.isShadowMaterial = true;
-	        this.lights = true;
-	        this.transparent = true;
+	        }) || this;
+	        _this.isShadowMaterial = true;
+	        _this.lights = true;
+	        _this.transparent = true;
+	        return _this;
 	    }
 	    Object.defineProperty(ShadowMaterial.prototype, "opacity", {
 	        get: function () { return this.uniforms.opacity.value; },
@@ -23558,7 +23892,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Cache = (function () {
+	var Cache = /** @class */ (function () {
 	    function Cache() {
 	    }
 	    Cache.add = function (key, file) {
@@ -23587,7 +23921,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var LoadingManager = (function () {
+	var LoadingManager = /** @class */ (function () {
 	    function LoadingManager(onLoad, onProgress, onError) {
 	        this.isLoading = false;
 	        this.itemsLoaded = 0;
@@ -23632,7 +23966,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var XHRLoader = (function () {
+	var XHRLoader = /** @class */ (function () {
 	    function XHRLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -23688,7 +24022,7 @@
 	                    case 'json':
 	                        response_1 = JSON.parse(data);
 	                        break;
-	                    default:
+	                    default:// 'text' or other
 	                        response_1 = data;
 	                        break;
 	                }
@@ -23774,7 +24108,7 @@
 	 *
 	 * Abstract Base class to block based textures loader (dds, pvr, ...)
 	 */
-	var CompressedTextureLoader = (function () {
+	var CompressedTextureLoader = /** @class */ (function () {
 	    function CompressedTextureLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -23860,7 +24194,7 @@
 	 *
 	 * Abstract Base class to load generic binary textures formats (rgbe, hdr, ...)
 	 */
-	var BinaryTextureLoader = (function () {
+	var BinaryTextureLoader = /** @class */ (function () {
 	    function BinaryTextureLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -23914,7 +24248,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var ImageLoader = (function () {
+	var ImageLoader = /** @class */ (function () {
 	    function ImageLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -23963,7 +24297,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var CubeTextureLoader = (function () {
+	var CubeTextureLoader = /** @class */ (function () {
 	    function CubeTextureLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -24004,7 +24338,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var TextureLoader = (function () {
+	var TextureLoader = /** @class */ (function () {
 	    function TextureLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -24047,7 +24381,7 @@
 	 * @author Ben Houston / http://clara.io/
 	 * @author David Sarno / http://lighthaus.us/
 	 */
-	var AnimationUtils = (function () {
+	var AnimationUtils = /** @class */ (function () {
 	    function AnimationUtils() {
 	    }
 	    // same as Array.prototype.slice, but also works on typed arrays
@@ -24060,7 +24394,7 @@
 	    // converts an array to a specific type
 	    AnimationUtils.convertArray = function (array, type, forceClone) {
 	        if (forceClone === void 0) { forceClone = false; }
-	        if (!array ||
+	        if (!array || // let 'undefined' and 'null' pass
 	            !forceClone && array.constructor === type)
 	            return array;
 	        if (typeof type.BYTES_PER_ELEMENT === 'number') {
@@ -24164,7 +24498,7 @@
 	 *
 	 * @author tschw
 	 */
-	var Interpolant = (function () {
+	var Interpolant = /** @class */ (function () {
 	    function Interpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
 	        this.settings = null; // optional, subclass-specific settings structure
 	        // Note: The indirection allows central control of many interpolants.
@@ -24314,18 +24648,19 @@
 	 *
 	 * @author tschw
 	 */
-	var CubicInterpolant = (function (_super) {
+	var CubicInterpolant = /** @class */ (function (_super) {
 	    __extends(CubicInterpolant, _super);
 	    function CubicInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
-	        _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer);
-	        this.DefaultSettings_ = {
+	        var _this = _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer) || this;
+	        _this.DefaultSettings_ = {
 	            endingStart: exports.EndingMode.ZeroCurvature,
 	            endingEnd: exports.EndingMode.ZeroCurvature
 	        };
-	        this._weightPrev = -0;
-	        this._offsetPrev = -0;
-	        this._weightNext = -0;
-	        this._offsetNext = -0;
+	        _this._weightPrev = -0;
+	        _this._offsetPrev = -0;
+	        _this._weightNext = -0;
+	        _this._offsetNext = -0;
+	        return _this;
 	    }
 	    CubicInterpolant.prototype.intervalChanged_ = function (i1, t0, t1) {
 	        var pp = this.parameterPositions;
@@ -24345,7 +24680,7 @@
 	                    iPrev = pp.length - 2;
 	                    tPrev = t0 + pp[iPrev] - pp[iPrev + 1];
 	                    break;
-	                default:
+	                default:// EndingMode.ZeroCurvature
 	                    // f''(t0) = 0 a.k.a. Natural Spline
 	                    iPrev = i1;
 	                    tPrev = t1;
@@ -24363,7 +24698,7 @@
 	                    iNext = 1;
 	                    tNext = t1 + pp[1] - pp[0];
 	                    break;
-	                default:
+	                default:// EndingMode.ZeroCurvature
 	                    // f''(tN) = 0, a.k.a. Natural Spline
 	                    iNext = i1 - 1;
 	                    tNext = t0;
@@ -24410,10 +24745,10 @@
 	/**
 	 * @author tschw
 	 */
-	var LinearInterpolant = (function (_super) {
+	var LinearInterpolant = /** @class */ (function (_super) {
 	    __extends(LinearInterpolant, _super);
 	    function LinearInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
-	        _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer);
+	        return _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer) || this;
 	    }
 	    LinearInterpolant.prototype.interpolate_ = function (i1, t0, t, t1) {
 	        var result = this.resultBuffer;
@@ -24440,10 +24775,10 @@
 	 *
 	 * @author tschw
 	 */
-	var DiscreteInterpolant = (function (_super) {
+	var DiscreteInterpolant = /** @class */ (function (_super) {
 	    __extends(DiscreteInterpolant, _super);
 	    function DiscreteInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
-	        _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer);
+	        return _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer) || this;
 	    }
 	    DiscreteInterpolant.prototype.interpolate_ = function (i1, t0, t, t1) {
 	        return this.copySampleValue_(i1 - 1);
@@ -24460,7 +24795,7 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var KeyframeTrack = (function () {
+	var KeyframeTrack = /** @class */ (function () {
 	    function KeyframeTrack(name, times, values, interpolation) {
 	        this.TimeBufferType = Float32Array;
 	        this.ValueBufferType = Float32Array;
@@ -24686,13 +25021,14 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var NewStringKeyframeTrack = (function (_super) {
+	var NewStringKeyframeTrack = /** @class */ (function (_super) {
 	    __extends(NewStringKeyframeTrack, _super);
 	    function NewStringKeyframeTrack(name, times, values, interpolation) {
-	        _super.call(this, name, times, values, interpolation);
-	        this.ValueTypeName = 'string';
-	        this.ValueBufferType = Array;
-	        this.DefaultInterpolation = exports.InterpolateMode.Discrete;
+	        var _this = _super.call(this, name, times, values, interpolation) || this;
+	        _this.ValueTypeName = 'string';
+	        _this.ValueBufferType = Array;
+	        _this.DefaultInterpolation = exports.InterpolateMode.Discrete;
+	        return _this;
 	    }
 	    return NewStringKeyframeTrack;
 	}(KeyframeTrack));
@@ -24706,13 +25042,14 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var NewBooleanKeyframeTrack = (function (_super) {
+	var NewBooleanKeyframeTrack = /** @class */ (function (_super) {
 	    __extends(NewBooleanKeyframeTrack, _super);
 	    function NewBooleanKeyframeTrack(name, times, values, interpolation) {
-	        _super.call(this, name, times, values, interpolation);
-	        this.ValueTypeName = 'color';
-	        this.ValueBufferType = Array;
-	        this.DefaultInterpolation = exports.InterpolateMode.Discrete;
+	        var _this = _super.call(this, name, times, values, interpolation) || this;
+	        _this.ValueTypeName = 'color';
+	        _this.ValueBufferType = Array;
+	        _this.DefaultInterpolation = exports.InterpolateMode.Discrete;
+	        return _this;
 	    }
 	    return NewBooleanKeyframeTrack;
 	}(KeyframeTrack));
@@ -24722,10 +25059,10 @@
 	 *
 	 * @author tschw
 	 */
-	var QuaternionLinearInterpolant = (function (_super) {
+	var QuaternionLinearInterpolant = /** @class */ (function (_super) {
 	    __extends(QuaternionLinearInterpolant, _super);
 	    function QuaternionLinearInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
-	        _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer);
+	        return _super.call(this, parameterPositions, sampleValues, sampleSize, resultBuffer) || this;
 	    }
 	    QuaternionLinearInterpolant.prototype.interpolate_ = function (i1, t0, t, t1) {
 	        var result = this.resultBuffer;
@@ -24749,13 +25086,14 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var NewQuaternionKeyframeTrack = (function (_super) {
+	var NewQuaternionKeyframeTrack = /** @class */ (function (_super) {
 	    __extends(NewQuaternionKeyframeTrack, _super);
 	    function NewQuaternionKeyframeTrack(name, times, values, interpolation) {
-	        _super.call(this, name, times, values, interpolation);
-	        this.ValueTypeName = 'quaternion';
+	        var _this = _super.call(this, name, times, values, interpolation) || this;
+	        _this.ValueTypeName = 'quaternion';
 	        // ValueBufferType is inherited
-	        this.DefaultInterpolation = exports.InterpolateMode.Linear;
+	        _this.DefaultInterpolation = exports.InterpolateMode.Linear;
+	        return _this;
 	    }
 	    NewQuaternionKeyframeTrack.prototype.InterpolantFactoryMethodLinear = function (result) {
 	        return new QuaternionLinearInterpolant(this.times, this.values, this.getValueSize(), result);
@@ -24772,11 +25110,12 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var NewColorKeyframeTrack = (function (_super) {
+	var NewColorKeyframeTrack = /** @class */ (function (_super) {
 	    __extends(NewColorKeyframeTrack, _super);
 	    function NewColorKeyframeTrack(name, times, values, interpolation) {
-	        _super.call(this, name, times, values, interpolation);
-	        this.ValueTypeName = 'color';
+	        var _this = _super.call(this, name, times, values, interpolation) || this;
+	        _this.ValueTypeName = 'color';
+	        return _this;
 	    }
 	    return NewColorKeyframeTrack;
 	}(KeyframeTrack));
@@ -24790,11 +25129,12 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var NewVectorKeyframeTrack = (function (_super) {
+	var NewVectorKeyframeTrack = /** @class */ (function (_super) {
 	    __extends(NewVectorKeyframeTrack, _super);
 	    function NewVectorKeyframeTrack(name, times, values, interpolation) {
-	        _super.call(this, name, times, values, interpolation);
-	        this.ValueTypeName = 'vector';
+	        var _this = _super.call(this, name, times, values, interpolation) || this;
+	        _this.ValueTypeName = 'vector';
+	        return _this;
 	    }
 	    return NewVectorKeyframeTrack;
 	}(KeyframeTrack));
@@ -24807,16 +25147,17 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var NewNumberKeyframeTrack = (function (_super) {
+	var NewNumberKeyframeTrack = /** @class */ (function (_super) {
 	    __extends(NewNumberKeyframeTrack, _super);
 	    function NewNumberKeyframeTrack(name, times, values, interpolation) {
-	        _super.call(this, name, times, values, interpolation);
-	        this.ValueTypeName = 'number';
+	        var _this = _super.call(this, name, times, values, interpolation) || this;
+	        _this.ValueTypeName = 'number';
+	        return _this;
 	    }
 	    return NewNumberKeyframeTrack;
 	}(KeyframeTrack));
 
-	var KeyframeTrackUtils = (function () {
+	var KeyframeTrackUtils = /** @class */ (function () {
 	    function KeyframeTrackUtils() {
 	    }
 	    // Static methods:
@@ -24892,6 +25233,7 @@
 	    return KeyframeTrackUtils;
 	}());
 
+	///import { KeyframeTrack } from "./KeyframeTrack";
 	/**
 	 *
 	 * Reusable set of Tracks that represent an animation.
@@ -24899,7 +25241,7 @@
 	 * @author Ben Houston / http://clara.io/
 	 * @author David Sarno / http://lighthaus.us/
 	 */
-	var AnimationClip = (function () {
+	var AnimationClip = /** @class */ (function () {
 	    function AnimationClip(name, duration, tracks) {
 	        this.name = name;
 	        this.tracks = tracks;
@@ -25089,7 +25431,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var MaterialLoader = (function () {
+	var MaterialLoader = /** @class */ (function () {
 	    function MaterialLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.textures = new Map();
@@ -25238,7 +25580,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var BufferGeometryLoader = (function () {
+	var BufferGeometryLoader = /** @class */ (function () {
 	    function BufferGeometryLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -25297,7 +25639,7 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var Loader = (function () {
+	var Loader = /** @class */ (function () {
 	    function Loader() {
 	        this.onLoadStart = function () { };
 	        this.onLoadProgress = function () { };
@@ -25530,34 +25872,36 @@
 	        return materialLoader.parse(json);
 	        //};
 	    };
-	    Loader.Handlers = (function () {
-	        function class_1() {
-	        }
-	        class_1.add = function (regex, loader) {
-	            this.handlers.push(regex, loader);
-	        };
-	        class_1.get = function (file) {
-	            var handlers = this.handlers;
-	            for (var i = 0, l = handlers.length; i < l; i += 2) {
-	                var regex = handlers[i];
-	                var loader = handlers[i + 1];
-	                if (regex.test(file)) {
-	                    return loader;
-	                }
+	    Loader.Handlers = (_a = /** @class */ (function () {
+	            function class_1() {
 	            }
-	            return null;
-	        };
-	        class_1.handlers = [];
-	        return class_1;
-	    }());
+	            class_1.add = function (regex, loader) {
+	                this.handlers.push(regex, loader);
+	            };
+	            class_1.get = function (file) {
+	                var handlers = this.handlers;
+	                for (var i = 0, l = handlers.length; i < l; i += 2) {
+	                    var regex = handlers[i];
+	                    var loader = handlers[i + 1];
+	                    if (regex.test(file)) {
+	                        return loader;
+	                    }
+	                }
+	                return null;
+	            };
+	            return class_1;
+	        }()),
+	        _a.handlers = [],
+	        _a);
 	    return Loader;
+	    var _a;
 	}());
 
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var JSONLoader = (function () {
+	var JSONLoader = /** @class */ (function () {
 	    function JSONLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.withCredentials = false;
@@ -25852,7 +26196,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var ObjectLoader = (function () {
+	var ObjectLoader = /** @class */ (function () {
 	    function ObjectLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.texturePath = '';
@@ -25907,7 +26251,7 @@
 	                        break;
 	                    case 'BoxGeometry':
 	                    case 'BoxBufferGeometry':
-	                    case 'CubeGeometry':
+	                    case 'CubeGeometry':// backwards compatible
 	                        geometry = new Geometries[data.type](data.width, data.height, data.depth, data.widthSegments, data.heightSegments, data.depthSegments);
 	                        break;
 	                    case 'CircleGeometry':
@@ -26212,7 +26556,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var FontLoader = (function () {
+	var FontLoader = /** @class */ (function () {
 	    function FontLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -26252,7 +26596,7 @@
 	/**
 	 * @author Reece Aaron Lecrivain / http://reecenotes.com/
 	 */
-	var AudioLoader = (function () {
+	var AudioLoader = /** @class */ (function () {
 	    function AudioLoader(manager) {
 	        if (manager === void 0) { manager = DefaultLoadingManager; }
 	        this.manager = manager;
@@ -26273,7 +26617,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var StereoCamera = (function () {
+	var StereoCamera = /** @class */ (function () {
 	    function StereoCamera() {
 	        this.type = 'StereoCamera';
 	        this.aspect = 1;
@@ -26337,38 +26681,39 @@
 	 *
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var CubeCamera = (function (_super) {
+	var CubeCamera = /** @class */ (function (_super) {
 	    __extends(CubeCamera, _super);
 	    function CubeCamera(near, far, cubeResolution) {
-	        _super.call(this);
-	        this.type = 'CubeCamera';
+	        var _this = _super.call(this) || this;
+	        _this.type = 'CubeCamera';
 	        var fov = 90, aspect = 1;
-	        this.cameraPX = new PerspectiveCamera(fov, aspect, near, far);
-	        this.cameraPX.up.set(0, -1, 0);
-	        this.cameraPX.lookAt(new Vector3(1, 0, 0));
-	        this.add(this.cameraPX);
-	        this.cameraNX = new PerspectiveCamera(fov, aspect, near, far);
-	        this.cameraNX.up.set(0, -1, 0);
-	        this.cameraNX.lookAt(new Vector3(-1, 0, 0));
-	        this.add(this.cameraNX);
-	        this.cameraPY = new PerspectiveCamera(fov, aspect, near, far);
-	        this.cameraPY.up.set(0, 0, 1);
-	        this.cameraPY.lookAt(new Vector3(0, 1, 0));
-	        this.add(this.cameraPY);
-	        this.cameraNY = new PerspectiveCamera(fov, aspect, near, far);
-	        this.cameraNY.up.set(0, 0, -1);
-	        this.cameraNY.lookAt(new Vector3(0, -1, 0));
-	        this.add(this.cameraNY);
-	        this.cameraPZ = new PerspectiveCamera(fov, aspect, near, far);
-	        this.cameraPZ.up.set(0, -1, 0);
-	        this.cameraPZ.lookAt(new Vector3(0, 0, 1));
-	        this.add(this.cameraPZ);
-	        this.cameraNZ = new PerspectiveCamera(fov, aspect, near, far);
-	        this.cameraNZ.up.set(0, -1, 0);
-	        this.cameraNZ.lookAt(new Vector3(0, 0, -1));
-	        this.add(this.cameraNZ);
+	        _this.cameraPX = new PerspectiveCamera(fov, aspect, near, far);
+	        _this.cameraPX.up.set(0, -1, 0);
+	        _this.cameraPX.lookAt(new Vector3(1, 0, 0));
+	        _this.add(_this.cameraPX);
+	        _this.cameraNX = new PerspectiveCamera(fov, aspect, near, far);
+	        _this.cameraNX.up.set(0, -1, 0);
+	        _this.cameraNX.lookAt(new Vector3(-1, 0, 0));
+	        _this.add(_this.cameraNX);
+	        _this.cameraPY = new PerspectiveCamera(fov, aspect, near, far);
+	        _this.cameraPY.up.set(0, 0, 1);
+	        _this.cameraPY.lookAt(new Vector3(0, 1, 0));
+	        _this.add(_this.cameraPY);
+	        _this.cameraNY = new PerspectiveCamera(fov, aspect, near, far);
+	        _this.cameraNY.up.set(0, 0, -1);
+	        _this.cameraNY.lookAt(new Vector3(0, -1, 0));
+	        _this.add(_this.cameraNY);
+	        _this.cameraPZ = new PerspectiveCamera(fov, aspect, near, far);
+	        _this.cameraPZ.up.set(0, -1, 0);
+	        _this.cameraPZ.lookAt(new Vector3(0, 0, 1));
+	        _this.add(_this.cameraPZ);
+	        _this.cameraNZ = new PerspectiveCamera(fov, aspect, near, far);
+	        _this.cameraNZ.up.set(0, -1, 0);
+	        _this.cameraNZ.lookAt(new Vector3(0, 0, -1));
+	        _this.add(_this.cameraNZ);
 	        var options = { format: exports.TextureFormat.RGB, magFilter: exports.TextureFilter.Linear, minFilter: exports.TextureFilter.Linear };
-	        this.renderTarget = new WebGLRenderTargetCube(cubeResolution, cubeResolution, options);
+	        _this.renderTarget = new WebGLRenderTargetCube(cubeResolution, cubeResolution, options);
+	        return _this;
 	    }
 	    CubeCamera.prototype.updateCubeMap = function (renderer, scene) {
 	        if (this.parent === null)
@@ -26394,15 +26739,19 @@
 	    return CubeCamera;
 	}(Object3D));
 
-	var AudioListener = (function (_super) {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var AudioListener = /** @class */ (function (_super) {
 	    __extends(AudioListener, _super);
 	    function AudioListener() {
-	        _super.call(this);
-	        this.type = 'AudioListener';
-	        this.context = getAudioContext();
-	        this.gain = this.context.createGain();
-	        this.gain.connect(this.context.destination);
-	        this.filter = null;
+	        var _this = _super.call(this) || this;
+	        _this.type = 'AudioListener';
+	        _this.context = getAudioContext();
+	        _this.gain = _this.context.createGain();
+	        _this.gain.connect(_this.context.destination);
+	        _this.filter = null;
+	        return _this;
 	    }
 	    AudioListener.prototype.getInput = function () {
 	        return this.gain;
@@ -26454,23 +26803,28 @@
 	    return AudioListener;
 	}(Object3D));
 
-	var Audio = (function (_super) {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 * @author Reece Aaron Lecrivain / http://reecenotes.com/
+	 */
+	var Audio = /** @class */ (function (_super) {
 	    __extends(Audio, _super);
 	    function Audio(listener) {
-	        _super.call(this);
-	        this.autoplay = false;
-	        this.startTime = 0;
-	        this.playbackRate = 1;
-	        this.isPlaying = false;
-	        this.hasPlaybackControl = true;
-	        this.sourceType = 'empty';
-	        this.filters = [];
-	        this.type = 'Audio';
-	        this.context = listener.context;
-	        this.source = this.context.createBufferSource();
-	        this.source.onended = this.onEnded.bind(this);
-	        this.gain = this.context.createGain();
-	        this.gain.connect(listener.getInput());
+	        var _this = _super.call(this) || this;
+	        _this.autoplay = false;
+	        _this.startTime = 0;
+	        _this.playbackRate = 1;
+	        _this.isPlaying = false;
+	        _this.hasPlaybackControl = true;
+	        _this.sourceType = 'empty';
+	        _this.filters = [];
+	        _this.type = 'Audio';
+	        _this.context = listener.context;
+	        _this.source = _this.context.createBufferSource();
+	        _this.source.onended = _this.onEnded.bind(_this);
+	        _this.gain = _this.context.createGain();
+	        _this.gain.connect(listener.getInput());
+	        return _this;
 	    }
 	    Audio.prototype.getOutput = function () {
 	        return this.gain;
@@ -26625,12 +26979,16 @@
 	    return Audio;
 	}(Object3D));
 
-	var PositionalAudio = (function (_super) {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var PositionalAudio = /** @class */ (function (_super) {
 	    __extends(PositionalAudio, _super);
 	    function PositionalAudio(listener) {
-	        _super.call(this, listener);
-	        this.panner = this.context.createPanner();
-	        this.panner.connect(this.gain);
+	        var _this = _super.call(this, listener) || this;
+	        _this.panner = _this.context.createPanner();
+	        _this.panner.connect(_this.gain);
+	        return _this;
 	    }
 	    PositionalAudio.prototype.getOutput = function () {
 	        return this.panner;
@@ -26670,7 +27028,7 @@
 	    return PositionalAudio;
 	}(Audio));
 
-	var AudioAnalyser = (function () {
+	var AudioAnalyser = /** @class */ (function () {
 	    function AudioAnalyser(audio, fftSize) {
 	        if (fftSize === void 0) { fftSize = 2048; }
 	        this.analyser = audio.context.createAnalyser();
@@ -26706,7 +27064,7 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var PropertyMixer = (function () {
+	var PropertyMixer = /** @class */ (function () {
 	    function PropertyMixer(binding, typeName, valueSize) {
 	        this.binding = binding;
 	        this.valueSize = valueSize;
@@ -26842,7 +27200,7 @@
 	 *
 	 * @author tschw
 	 */
-	var AnimationObjectGroup = (function () {
+	var AnimationObjectGroup = /** @class */ (function () {
 	    function AnimationObjectGroup(var_args) {
 	        this.uuid = _Math.generateUUID();
 	        // cached objects followed by the active ones
@@ -27012,7 +27370,16 @@
 	    return AnimationObjectGroup;
 	}());
 
-	var PropertyBinding = (function () {
+	/**
+	 *
+	 * A reference to a real property in the scene graph.
+	 *
+	 *
+	 * @author Ben Houston / http://clara.io/
+	 * @author David Sarno / http://lighthaus.us/
+	 * @author tschw
+	 */
+	var PropertyBinding = /** @class */ (function () {
 	    function PropertyBinding(rootNode, path, parsedPath) {
 	        // initial state of these methods that calls 'bind'
 	        this.getValue = this._getValue_unbound;
@@ -27361,7 +27728,7 @@
 	        }
 	        return null;
 	    };
-	    PropertyBinding.Composite = (function () {
+	    PropertyBinding.Composite = /** @class */ (function () {
 	        function class_1(targetGroup, path, optionalParsedPath) {
 	            var parsedPath = optionalParsedPath ||
 	                PropertyBinding.parseTrackName(path);
@@ -27408,7 +27775,7 @@
 	 * @author tschw
 	 *
 	 */
-	var AnimationAction = (function () {
+	var AnimationAction = /** @class */ (function () {
 	    function AnimationAction(mixer, clip, localRoot) {
 	        this._mixer = mixer;
 	        this._clip = clip;
@@ -27791,16 +28158,17 @@
 	 * @author David Sarno / http://lighthaus.us/
 	 * @author tschw
 	 */
-	var AnimationMixer = (function (_super) {
+	var AnimationMixer = /** @class */ (function (_super) {
 	    __extends(AnimationMixer, _super);
 	    function AnimationMixer(root) {
-	        _super.call(this);
-	        this._controlInterpolantsResultBuffer = new Float32Array(1);
-	        this._root = root;
-	        this._initMemoryManager();
-	        this._accuIndex = 0;
-	        this.time = 0;
-	        this.timeScale = 1.0;
+	        var _this = _super.call(this) || this;
+	        _this._controlInterpolantsResultBuffer = new Float32Array(1);
+	        _this._root = root;
+	        _this._initMemoryManager();
+	        _this._accuIndex = 0;
+	        _this.time = 0;
+	        _this.timeScale = 1.0;
+	        return _this;
 	    }
 	    // return an action for a clip optionally using a custom root target
 	    // object (this method allocates a lot of dynamic memory in case a
@@ -28156,7 +28524,7 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var Uniform = (function () {
+	var Uniform = /** @class */ (function () {
 	    function Uniform(value) {
 	        if (typeof value === 'string') {
 	            console.warn('THREE.Uniform: Type parameter is no longer needed.');
@@ -28183,12 +28551,12 @@
 	 * @author bhouston / http://clara.io/
 	 * @author stephomi / http://stephaneginier.com/
 	 */
-	var Intersect = (function () {
+	var Intersect = /** @class */ (function () {
 	    function Intersect() {
 	    }
 	    return Intersect;
 	}());
-	var Raycaster = (function () {
+	var Raycaster = /** @class */ (function () {
 	    function Raycaster(origin, direction, near, far) {
 	        this.linePrecision = 1;
 	        this.ray = new Ray(origin, direction);
@@ -28266,7 +28634,7 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var Clock = (function () {
+	var Clock = /** @class */ (function () {
 	    function Clock(autoStart) {
 	        if (autoStart === void 0) { autoStart = true; }
 	        this.startTime = 0;
@@ -28312,7 +28680,7 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var Spline = (function () {
+	var Spline = /** @class */ (function () {
 	    function Spline(points) {
 	        this.points = points;
 	    }
@@ -28419,7 +28787,7 @@
 	 * The poles (phi) are at the positive and negative y axis.
 	 * The equator starts at positive z.
 	 */
-	var Spherical = (function () {
+	var Spherical = /** @class */ (function () {
 	    function Spherical(radius, phi, theta) {
 	        if (radius === void 0) { radius = 1.0; }
 	        if (phi === void 0) { phi = 0; }
@@ -28467,21 +28835,22 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var MorphBlendMesh = (function (_super) {
+	var MorphBlendMesh = /** @class */ (function (_super) {
 	    __extends(MorphBlendMesh, _super);
 	    function MorphBlendMesh(geometry, material) {
-	        _super.call(this, geometry, material);
-	        this.animationsMap = {};
-	        this.animationsList = [];
+	        var _this = _super.call(this, geometry, material) || this;
+	        _this.animationsMap = {};
+	        _this.animationsList = [];
 	        // prepare default animation
 	        // (all frames played together in 1 second)
-	        var numFrames = this.geometry.morphTargets.length;
+	        var numFrames = _this.geometry.morphTargets.length;
 	        var name = "__default";
 	        var startFrame = 0;
 	        var endFrame = numFrames - 1;
 	        var fps = numFrames / 1;
-	        this.createAnimation(name, startFrame, endFrame, fps);
-	        this.setAnimationWeight(name, 1);
+	        _this.createAnimation(name, startFrame, endFrame, fps);
+	        _this.setAnimationWeight(name, 1);
+	        return _this;
 	    }
 	    MorphBlendMesh.prototype.createAnimation = function (name, start, end, fps) {
 	        var animation = {
@@ -28656,12 +29025,13 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author WestLangley / http://github.com/WestLangley
 	*/
-	var VertexNormalsHelper = (function (_super) {
+	var VertexNormalsHelper = /** @class */ (function (_super) {
 	    __extends(VertexNormalsHelper, _super);
 	    function VertexNormalsHelper(object, size, color, linewidth) {
 	        if (size === void 0) { size = 1; }
 	        if (color === void 0) { color = 0xff0000; }
 	        if (linewidth === void 0) { linewidth = 1; }
+	        var _this = this;
 	        ///this.object = object;
 	        ///this.size = size;
 	        //
@@ -28677,12 +29047,13 @@
 	        var geometry = new BufferGeometry();
 	        var positions = Float32Attribute(nNormals * 2 * 3, 3);
 	        geometry.addAttribute('position', positions);
-	        _super.call(this, geometry, new LineBasicMaterial({ color: color, linewidth: linewidth }));
+	        _this = _super.call(this, geometry, new LineBasicMaterial({ color: color, linewidth: linewidth })) || this;
 	        //
-	        this.object = object;
-	        this.size = size;
-	        this.matrixAutoUpdate = false;
-	        this.update();
+	        _this.object = object;
+	        _this.size = size;
+	        _this.matrixAutoUpdate = false;
+	        _this.update();
+	        return _this;
 	    }
 	    VertexNormalsHelper.prototype.update = function () {
 	        var v1 = new Vector3();
@@ -28741,14 +29112,14 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author WestLangley / http://github.com/WestLangley
 	*/
-	var SpotLightHelper = (function (_super) {
+	var SpotLightHelper = /** @class */ (function (_super) {
 	    __extends(SpotLightHelper, _super);
 	    function SpotLightHelper(light) {
-	        _super.call(this);
-	        this.light = light;
-	        this.light.updateMatrixWorld();
-	        this.matrix = light.matrixWorld;
-	        this.matrixAutoUpdate = false;
+	        var _this = _super.call(this) || this;
+	        _this.light = light;
+	        _this.light.updateMatrixWorld();
+	        _this.matrix = light.matrixWorld;
+	        _this.matrixAutoUpdate = false;
 	        var geometry = new BufferGeometry();
 	        var positions = [
 	            0, 0, 0, 0, 0, 1,
@@ -28764,9 +29135,10 @@
 	        }
 	        geometry.addAttribute('position', Float32Attribute(positions, 3));
 	        var material = new LineBasicMaterial({ fog: false });
-	        this.cone = new LineSegments(geometry, material);
-	        this.add(this.cone);
-	        this.update();
+	        _this.cone = new LineSegments(geometry, material);
+	        _this.add(_this.cone);
+	        _this.update();
+	        return _this;
 	    }
 	    SpotLightHelper.prototype.dispose = function () {
 	        this.cone.geometry.dispose();
@@ -28794,9 +29166,10 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author ikerr / http://verold.com
 	 */
-	var SkeletonHelper = (function (_super) {
+	var SkeletonHelper = /** @class */ (function (_super) {
 	    __extends(SkeletonHelper, _super);
 	    function SkeletonHelper(object) {
+	        var _this = this;
 	        var bones = SkeletonHelper.getBoneList(object);
 	        var geometry = new Geometry();
 	        for (var i = 0; i < bones.length; i++) {
@@ -28810,12 +29183,13 @@
 	        }
 	        geometry.dynamic = true;
 	        var material = new LineBasicMaterial({ vertexColors: exports.ColorsMode.Vertex, depthTest: false, depthWrite: false, transparent: true });
-	        _super.call(this, geometry, material);
-	        this.bones = bones;
-	        this.root = object;
-	        this.matrix = object.matrixWorld;
-	        this.matrixAutoUpdate = false;
-	        this.update();
+	        _this = _super.call(this, geometry, material) || this;
+	        _this.bones = bones;
+	        _this.root = object;
+	        _this.matrix = object.matrixWorld;
+	        _this.matrixAutoUpdate = false;
+	        _this.update();
+	        return _this;
 	    }
 	    SkeletonHelper.getBoneList = function (object) {
 	        var boneList = [];
@@ -28857,17 +29231,19 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var PointLightHelper = (function (_super) {
+	var PointLightHelper = /** @class */ (function (_super) {
 	    __extends(PointLightHelper, _super);
 	    function PointLightHelper(light, sphereSize) {
+	        var _this = this;
 	        light.updateMatrixWorld();
 	        var geometry = new SphereBufferGeometry(sphereSize, 4, 2);
 	        var material = new MeshBasicMaterial({ wireframe: true, fog: false });
 	        material.color.copy(light.color).multiplyScalar(light.intensity);
-	        _super.call(this, geometry, material);
-	        this.light = light;
-	        this.matrix = this.light.matrixWorld;
-	        this.matrixAutoUpdate = false;
+	        _this = _super.call(this, geometry, material) || this;
+	        _this.light = light;
+	        _this.matrix = _this.light.matrixWorld;
+	        _this.matrixAutoUpdate = false;
+	        return _this;
 	        /*
 	        let distanceGeometry = new THREE.IcosahedronGeometry(1, 2);
 	        let distanceMaterial = new THREE.MeshBasicMaterial({ color: hexColor, fog: false, wireframe: true, opacity: 0.1, transparent: true });
@@ -28905,24 +29281,25 @@
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var HemisphereLightHelper = (function (_super) {
+	var HemisphereLightHelper = /** @class */ (function (_super) {
 	    __extends(HemisphereLightHelper, _super);
 	    function HemisphereLightHelper(light, sphereSize) {
-	        _super.call(this);
-	        this.light = light;
-	        this.light.updateMatrixWorld();
-	        this.matrix = light.matrixWorld;
-	        this.matrixAutoUpdate = false;
-	        this.colors = [new Color(), new Color()];
+	        var _this = _super.call(this) || this;
+	        _this.light = light;
+	        _this.light.updateMatrixWorld();
+	        _this.matrix = light.matrixWorld;
+	        _this.matrixAutoUpdate = false;
+	        _this.colors = [new Color(), new Color()];
 	        var geometry = new SphereGeometry(sphereSize, 4, 2);
 	        geometry.rotateX(-Math.PI / 2);
 	        for (var i = 0, il = 8; i < il; i++) {
-	            geometry.faces[i].color = this.colors[i < 4 ? 0 : 1];
+	            geometry.faces[i].color = _this.colors[i < 4 ? 0 : 1];
 	        }
 	        var material = new MeshBasicMaterial({ vertexColors: exports.ColorsMode.Face, wireframe: true });
-	        this.lightSphere = new Mesh(geometry, material);
-	        this.add(this.lightSphere);
-	        this.update();
+	        _this.lightSphere = new Mesh(geometry, material);
+	        _this.add(_this.lightSphere);
+	        _this.update();
+	        return _this;
 	    }
 	    HemisphereLightHelper.prototype.dispose = function () {
 	        this.lightSphere.geometry.dispose();
@@ -28943,12 +29320,13 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var GridHelper = (function (_super) {
+	var GridHelper = /** @class */ (function (_super) {
 	    __extends(GridHelper, _super);
 	    function GridHelper(size, divisions, color1, color2) {
 	        if (divisions === void 0) { divisions = 1; }
 	        if (color1 === void 0) { color1 = 0x444444; }
 	        if (color2 === void 0) { color2 = 0x888888; }
+	        var _this = this;
 	        var _color1 = new Color(color1);
 	        var _color2 = new Color(color2);
 	        var center = divisions / 2;
@@ -28971,7 +29349,8 @@
 	        geometry.addAttribute('position', Float32Attribute(vertices, 3));
 	        geometry.addAttribute('color', Float32Attribute(colors, 3));
 	        var material = new LineBasicMaterial({ vertexColors: exports.ColorsMode.Vertex });
-	        _super.call(this, geometry, material);
+	        _this = _super.call(this, geometry, material) || this;
+	        return _this;
 	    }
 	    GridHelper.prototype.setColors = function () {
 	        console.error('THREE.GridHelper: setColors() has been deprecated, pass them in the constructor instead.');
@@ -28983,12 +29362,13 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author WestLangley / http://github.com/WestLangley
 	*/
-	var FaceNormalsHelper = (function (_super) {
+	var FaceNormalsHelper = /** @class */ (function (_super) {
 	    __extends(FaceNormalsHelper, _super);
 	    function FaceNormalsHelper(object, size, color, linewidth) {
 	        if (size === void 0) { size = 1; }
 	        if (color === void 0) { color = 0xffff00; }
 	        if (linewidth === void 0) { linewidth = 1; }
+	        var _this = this;
 	        // FaceNormalsHelper only supports THREE.Geometry
 	        ///this.object = object;
 	        ///this.size = (size !== undefined) ? size : 1;
@@ -29005,12 +29385,13 @@
 	        var geometry = new BufferGeometry();
 	        var positions = Float32Attribute(nNormals * 2 * 3, 3);
 	        geometry.addAttribute('position', positions);
-	        _super.call(this, geometry, new LineBasicMaterial({ color: color, linewidth: linewidth }));
+	        _this = _super.call(this, geometry, new LineBasicMaterial({ color: color, linewidth: linewidth })) || this;
 	        //
-	        this.object = object;
-	        this.size = size;
-	        this.matrixAutoUpdate = false;
-	        this.update();
+	        _this.object = object;
+	        _this.size = size;
+	        _this.matrixAutoUpdate = false;
+	        _this.update();
+	        return _this;
 	    }
 	    FaceNormalsHelper.prototype.update = function () {
 	        var v1 = new Vector3();
@@ -29052,15 +29433,15 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
-	var DirectionalLightHelper = (function (_super) {
+	var DirectionalLightHelper = /** @class */ (function (_super) {
 	    __extends(DirectionalLightHelper, _super);
 	    function DirectionalLightHelper(light, size) {
 	        if (size === void 0) { size = 1; }
-	        _super.call(this);
-	        this.light = light;
-	        this.light.updateMatrixWorld();
-	        this.matrix = light.matrixWorld;
-	        this.matrixAutoUpdate = false;
+	        var _this = _super.call(this) || this;
+	        _this.light = light;
+	        _this.light.updateMatrixWorld();
+	        _this.matrix = light.matrixWorld;
+	        _this.matrixAutoUpdate = false;
 	        var geometry = new BufferGeometry();
 	        geometry.addAttribute('position', Float32Attribute([
 	            -size, size, 0,
@@ -29070,11 +29451,12 @@
 	            -size, size, 0
 	        ], 3));
 	        var material = new LineBasicMaterial({ fog: false });
-	        this.add(new Line(geometry, material));
+	        _this.add(new Line(geometry, material));
 	        geometry = new BufferGeometry();
 	        geometry.addAttribute('position', Float32Attribute([0, 0, 0, 0, 0, 1], 3));
-	        this.add(new Line(geometry, material));
-	        this.update();
+	        _this.add(new Line(geometry, material));
+	        _this.update();
+	        return _this;
 	    }
 	    DirectionalLightHelper.prototype.dispose = function () {
 	        var lightPlane = this.children[0];
@@ -29112,9 +29494,10 @@
 	 *   - based on frustum visualization in lightgl.js shadowmap example
 	 *    http://evanw.github.com/lightgl.js/tests/shadowmap.html
 	 */
-	var CameraHelper = (function (_super) {
+	var CameraHelper = /** @class */ (function (_super) {
 	    __extends(CameraHelper, _super);
 	    function CameraHelper(camera) {
+	        var _this = this;
 	        var geometry = new Geometry();
 	        var material = new LineBasicMaterial({ color: 0xffffff, vertexColors: exports.ColorsMode.Face });
 	        var pointMap = {};
@@ -29168,13 +29551,14 @@
 	            }
 	            pointMap[id].push(geometry.vertices.length - 1);
 	        }
-	        _super.call(this, geometry, material);
-	        this.camera = camera;
-	        this.camera.updateProjectionMatrix();
-	        this.matrix = camera.matrixWorld;
-	        this.matrixAutoUpdate = false;
-	        this.pointMap = pointMap;
-	        this.update();
+	        _this = _super.call(this, geometry, material) || this;
+	        _this.camera = camera;
+	        _this.camera.updateProjectionMatrix();
+	        _this.matrix = camera.matrixWorld;
+	        _this.matrixAutoUpdate = false;
+	        _this.pointMap = pointMap;
+	        _this.update();
+	        return _this;
 	    }
 	    CameraHelper.prototype.update = function () {
 	        var geometry, pointMap;
@@ -29232,13 +29616,14 @@
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
 	// a helper to show the world-axis-aligned bounding box for an object
-	var BoundingBoxHelper = (function (_super) {
+	var BoundingBoxHelper = /** @class */ (function (_super) {
 	    __extends(BoundingBoxHelper, _super);
 	    function BoundingBoxHelper(object, color) {
 	        if (color === void 0) { color = 0x888888; }
-	        _super.call(this, new BoxGeometry(1, 1, 1), new MeshBasicMaterial({ color: color, wireframe: true }));
-	        this.object = object;
-	        this.box = new Box3();
+	        var _this = _super.call(this, new BoxGeometry(1, 1, 1), new MeshBasicMaterial({ color: color, wireframe: true })) || this;
+	        _this.object = object;
+	        _this.box = new Box3();
+	        return _this;
 	    }
 	    BoundingBoxHelper.prototype.update = function () {
 	        this.box.setFromObject(this.object);
@@ -29251,19 +29636,21 @@
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var BoxHelper = (function (_super) {
+	var BoxHelper = /** @class */ (function (_super) {
 	    __extends(BoxHelper, _super);
 	    function BoxHelper(object, color) {
 	        if (color === void 0) { color = 0xffff00; }
+	        var _this = this;
 	        var indices = new Uint16Array([0, 1, 1, 2, 2, 3, 3, 0, 4, 5, 5, 6, 6, 7, 7, 4, 0, 4, 1, 5, 2, 6, 3, 7]);
 	        var positions = new Float32Array(8 * 3);
 	        var geometry = new BufferGeometry();
 	        geometry.setIndex(new BufferAttribute(indices, 1));
 	        geometry.addAttribute('position', new BufferAttribute(positions, 3));
-	        _super.call(this, geometry, new LineBasicMaterial({ color: color }));
+	        _this = _super.call(this, geometry, new LineBasicMaterial({ color: color })) || this;
 	        if (object !== undefined) {
-	            this.update(object);
+	            _this.update(object);
 	        }
+	        return _this;
 	    }
 	    BoxHelper.prototype.update = function (object) {
 	        var box = new Box3();
@@ -29325,15 +29712,31 @@
 	    return BoxHelper;
 	}(LineSegments));
 
+	/**
+	 * @author WestLangley / http://github.com/WestLangley
+	 * @author zz85 / http://github.com/zz85
+	 * @author bhouston / http://clara.io
+	 *
+	 * Creates an arrow for visualizing directions
+	 *
+	 * Parameters:
+	 *  dir - Vector3
+	 *  origin - Vector3
+	 *  length - Number
+	 *  color - color in hex value
+	 *  headLength - Number
+	 *  headWidth - Number
+	 */
 	var lineGeometry = new BufferGeometry();
 	lineGeometry.addAttribute('position', Float32Attribute([0, 0, 0, 0, 1, 0], 3));
 	var coneGeometry = new CylinderBufferGeometry(0, 0.5, 1, 5, 1);
 	coneGeometry.translate(0, -0.5, 0);
-	var ArrowHelper = (function (_super) {
+	var ArrowHelper = /** @class */ (function (_super) {
 	    __extends(ArrowHelper, _super);
 	    function ArrowHelper(dir, origin, length, color, headLength, headWidth) {
+	        var _this = 
 	        // dir is assumed to be normalized
-	        _super.call(this);
+	        _super.call(this) || this;
 	        if (color === undefined)
 	            color = 0xffff00;
 	        if (length === undefined)
@@ -29342,15 +29745,16 @@
 	            headLength = 0.2 * length;
 	        if (headWidth === undefined)
 	            headWidth = 0.2 * headLength;
-	        this.position.copy(origin);
-	        this.line = new Line(lineGeometry, new LineBasicMaterial({ color: color }));
-	        this.line.matrixAutoUpdate = false;
-	        this.add(this.line);
-	        this.cone = new Mesh(coneGeometry, new MeshBasicMaterial({ color: color }));
-	        this.cone.matrixAutoUpdate = false;
-	        this.add(this.cone);
-	        this.setDirection(dir);
-	        this.setLength(length, headLength, headWidth);
+	        _this.position.copy(origin);
+	        _this.line = new Line(lineGeometry, new LineBasicMaterial({ color: color }));
+	        _this.line.matrixAutoUpdate = false;
+	        _this.add(_this.line);
+	        _this.cone = new Mesh(coneGeometry, new MeshBasicMaterial({ color: color }));
+	        _this.cone.matrixAutoUpdate = false;
+	        _this.add(_this.cone);
+	        _this.setDirection(dir);
+	        _this.setLength(length, headLength, headWidth);
+	        return _this;
 	    }
 	    ArrowHelper.prototype.setDirection = function (dir) {
 	        var axis = new Vector3();
@@ -29391,10 +29795,11 @@
 	 * @author sroucheray / http://sroucheray.org/
 	 * @author mrdoob / http://mrdoob.com/
 	 */
-	var AxisHelper = (function (_super) {
+	var AxisHelper = /** @class */ (function (_super) {
 	    __extends(AxisHelper, _super);
 	    function AxisHelper(size) {
 	        if (size === void 0) { size = 1; }
+	        var _this = this;
 	        var vertices = new Float32Array([
 	            0, 0, 0, size, 0, 0,
 	            0, 0, 0, 0, size, 0,
@@ -29409,7 +29814,8 @@
 	        geometry.addAttribute('position', new BufferAttribute(vertices, 3));
 	        geometry.addAttribute('color', new BufferAttribute(colors, 3));
 	        var material = new LineBasicMaterial({ vertexColors: exports.ColorsMode.Vertex });
-	        _super.call(this, geometry, material);
+	        _this = _super.call(this, geometry, material) || this;
+	        return _this;
 	    }
 	    return AxisHelper;
 	}(LineSegments));
@@ -29424,15 +29830,16 @@
 	 * curve.type accepts centripetal(default), chordal and catmullrom
 	 * curve.tension is used for catmullrom which defaults to 0.5
 	 */
-	var CatmullRomCurve3 = (function (_super) {
+	var CatmullRomCurve3 = /** @class */ (function (_super) {
 	    __extends(CatmullRomCurve3, _super);
 	    function CatmullRomCurve3(p) {
 	        if (p === void 0) { p = []; }
-	        _super.call(this);
-	        this.closed = false;
-	        this.tension = 0.5;
-	        this.points = p;
-	        this.closed = false;
+	        var _this = _super.call(this) || this;
+	        _this.closed = false;
+	        _this.tension = 0.5;
+	        _this.points = p;
+	        _this.closed = false;
+	        return _this;
 	    }
 	    CatmullRomCurve3.prototype.getPoint = function (t) {
 	        var tmp = new Vector3();
@@ -29508,7 +29915,7 @@
 	but for three.js curve use, it could be possible inlined and flatten into a single function call
 	which can be placed in CurveUtils.
 	*/
-	var CubicPoly = (function () {
+	var CubicPoly = /** @class */ (function () {
 	    function CubicPoly() {
 	    }
 	    /*
@@ -29550,13 +29957,15 @@
 	/**************************************************************
 	 *  Closed Spline 3D curve
 	 **************************************************************/
-	var ClosedSplineCurve3 = (function (_super) {
+	var ClosedSplineCurve3 = /** @class */ (function (_super) {
 	    __extends(ClosedSplineCurve3, _super);
 	    function ClosedSplineCurve3(points) {
+	        var _this = this;
 	        console.warn('THREE.ClosedSplineCurve3 has been deprecated. Please use THREE.CatmullRomCurve3.');
-	        _super.call(this, points);
-	        this.type = 'catmullrom';
-	        this.closed = true;
+	        _this = _super.call(this, points) || this;
+	        _this.type = 'catmullrom';
+	        _this.closed = true;
+	        return _this;
 	    }
 	    return ClosedSplineCurve3;
 	}(CatmullRomCurve3));
@@ -29564,13 +29973,14 @@
 	/**************************************************************
 	 *  Spline 3D curve
 	 **************************************************************/
-	var SplineCurve3 = (function (_super) {
+	var SplineCurve3 = /** @class */ (function (_super) {
 	    __extends(SplineCurve3, _super);
 	    function SplineCurve3(points /* array of Vector3 */) {
-	        if (points === void 0) { points = []; }
-	        _super.call(this);
+	        if (points === void 0) { points = []; } /* array of Vector3 */
+	        var _this = _super.call(this) || this;
 	        console.warn('THREE.SplineCurve3 will be deprecated. Please use THREE.CatmullRomCurve3');
-	        this.points = points;
+	        _this.points = points;
+	        return _this;
 	    }
 	    SplineCurve3.prototype.getPoint = function (t) {
 	        var points = this.points;
@@ -29590,14 +30000,15 @@
 	/**************************************************************
 	 *  Cubic Bezier 3D curve
 	 **************************************************************/
-	var CubicBezierCurve3 = (function (_super) {
+	var CubicBezierCurve3 = /** @class */ (function (_super) {
 	    __extends(CubicBezierCurve3, _super);
 	    function CubicBezierCurve3(v0, v1, v2, v3) {
-	        _super.call(this);
-	        this.v0 = v0;
-	        this.v1 = v1;
-	        this.v2 = v2;
-	        this.v3 = v3;
+	        var _this = _super.call(this) || this;
+	        _this.v0 = v0;
+	        _this.v1 = v1;
+	        _this.v2 = v2;
+	        _this.v3 = v3;
+	        return _this;
 	    }
 	    CubicBezierCurve3.prototype.getPoint = function (t) {
 	        var b3 = ShapeUtils.b3;
@@ -29609,13 +30020,14 @@
 	/**************************************************************
 	 *  Quadratic Bezier 3D curve
 	 **************************************************************/
-	var QuadraticBezierCurve3 = (function (_super) {
+	var QuadraticBezierCurve3 = /** @class */ (function (_super) {
 	    __extends(QuadraticBezierCurve3, _super);
 	    function QuadraticBezierCurve3(v0, v1, v2) {
-	        _super.call(this);
-	        this.v0 = v0;
-	        this.v1 = v1;
-	        this.v2 = v2;
+	        var _this = _super.call(this) || this;
+	        _this.v0 = v0;
+	        _this.v1 = v1;
+	        _this.v2 = v2;
+	        return _this;
 	    }
 	    QuadraticBezierCurve3.prototype.getPoint = function (t) {
 	        var b2 = ShapeUtils.b2;
@@ -29627,12 +30039,13 @@
 	/**************************************************************
 	 *  Line3D
 	 **************************************************************/
-	var LineCurve3 = (function (_super) {
+	var LineCurve3 = /** @class */ (function (_super) {
 	    __extends(LineCurve3, _super);
 	    function LineCurve3(v1, v2) {
-	        _super.call(this);
-	        this.v1 = v1;
-	        this.v2 = v2;
+	        var _this = _super.call(this) || this;
+	        _this.v1 = v1;
+	        _this.v2 = v2;
+	        return _this;
 	    }
 	    LineCurve3.prototype.getPoint = function (t) {
 	        if (t === 1) {
@@ -29650,10 +30063,10 @@
 	/**************************************************************
 	 *  Arc curve
 	 **************************************************************/
-	var ArcCurve = (function (_super) {
+	var ArcCurve = /** @class */ (function (_super) {
 	    __extends(ArcCurve, _super);
 	    function ArcCurve(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise) {
-	        _super.call(this, aX, aY, aRadius, aRadius, aStartAngle, aEndAngle, aClockwise);
+	        return _super.call(this, aX, aY, aRadius, aRadius, aStartAngle, aEndAngle, aClockwise) || this;
 	    }
 	    return ArcCurve;
 	}(EllipseCurve));
@@ -29661,7 +30074,7 @@
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 */
-	var SceneUtils = (function () {
+	var SceneUtils = /** @class */ (function () {
 	    function SceneUtils() {
 	    }
 	    SceneUtils.createMultiMaterialObject = function (geometry, materials) {
@@ -29686,85 +30099,106 @@
 	    return SceneUtils;
 	}());
 
-	var Face4 = (function (_super) {
+	/**
+	 * @author mrdoob / http://mrdoob.com/
+	 */
+	var Face4 = /** @class */ (function (_super) {
 	    __extends(Face4, _super);
 	    function Face4(a, b, c, d, normal, color, materialIndex) {
+	        var _this = this;
 	        console.warn("THREE.Face4 has been removed. A THREE.Face3 will be created instead.");
-	        _super.call(this, a, b, c, normal, color, materialIndex);
+	        _this = _super.call(this, a, b, c, normal, color, materialIndex) || this;
+	        return _this;
 	    }
 	    return Face4;
 	}(Face3));
 	var LineStrip = 0;
 	var LinePieces = 1;
-	var PointCloud = (function (_super) {
+	var PointCloud = /** @class */ (function (_super) {
 	    __extends(PointCloud, _super);
 	    function PointCloud(geometry, material) {
+	        var _this = this;
 	        console.warn("THREE.PointCloud has been renamed to THREE.Points.");
-	        _super.call(this, geometry, material);
+	        _this = _super.call(this, geometry, material) || this;
+	        return _this;
 	    }
 	    return PointCloud;
 	}(Points));
-	var ParticleSystem = (function (_super) {
+	var ParticleSystem = /** @class */ (function (_super) {
 	    __extends(ParticleSystem, _super);
 	    function ParticleSystem(geometry, material) {
+	        var _this = this;
 	        console.warn("THREE.ParticleSystem has been renamed to THREE.Points.");
-	        _super.call(this, geometry, material);
+	        _this = _super.call(this, geometry, material) || this;
+	        return _this;
 	    }
 	    return ParticleSystem;
 	}(Points));
-	var PointCloudMaterial = (function (_super) {
+	var PointCloudMaterial = /** @class */ (function (_super) {
 	    __extends(PointCloudMaterial, _super);
 	    function PointCloudMaterial(parameters) {
+	        var _this = this;
 	        console.warn("THREE.PointCloudMaterial has been renamed to THREE.PointsMaterial.");
-	        _super.call(this, parameters);
+	        _this = _super.call(this, parameters) || this;
+	        return _this;
 	    }
 	    return PointCloudMaterial;
 	}(PointsMaterial));
-	var ParticleBasicMaterial = (function (_super) {
+	var ParticleBasicMaterial = /** @class */ (function (_super) {
 	    __extends(ParticleBasicMaterial, _super);
 	    function ParticleBasicMaterial(parameters) {
+	        var _this = this;
 	        console.warn("THREE.ParticleBasicMaterial has been renamed to THREE.PointsMaterial.");
-	        _super.call(this, parameters);
+	        _this = _super.call(this, parameters) || this;
+	        return _this;
 	    }
 	    return ParticleBasicMaterial;
 	}(PointsMaterial));
-	var ParticleSystemMaterial = (function (_super) {
+	var ParticleSystemMaterial = /** @class */ (function (_super) {
 	    __extends(ParticleSystemMaterial, _super);
 	    function ParticleSystemMaterial(parameters) {
+	        var _this = this;
 	        console.warn("THREE.ParticleSystemMaterial has been renamed to THREE.PointsMaterial.");
-	        _super.call(this, parameters);
+	        _this = _super.call(this, parameters) || this;
+	        return _this;
 	    }
 	    return ParticleSystemMaterial;
 	}(PointsMaterial));
-	var Vertex = (function (_super) {
+	var Vertex = /** @class */ (function (_super) {
 	    __extends(Vertex, _super);
 	    function Vertex(x, y, z) {
+	        var _this = this;
 	        console.warn("THREE.Vertex has been removed. Use THREE.Vector3 instead.");
-	        _super.call(this, x, y, z);
+	        _this = _super.call(this, x, y, z) || this;
+	        return _this;
 	    }
 	    return Vertex;
 	}(Vector3));
 	//
-	var EdgesHelper = (function (_super) {
+	var EdgesHelper = /** @class */ (function (_super) {
 	    __extends(EdgesHelper, _super);
 	    function EdgesHelper(object, hex) {
 	        if (hex === void 0) { hex = 0xffffff; }
+	        var _this = this;
 	        console.warn("THREE.EdgesHelper has been removed. Use THREE.EdgesGeometry instead.");
-	        _super.call(this, new EdgesGeometry(object.geometry), new LineBasicMaterial({ color: hex }));
+	        _this = _super.call(this, new EdgesGeometry(object.geometry), new LineBasicMaterial({ color: hex })) || this;
+	        return _this;
 	    }
 	    return EdgesHelper;
 	}(LineSegments));
-	var WireframeHelper = (function (_super) {
+	var WireframeHelper = /** @class */ (function (_super) {
 	    __extends(WireframeHelper, _super);
 	    function WireframeHelper(object, hex) {
 	        if (hex === void 0) { hex = 0xffffff; }
+	        var _this = this;
 	        console.warn("THREE.WireframeHelper has been removed. Use THREE.WireframeGeometry instead.");
-	        _super.call(this, new WireframeGeometry(object.geometry), new LineBasicMaterial({ color: hex }));
+	        _this = _super.call(this, new WireframeGeometry(object.geometry), new LineBasicMaterial({ color: hex })) || this;
+	        return _this;
 	    }
 	    return WireframeHelper;
 	}(LineSegments));
 	//
-	var GeometryUtils = (function () {
+	var GeometryUtils = /** @class */ (function () {
 	    function GeometryUtils() {
 	    }
 	    GeometryUtils.merge = function (geometry1, geometry2, materialIndexOffset) {
@@ -29783,7 +30217,7 @@
 	    };
 	    return GeometryUtils;
 	}());
-	var ImageUtils = (function () {
+	var ImageUtils = /** @class */ (function () {
 	    function ImageUtils() {
 	    }
 	    ImageUtils.loadTexture = function (url, mapping, onLoad, onError) {
@@ -29813,7 +30247,7 @@
 	    return ImageUtils;
 	}());
 	//
-	var Projector = (function () {
+	var Projector = /** @class */ (function () {
 	    function Projector() {
 	        console.error("THREE.Projector has been moved to /examples/js/renderers/Projector.ts.");
 	    }
@@ -29832,7 +30266,7 @@
 	    return Projector;
 	}());
 	//
-	var CanvasRenderer = (function () {
+	var CanvasRenderer = /** @class */ (function () {
 	    function CanvasRenderer() {
 	        console.error("THREE.CanvasRenderer has been moved to /examples/js/renderers/CanvasRenderer.ts");
 	        this.domElement = document.createElementNS("http://www.w3.org/1999/xhtml", "canvas");

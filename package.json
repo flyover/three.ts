@@ -7,14 +7,16 @@
     "clean": "for f in $(find src examples -regex '.*[^\\.d]\\.ts'); do rm -fv ${f/.ts/.js} ${f/.ts/.js.map}; done",
     "build-glsl": "node glsl.js src/renderers/shaders",
     "build": "rollup -c",
+    "dev": "http-server -c-1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "rollup": "^0.36.3",
+    "http-server": "^0.11.1",
+    "rollup": "^0.36.4",
     "rollup-plugin-typescript": "^0.8.1",
-    "systemjs": "^0.19.40",
-    "typescript": "^2.0.8"
+    "systemjs": "^0.19.47",
+    "typescript": "^2.7.2"
   }
 }
