@@ -34,12 +34,12 @@ function have_typescript() {
 }
 
 var urls_systemjs = [
-  "../node_modules/systemjs/dist/system.src.js",
+  //"../node_modules/systemjs/dist/system.src.js",
   "https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.40/system.src.js"
 ];
 
 var urls_typescript = [
-  "../node_modules/typescript/lib/typescript.js",
+  //"../node_modules/typescript/lib/typescript.js",
   "https://cdnjs.cloudflare.com/ajax/libs/typescript/2.0.8/typescript.js"
 ]
 
