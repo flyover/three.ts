@@ -1,7 +1,7 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.THREE = global.THREE || {})));
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.THREE = {})));
 }(this, (function (exports) { 'use strict';
 
 	function __extends(d, b) {
@@ -36,7 +36,6 @@
 	    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 	    (function () {
 	        Object.assign = function (target /*: any*/) {
-	            'use strict';
 	            if (target === undefined || target === null) {
 	                throw new TypeError('Cannot convert undefined or null to object');
 	            }
@@ -120,15 +119,11 @@
 	}());
 
 	var REVISION = "82";
-	//
-
 	(function (MOUSE) {
 	    MOUSE[MOUSE["LEFT"] = 0] = "LEFT";
 	    MOUSE[MOUSE["MIDDLE"] = 1] = "MIDDLE";
 	    MOUSE[MOUSE["RIGHT"] = 2] = "RIGHT";
 	})(exports.MOUSE || (exports.MOUSE = {}));
-	//
-
 	(function (CullFace) {
 	    CullFace[CullFace["None"] = 0] = "None";
 	    CullFace[CullFace["Back"] = 1] = "Back";
@@ -139,16 +134,12 @@
 	var CullFaceBack = exports.CullFace.Back;
 	var CullFaceFront = exports.CullFace.Front;
 	var CullFaceFrontBack = exports.CullFace.FrontBack;
-	//
-
 	(function (FrontFaceDirection) {
 	    FrontFaceDirection[FrontFaceDirection["CW"] = 0] = "CW";
 	    FrontFaceDirection[FrontFaceDirection["CCW"] = 1] = "CCW";
 	})(exports.FrontFaceDirection || (exports.FrontFaceDirection = {}));
 	var FrontFaceDirectionCW = exports.FrontFaceDirection.CW;
 	var FrontFaceDirectionCCW = exports.FrontFaceDirection.CCW;
-	//
-
 	(function (ShadowMap) {
 	    ShadowMap[ShadowMap["Basic"] = 0] = "Basic";
 	    ShadowMap[ShadowMap["PCF"] = 1] = "PCF";
@@ -157,8 +148,6 @@
 	var BasicShadowMap = exports.ShadowMap.Basic;
 	var PCFShadowMap = exports.ShadowMap.PCF;
 	var PCFSoftShadowMap = exports.ShadowMap.PCFSoft;
-	//
-
 	(function (SideMode) {
 	    SideMode[SideMode["Front"] = 0] = "Front";
 	    SideMode[SideMode["Back"] = 1] = "Back";
@@ -167,16 +156,12 @@
 	var FrontSide = exports.SideMode.Front;
 	var BackSide = exports.SideMode.Back;
 	var DoubleSide = exports.SideMode.Double;
-	//
-
 	(function (ShadingMode) {
 	    ShadingMode[ShadingMode["Flat"] = 1] = "Flat";
 	    ShadingMode[ShadingMode["Smooth"] = 2] = "Smooth";
 	})(exports.ShadingMode || (exports.ShadingMode = {}));
 	var FlatShading = exports.ShadingMode.Flat;
 	var SmoothShading = exports.ShadingMode.Smooth;
-	//
-
 	(function (ColorsMode) {
 	    ColorsMode[ColorsMode["None"] = 0] = "None";
 	    ColorsMode[ColorsMode["Face"] = 1] = "Face";
@@ -185,8 +170,6 @@
 	var NoColors = exports.ColorsMode.None;
 	var FaceColors = exports.ColorsMode.Face;
 	var VertexColors = exports.ColorsMode.Vertex;
-	//
-
 	(function (BlendingMode) {
 	    BlendingMode[BlendingMode["None"] = 0] = "None";
 	    BlendingMode[BlendingMode["Normal"] = 1] = "Normal";
@@ -201,8 +184,6 @@
 	var SubtractiveBlending = exports.BlendingMode.Subtractive;
 	var MultiplyBlending = exports.BlendingMode.Multiply;
 	var CustomBlending = exports.BlendingMode.Custom;
-	//
-
 	(function (BlendingEquation) {
 	    BlendingEquation[BlendingEquation["Add"] = 100] = "Add";
 	    BlendingEquation[BlendingEquation["Subtract"] = 101] = "Subtract";
@@ -215,8 +196,6 @@
 	var ReverseSubtractEquation = exports.BlendingEquation.ReverseSubtract;
 	var MinEquation = exports.BlendingEquation.Min;
 	var MaxEquation = exports.BlendingEquation.Max;
-	//
-
 	(function (BlendingFactor) {
 	    BlendingFactor[BlendingFactor["Zero"] = 200] = "Zero";
 	    BlendingFactor[BlendingFactor["One"] = 201] = "One";
@@ -241,8 +220,6 @@
 	var DstColorFactor = exports.BlendingFactor.DstColor;
 	var OneMinusDstColorFactor = exports.BlendingFactor.OneMinusDstColor;
 	var SrcAlphaSaturateFactor = exports.BlendingFactor.SrcAlphaSaturate;
-	//
-
 	(function (DepthFunction) {
 	    DepthFunction[DepthFunction["Never"] = 0] = "Never";
 	    DepthFunction[DepthFunction["Always"] = 1] = "Always";
@@ -261,8 +238,6 @@
 	var GreaterEqualDepth = exports.DepthFunction.GreaterEqual;
 	var GreaterDepth = exports.DepthFunction.Greater;
 	var NotEqualDepth = exports.DepthFunction.NotEqual;
-	//
-
 	(function (BlendingOperation) {
 	    BlendingOperation[BlendingOperation["Multiply"] = 0] = "Multiply";
 	    BlendingOperation[BlendingOperation["Mix"] = 1] = "Mix";
@@ -271,8 +246,6 @@
 	var MultiplyOperation = exports.BlendingOperation.Multiply;
 	var MixOperation = exports.BlendingOperation.Mix;
 	var AddOperation = exports.BlendingOperation.Add;
-	//
-
 	(function (ToneMapping) {
 	    ToneMapping[ToneMapping["None"] = 0] = "None";
 	    ToneMapping[ToneMapping["Linear"] = 1] = "Linear";
@@ -285,8 +258,6 @@
 	var ReinhardToneMapping = exports.ToneMapping.Reinhard;
 	var Uncharted2ToneMapping = exports.ToneMapping.Uncharted2;
 	var CineonToneMapping = exports.ToneMapping.Cineon;
-	//
-
 	(function (TextureMapping) {
 	    TextureMapping[TextureMapping["UV"] = 300] = "UV";
 	    TextureMapping[TextureMapping["CubeReflection"] = 301] = "CubeReflection";
@@ -305,8 +276,6 @@
 	var SphericalReflectionMapping = exports.TextureMapping.SphericalReflection;
 	var CubeUVReflectionMapping = exports.TextureMapping.CubeUVReflection;
 	var CubeUVRefractionMapping = exports.TextureMapping.CubeUVRefraction;
-	//
-
 	(function (TextureWrapping) {
 	    TextureWrapping[TextureWrapping["Repeat"] = 1000] = "Repeat";
 	    TextureWrapping[TextureWrapping["ClampToEdge"] = 1001] = "ClampToEdge";
@@ -315,8 +284,6 @@
 	var RepeatWrapping = exports.TextureWrapping.Repeat;
 	var ClampToEdgeWrapping = exports.TextureWrapping.ClampToEdge;
 	var MirroredRepeatWrapping = exports.TextureWrapping.MirroredRepeat;
-	//
-
 	(function (TextureFilter) {
 	    TextureFilter[TextureFilter["Nearest"] = 1003] = "Nearest";
 	    TextureFilter[TextureFilter["NearestMipMapNearest"] = 1004] = "NearestMipMapNearest";
@@ -331,8 +298,6 @@
 	var LinearFilter = exports.TextureFilter.Linear;
 	var LinearMipMapNearestFilter = exports.TextureFilter.LinearMipMapNearest;
 	var LinearMipMapLinearFilter = exports.TextureFilter.LinearMipMapLinear;
-	//
-
 	(function (TextureType) {
 	    TextureType[TextureType["UnsignedByte"] = 1009] = "UnsignedByte";
 	    TextureType[TextureType["Byte"] = 1010] = "Byte";
@@ -359,8 +324,6 @@
 	var UnsignedShort5551Type = exports.TextureType.UnsignedShort5551;
 	var UnsignedShort565Type = exports.TextureType.UnsignedShort565;
 	var UnsignedInt248Type = exports.TextureType.UnsignedInt248;
-	//
-
 	(function (TextureFormat) {
 	    TextureFormat[TextureFormat["Alpha"] = 1021] = "Alpha";
 	    TextureFormat[TextureFormat["RGB"] = 1022] = "RGB";
@@ -397,8 +360,6 @@
 	var RGBA_PVRTC_4BPPV1_Format = exports.TextureFormat.RGBA_PVRTC_4BPPV1;
 	var RGBA_PVRTC_2BPPV1_Format = exports.TextureFormat.RGBA_PVRTC_2BPPV1;
 	var RGB_ETC1_Format = exports.TextureFormat.RGB_ETC1;
-	//
-
 	(function (LoopMode) {
 	    LoopMode[LoopMode["Once"] = 2200] = "Once";
 	    LoopMode[LoopMode["Repeat"] = 2201] = "Repeat";
@@ -407,8 +368,6 @@
 	var LoopOnce = exports.LoopMode.Once;
 	var LoopRepeat = exports.LoopMode.Repeat;
 	var LoopPingPong = exports.LoopMode.PingPong;
-	//
-
 	(function (InterpolateMode) {
 	    InterpolateMode[InterpolateMode["Discrete"] = 2300] = "Discrete";
 	    InterpolateMode[InterpolateMode["Linear"] = 2301] = "Linear";
@@ -417,8 +376,6 @@
 	var InterpolateDiscrete = exports.InterpolateMode.Discrete;
 	var InterpolateLinear = exports.InterpolateMode.Linear;
 	var InterpolateSmooth = exports.InterpolateMode.Smooth;
-	//
-
 	(function (EndingMode) {
 	    EndingMode[EndingMode["ZeroCurvature"] = 2400] = "ZeroCurvature";
 	    EndingMode[EndingMode["ZeroSlope"] = 2401] = "ZeroSlope";
@@ -427,8 +384,6 @@
 	var ZeroCurvatureEnding = exports.EndingMode.ZeroCurvature;
 	var ZeroSlopeEnding = exports.EndingMode.ZeroSlope;
 	var WrapAroundEnding = exports.EndingMode.WrapAround;
-	//
-
 	(function (DrawMode) {
 	    DrawMode[DrawMode["Triangles"] = 0] = "Triangles";
 	    DrawMode[DrawMode["TriangleStrip"] = 1] = "TriangleStrip";
@@ -437,8 +392,6 @@
 	var TrianglesDrawMode = exports.DrawMode.Triangles;
 	var TriangleStripDrawMode = exports.DrawMode.TriangleStrip;
 	var TriangleFanDrawMode = exports.DrawMode.TriangleFan;
-	//
-
 	(function (TextureEncoding) {
 	    TextureEncoding[TextureEncoding["Linear"] = 3000] = "Linear";
 	    TextureEncoding[TextureEncoding["sRGB"] = 3001] = "sRGB";
@@ -457,8 +410,6 @@
 	var RGBM7Encoding = exports.TextureEncoding.RGBM7;
 	var RGBM16Encoding = exports.TextureEncoding.RGBM16;
 	var RGBDEncoding = exports.TextureEncoding.RGBD;
-	//
-
 	(function (DepthPacking) {
 	    DepthPacking[DepthPacking["Basic"] = 3200] = "Basic";
 	    DepthPacking[DepthPacking["RGBA"] = 3201] = "RGBA";
@@ -9232,7 +9183,6 @@
 	        this.wireframeLinewidth = source.wireframeLinewidth;
 	        return this;
 	    };
-	    
 	    return MeshDepthMaterial;
 	}(Material));
 
@@ -9728,8 +9678,8 @@
 	    Object3D._getWorldDirection_quaternion = new Quaternion();
 	    return Object3D;
 	}(EventDispatcher));
-	var count$3 = 0;
-	function Object3DIdCount() { return count$3++; }
+	var count$2 = 0;
+	function Object3DIdCount() { return count$2++; }
 
 	/**
 	 * @author bhouston / http://clara.io
@@ -12608,12 +12558,10 @@
 	            face.b = changes[face.b];
 	            face.c = changes[face.c];
 	            indices = [face.a, face.b, face.c];
-	            var dupIndex = -1;
 	            // if any duplicate vertices are found in a Face3
 	            // we have to remove the face as nothing can be saved
 	            for (var n = 0; n < 3; n++) {
 	                if (indices[n] === indices[(n + 1) % 3]) {
-	                    dupIndex = n;
 	                    faceIndicesToRemove.push(i);
 	                    break;
 	                }
@@ -12831,8 +12779,8 @@
 	    };
 	    return Geometry;
 	}(EventDispatcher));
-	var count$2 = 0;
-	function GeometryIdCount() { return count$2++; }
+	var count$3 = 0;
+	function GeometryIdCount() { return count$3++; }
 
 	/**
 	 * @author bhouston / http://clara.io
@@ -14962,7 +14910,6 @@
 	        this.clearCoatRoughness = source.clearCoatRoughness;
 	        return this;
 	    };
-	    
 	    return MeshPhysicalMaterial;
 	}(MeshStandardMaterial));
 
@@ -14986,7 +14933,6 @@
 	        this.wireframeLinewidth = source.wireframeLinewidth;
 	        return this;
 	    };
-	    
 	    return MeshNormalMaterial;
 	}(Material));
 
@@ -15025,7 +14971,6 @@
 	        this.gapSize = source.gapSize;
 	        return this;
 	    };
-	    
 	    return LineDashedMaterial;
 	}(Material));
 
@@ -17511,7 +17456,6 @@
 	        this.rotation = source.rotation;
 	        return this;
 	    };
-	    
 	    return SpriteMaterial;
 	}(Material));
 
@@ -17902,12 +17846,7 @@
 	        parameters = parameters || {};
 	        this._canvas = parameters.canvas !== undefined ? parameters.canvas : document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas');
 	        this._context = parameters.context !== undefined ? parameters.context : null;
-	        this._alpha = parameters.alpha !== undefined ? parameters.alpha : false,
-	            this._depth = parameters.depth !== undefined ? parameters.depth : true,
-	            this._stencil = parameters.stencil !== undefined ? parameters.stencil : true,
-	            this._antialias = parameters.antialias !== undefined ? parameters.antialias : false,
-	            this._premultipliedAlpha = parameters.premultipliedAlpha !== undefined ? parameters.premultipliedAlpha : true,
-	            this._preserveDrawingBuffer = parameters.preserveDrawingBuffer !== undefined ? parameters.preserveDrawingBuffer : false;
+	        this._alpha = parameters.alpha !== undefined ? parameters.alpha : false, this._depth = parameters.depth !== undefined ? parameters.depth : true, this._stencil = parameters.stencil !== undefined ? parameters.stencil : true, this._antialias = parameters.antialias !== undefined ? parameters.antialias : false, this._premultipliedAlpha = parameters.premultipliedAlpha !== undefined ? parameters.premultipliedAlpha : true, this._preserveDrawingBuffer = parameters.preserveDrawingBuffer !== undefined ? parameters.preserveDrawingBuffer : false;
 	        this.domElement = this._canvas;
 	        this._width = this._canvas.width;
 	        this._height = this._canvas.height;
@@ -21849,9 +21788,6 @@
 	 * A series of curves can be represented as a THREE.CurvePath
 	 *
 	 **/
-	/**************************************************************
-	 *  Abstract Curve base class
-	 **************************************************************/
 	var Curve = /** @class */ (function () {
 	    function Curve() {
 	    }
@@ -22103,7 +22039,6 @@
 	        point.multiplyScalar(t).add(this.v1);
 	        return point;
 	    };
-	    
 	    // Line curve is linear, so we can overwrite default getPointAt
 	    LineCurve.prototype.getPointAt = function (u) {
 	        return this.getPoint(u);
@@ -22174,7 +22109,6 @@
 	        var interpolate = CurveUtils.interpolate;
 	        return new Vector2(interpolate(point0.x, point1.x, point2.x, point3.x, weight), interpolate(point0.y, point1.y, point2.y, point3.y, weight));
 	    };
-	    
 	    return SplineCurve;
 	}(Curve));
 
@@ -22236,7 +22170,6 @@
 	        }
 	        return new Vector2(x, y);
 	    };
-	    
 	    return EllipseCurve;
 	}(Curve));
 
@@ -22421,12 +22354,10 @@
 	        var tangentQuadraticBezier = CurveUtils.tangentQuadraticBezier;
 	        return new Vector2(tangentQuadraticBezier(t, this.v0.x, this.v1.x, this.v2.x), tangentQuadraticBezier(t, this.v0.y, this.v1.y, this.v2.y)).normalize();
 	    };
-	    
 	    return QuadraticBezierCurve;
 	}(Curve));
 
 	//import { Shape } from "./Shape";
-	//import { ShapeUtils } from "../ShapeUtils";
 	/**
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 * Creates free form 2d path using series of points, lines or curves.
@@ -22539,7 +22470,6 @@
 	        }
 	        return this;
 	    };
-	    
 	    /**
 	     * Adds a shape to THREE.ShapeGeometry, based on THREE.ExtrudeGeometry.
 	     */
@@ -22593,11 +22523,6 @@
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 * Defines a 2d shape plane using paths.
 	 **/
-	// STEP 1 Create a path.
-	// STEP 2 Turn path into shape.
-	// STEP 3 ExtrudeGeometry takes in Shape/Shapes
-	// STEP 3a - Extract points from each shape, turn to vertices
-	// STEP 3b - Triangulate each shape, add faces.
 	var Shape = /** @class */ (function (_super) {
 	    __extends(Shape, _super);
 	    function Shape(points) {
@@ -23952,13 +23877,11 @@
 	            }
 	        }
 	    };
-	    
 	    LoadingManager.prototype.itemError = function (url) {
 	        if (this.onError !== undefined) {
 	            this.onError(url);
 	        }
 	    };
-	    
 	    return LoadingManager;
 	}());
 	var DefaultLoadingManager = new LoadingManager();
@@ -25890,9 +25813,7 @@
 	                return null;
 	            };
 	            return class_1;
-	        }()),
-	        _a.handlers = [],
-	        _a);
+	        }()), _a.handlers = [], _a);
 	    return Loader;
 	    var _a;
 	}());
@@ -27920,8 +27841,7 @@
 	    AnimationAction.prototype.warp = function (startTimeScale, endTimeScale, duration) {
 	        var mixer = this._mixer, now = mixer.time, interpolant = this._timeScaleInterpolant, timeScale = this.timeScale;
 	        if (interpolant === null) {
-	            interpolant = mixer._lendControlInterpolant(),
-	                this._timeScaleInterpolant = interpolant;
+	            interpolant = mixer._lendControlInterpolant(), this._timeScaleInterpolant = interpolant;
 	        }
 	        var times = interpolant.parameterPositions, values = interpolant.sampleValues;
 	        times[0] = now;
@@ -28136,8 +28056,7 @@
 	    AnimationAction.prototype._scheduleFading = function (duration, weightNow, weightThen) {
 	        var mixer = this._mixer, now = mixer.time, interpolant = this._weightInterpolant;
 	        if (interpolant === null) {
-	            interpolant = mixer._lendControlInterpolant(),
-	                this._weightInterpolant = interpolant;
+	            interpolant = mixer._lendControlInterpolant(), this._weightInterpolant = interpolant;
 	        }
 	        var times = interpolant.parameterPositions, values = interpolant.sampleValues;
 	        times[0] = now;
@@ -28871,7 +28790,6 @@
 	        this.animationsMap[name] = animation;
 	        this.animationsList.push(animation);
 	    };
-	    
 	    MorphBlendMesh.prototype.autoCreateAnimations = function (fps) {
 	        var pattern = /([a-z]+)_?(\d+)/i;
 	        var firstAnimation, frameRanges = {};
@@ -28938,7 +28856,6 @@
 	            animation.time = time;
 	        }
 	    };
-	    
 	    MorphBlendMesh.prototype.getAnimationTime = function (name) {
 	        var time = 0;
 	        var animation = this.animationsMap[name];
@@ -29017,7 +28934,6 @@
 	            }
 	        }
 	    };
-	    
 	    return MorphBlendMesh;
 	}(Mesh));
 
@@ -29482,7 +29398,6 @@
 	        targetLine.scale.z = v3.length();
 	        //};
 	    };
-	    
 	    return DirectionalLightHelper;
 	}(Object3D));
 
@@ -30262,7 +30177,6 @@
 	    Projector.prototype.pickingRay = function (vector, camera) {
 	        console.error("THREE.Projector: .pickingRay() is now raycaster.setFromCamera().");
 	    };
-	    
 	    return Projector;
 	}());
 	//
@@ -30645,12 +30559,6 @@
 	exports.CanvasRenderer = CanvasRenderer;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
-
-	Object.defineProperty( exports, 'AudioContext', {
-		get: function () {
-			return exports.getAudioContext();
-		}
-	});
 
 })));
 //# sourceMappingURL=three.js.map

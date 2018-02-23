@@ -30,7 +30,6 @@ if (Object.assign === undefined) {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
     (function () {
         Object.assign = function (target /*: any*/) {
-            'use strict';
             if (target === undefined || target === null) {
                 throw new TypeError('Cannot convert undefined or null to object');
             }
@@ -9226,7 +9225,6 @@ var MeshDepthMaterial = /** @class */ (function (_super) {
         this.wireframeLinewidth = source.wireframeLinewidth;
         return this;
     };
-    
     return MeshDepthMaterial;
 }(Material));
 
@@ -9722,8 +9720,8 @@ var Object3D = /** @class */ (function (_super) {
     Object3D._getWorldDirection_quaternion = new Quaternion();
     return Object3D;
 }(EventDispatcher));
-var count$3 = 0;
-function Object3DIdCount() { return count$3++; }
+var count$2 = 0;
+function Object3DIdCount() { return count$2++; }
 
 /**
  * @author bhouston / http://clara.io
@@ -12602,12 +12600,10 @@ var Geometry = /** @class */ (function (_super) {
             face.b = changes[face.b];
             face.c = changes[face.c];
             indices = [face.a, face.b, face.c];
-            var dupIndex = -1;
             // if any duplicate vertices are found in a Face3
             // we have to remove the face as nothing can be saved
             for (var n = 0; n < 3; n++) {
                 if (indices[n] === indices[(n + 1) % 3]) {
-                    dupIndex = n;
                     faceIndicesToRemove.push(i);
                     break;
                 }
@@ -12825,8 +12821,8 @@ var Geometry = /** @class */ (function (_super) {
     };
     return Geometry;
 }(EventDispatcher));
-var count$2 = 0;
-function GeometryIdCount() { return count$2++; }
+var count$3 = 0;
+function GeometryIdCount() { return count$3++; }
 
 /**
  * @author bhouston / http://clara.io
@@ -14956,7 +14952,6 @@ var MeshPhysicalMaterial = /** @class */ (function (_super) {
         this.clearCoatRoughness = source.clearCoatRoughness;
         return this;
     };
-    
     return MeshPhysicalMaterial;
 }(MeshStandardMaterial));
 
@@ -14980,7 +14975,6 @@ var MeshNormalMaterial = /** @class */ (function (_super) {
         this.wireframeLinewidth = source.wireframeLinewidth;
         return this;
     };
-    
     return MeshNormalMaterial;
 }(Material));
 
@@ -15019,7 +15013,6 @@ var LineDashedMaterial = /** @class */ (function (_super) {
         this.gapSize = source.gapSize;
         return this;
     };
-    
     return LineDashedMaterial;
 }(Material));
 
@@ -17505,7 +17498,6 @@ var SpriteMaterial = /** @class */ (function (_super) {
         this.rotation = source.rotation;
         return this;
     };
-    
     return SpriteMaterial;
 }(Material));
 
@@ -17896,12 +17888,7 @@ var WebGLRenderer = /** @class */ (function () {
         parameters = parameters || {};
         this._canvas = parameters.canvas !== undefined ? parameters.canvas : document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas');
         this._context = parameters.context !== undefined ? parameters.context : null;
-        this._alpha = parameters.alpha !== undefined ? parameters.alpha : false,
-            this._depth = parameters.depth !== undefined ? parameters.depth : true,
-            this._stencil = parameters.stencil !== undefined ? parameters.stencil : true,
-            this._antialias = parameters.antialias !== undefined ? parameters.antialias : false,
-            this._premultipliedAlpha = parameters.premultipliedAlpha !== undefined ? parameters.premultipliedAlpha : true,
-            this._preserveDrawingBuffer = parameters.preserveDrawingBuffer !== undefined ? parameters.preserveDrawingBuffer : false;
+        this._alpha = parameters.alpha !== undefined ? parameters.alpha : false, this._depth = parameters.depth !== undefined ? parameters.depth : true, this._stencil = parameters.stencil !== undefined ? parameters.stencil : true, this._antialias = parameters.antialias !== undefined ? parameters.antialias : false, this._premultipliedAlpha = parameters.premultipliedAlpha !== undefined ? parameters.premultipliedAlpha : true, this._preserveDrawingBuffer = parameters.preserveDrawingBuffer !== undefined ? parameters.preserveDrawingBuffer : false;
         this.domElement = this._canvas;
         this._width = this._canvas.width;
         this._height = this._canvas.height;
@@ -21843,9 +21830,6 @@ var ExtrudeGeometry = /** @class */ (function (_super) {
  * A series of curves can be represented as a THREE.CurvePath
  *
  **/
-/**************************************************************
- *  Abstract Curve base class
- **************************************************************/
 var Curve = /** @class */ (function () {
     function Curve() {
     }
@@ -22097,7 +22081,6 @@ var LineCurve = /** @class */ (function (_super) {
         point.multiplyScalar(t).add(this.v1);
         return point;
     };
-    
     // Line curve is linear, so we can overwrite default getPointAt
     LineCurve.prototype.getPointAt = function (u) {
         return this.getPoint(u);
@@ -22168,7 +22151,6 @@ var SplineCurve = /** @class */ (function (_super) {
         var interpolate = CurveUtils.interpolate;
         return new Vector2(interpolate(point0.x, point1.x, point2.x, point3.x, weight), interpolate(point0.y, point1.y, point2.y, point3.y, weight));
     };
-    
     return SplineCurve;
 }(Curve));
 
@@ -22230,7 +22212,6 @@ var EllipseCurve = /** @class */ (function (_super) {
         }
         return new Vector2(x, y);
     };
-    
     return EllipseCurve;
 }(Curve));
 
@@ -22415,12 +22396,10 @@ var QuadraticBezierCurve = /** @class */ (function (_super) {
         var tangentQuadraticBezier = CurveUtils.tangentQuadraticBezier;
         return new Vector2(tangentQuadraticBezier(t, this.v0.x, this.v1.x, this.v2.x), tangentQuadraticBezier(t, this.v0.y, this.v1.y, this.v2.y)).normalize();
     };
-    
     return QuadraticBezierCurve;
 }(Curve));
 
 //import { Shape } from "./Shape";
-//import { ShapeUtils } from "../ShapeUtils";
 /**
  * @author zz85 / http://www.lab4games.net/zz85/blog
  * Creates free form 2d path using series of points, lines or curves.
@@ -22533,7 +22512,6 @@ var ShapeGeometry = /** @class */ (function (_super) {
         }
         return this;
     };
-    
     /**
      * Adds a shape to THREE.ShapeGeometry, based on THREE.ExtrudeGeometry.
      */
@@ -22587,11 +22565,6 @@ var ShapeGeometry = /** @class */ (function (_super) {
  * @author zz85 / http://www.lab4games.net/zz85/blog
  * Defines a 2d shape plane using paths.
  **/
-// STEP 1 Create a path.
-// STEP 2 Turn path into shape.
-// STEP 3 ExtrudeGeometry takes in Shape/Shapes
-// STEP 3a - Extract points from each shape, turn to vertices
-// STEP 3b - Triangulate each shape, add faces.
 var Shape = /** @class */ (function (_super) {
     __extends(Shape, _super);
     function Shape(points) {
@@ -23946,13 +23919,11 @@ var LoadingManager = /** @class */ (function () {
             }
         }
     };
-    
     LoadingManager.prototype.itemError = function (url) {
         if (this.onError !== undefined) {
             this.onError(url);
         }
     };
-    
     return LoadingManager;
 }());
 var DefaultLoadingManager = new LoadingManager();
@@ -25884,9 +25855,7 @@ var Loader = /** @class */ (function () {
                 return null;
             };
             return class_1;
-        }()),
-        _a.handlers = [],
-        _a);
+        }()), _a.handlers = [], _a);
     return Loader;
     var _a;
 }());
@@ -27914,8 +27883,7 @@ var AnimationAction = /** @class */ (function () {
     AnimationAction.prototype.warp = function (startTimeScale, endTimeScale, duration) {
         var mixer = this._mixer, now = mixer.time, interpolant = this._timeScaleInterpolant, timeScale = this.timeScale;
         if (interpolant === null) {
-            interpolant = mixer._lendControlInterpolant(),
-                this._timeScaleInterpolant = interpolant;
+            interpolant = mixer._lendControlInterpolant(), this._timeScaleInterpolant = interpolant;
         }
         var times = interpolant.parameterPositions, values = interpolant.sampleValues;
         times[0] = now;
@@ -28130,8 +28098,7 @@ var AnimationAction = /** @class */ (function () {
     AnimationAction.prototype._scheduleFading = function (duration, weightNow, weightThen) {
         var mixer = this._mixer, now = mixer.time, interpolant = this._weightInterpolant;
         if (interpolant === null) {
-            interpolant = mixer._lendControlInterpolant(),
-                this._weightInterpolant = interpolant;
+            interpolant = mixer._lendControlInterpolant(), this._weightInterpolant = interpolant;
         }
         var times = interpolant.parameterPositions, values = interpolant.sampleValues;
         times[0] = now;
@@ -28865,7 +28832,6 @@ var MorphBlendMesh = /** @class */ (function (_super) {
         this.animationsMap[name] = animation;
         this.animationsList.push(animation);
     };
-    
     MorphBlendMesh.prototype.autoCreateAnimations = function (fps) {
         var pattern = /([a-z]+)_?(\d+)/i;
         var firstAnimation, frameRanges = {};
@@ -28932,7 +28898,6 @@ var MorphBlendMesh = /** @class */ (function (_super) {
             animation.time = time;
         }
     };
-    
     MorphBlendMesh.prototype.getAnimationTime = function (name) {
         var time = 0;
         var animation = this.animationsMap[name];
@@ -29011,7 +28976,6 @@ var MorphBlendMesh = /** @class */ (function (_super) {
             }
         }
     };
-    
     return MorphBlendMesh;
 }(Mesh));
 
@@ -29476,7 +29440,6 @@ var DirectionalLightHelper = /** @class */ (function (_super) {
         targetLine.scale.z = v3.length();
         //};
     };
-    
     return DirectionalLightHelper;
 }(Object3D));
 
@@ -30256,7 +30219,6 @@ var Projector = /** @class */ (function () {
     Projector.prototype.pickingRay = function (vector, camera) {
         console.error("THREE.Projector: .pickingRay() is now raycaster.setFromCamera().");
     };
-    
     return Projector;
 }());
 //
@@ -30273,10 +30235,4 @@ var CanvasRenderer = /** @class */ (function () {
 }());
 
 export { WebGLRenderTargetCube, WebGLRenderTarget, WebGLRenderer, ShaderLib, UniformsLib, UniformsUtils, ShaderChunk, FogExp2, Fog, Scene, LensFlare, Sprite, LOD, SkinnedMesh, Skeleton, Bone, Mesh, LineSegments, Line, Points, Group, VideoTexture, DataTexture, CompressedTexture, CubeTexture, CanvasTexture, DepthTexture, TextureIdCount, Texture, MaterialIdCount, CompressedTextureLoader, BinaryTextureLoader, DataTextureLoader, CubeTextureLoader, TextureLoader, ObjectLoader, MaterialLoader, BufferGeometryLoader, DefaultLoadingManager, LoadingManager, JSONLoader, ImageLoader, FontLoader, XHRLoader, Loader, Cache, AudioLoader, SpotLightShadow, SpotLight, PointLight, HemisphereLight, DirectionalLightShadow, DirectionalLight, AmbientLight, LightShadow, Light, StereoCamera, PerspectiveCamera, OrthographicCamera, CubeCamera, Camera, AudioListener, PositionalAudio, getAudioContext, AudioAnalyser, Audio, NewVectorKeyframeTrack as VectorKeyframeTrack, NewStringKeyframeTrack as StringKeyframeTrack, NewQuaternionKeyframeTrack as QuaternionKeyframeTrack, NewNumberKeyframeTrack as NumberKeyframeTrack, NewColorKeyframeTrack as ColorKeyframeTrack, NewBooleanKeyframeTrack as BooleanKeyframeTrack, PropertyMixer, PropertyBinding, KeyframeTrack, AnimationUtils, AnimationObjectGroup, AnimationMixer, AnimationClip, Uniform, InstancedBufferGeometry, BufferGeometry, GeometryIdCount, Geometry, InterleavedBufferAttribute, InstancedInterleavedBuffer, InterleavedBuffer, InstancedBufferAttribute, DynamicBufferAttribute, Float64Attribute, Float32Attribute, Uint32Attribute, Int32Attribute, Uint16Attribute, Int16Attribute, Uint8ClampedAttribute, Uint8Attribute, Int8Attribute, BufferAttribute, Face3, Object3DIdCount, Object3D, Raycaster, Intersect, Layers, EventDispatcher, Clock, QuaternionLinearInterpolant, LinearInterpolant, DiscreteInterpolant, CubicInterpolant, Interpolant, Triangle, Spline, _Math as Math, Spherical, Plane, Frustum, Sphere, Ray, Matrix4, Matrix3, Box3, Box2, Line3, Euler, Vector4, Vector3, Vector2, Quaternion, ColorKeywords, Color, MorphBlendMesh, ImmediateRenderObject, VertexNormalsHelper, SpotLightHelper, SkeletonHelper, PointLightHelper, HemisphereLightHelper, GridHelper, FaceNormalsHelper, DirectionalLightHelper, CameraHelper, BoundingBoxHelper, BoxHelper, ArrowHelper, AxisHelper, ClosedSplineCurve3, CatmullRomCurve3, SplineCurve3, CubicBezierCurve3, QuadraticBezierCurve3, LineCurve3, ArcCurve, EllipseCurve, SplineCurve, CubicBezierCurve, QuadraticBezierCurve, LineCurve, Shape, Path, ShapePath, Font, CurvePath, Curve, ShapeUtils, SceneUtils, CurveUtils, WireframeGeometry, ParametricGeometry, ParametricBufferGeometry, TetrahedronGeometry, TetrahedronBufferGeometry, OctahedronGeometry, OctahedronBufferGeometry, IcosahedronGeometry, IcosahedronBufferGeometry, DodecahedronGeometry, DodecahedronBufferGeometry, PolyhedronGeometry, PolyhedronBufferGeometry, TubeGeometry, TubeBufferGeometry, TorusKnotGeometry, TorusKnotBufferGeometry, TorusGeometry, TorusBufferGeometry, TextGeometry, SphereBufferGeometry, SphereGeometry, RingGeometry, RingBufferGeometry, PlaneBufferGeometry, PlaneGeometry, LatheGeometry, LatheBufferGeometry, ShapeGeometry, ExtrudeGeometry, EdgesGeometry, ConeGeometry, ConeBufferGeometry, CylinderGeometry, CylinderBufferGeometry, CircleBufferGeometry, CircleGeometry, BoxBufferGeometry, BoxGeometry, ShadowMaterial, SpriteMaterial, RawShaderMaterial, ShaderMaterial, PointsMaterial, MultiMaterial, MeshPhysicalMaterial, MeshStandardMaterial, MeshPhongMaterial, MeshNormalMaterial, MeshLambertMaterial, MeshDepthMaterial, MeshBasicMaterial, LineDashedMaterial, LineBasicMaterial, Material, REVISION, MOUSE, CullFace, CullFaceNone, CullFaceBack, CullFaceFront, CullFaceFrontBack, FrontFaceDirection, FrontFaceDirectionCW, FrontFaceDirectionCCW, ShadowMap, BasicShadowMap, PCFShadowMap, PCFSoftShadowMap, SideMode, FrontSide, BackSide, DoubleSide, ShadingMode, FlatShading, SmoothShading, ColorsMode, NoColors, FaceColors, VertexColors, BlendingMode, NoBlending, NormalBlending, AdditiveBlending, SubtractiveBlending, MultiplyBlending, CustomBlending, BlendingEquation, AddEquation, SubtractEquation, ReverseSubtractEquation, MinEquation, MaxEquation, BlendingFactor, ZeroFactor, OneFactor, SrcColorFactor, OneMinusSrcColorFactor, SrcAlphaFactor, OneMinusSrcAlphaFactor, DstAlphaFactor, OneMinusDstAlphaFactor, DstColorFactor, OneMinusDstColorFactor, SrcAlphaSaturateFactor, DepthFunction, NeverDepth, AlwaysDepth, LessDepth, LessEqualDepth, EqualDepth, GreaterEqualDepth, GreaterDepth, NotEqualDepth, BlendingOperation, MultiplyOperation, MixOperation, AddOperation, ToneMapping, NoToneMapping, LinearToneMapping, ReinhardToneMapping, Uncharted2ToneMapping, CineonToneMapping, TextureMapping, UVMapping, CubeReflectionMapping, CubeRefractionMapping, EquirectangularReflectionMapping, EquirectangularRefractionMapping, SphericalReflectionMapping, CubeUVReflectionMapping, CubeUVRefractionMapping, TextureWrapping, RepeatWrapping, ClampToEdgeWrapping, MirroredRepeatWrapping, TextureFilter, NearestFilter, NearestMipMapNearestFilter, NearestMipMapLinearFilter, LinearFilter, LinearMipMapNearestFilter, LinearMipMapLinearFilter, TextureType, UnsignedByteType, ByteType, ShortType, UnsignedShortType, IntType, UnsignedIntType, FloatType, HalfFloatType, UnsignedShort4444Type, UnsignedShort5551Type, UnsignedShort565Type, UnsignedInt248Type, TextureFormat, AlphaFormat, RGBFormat, RGBAFormat, LuminanceFormat, LuminanceAlphaFormat, RGBEFormat, DepthFormat, DepthStencilFormat, RGB_S3TC_DXT1_Format, RGBA_S3TC_DXT1_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT5_Format, RGB_PVRTC_4BPPV1_Format, RGB_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format, RGBA_PVRTC_2BPPV1_Format, RGB_ETC1_Format, LoopMode, LoopOnce, LoopRepeat, LoopPingPong, InterpolateMode, InterpolateDiscrete, InterpolateLinear, InterpolateSmooth, EndingMode, ZeroCurvatureEnding, ZeroSlopeEnding, WrapAroundEnding, DrawMode, TrianglesDrawMode, TriangleStripDrawMode, TriangleFanDrawMode, TextureEncoding, LinearEncoding, sRGBEncoding, GammaEncoding, RGBEEncoding, LogLuvEncoding, RGBM7Encoding, RGBM16Encoding, RGBDEncoding, DepthPacking, BasicDepthPacking, RGBADepthPacking, BoxGeometry as CubeGeometry, LineStrip, LinePieces, MultiMaterial as MeshFaceMaterial, Sprite as Particle, Face4, PointCloud, ParticleSystem, PointCloudMaterial, ParticleBasicMaterial, ParticleSystemMaterial, Vertex, EdgesHelper, WireframeHelper, GeometryUtils, ImageUtils, Projector, CanvasRenderer };
-
-Object.defineProperty( exports, 'AudioContext', {
-	get: function () {
-		return exports.getAudioContext();
-	}
-});
-//# sourceMappingURL=three.modules.js.map
+//# sourceMappingURL=three.module.js.map

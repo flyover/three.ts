@@ -3,6 +3,8 @@
   "version": "0.82.0",
   "description": "TypeScript 3D library",
   "main": "build/three.js",
+  "module": "build/three.module.js",
+  "types": "src/Three.ts",
   "scripts": {
     "clean": "for f in $(find src examples -regex '.*[^\\.d]\\.ts'); do rm -fv ${f/.ts/.js} ${f/.ts/.js.map}; done",
     "build-glsl": "node glsl.js src/renderers/shaders",
@@ -14,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "http-server": "^0.11.1",
-    "rollup": "^0.36.4",
+    "rollup": "^0.56.2",
     "rollup-plugin-typescript": "^0.8.1",
     "systemjs": "^0.19.47",
     "typescript": "^2.7.2"

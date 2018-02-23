@@ -1,50 +1,50 @@
 import typescript from 'rollup-plugin-typescript';
 
-var outro = `
-Object.defineProperty( exports, 'AudioContext', {
-	get: function () {
-		return exports.getAudioContext();
-	}
-});`;
+function glsl() {
 
-function glsl () {
 	return {
-		transform ( code, id ) {
-			if ( !/\.glsl$/.test( id ) ) return;
+
+		transform( code, id ) {
+
+			if ( /\.glsl$/.test( id ) === false ) return;
 
 			var transformedCode = 'export default ' + JSON.stringify(
 				code
-					.replace( /[ \t]*\/\/.*\n/g, '' )
-					.replace( /[ \t]*\/\*[\s\S]*?\*\//g, '' )
-					.replace( /\n{2,}/g, '\n' )
+					.replace( /[ \t]*\/\/.*\n/g, '' ) // remove //
+					.replace( /[ \t]*\/\*[\s\S]*?\*\//g, '' ) // remove /* */
+					.replace( /\n{2,}/g, '\n' ) // # \n+ to \n
 			) + ';';
 			return {
 				code: transformedCode,
 				map: { mappings: '' }
-			}
+			};
+
 		}
+
 	};
+
 }
 
 export default {
-	entry: 'src/Three.ts',
-	indent: '\t',
+	input: 'src/Three.ts',
 	plugins: [
 		typescript({ typescript: require('typescript'), target: 'es5' }),
 		glsl()
 	],
-	targets: [
+	// sourceMap: true,
+	output: [
 		{
 			format: 'umd',
-			moduleName: 'THREE',
-			dest: 'build/three.js',
-			sourceMap: true
+			name: 'THREE',
+			file: 'build/three.js',
+			sourcemap: true,
+			indent: '\t'
 		},
 		{
 			format: 'es',
-			dest: 'build/three.modules.js',
-			sourceMap: true
+			file: 'build/three.module.js',
+			sourcemap: true,
+			indent: '\t'
 		}
-	],
-	outro: outro
+	]
 };
