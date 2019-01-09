@@ -1,14 +1,8 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.THREE = {})));
-}(this, (function (exports) { 'use strict';
-
-	function __extends(d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	}
+	(global = global || self, factory(global.THREE = {}));
+}(this, function (exports) { 'use strict';
 
 	// Polyfills
 	if (Number.EPSILON === undefined) {
@@ -26,7 +20,7 @@
 	    // Missing in IE9-11.
 	    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name
 	    Object.defineProperty(Function.prototype, 'name', {
-	        get: function () {
+	        get: function ( /*this: Function*/) {
 	            return this.toString().match(/^\s*function\s*(\S*)\s*\(/)[1];
 	        }
 	    });
@@ -53,6 +47,35 @@
 	            return output;
 	        };
 	    })();
+	}
+
+	/*! *****************************************************************************
+	Copyright (c) Microsoft Corporation. All rights reserved.
+	Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+	this file except in compliance with the License. You may obtain a copy of the
+	License at http://www.apache.org/licenses/LICENSE-2.0
+
+	THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+	KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+	WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+	MERCHANTABLITY OR NON-INFRINGEMENT.
+
+	See the Apache Version 2.0 License for specific language governing permissions
+	and limitations under the License.
+	***************************************************************************** */
+	/* global Reflect, Promise */
+
+	var extendStatics = function(d, b) {
+	    extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return extendStatics(d, b);
+	};
+
+	function __extends(d, b) {
+	    extendStatics(d, b);
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	}
 
 	/**
@@ -1368,11 +1391,6 @@
 	    return Vector4;
 	}());
 
-	/**
-	 * @author szimek / https://github.com/szimek/
-	 * @author alteredq / http://alteredqualia.com/
-	 * @author Marius Kintel / https://github.com/kintel
-	 */
 	var WebGLRenderTarget = /** @class */ (function (_super) {
 	    __extends(WebGLRenderTarget, _super);
 	    /*
@@ -1546,9 +1564,6 @@
 	    return WebGLRenderTarget;
 	}(EventDispatcher));
 
-	/**
-	 * @author alteredq / http://alteredqualia.com
-	 */
 	var WebGLRenderTargetCube = /** @class */ (function (_super) {
 	    __extends(WebGLRenderTargetCube, _super);
 	    function WebGLRenderTargetCube(width, height, options) {
@@ -3296,54 +3311,6 @@
 	    return CubeTexture;
 	}(Texture));
 
-	/**
-	 * @author tschw
-	 *
-	 * Uniforms of a program.
-	 * Those form a tree structure with a special top-level container for the root,
-	 * which you get by calling 'new WebGLUniforms(gl, program, renderer)'.
-	 *
-	 *
-	 * Properties of inner nodes including the top-level container:
-	 *
-	 * .seq - array of nested uniforms
-	 * .map - nested uniforms by name
-	 *
-	 *
-	 * Methods of all nodes except the top-level container:
-	 *
-	 * .setValue(gl, value, [renderer])
-	 *
-	 *     uploads a uniform value(s)
-	 *    the 'renderer' parameter is needed for sampler uniforms
-	 *
-	 *
-	 * Static methods of the top-level container (renderer factorizations):
-	 *
-	 * .upload(gl, seq, values, renderer)
-	 *
-	 *     sets uniforms in 'seq' to 'values[id].value'
-	 *
-	 * .seqWithValue(seq, values) : filteredSeq
-	 *
-	 *     filters 'seq' entries with corresponding entry in values
-	 *
-	 *
-	 * Methods of the top-level container (renderer factorizations):
-	 *
-	 * .setValue(gl, name, value)
-	 *
-	 *     sets uniform with  name 'name' to 'value'
-	 *
-	 * .set(gl, obj, prop)
-	 *
-	 *     sets uniform from object and property with same name than uniform
-	 *
-	 * .setOptional(gl, obj, prop)
-	 *
-	 *     like .set for an optional property of the object
-	 *
-	 */
 	var emptyTexture = new Texture();
 	var emptyCubeTexture = new CubeTexture();
 	// --- Base for inner nodes (including the root) ---
@@ -11240,7 +11207,14 @@
 	        _this.name = '';
 	        _this.type = 'BufferGeometry';
 	        _this.index = null;
-	        _this.attributes = {};
+	        _this.attributes = {
+	        //position: undefined,
+	        //normal: undefined,
+	        //color: undefined,
+	        //uv: undefined,
+	        //lineDistance: undefined,
+	        //skinWeight: undefined
+	        };
 	        _this.parameters = undefined;
 	        _this.morphAttributes = {};
 	        _this.groups = [];
@@ -14792,43 +14766,6 @@
 	    return MeshStandardMaterial;
 	}(Material));
 
-	/**
-	 * @author mrdoob / http://mrdoob.com/
-	 * @author alteredq / http://alteredqualia.com/
-	 *
-	 * parameters = {
-	 *  color: <hex>,
-	 *  opacity: <float>,
-	 *
-	 *  map: new THREE.Texture(<Image>),
-	 *
-	 *  lightMap: new THREE.Texture(<Image>),
-	 *  lightMapIntensity: <float>
-	 *
-	 *  aoMap: new THREE.Texture(<Image>),
-	 *  aoMapIntensity: <float>
-	 *
-	 *  emissive: <hex>,
-	 *  emissiveIntensity: <float>
-	 *  emissiveMap: new THREE.Texture(<Image>),
-	 *
-	 *  specularMap: new THREE.Texture(<Image>),
-	 *
-	 *  alphaMap: new THREE.Texture(<Image>),
-	 *
-	 *  envMap: new THREE.TextureCube([posx, negx, posy, negy, posz, negz]),
-	 *  combine: THREE.Multiply,
-	 *  reflectivity: <float>,
-	 *  refractionRatio: <float>,
-	 *
-	 *  wireframe: <boolean>,
-	 *  wireframeLinewidth: <float>,
-	 *
-	 *  skinning: <bool>,
-	 *  morphTargets: <bool>,
-	 *  morphNormals: <bool>
-	 * }
-	 */
 	var MeshLambertMaterial = /** @class */ (function (_super) {
 	    __extends(MeshLambertMaterial, _super);
 	    function MeshLambertMaterial(parameters) {
@@ -17846,7 +17783,12 @@
 	        parameters = parameters || {};
 	        this._canvas = parameters.canvas !== undefined ? parameters.canvas : document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas');
 	        this._context = parameters.context !== undefined ? parameters.context : null;
-	        this._alpha = parameters.alpha !== undefined ? parameters.alpha : false, this._depth = parameters.depth !== undefined ? parameters.depth : true, this._stencil = parameters.stencil !== undefined ? parameters.stencil : true, this._antialias = parameters.antialias !== undefined ? parameters.antialias : false, this._premultipliedAlpha = parameters.premultipliedAlpha !== undefined ? parameters.premultipliedAlpha : true, this._preserveDrawingBuffer = parameters.preserveDrawingBuffer !== undefined ? parameters.preserveDrawingBuffer : false;
+	        this._alpha = parameters.alpha !== undefined ? parameters.alpha : false,
+	            this._depth = parameters.depth !== undefined ? parameters.depth : true,
+	            this._stencil = parameters.stencil !== undefined ? parameters.stencil : true,
+	            this._antialias = parameters.antialias !== undefined ? parameters.antialias : false,
+	            this._premultipliedAlpha = parameters.premultipliedAlpha !== undefined ? parameters.premultipliedAlpha : true,
+	            this._preserveDrawingBuffer = parameters.preserveDrawingBuffer !== undefined ? parameters.preserveDrawingBuffer : false;
 	        this.domElement = this._canvas;
 	        this._width = this._canvas.width;
 	        this._height = this._canvas.height;
@@ -21330,29 +21272,6 @@
 	    return ShapeUtils;
 	}());
 
-	/**
-	 * @author zz85 / http://www.lab4games.net/zz85/blog
-	 *
-	 * Creates extruded geometry from a path shape.
-	 *
-	 * parameters = {
-	 *
-	 *  curveSegments: <int>, // number of points on the curves
-	 *  steps: <int>, // number of points for z-side extrusions / used for subdividing segments of extrude spline too
-	 *  amount: <int>, // Depth to extrude the shape
-	 *
-	 *  bevelEnabled: <bool>, // turn on bevel
-	 *  bevelThickness: <float>, // how deep into the original shape bevel goes
-	 *  bevelSize: <float>, // how far from shape outline is bevel
-	 *  bevelSegments: <int>, // number of bevel layers
-	 *
-	 *  extrudePath: <THREE.CurvePath> // 3d spline path to extrude shape along. (creates Frames if .frames aren't defined)
-	 *  frames: <Object> // containing arrays of tangents, normals, binormals
-	 *
-	 *  uvGenerator: <Object> // object that provides UV generator functions
-	 *
-	 * }
-	 **/
 	var ExtrudeGeometry = /** @class */ (function (_super) {
 	    __extends(ExtrudeGeometry, _super);
 	    function ExtrudeGeometry(shapes, options) {
@@ -21758,36 +21677,6 @@
 	    return ExtrudeGeometry;
 	}(Geometry));
 
-	/**
-	 * @author zz85 / http://www.lab4games.net/zz85/blog
-	 * Extensible curve object
-	 *
-	 * Some common of Curve methods
-	 * .getPoint(t), getTangent(t)
-	 * .getPointAt(u), getTangentAt(u)
-	 * .getPoints(), .getSpacedPoints()
-	 * .getLength()
-	 * .updateArcLengths()
-	 *
-	 * This following classes subclasses THREE.Curve:
-	 *
-	 * -- 2d classes --
-	 * THREE.LineCurve
-	 * THREE.QuadraticBezierCurve
-	 * THREE.CubicBezierCurve
-	 * THREE.SplineCurve
-	 * THREE.ArcCurve
-	 * THREE.EllipseCurve
-	 *
-	 * -- 3d classes --
-	 * THREE.LineCurve3
-	 * THREE.QuadraticBezierCurve3
-	 * THREE.CubicBezierCurve3
-	 * THREE.SplineCurve3
-	 *
-	 * A series of curves can be represented as a THREE.CurvePath
-	 *
-	 **/
 	var Curve = /** @class */ (function () {
 	    function Curve() {
 	    }
@@ -22018,6 +21907,99 @@
 	    }
 	    return Curve3;
 	}(Curve));
+	/*
+	// For computing of Frenet frames, exposing the tangents, normals and binormals the spline
+	static FrenetFrames = class {
+	  tangents: Vector3[];
+	  normals: Vector3[];
+	  binormals: Vector3[];
+	  constructor(path: Curve<Vector3>, segments: number, closed: boolean) {
+	    const normal = new Vector3();
+	    const tangents: Vector3[] = [];
+	    const normals: Vector3[] = [];
+	    const binormals: Vector3[] = [];
+	    const vec = new Vector3();
+	    const mat = new Matrix4();
+	    const numpoints = segments + 1;
+	    // expose internals
+	    this.tangents = tangents;
+	    this.normals = normals;
+	    this.binormals = binormals;
+	    // compute the tangent vectors for each segment on the path
+	    for (let i = 0; i < numpoints; i ++) {
+	      const u = i / (numpoints - 1);
+	      tangents[i] = path.getTangentAt(u);
+	      tangents[i].normalize();
+	    }
+	    initialNormal3();
+	    //function initialNormal1(lastBinormal) {
+	    //  // fixed start binormal. Has dangers of 0 vectors
+	    //  normals[0] = new THREE.Vector3();
+	    //  binormals[0] = new THREE.Vector3();
+	    //  if (lastBinormal===undefined) lastBinormal = new THREE.Vector3(0, 0, 1);
+	    //  normals[0].crossVectors(lastBinormal, tangents[0]).normalize();
+	    //  binormals[0].crossVectors(tangents[0], normals[0]).normalize();
+	    //}
+	    //function initialNormal2() {
+	    //  // This uses the Frenet-Serret formula for deriving binormal
+	    //  const t2 = path.getTangentAt(epsilon);
+	    //  normals[0] = new THREE.Vector3().subVectors(t2, tangents[0]).normalize();
+	    //  binormals[0] = new THREE.Vector3().crossVectors(tangents[0], normals[0]);
+	    //  normals[0].crossVectors(binormals[0], tangents[0]).normalize(); // last binormal x tangent
+	    //  binormals[0].crossVectors(tangents[0], normals[0]).normalize();
+	    //}
+	    function initialNormal3() {
+	      // select an initial normal vector perpendicular to the first tangent vector,
+	      // and in the direction of the smallest tangent xyz component
+	      normals[0] = new Vector3();
+	      binormals[0] = new Vector3();
+	      let smallest = Number.MAX_VALUE;
+	      const tx = Math.abs(tangents[0].x);
+	      const ty = Math.abs(tangents[0].y);
+	      const tz = Math.abs(tangents[0].z);
+	      if (tx <= smallest) {
+	        smallest = tx;
+	        normal.set(1, 0, 0);
+	      }
+	      if (ty <= smallest) {
+	        smallest = ty;
+	        normal.set(0, 1, 0);
+	      }
+	      if (tz <= smallest) {
+	        normal.set(0, 0, 1);
+	      }
+	      vec.crossVectors(tangents[0], normal).normalize();
+	      normals[0].crossVectors(tangents[0], vec);
+	      binormals[0].crossVectors(tangents[0], normals[0]);
+	    }
+	    // compute the slowly-varying normal and binormal vectors for each segment on the path
+	    for (let i = 1; i < numpoints; i ++) {
+	      normals[i] = normals[i - 1].clone();
+	      binormals[i] = binormals[i - 1].clone();
+	      vec.crossVectors(tangents[i - 1], tangents[i]);
+	      if (vec.length() > Number.EPSILON) {
+	        vec.normalize();
+	        const theta = Math.acos(_Math.clamp(tangents[i - 1].dot(tangents[i]), - 1, 1)); // clamp for floating pt errors
+	        normals[i].applyMatrix4(mat.makeRotationAxis(vec, theta));
+	      }
+	      binormals[i].crossVectors(tangents[i], normals[i]);
+	    }
+	    // if the curve is closed, postprocess the vectors so the first and last normal vectors are the same
+	    if (closed) {
+	      let theta = Math.acos(_Math.clamp(normals[0].dot(normals[numpoints - 1]), - 1, 1));
+	      theta /= (numpoints - 1);
+	      if (tangents[0].dot(vec.crossVectors(normals[0], normals[numpoints - 1])) > 0) {
+	        theta = - theta;
+	      }
+	      for (let i = 1; i < numpoints; i ++) {
+	        // twist a little...
+	        normals[i].applyMatrix4(mat.makeRotationAxis(tangents[i], theta * i));
+	        binormals[i].crossVectors(tangents[i], normals[i]);
+	      }
+	    }
+	  }
+	};
+	*/
 
 	/**************************************************************
 	 *  Line
@@ -22091,7 +22073,7 @@
 	var SplineCurve = /** @class */ (function (_super) {
 	    __extends(SplineCurve, _super);
 	    function SplineCurve(points /* array of Vector2 */) {
-	        if (points === void 0) { points = []; } /* array of Vector2 */
+	        if (points === void 0) { points = []; }
 	        var _this = _super.call(this) || this;
 	        _this.isSplineCurve = true;
 	        _this.points = points;
@@ -22357,7 +22339,6 @@
 	    return QuadraticBezierCurve;
 	}(Curve));
 
-	//import { Shape } from "./Shape";
 	/**
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 * Creates free form 2d path using series of points, lines or curves.
@@ -22519,10 +22500,6 @@
 	    return ShapeGeometry;
 	}(Geometry));
 
-	/**
-	 * @author zz85 / http://www.lab4games.net/zz85/blog
-	 * Defines a 2d shape plane using paths.
-	 **/
 	var Shape = /** @class */ (function (_super) {
 	    __extends(Shape, _super);
 	    function Shape(points) {
@@ -22790,17 +22767,17 @@
 	                for (var i = 0, l = outline.length; i < l;) {
 	                    var action = outline[i++];
 	                    switch (action) {
-	                        case 'm':// moveTo
+	                        case 'm': // moveTo
 	                            x = outline[i++] * scale + offset;
 	                            y = outline[i++] * scale;
 	                            path.moveTo(x, y);
 	                            break;
-	                        case 'l':// lineTo
+	                        case 'l': // lineTo
 	                            x = outline[i++] * scale + offset;
 	                            y = outline[i++] * scale;
 	                            path.lineTo(x, y);
 	                            break;
-	                        case 'q':// quadraticCurveTo
+	                        case 'q': // quadraticCurveTo
 	                            cpx = outline[i++] * scale + offset;
 	                            cpy = outline[i++] * scale;
 	                            cpx1 = outline[i++] * scale + offset;
@@ -22817,7 +22794,7 @@
 	                                }
 	                            }
 	                            break;
-	                        case 'b':// bezierCurveTo
+	                        case 'b': // bezierCurveTo
 	                            cpx = outline[i++] * scale + offset;
 	                            cpy = outline[i++] * scale;
 	                            cpx1 = outline[i++] * scale + offset;
@@ -22857,24 +22834,6 @@
 	    return Font;
 	}());
 
-	/**
-	 * @author zz85 / http://www.lab4games.net/zz85/blog
-	 * @author alteredq / http://alteredqualia.com/
-	 *
-	 * Text = 3D Text
-	 *
-	 * parameters = {
-	 *  font: <THREE.Font>, // font
-	 *
-	 *  size: <float>, // size of the text
-	 *  height: <float>, // thickness to extrude text
-	 *  curveSegments: <int>, // number of points on the curves
-	 *
-	 *  bevelEnabled: <bool>, // turn on bevel
-	 *  bevelThickness: <float>, // how deep into text bevel goes
-	 *  bevelSize: <float> // how far from text outline is bevel
-	 * }
-	 */
 	var TextGeometry = /** @class */ (function (_super) {
 	    __extends(TextGeometry, _super);
 	    function TextGeometry(text, parameters) {
@@ -23724,7 +23683,7 @@
 
 
 
-	var Geometries = Object.freeze({
+	var Geometries = /*#__PURE__*/Object.freeze({
 		WireframeGeometry: WireframeGeometry,
 		ParametricGeometry: ParametricGeometry,
 		ParametricBufferGeometry: ParametricBufferGeometry,
@@ -23795,7 +23754,7 @@
 
 
 
-	var Materials = Object.freeze({
+	var Materials = /*#__PURE__*/Object.freeze({
 		ShadowMaterial: ShadowMaterial,
 		SpriteMaterial: SpriteMaterial,
 		RawShaderMaterial: RawShaderMaterial,
@@ -23945,7 +23904,7 @@
 	                    case 'json':
 	                        response_1 = JSON.parse(data);
 	                        break;
-	                    default:// 'text' or other
+	                    default: // 'text' or other
 	                        response_1 = data;
 	                        break;
 	                }
@@ -24603,7 +24562,7 @@
 	                    iPrev = pp.length - 2;
 	                    tPrev = t0 + pp[iPrev] - pp[iPrev + 1];
 	                    break;
-	                default:// EndingMode.ZeroCurvature
+	                default: // EndingMode.ZeroCurvature
 	                    // f''(t0) = 0 a.k.a. Natural Spline
 	                    iPrev = i1;
 	                    tPrev = t1;
@@ -24621,7 +24580,7 @@
 	                    iNext = 1;
 	                    tNext = t1 + pp[1] - pp[0];
 	                    break;
-	                default:// EndingMode.ZeroCurvature
+	                default: // EndingMode.ZeroCurvature
 	                    // f''(tN) = 0, a.k.a. Natural Spline
 	                    iNext = i1 - 1;
 	                    tNext = t0;
@@ -25795,6 +25754,7 @@
 	        return materialLoader.parse(json);
 	        //};
 	    };
+	    var _a;
 	    Loader.Handlers = (_a = /** @class */ (function () {
 	            function class_1() {
 	            }
@@ -25813,9 +25773,10 @@
 	                return null;
 	            };
 	            return class_1;
-	        }()), _a.handlers = [], _a);
+	        }()),
+	        _a.handlers = [],
+	        _a);
 	    return Loader;
-	    var _a;
 	}());
 
 	/**
@@ -26172,7 +26133,7 @@
 	                        break;
 	                    case 'BoxGeometry':
 	                    case 'BoxBufferGeometry':
-	                    case 'CubeGeometry':// backwards compatible
+	                    case 'CubeGeometry': // backwards compatible
 	                        geometry = new Geometries[data.type](data.width, data.height, data.depth, data.widthSegments, data.heightSegments, data.depthSegments);
 	                        break;
 	                    case 'CircleGeometry':
@@ -26660,9 +26621,6 @@
 	    return CubeCamera;
 	}(Object3D));
 
-	/**
-	 * @author mrdoob / http://mrdoob.com/
-	 */
 	var AudioListener = /** @class */ (function (_super) {
 	    __extends(AudioListener, _super);
 	    function AudioListener() {
@@ -26724,10 +26682,6 @@
 	    return AudioListener;
 	}(Object3D));
 
-	/**
-	 * @author mrdoob / http://mrdoob.com/
-	 * @author Reece Aaron Lecrivain / http://reecenotes.com/
-	 */
 	var Audio = /** @class */ (function (_super) {
 	    __extends(Audio, _super);
 	    function Audio(listener) {
@@ -26900,9 +26854,6 @@
 	    return Audio;
 	}(Object3D));
 
-	/**
-	 * @author mrdoob / http://mrdoob.com/
-	 */
 	var PositionalAudio = /** @class */ (function (_super) {
 	    __extends(PositionalAudio, _super);
 	    function PositionalAudio(listener) {
@@ -27438,11 +27389,11 @@
 	        }
 	        // determine versioning scheme
 	        var versioning = this.Versioning.None;
-	        if (targetObject.needsUpdate !== undefined) {
+	        if (targetObject.needsUpdate !== undefined) { // material
 	            versioning = this.Versioning.NeedsUpdate;
 	            this.targetObject = targetObject;
 	        }
-	        else if (targetObject.matrixWorldNeedsUpdate !== undefined) {
+	        else if (targetObject.matrixWorldNeedsUpdate !== undefined) { // node transform
 	            versioning = this.Versioning.MatrixWorldNeedsUpdate;
 	            this.targetObject = targetObject;
 	        }
@@ -27841,7 +27792,8 @@
 	    AnimationAction.prototype.warp = function (startTimeScale, endTimeScale, duration) {
 	        var mixer = this._mixer, now = mixer.time, interpolant = this._timeScaleInterpolant, timeScale = this.timeScale;
 	        if (interpolant === null) {
-	            interpolant = mixer._lendControlInterpolant(), this._timeScaleInterpolant = interpolant;
+	            interpolant = mixer._lendControlInterpolant(),
+	                this._timeScaleInterpolant = interpolant;
 	        }
 	        var times = interpolant.parameterPositions, values = interpolant.sampleValues;
 	        times[0] = now;
@@ -27971,7 +27923,7 @@
 	                });
 	            }
 	        }
-	        else {
+	        else { // repetitive Repeat or PingPong
 	            var pingPong = (loop === exports.LoopMode.PingPong);
 	            if (loopCount === -1) {
 	                // just started
@@ -28056,7 +28008,8 @@
 	    AnimationAction.prototype._scheduleFading = function (duration, weightNow, weightThen) {
 	        var mixer = this._mixer, now = mixer.time, interpolant = this._weightInterpolant;
 	        if (interpolant === null) {
-	            interpolant = mixer._lendControlInterpolant(), this._weightInterpolant = interpolant;
+	            interpolant = mixer._lendControlInterpolant(),
+	                this._weightInterpolant = interpolant;
 	        }
 	        var times = interpolant.parameterPositions, values = interpolant.sampleValues;
 	        times[0] = now;
@@ -29627,21 +29580,6 @@
 	    return BoxHelper;
 	}(LineSegments));
 
-	/**
-	 * @author WestLangley / http://github.com/WestLangley
-	 * @author zz85 / http://github.com/zz85
-	 * @author bhouston / http://clara.io
-	 *
-	 * Creates an arrow for visualizing directions
-	 *
-	 * Parameters:
-	 *  dir - Vector3
-	 *  origin - Vector3
-	 *  length - Number
-	 *  color - color in hex value
-	 *  headLength - Number
-	 *  headWidth - Number
-	 */
 	var lineGeometry = new BufferGeometry();
 	lineGeometry.addAttribute('position', Float32Attribute([0, 0, 0, 0, 1, 0], 3));
 	var coneGeometry = new CylinderBufferGeometry(0, 0.5, 1, 5, 1);
@@ -29891,7 +29829,7 @@
 	var SplineCurve3 = /** @class */ (function (_super) {
 	    __extends(SplineCurve3, _super);
 	    function SplineCurve3(points /* array of Vector3 */) {
-	        if (points === void 0) { points = []; } /* array of Vector3 */
+	        if (points === void 0) { points = []; }
 	        var _this = _super.call(this) || this;
 	        console.warn('THREE.SplineCurve3 will be deprecated. Please use THREE.CatmullRomCurve3');
 	        _this.points = points;
@@ -30014,9 +29952,6 @@
 	    return SceneUtils;
 	}());
 
-	/**
-	 * @author mrdoob / http://mrdoob.com/
-	 */
 	var Face4 = /** @class */ (function (_super) {
 	    __extends(Face4, _super);
 	    function Face4(a, b, c, d, normal, color, materialIndex) {
@@ -30204,6 +30139,7 @@
 	exports.Scene = Scene;
 	exports.LensFlare = LensFlare;
 	exports.Sprite = Sprite;
+	exports.Particle = Sprite;
 	exports.LOD = LOD;
 	exports.SkinnedMesh = SkinnedMesh;
 	exports.Skeleton = Skeleton;
@@ -30399,12 +30335,14 @@
 	exports.CircleGeometry = CircleGeometry;
 	exports.BoxBufferGeometry = BoxBufferGeometry;
 	exports.BoxGeometry = BoxGeometry;
+	exports.CubeGeometry = BoxGeometry;
 	exports.ShadowMaterial = ShadowMaterial;
 	exports.SpriteMaterial = SpriteMaterial;
 	exports.RawShaderMaterial = RawShaderMaterial;
 	exports.ShaderMaterial = ShaderMaterial;
 	exports.PointsMaterial = PointsMaterial;
 	exports.MultiMaterial = MultiMaterial;
+	exports.MeshFaceMaterial = MultiMaterial;
 	exports.MeshPhysicalMaterial = MeshPhysicalMaterial;
 	exports.MeshStandardMaterial = MeshStandardMaterial;
 	exports.MeshPhongMaterial = MeshPhongMaterial;
@@ -30539,12 +30477,9 @@
 	exports.RGBDEncoding = RGBDEncoding;
 	exports.BasicDepthPacking = BasicDepthPacking;
 	exports.RGBADepthPacking = RGBADepthPacking;
-	exports.CubeGeometry = BoxGeometry;
+	exports.Face4 = Face4;
 	exports.LineStrip = LineStrip;
 	exports.LinePieces = LinePieces;
-	exports.MeshFaceMaterial = MultiMaterial;
-	exports.Particle = Sprite;
-	exports.Face4 = Face4;
 	exports.PointCloud = PointCloud;
 	exports.ParticleSystem = ParticleSystem;
 	exports.PointCloudMaterial = PointCloudMaterial;
@@ -30560,5 +30495,5 @@
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=three.js.map
